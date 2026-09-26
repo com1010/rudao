@@ -1,6 +1,7 @@
 /* ============================================
-   RuDao V2 - Book Website Interactions
-   Sections: Hero, Concept, Book, Contents (16 ch),
+   RuDao V4 - Book Website Interactions
+   New: Audiobook intro bar with autoplay
+   Sections: AudioBar, Hero, Concept, Book, Contents (16 ch),
    Editions, Pillars, Principles, Compare, Lineage+Quotes,
    Author, Pre-Order
    ============================================ */
@@ -9,10 +10,143 @@
     'use strict';
 
     // ============================================
+    // Audiobook intro bar (V4)
+    // ============================================
+    const audioBar = document.getElementById('audioIntroBar');
+    const audio = document.getElementById('introAudio');
+    const playBtn = document.getElementById('audioPlayBtn');
+    const iconPlay = playBtn ? playBtn.querySelector('.icon-play') : null;
+    const iconPause = playBtn ? playBtn.querySelector('.icon-pause') : null;
+    const progressBar = document.getElementById('audioProgressBar');
+    const progressTrack = document.getElementById('audioProgress');
+    const timeCurrent = document.getElementById('audioTimeCurrent');
+    const timeDuration = document.getElementById('audioTimeDuration');
+    const dismissBtn = document.getElementById('audioDismiss');
+
+    function formatTime(sec) {
+        if (isNaN(sec) || sec < 0) return '0:00';
+        var m = Math.floor(sec / 60);
+        var s = Math.floor(sec % 60);
+        return m + ':' + (s < 10 ? '0' : '') + s;
+    }
+
+    function updatePlayUI(playing) {
+        if (!playBtn) return;
+        if (playing) {
+            playBtn.classList.add('playing');
+            if (iconPlay) iconPlay.style.display = 'none';
+            if (iconPause) iconPause.style.display = 'block';
+        } else {
+            playBtn.classList.remove('playing');
+            if (iconPlay) iconPlay.style.display = 'block';
+            if (iconPause) iconPause.style.display = 'none';
+        }
+    }
+
+    // Try autoplay — most browsers block this unless muted.
+    // Strategy: attempt unmuted autoplay first; if rejected, show pulsing
+    // play button to invite the user to click.
+    if (audio) {
+        audio.volume = 0.85;
+
+        // Attempt autoplay
+        var playPromise = audio.play();
+        if (playPromise !== undefined) {
+            playPromise.then(function() {
+                // Autoplay succeeded
+                updatePlayUI(true);
+            }).catch(function() {
+                // Autoplay blocked — show pulsing button
+                if (playBtn) {
+                    playBtn.classList.add('icon-pulse');
+                    // Auto-retry on first user interaction
+                    var retryPlay = function() {
+                        audio.play().then(function() {
+                            updatePlayUI(true);
+                            playBtn.classList.remove('icon-pulse');
+                        }).catch(function() {});
+                        document.removeEventListener('click', retryPlay);
+                        document.removeEventListener('touchstart', retryPlay);
+                        document.removeEventListener('keydown', retryPlay);
+                    };
+                    document.addEventListener('click', retryPlay, { once: true });
+                    document.addEventListener('touchstart', retryPlay, { once: true });
+                    document.addEventListener('keydown', retryPlay, { once: true });
+                }
+            });
+        }
+
+        // Play/pause button click
+        if (playBtn) {
+            playBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (audio.paused) {
+                    audio.play().then(function() {
+                        updatePlayUI(true);
+                        playBtn.classList.remove('icon-pulse');
+                    }).catch(function() {});
+                } else {
+                    audio.pause();
+                    updatePlayUI(false);
+                }
+            });
+        }
+
+        // Progress bar update
+        audio.addEventListener('timeupdate', function() {
+            if (progressBar && audio.duration) {
+                var pct = (audio.currentTime / audio.duration) * 100;
+                progressBar.style.width = pct + '%';
+            }
+            if (timeCurrent) {
+                timeCurrent.textContent = formatTime(audio.currentTime);
+            }
+        });
+
+        // Duration display
+        audio.addEventListener('loadedmetadata', function() {
+            if (timeDuration) {
+                timeDuration.textContent = formatTime(audio.duration);
+            }
+        });
+
+        // Ended
+        audio.addEventListener('ended', function() {
+            updatePlayUI(false);
+            if (progressBar) progressBar.style.width = '0%';
+            if (timeCurrent) timeCurrent.textContent = '0:00';
+            audio.currentTime = 0;
+        });
+
+        // Click on progress track to seek
+        if (progressTrack) {
+            progressTrack.addEventListener('click', function(e) {
+                if (!audio.duration) return;
+                var rect = progressTrack.getBoundingClientRect();
+                var pct = (e.clientX - rect.left) / rect.width;
+                audio.currentTime = pct * audio.duration;
+            });
+        }
+    }
+
+    // Dismiss button
+    if (dismissBtn) {
+        dismissBtn.addEventListener('click', function() {
+            if (audio) {
+                audio.pause();
+            }
+            updatePlayUI(false);
+            if (audioBar) {
+                audioBar.classList.add('dismissed');
+            }
+        });
+    }
+
+    // ============================================
     // Nav scroll effect
     // ============================================
     const nav = document.getElementById('nav');
-    const handleScroll = () => {
+    const handleScroll = function() {
         if (window.scrollY > 30) {
             nav.classList.add('scrolled');
         } else {

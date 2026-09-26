@@ -18,6 +18,37 @@
     <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
+    <!-- ========== AUDIOBOOK INTRO BAR ========== -->
+    <div class="audio-intro-bar" id="audioIntroBar">
+        <div class="audio-intro-inner">
+            <div class="audio-intro-left">
+                <button class="audio-play-btn" id="audioPlayBtn" aria-label="Play audiobook intro">
+                    <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                    <svg class="icon-pause" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                </button>
+                <div class="audio-info">
+                    <span class="audio-label">Audiobook Brief</span>
+                    <span class="audio-title">RuDao · 儒道 · Beyond The Art of War — Voice Intro by Tony Tong</span>
+                </div>
+            </div>
+            <div class="audio-intro-right">
+                <div class="audio-progress-wrap" id="audioProgressWrap">
+                    <span class="audio-time" id="audioTimeCurrent">0:00</span>
+                    <div class="audio-progress" id="audioProgress">
+                        <div class="audio-progress-bar" id="audioProgressBar"></div>
+                    </div>
+                    <span class="audio-time" id="audioTimeDuration">0:00</span>
+                </div>
+                <button class="audio-dismiss" id="audioDismiss" aria-label="Dismiss audio bar" title="Dismiss">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                </button>
+            </div>
+        </div>
+        <audio id="introAudio" preload="auto">
+            <source src="assets/rudao-voice-intro.mp3" type="audio/mpeg" />
+        </audio>
+    </div>
+
     <!-- ========== NAVIGATION ========== -->
     <header class="nav" id="nav">
         <div class="nav-inner">
