@@ -1742,6 +1742,32 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     font-size: 0.85em;
     margin-left: 0.4rem;
 }
+.author-logo {
+    width: 80px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    display: block;
+}
+.author-link {
+    color: var(--paper);
+    text-decoration: none;
+    border-bottom: 2px solid var(--gold-soft);
+    transition: color 0.3s, border-color 0.3s;
+}
+.author-link:hover {
+    color: var(--gold-soft);
+    border-color: var(--vermillion);
+}
+.author-lineage {
+    font-family: var(--font-cn);
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: var(--gold-soft);
+    margin: 0.3rem 0 0.8rem;
+    letter-spacing: 0.15em;
+    opacity: 0.9;
+}
 .author-role {
     font-family: var(--font-serif-en);
     font-style: italic;
