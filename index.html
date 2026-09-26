@@ -305,32 +305,63 @@
             <p class="hero-subtitle-cn">《儒将：超越孙子兵法》· 平衡利润与长久伙伴关系的儒家竞合之道</p>
             <p class="hero-tagline">The Confucian Co-opetition Path to Balanced Profit<br />and Enduring Partnerships</p>
 
-            <!-- ========== HERO AUDIO PLAYER ========== -->
-            <div class="hero-audio" id="audioIntroBar">
-                <div class="hero-audio-card">
-                    <button class="hero-audio-play" id="audioPlayBtn" aria-label="Play author's voice intro">
-                        <svg class="icon-play" viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                        <svg class="icon-pause" viewBox="0 0 24 24" width="28" height="28" fill="currentColor" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                    </button>
-                    <div class="hero-audio-info">
-                        <span class="hero-audio-label">▶ Listen to the Author's Voice Intro</span>
-                        <span class="hero-audio-title">RuDao · 儒道 — narrated by Tony Tong 唐儀</span>
-                        <span class="hero-audio-hint" id="audioHint">Click the red button to play</span>
-                    </div>
-                    <div class="hero-audio-progress-wrap" id="audioProgressWrap">
-                        <span class="audio-time" id="audioTimeCurrent">0:00</span>
-                        <div class="audio-progress" id="audioProgress">
-                            <div class="audio-progress-bar" id="audioProgressBar"></div>
+            <!-- ========== HERO AUDIO PLAYERS ========== -->
+            <div class="hero-audio-group">
+                <!-- Audio 1: English Voice Intro -->
+                <div class="hero-audio" id="audioIntroBar1">
+                    <div class="hero-audio-card">
+                        <button class="hero-audio-play" id="audioPlayBtn1" aria-label="Play English voice intro">
+                            <svg class="icon-play" viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            <svg class="icon-pause" viewBox="0 0 24 24" width="28" height="28" fill="currentColor" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                        </button>
+                        <div class="hero-audio-info">
+                            <span class="hero-audio-label">▶ RuDao English Voice Intro</span>
+                            <span class="hero-audio-title">Narrated by Tony Tong 唐儀 — English edition</span>
+                            <span class="hero-audio-hint" id="audioHint1">Click the red button to play</span>
                         </div>
-                        <span class="audio-time" id="audioTimeDuration">0:00</span>
+                        <div class="hero-audio-progress-wrap" id="audioProgressWrap1">
+                            <span class="audio-time" id="audioTimeCurrent1">0:00</span>
+                            <div class="audio-progress" id="audioProgress1">
+                                <div class="audio-progress-bar" id="audioProgressBar1"></div>
+                            </div>
+                            <span class="audio-time" id="audioTimeDuration1">0:00</span>
+                        </div>
+                        <button class="audio-dismiss" id="audioDismiss1" aria-label="Dismiss audio" title="Dismiss">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                        </button>
                     </div>
-                    <button class="audio-dismiss" id="audioDismiss" aria-label="Dismiss audio" title="Dismiss">
-                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-                    </button>
+                    <audio id="introAudio1" preload="auto">
+                        <source src="assets/rudao-voice-intro-en.mp3" type="audio/mpeg" />
+                    </audio>
                 </div>
-                <audio id="introAudio" preload="auto">
-                    <source src="assets/rudao-voice-intro.mp3" type="audio/mpeg" />
-                </audio>
+
+                <!-- Audio 2: Chinese & English Bilingual Voice Intro -->
+                <div class="hero-audio" id="audioIntroBar2">
+                    <div class="hero-audio-card">
+                        <button class="hero-audio-play" id="audioPlayBtn2" aria-label="Play bilingual voice intro">
+                            <svg class="icon-play" viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            <svg class="icon-pause" viewBox="0 0 24 24" width="28" height="28" fill="currentColor" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                        </button>
+                        <div class="hero-audio-info">
+                            <span class="hero-audio-label">▶ RuDao Chinese & English Bilingual Audio Intro</span>
+                            <span class="hero-audio-title">儒道 · 唐儀 — Bilingual 中英双语 narration</span>
+                            <span class="hero-audio-hint" id="audioHint2">Click the red button to play</span>
+                        </div>
+                        <div class="hero-audio-progress-wrap" id="audioProgressWrap2">
+                            <span class="audio-time" id="audioTimeCurrent2">0:00</span>
+                            <div class="audio-progress" id="audioProgress2">
+                                <div class="audio-progress-bar" id="audioProgressBar2"></div>
+                            </div>
+                            <span class="audio-time" id="audioTimeDuration2">0:00</span>
+                        </div>
+                        <button class="audio-dismiss" id="audioDismiss2" aria-label="Dismiss audio" title="Dismiss">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                        </button>
+                    </div>
+                    <audio id="introAudio2" preload="auto">
+                        <source src="assets/rudao-voice-intro-bilingual.mp3" type="audio/mpeg" />
+                    </audio>
+                </div>
             </div>
 
             <div class="hero-actions">

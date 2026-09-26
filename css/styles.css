@@ -73,14 +73,23 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
    AUDIOBOOK INTRO BAR (NEW V4)
    ============================================ */
 /* ============================================
-   HERO AUDIO PLAYER (prominent, in hero section)
+   HERO AUDIO PLAYERS (prominent, in hero section)
    ============================================ */
-.hero-audio {
+.hero-audio-group {
     position: relative;
     z-index: 5;
     margin: 2rem 0 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+.hero-audio {
+    position: relative;
     transition: max-height .4s ease, opacity .3s ease, margin .3s ease;
     overflow: hidden;
+    width: 100%;
+    max-width: 680px;
 }
 .hero-audio.dismissed {
     max-height: 0 !important;
