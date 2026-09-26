@@ -604,6 +604,32 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 }
 .book-meta strong { color: var(--ink-black); font-weight: 500; }
 
+/* Book quote block — long Chinese + English description (NEW V3) */
+.book-quote {
+    margin: 1.5rem 0 1.8rem;
+    padding: 1.4rem 1.6rem;
+    background: rgba(169, 50, 38, 0.04);
+    border-left: 3px solid var(--vermillion);
+    border-radius: 0 6px 6px 0;
+    position: relative;
+}
+.book-quote-cn {
+    font-family: var(--font-cn);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--ink-mid);
+    margin-bottom: 1rem;
+}
+.book-quote-en {
+    font-family: var(--font-serif-en);
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--ink-mid);
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(10,10,10,0.08);
+}
+
 /* ============================================
    TABLE OF CONTENTS (NEW V2)
    ============================================ */
@@ -1407,23 +1433,34 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(185,146,58,0.3);
+    border: 2px solid rgba(185,146,58,0.4);
     position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 50px -10px rgba(0,0,0,0.6),
+                inset 0 0 0 1px rgba(185,146,58,0.1);
 }
 .portrait-frame::before {
     content: '';
     position: absolute;
-    inset: 12px;
+    inset: 8px;
     border-radius: 50%;
-    border: 1px solid rgba(185,146,58,0.15);
+    border: 1px solid rgba(185,146,58,0.25);
+    z-index: 2;
+    pointer-events: none;
 }
-.portrait-monogram {
-    font-family: var(--font-cn);
-    font-weight: 900;
-    font-size: clamp(8rem, 16vw, 12rem);
-    line-height: 1;
-    color: var(--gold-soft);
-    text-shadow: 0 0 40px rgba(185,146,58,0.3);
+/* V3: actual photo replaces the monogram */
+.portrait-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    border-radius: 50%;
+    display: block;
+    transition: transform .6s ease;
+    filter: contrast(1.05) saturate(1.05);
+}
+.author-portrait:hover .portrait-photo {
+    transform: scale(1.03);
 }
 .portrait-stamp {
     position: absolute;
@@ -1509,6 +1546,38 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     font-size: 0.95rem;
     font-weight: 500;
     color: var(--paper);
+}
+
+/* Author "Also" tags (NEW V3) */
+.author-extra {
+    margin-top: 1.8rem;
+}
+.extra-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(250,247,240,0.4);
+    margin-bottom: 0.6rem;
+}
+.extra-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.tag {
+    padding: 0.4rem 0.85rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 999px;
+    font-size: 0.78rem;
+    color: rgba(250,247,240,0.7);
+    transition: all .25s ease;
+}
+.tag:hover {
+    border-color: rgba(185, 146, 58, 0.3);
+    color: var(--gold-soft);
+    background: rgba(185, 146, 58, 0.06);
 }
 
 .author-links {
