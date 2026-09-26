@@ -438,11 +438,11 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     margin-bottom: 1.6rem;
 }
 .title-en {
-    font-family: var(--font-brush);
+    font-family: 'Lugrasimo', var(--font-brush);
     font-size: clamp(5rem, 14vw, 11rem);
     line-height: 0.95;
     color: var(--ink-black);
-    letter-spacing: -0.04em;
+    letter-spacing: -0.02em;
     text-shadow: 0 4px 30px rgba(10,10,10,0.06);
 }
 .title-cn {
