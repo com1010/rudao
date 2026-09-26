@@ -260,36 +260,6 @@
     </script>
 </head>
 <body>
-    <!-- ========== AUDIOBOOK INTRO BAR ========== -->
-    <div class="audio-intro-bar" id="audioIntroBar">
-        <div class="audio-intro-inner">
-            <div class="audio-intro-left">
-                <button class="audio-play-btn" id="audioPlayBtn" aria-label="Play audiobook intro">
-                    <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                    <svg class="icon-pause" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                </button>
-                <div class="audio-info">
-                    <span class="audio-label">Audiobook Brief</span>
-                    <span class="audio-title">RuDao · 儒道 · Beyond The Art of War — Voice Intro by Tony Tong</span>
-                </div>
-            </div>
-            <div class="audio-intro-right">
-                <div class="audio-progress-wrap" id="audioProgressWrap">
-                    <span class="audio-time" id="audioTimeCurrent">0:00</span>
-                    <div class="audio-progress" id="audioProgress">
-                        <div class="audio-progress-bar" id="audioProgressBar"></div>
-                    </div>
-                    <span class="audio-time" id="audioTimeDuration">0:00</span>
-                </div>
-                <button class="audio-dismiss" id="audioDismiss" aria-label="Dismiss audio bar" title="Dismiss">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-                </button>
-            </div>
-        </div>
-        <audio id="introAudio" preload="auto">
-            <source src="assets/rudao-voice-intro.mp3" type="audio/mpeg" />
-        </audio>
-    </div>
 
     <!-- ========== NAVIGATION ========== -->
     <header class="nav" id="nav">
@@ -334,6 +304,34 @@
             <p class="hero-subtitle-en">RuJiang · Beyond&nbsp;The Art of War</p>
             <p class="hero-subtitle-cn">《儒将：超越孙子兵法》· 平衡利润与长久伙伴关系的儒家竞合之道</p>
             <p class="hero-tagline">The Confucian Co-opetition Path to Balanced Profit<br />and Enduring Partnerships</p>
+
+            <!-- ========== HERO AUDIO PLAYER ========== -->
+            <div class="hero-audio" id="audioIntroBar">
+                <div class="hero-audio-card">
+                    <button class="hero-audio-play" id="audioPlayBtn" aria-label="Play author's voice intro">
+                        <svg class="icon-play" viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        <svg class="icon-pause" viewBox="0 0 24 24" width="28" height="28" fill="currentColor" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                    </button>
+                    <div class="hero-audio-info">
+                        <span class="hero-audio-label">▶ Listen to the Author's Voice Intro</span>
+                        <span class="hero-audio-title">RuDao · 儒道 — narrated by Tony Tong 唐儀</span>
+                    </div>
+                    <div class="hero-audio-progress-wrap" id="audioProgressWrap">
+                        <span class="audio-time" id="audioTimeCurrent">0:00</span>
+                        <div class="audio-progress" id="audioProgress">
+                            <div class="audio-progress-bar" id="audioProgressBar"></div>
+                        </div>
+                        <span class="audio-time" id="audioTimeDuration">0:00</span>
+                    </div>
+                    <button class="audio-dismiss" id="audioDismiss" aria-label="Dismiss audio" title="Dismiss">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                    </button>
+                </div>
+                <audio id="introAudio" preload="auto">
+                    <source src="assets/rudao-voice-intro.mp3" type="audio/mpeg" />
+                </audio>
+            </div>
+
             <div class="hero-actions">
                 <a href="https://www.amazon.com/dp/B0HJ458RRC" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Pre-Order on Amazon</a>
                 <a href="#contents" class="btn btn-ghost">Explore the 16 Chapters →</a>
