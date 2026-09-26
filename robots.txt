@@ -1,0 +1,67 @@
+# robots.txt — RuDao.us
+# Allow all search engines and AI crawlers
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Google Image
+User-agent: Googlebot-Image
+Allow: /
+
+# Baidu
+User-agent: Baiduspider
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+# Yandex
+User-agent: YandexBot
+Allow: /
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Apple
+User-agent: Applebot
+Allow: /
+
+# AI Crawlers — ChatGPT, GPTBot, Perplexity, Claude, Google AI
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: AI2Bot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+# Allow all
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://rudao.us/sitemap.xml
+Sitemap: https://rudao-tonytong.pages.dev/sitemap.xml
+Sitemap: https://com1010.github.io/rudao/sitemap.xml
