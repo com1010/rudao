@@ -377,9 +377,12 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 }
 .hero-calligraphy {
     width: min(85vw, 1100px);
-    opacity: 0.08;
-    filter: grayscale(1) contrast(1.2);
+    height: auto;
+    max-height: 95vh;
+    opacity: 0.10;
+    filter: grayscale(0.6) contrast(1.05);
     transform: rotate(-2deg);
+    object-fit: contain;
     user-select: none;
 }
 
@@ -1838,8 +1841,10 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     justify-content: center;
 }
 .preorder-art img {
-    width: min(100%, 320px);
-    filter: drop-shadow(0 20px 40px rgba(10,10,10,0.15));
+    width: min(100%, 360px);
+    height: auto;
+    filter: drop-shadow(0 20px 40px rgba(10,10,10,0.18));
+    object-fit: contain;
 }
 .preorder-content .section-num { display: inline-block; }
 .preorder-content .section-title { text-align: left; }
