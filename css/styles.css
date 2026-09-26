@@ -538,6 +538,43 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     color: var(--paper);
     border-color: var(--ink-black);
 }
+.btn-amazon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #FFA724 0%, #FF8800 100%);
+    color: #111;
+    font-weight: 600;
+    border: 1.5px solid #e07b00;
+    box-shadow: 0 4px 14px -4px rgba(255, 136, 0, 0.5);
+    font-size: 1.05rem;
+    padding: 1rem 2.2rem;
+}
+.btn-amazon:hover {
+    background: linear-gradient(180deg, #FFB13D 0%, #FF9900 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -8px rgba(255, 136, 0, 0.55);
+    color: #111;
+}
+.btn-amazon:active {
+    transform: translateY(0);
+}
+
+/* Pre-order CTA layout */
+.preorder-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 2rem 0 1.5rem;
+}
+.preorder-cta .btn { min-width: 200px; }
+.preorder-amazon-note {
+    font-size: 0.92rem;
+    color: var(--ink-mid);
+    margin: 0 0 1.5rem;
+    line-height: 1.7;
+}
 
 /* ============================================
    SECTION SHARED
