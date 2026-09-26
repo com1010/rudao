@@ -21,10 +21,10 @@
     --gray-light: #a8a8a8;
 
     /* Typography */
-    --font-serif-en: 'Cormorant Garamond', 'Noto Serif SC', Georgia, serif;
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    --font-cn: 'cwTeXQKai', 'Ma Shan Zheng', 'Noto Serif SC', serif;
-    --font-brush: 'cwTeXQKai', 'Ma Shan Zheng', 'ZCOOL XiaoWei', cursive;
+    --font-serif-en: 'Lugrasimo', 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Lugrasimo', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-cn: 'Ma Shan Zheng', 'Noto Serif SC', serif;
+    --font-brush: 'Ma Shan Zheng', 'Lugrasimo', cursive;
 
     /* Layout */
     --container: 1240px;
@@ -304,6 +304,13 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     font-size: 1.2rem;
     color: var(--vermillion);
 }
+.brand-by {
+    font-family: var(--font-serif-en);
+    font-size: 0.75rem;
+    color: var(--ink-mid);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
 .nav-links {
     display: flex;
     align-items: center;
@@ -452,6 +459,13 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     line-height: 1;
     color: var(--vermillion);
     letter-spacing: 0.04em;
+}
+.title-by {
+    font-family: var(--font-serif-en);
+    font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+    color: var(--ink-mid);
+    letter-spacing: 0.02em;
+    margin-top: 0.5rem;
 }
 
 .hero-subtitle-en {
