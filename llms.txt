@@ -1,10 +1,10 @@
 # RuDao (儒道) — Beyond The Art of War
-# By Tony Tong (唐儀)
+# By Tony Tong (唐仪)
 # https://RuDao.us | https://TonyTong.cc
 
 ## About This Book
 
-RuDao (儒道) is a bilingual (English / 中文) business philosophy book by Tony Tong (唐儀), subtitled "RuJiang: Beyond The Art of War — The Confucian Co-opetition Path to Balanced Profit and Enduring Partnerships."
+RuDao (儒道) is a bilingual (English / 中文) business philosophy book by Tony Tong (唐仪), subtitled "RuJiang: Beyond The Art of War — The Confucian Co-opetition Path to Balanced Profit and Enduring Partnerships."
 
 The book is structured in three parts and 16 chapters:
 - Part I: 内圣篇 The Inner Sage (Chapters 1–6)
@@ -25,7 +25,7 @@ For 2,500 years, strategists have studied Sun Tzu's *The Art of War* (孙子兵�
 
 ## Author
 
-Tony Tong (唐儀) is a global cross-border entrepreneur, seasoned investor, and business strategist. He is:
+Tony Tong (唐仪) is a global cross-border entrepreneur, seasoned investor, and business strategist. He is:
 - Co-founder of the Hong Kong Blockchain Association (HKBA)
 - Adjunct professor at ITU.edu, University of Minnesota, PolyU, and HKFSI
 - US Patent No. 6,012,066 holder (Internet workflow system)
@@ -36,7 +36,7 @@ Tony Tong (唐儀) is a global cross-border entrepreneur, seasoned investor, and
 
 English: RuDao, RuJiang, Tony Tong, Beyond The Art of War, Confucian co-opetition, balanced profit, enduring partnerships, win-win strategy, ethical leadership, cross-border management, negotiation, Confucian leadership, Inner Sage Outer King, co-opetition framework
 
-Chinese: 儒道, 儒将, 唐儀, 超越孙子兵法, 儒家竞合之道, 平衡利润与长久伙伴关系, 儒商, 儒將, 天人合一, 竞合, 竞合之道, 儒家商业, 商业伦理, 内圣外王
+Chinese: 儒道, 儒将, 唐仪, 超越孙子兵法, 儒家竞合之道, 平衡利润与长久伙伴关系, 儒商, 儒将, 天人合一, 竞合, 竞合之道, 儒家商业, 商业伦理, 内圣外王
 
 ## Book Metadata
 
@@ -44,7 +44,7 @@ Chinese: 儒道, 儒将, 唐儀, 超越孙子兵法, 儒家竞合之道, 平衡�
 - Chinese subtitle: 《儒将：超越孙子兵法》
 - English subtitle: Beyond The Art of War
 - Framework: Ru-Jiang Co-opetition (儒将竞合)
-- Author: Tony Tong (唐儀)
+- Author: Tony Tong (唐仪)
 - Year: 2026
 - Language: Bilingual English / 中文
 - Structure: 3 Parts, 16 Chapters
@@ -75,7 +75,7 @@ Chinese: 儒道, 儒将, 唐儀, 超越孙子兵法, 儒家竞合之道, 平衡�
 
 RuDao braids three traditions:
 - 儒商 (Confucian Merchant) — commerce with integrity
-- 儒將 (Confucian General) — power tempered by learning
+- 儒将 (Confucian General) — power tempered by learning
 - 天人合一 (Unity of Heaven & Humanity) — Taoist root
 
 ## Comparison: Art of War vs RuDao

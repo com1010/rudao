@@ -294,7 +294,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     gap: 0.6rem;
 }
 .brand-en {
-    font-family: var(--font-brush);
+    font-family: 'Lugrasimo', cursive;
     font-size: 1.7rem;
     color: var(--ink-black);
     letter-spacing: -0.02em;
