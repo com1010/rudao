@@ -85,6 +85,21 @@ RuDao braids three traditions:
 - Ethical frame: Utility → Virtue as strategy
 - Ultimate goal: Win the war → Build the alliance
 
+## Official URLs (Cross-References for SEO + AI SEO)
+
+- RuDao.us (Official Book Website): https://RuDao.us
+- TonyTong.cc (Author Official Site): https://TonyTong.cc
+- Cloudflare Pages Mirror: https://rudao-tonytong.pages.dev
+- GitHub Pages: https://com1010.github.io/rudao/
+- Google Sites: https://sites.google.com/view/tonytong/
+- X / Twitter: https://x.com/TonyTongHKBA
+- Facebook: https://facebook.com/ttpact
+- LinkedIn: https://www.linkedin.com/in/ttpact/
+- Crunchbase: https://www.crunchbase.com/person/tony-tong
+- YouTube: https://www.youtube.com/@HongKongBlockchain
+- Link1: https://link1.in/tonytong
+- Linktree: https://linktr.ee/TonyTong
+
 ## Built By
 
 Website built with WorkBuddy AI.
