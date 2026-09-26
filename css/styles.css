@@ -1,6 +1,8 @@
 /* ============================================
-   RuDao - Book Website
+   RuDao V2 - Book Website Styles
    Theme: Confluence of Eastern philosophy & modern business
+   Sections: Hero, Concept, Book, Contents (16 ch), Editions,
+   Pillars, Principles, Compare, Lineage+Quotes, Author, Pre-Order
    ============================================ */
 
 :root {
@@ -11,7 +13,7 @@
     --paper: #faf7f0;
     --paper-warm: #f3ede1;
     --paper-shadow: #e8e0cf;
-    --vermillion: #a93226;        /* traditional Chinese seal red */
+    --vermillion: #a93226;
     --vermillion-deep: #7d2419;
     --gold: #b8923a;
     --gold-soft: #c9a961;
@@ -30,11 +32,7 @@
     --radius: 4px;
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
     scroll-behavior: smooth;
@@ -116,10 +114,10 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 2.2rem;
+    gap: 1.8rem;
 }
 .nav-links a {
-    font-size: 0.92rem;
+    font-size: 0.88rem;
     font-weight: 500;
     letter-spacing: 0.02em;
     color: var(--ink-mid);
@@ -187,7 +185,6 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
         var(--paper);
     z-index: 0;
 }
-/* Subtle ink wash texture */
 .hero-bg::before {
     content: '';
     position: absolute; inset: 0;
@@ -493,7 +490,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     position: relative;
 }
 .quote-block::before {
-    content: '“';
+    content: '\201C';
     font-family: var(--font-serif-en);
     font-size: 6rem;
     line-height: 0.5;
@@ -608,14 +605,175 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .book-meta strong { color: var(--ink-black); font-weight: 500; }
 
 /* ============================================
-   COVER DESIGNS / EDITIONS
+   TABLE OF CONTENTS (NEW V2)
+   ============================================ */
+.contents {
+    background: var(--paper);
+    position: relative;
+}
+.contents::before {
+    content: '\5112\9053';
+    position: absolute;
+    top: 5%;
+    right: 3%;
+    font-family: var(--font-cn);
+    font-weight: 900;
+    font-size: clamp(8rem, 22vw, 18rem);
+    color: var(--vermillion);
+    opacity: 0.03;
+    pointer-events: none;
+    user-select: none;
+}
+
+.toc-part {
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+    position: relative;
+}
+.toc-part:last-child { margin-bottom: 0; }
+
+.toc-part-header {
+    text-align: center;
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--vermillion);
+    position: relative;
+}
+.toc-part-header::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: var(--vermillion);
+}
+
+.toc-part-alt .toc-part-header {
+    border-bottom-color: var(--gold);
+}
+.toc-part-alt .toc-part-header::after {
+    background: var(--gold);
+}
+
+.toc-part-num {
+    display: inline-block;
+    font-family: var(--font-serif-en);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--vermillion);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+}
+.toc-part-alt .toc-part-num { color: var(--gold); }
+
+.toc-part-title {
+    font-family: var(--font-cn);
+    font-weight: 700;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    color: var(--ink-black);
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.04em;
+}
+.toc-part-desc {
+    font-family: var(--font-serif-en);
+    font-style: italic;
+    font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+    color: var(--ink-mid);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.toc-chapters {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.toc-chapter {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 1.2rem;
+    padding: 1.4rem 1.5rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--paper-shadow);
+    border-radius: 8px;
+    transition: all .3s ease;
+    position: relative;
+}
+.toc-chapter:hover {
+    border-color: rgba(169, 50, 38, 0.25);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px -10px rgba(10,10,10,0.12);
+}
+.toc-chapter::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 3px;
+    background: var(--vermillion);
+    border-radius: 8px 0 0 8px;
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+.toc-chapter:hover::before { opacity: 1; }
+
+.toc-part-alt .toc-chapter {
+    background: var(--ink-black);
+    border-color: rgba(185, 146, 58, 0.15);
+}
+.toc-part-alt .toc-chapter:hover {
+    border-color: rgba(185, 146, 58, 0.35);
+}
+.toc-part-alt .toc-chapter::before {
+    background: var(--gold-soft);
+}
+.toc-part-alt .toc-chapter h4 { color: var(--paper); }
+.toc-part-alt .toc-chapter p { color: rgba(250,247,240,0.7); }
+
+.toc-ch-num {
+    font-family: var(--font-serif-en);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--vermillion);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding-top: 3px;
+}
+.toc-part-alt .toc-ch-num { color: var(--gold-soft); }
+
+.toc-ch-body h4 {
+    font-family: var(--font-serif-en);
+    font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+    font-weight: 600;
+    color: var(--ink-black);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+.toc-ch-body h4 em {
+    font-family: var(--font-cn);
+    font-style: normal;
+    font-weight: 600;
+    color: var(--vermillion);
+}
+.toc-part-alt .toc-ch-body h4 em { color: var(--gold-soft); }
+
+.toc-ch-body p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--ink-mid);
+}
+
+/* ============================================
+   EDITIONS / COVER DESIGNS
    ============================================ */
 .editions {
     background: var(--paper);
     position: relative;
 }
 .editions::before {
-    content: '三';
+    content: '\4E09';
     position: absolute;
     top: 5%;
     right: 4%;
@@ -763,9 +921,9 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 /* ============================================
    FIVE PILLARS
    ============================================ */
-.pillars { background: var(--paper); position: relative; }
+.pillars { background: var(--paper-warm); position: relative; }
 .pillars::before {
-    content: '五常';
+    content: '\4E94\5E38';
     position: absolute;
     top: 8%;
     right: 5%;
@@ -830,11 +988,227 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 }
 
 /* ============================================
+   CORE PRINCIPLES (NEW V2)
+   ============================================ */
+.principles {
+    background: var(--ink-black);
+    color: var(--paper);
+    position: relative;
+}
+.principles::before {
+    content: '\539F\5219';
+    position: absolute;
+    top: 6%;
+    left: 3%;
+    font-family: var(--font-cn);
+    font-weight: 900;
+    font-size: clamp(6rem, 18vw, 14rem);
+    color: var(--gold-soft);
+    opacity: 0.04;
+    pointer-events: none;
+    user-select: none;
+}
+.principles .section-title { color: var(--paper); }
+.principles .section-subtitle { color: rgba(250,247,240,0.6); }
+
+.principles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.principle {
+    padding: clamp(2rem, 3.5vw, 2.8rem);
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    transition: all .4s ease;
+    position: relative;
+    overflow: hidden;
+}
+.principle::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, transparent, var(--gold-soft), transparent);
+    opacity: 0;
+    transition: opacity .4s ease;
+}
+.principle:hover {
+    border-color: rgba(185, 146, 58, 0.25);
+    transform: translateY(-6px);
+    background: rgba(255,255,255,0.05);
+}
+.principle:hover::before { opacity: 1; }
+
+.principle-center {
+    background: rgba(169, 50, 38, 0.12);
+    border-color: rgba(169, 50, 38, 0.25);
+}
+.principle-center::before {
+    background: linear-gradient(to right, transparent, var(--vermillion), transparent);
+}
+
+.principle-num {
+    font-family: var(--font-serif-en);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--gold-soft);
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+}
+.principle-center .principle-num { color: var(--vermillion); }
+
+.principle-glyph {
+    font-family: var(--font-cn);
+    font-weight: 900;
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    line-height: 1;
+    color: var(--gold-soft);
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.04em;
+    transition: transform .4s ease;
+}
+.principle:hover .principle-glyph { transform: scale(1.06); }
+.principle-center .principle-glyph { color: var(--vermillion); }
+
+.principle h3 {
+    font-family: var(--font-serif-en);
+    font-size: clamp(1.3rem, 2vw, 1.6rem);
+    font-weight: 600;
+    color: var(--paper);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.principle p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(250,247,240,0.7);
+    margin-bottom: 1rem;
+}
+.principle p strong {
+    color: var(--paper);
+    font-weight: 500;
+}
+.principle-cn {
+    font-family: var(--font-cn);
+    font-size: 0.88rem;
+    color: rgba(250,247,240,0.5);
+    font-style: normal !important;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 0.8rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+}
+
+/* ============================================
+   COMPARE TABLE (NEW V2)
+   ============================================ */
+.compare {
+    background: var(--paper);
+    position: relative;
+}
+.compare-table-wrap {
+    overflow-x: auto;
+    margin-bottom: 3rem;
+}
+.compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 680px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px -12px rgba(10,10,10,0.12);
+}
+.compare-table thead {
+    background: var(--ink-black);
+}
+.compare-table th {
+    padding: 1.4rem 1.5rem;
+    text-align: left;
+    font-family: var(--font-serif-en);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--paper);
+    vertical-align: middle;
+}
+.compare-col-label { width: 22%; }
+.compare-col-old { width: 39%; border-left: 1px solid rgba(255,255,255,0.1); }
+.compare-col-new {
+    width: 39%;
+    border-left: 1px solid rgba(255,255,255,0.1);
+    color: var(--gold-soft);
+}
+.compare-col-cn {
+    display: block;
+    font-family: var(--font-cn);
+    font-size: 0.85rem;
+    font-weight: 400;
+    opacity: 0.7;
+    margin-top: 0.2rem;
+}
+
+.compare-table tbody tr {
+    border-bottom: 1px solid var(--paper-shadow);
+    transition: background .2s ease;
+}
+.compare-table tbody tr:nth-child(even) {
+    background: var(--paper-warm);
+}
+.compare-table tbody tr:hover {
+    background: rgba(169, 50, 38, 0.04);
+}
+.compare-table td {
+    padding: 1.2rem 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    vertical-align: middle;
+}
+.compare-dim {
+    font-family: var(--font-serif-en);
+    font-weight: 600;
+    color: var(--ink-black);
+    font-size: 1rem;
+}
+.compare-dim-cn {
+    display: block;
+    font-family: var(--font-cn);
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--gray);
+    margin-top: 0.2rem;
+}
+.compare-col-old { color: var(--ink-mid); }
+.compare-col-new { color: var(--vermillion); font-weight: 500; }
+.compare-table td.compare-col-new { color: var(--vermillion); }
+.compare-table td.compare-col-old { color: var(--ink-mid); }
+
+.compare-note {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 1rem;
+}
+.compare-note p {
+    font-family: var(--font-serif-en);
+    font-style: italic;
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    line-height: 1.7;
+    color: var(--ink-mid);
+}
+.compare-note p em {
+    color: var(--vermillion);
+    font-weight: 500;
+}
+
+/* ============================================
    LINEAGE / ROOTS
    ============================================ */
 .lineage { background: var(--paper-warm); position: relative; }
 .lineage::before {
-    content: '儒道';
+    content: '\5112\9053';
     position: absolute;
     top: 6%;
     left: 3%;
@@ -940,6 +1314,69 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 }
 .lineage-card-center p strong { color: var(--gold-soft); }
 
+/* Key Quotes section */
+.quotes-section {
+    margin-top: clamp(3rem, 5vw, 5rem);
+    padding-top: clamp(3rem, 5vw, 5rem);
+    border-top: 1px solid var(--paper-shadow);
+    text-align: center;
+}
+.quotes-title {
+    font-family: var(--font-cn);
+    font-weight: 700;
+    font-size: clamp(1.3rem, 2vw, 1.6rem);
+    color: var(--vermillion);
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.06em;
+}
+.quotes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    text-align: left;
+}
+.key-quote {
+    padding: 2rem 1.8rem;
+    background: var(--paper);
+    border: 1px solid var(--paper-shadow);
+    border-radius: 8px;
+    position: relative;
+    transition: all .3s ease;
+}
+.key-quote:hover {
+    border-color: rgba(169, 50, 38, 0.25);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px -10px rgba(10,10,10,0.12);
+}
+.key-quote::before {
+    content: '\201C';
+    position: absolute;
+    top: 0.5rem;
+    left: 0.8rem;
+    font-family: var(--font-serif-en);
+    font-size: 3rem;
+    color: var(--vermillion);
+    opacity: 0.15;
+    line-height: 1;
+}
+.quote-cn {
+    font-family: var(--font-cn);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--ink-black);
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.04em;
+    position: relative;
+    z-index: 1;
+}
+.quote-en {
+    font-family: var(--font-serif-en);
+    font-style: italic;
+    font-size: 0.98rem;
+    color: var(--ink-mid);
+    line-height: 1.5;
+}
+
 /* ============================================
    AUTHOR
    ============================================ */
@@ -1024,7 +1461,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .author-role {
     font-family: var(--font-serif-en);
     font-style: italic;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     color: var(--gold-soft);
     margin-bottom: 1.6rem;
 }
@@ -1037,6 +1474,43 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 }
 .author-info p strong { color: var(--paper); font-weight: 500; }
 .author-info p em { color: var(--gold-soft); font-style: italic; }
+
+/* Author credentials grid (NEW V2) */
+.author-credentials {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(250,247,240,0.1);
+}
+.credential {
+    padding: 1rem 1.2rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 6px;
+    transition: all .3s ease;
+}
+.credential:hover {
+    border-color: rgba(185, 146, 58, 0.2);
+    background: rgba(255,255,255,0.05);
+}
+.credential-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-bottom: 0.4rem;
+}
+.credential strong {
+    font-family: var(--font-serif-en);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--paper);
+}
+
 .author-links {
     display: flex;
     gap: 1rem;
@@ -1053,7 +1527,6 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     border-color: var(--paper);
 }
 
-/* Author social links bar */
 .author-social {
     margin-top: 2.2rem;
     padding-top: 2rem;
@@ -1251,7 +1724,6 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     letter-spacing: 0.08em;
 }
 
-/* Footer social icons */
 .footer-social {
     display: flex;
     gap: 0.6rem;
@@ -1292,9 +1764,10 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
    RESPONSIVE
    ============================================ */
 @media (max-width: 1024px) {
+    .nav-links { gap: 1.2rem; }
+    .nav-links a { font-size: 0.82rem; }
     .pillars-grid { grid-template-columns: repeat(3, 1fr); }
-    .pillars-grid .pillar:nth-child(4),
-    .pillars-grid .pillar:nth-child(5) { grid-column: span 1; }
+    .toc-chapters { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 860px) {
@@ -1306,10 +1779,12 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
         background: var(--paper);
         padding: 2rem clamp(1.5rem, 4vw, 3rem);
         border-bottom: 1px solid rgba(10,10,10,0.08);
-        gap: 1.5rem;
+        gap: 1.2rem;
         transform: translateY(-110%);
         opacity: 0;
         transition: transform .35s ease, opacity .35s ease;
+        max-height: calc(100vh - 65px);
+        overflow-y: auto;
     }
     .nav-links.open {
         transform: translateY(0);
@@ -1347,10 +1822,23 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
         max-width: 480px;
         margin: 0 auto;
     }
+    .principles-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
+    }
+    .quotes-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
+    }
     .author-container {
         grid-template-columns: 1fr;
     }
     .author-portrait { max-width: 260px; }
+    .author-credentials {
+        grid-template-columns: 1fr;
+    }
     .preorder-container {
         grid-template-columns: 1fr;
     }
@@ -1363,6 +1851,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     .footer-social { justify-content: center; }
     .footer-brand, .footer-links { justify-content: center; }
     .footer-brand { display: flex; flex-direction: column; align-items: center; }
+    .footer-links { gap: 0.8rem 1.2rem; }
 }
 
 @media (max-width: 520px) {
@@ -1378,6 +1867,10 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     .book-cover-real {
         transform: rotateY(-8deg);
         width: min(300px, 80vw);
+    }
+    .toc-chapter {
+        grid-template-columns: 1fr;
+        gap: 0.4rem;
     }
 }
 

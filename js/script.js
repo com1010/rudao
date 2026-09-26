@@ -1,5 +1,8 @@
 /* ============================================
-   RuDao - Book Website Interactions
+   RuDao V2 - Book Website Interactions
+   Sections: Hero, Concept, Book, Contents (16 ch),
+   Editions, Pillars, Principles, Compare, Lineage+Quotes,
+   Author, Pre-Order
    ============================================ */
 
 (function() {
@@ -42,16 +45,23 @@
     // Scroll reveal animation
     // ============================================
     const revealTargets = [
-        '.section-head', '.concept-card', '.concept-divider', '.quote-block',
-        '.book-art', '.book-info', '.edition-card', '.pillar', '.lineage-card',
-        '.lineage-intro', '.author-portrait', '.author-info',
+        '.section-head',
+        '.concept-card', '.concept-divider', '.quote-block',
+        '.book-art', '.book-info',
+        '.toc-part-header', '.toc-chapter',
+        '.edition-card',
+        '.pillar',
+        '.principle',
+        '.compare-table-wrap', '.compare-note',
+        '.lineage-card', '.lineage-intro', '.key-quote', '.quotes-title',
+        '.author-portrait', '.author-info', '.author-credentials',
         '.preorder-art', '.preorder-content'
     ];
 
     const elements = document.querySelectorAll(revealTargets.join(','));
     elements.forEach((el, i) => {
         el.classList.add('reveal');
-        el.style.transitionDelay = `${Math.min(i * 40, 200)}ms`;
+        el.style.transitionDelay = `${Math.min(i * 30, 200)}ms`;
     });
 
     if ('IntersectionObserver' in window) {
@@ -69,7 +79,6 @@
 
         elements.forEach(el => observer.observe(el));
     } else {
-        // Fallback for older browsers
         elements.forEach(el => el.classList.add('visible'));
     }
 
@@ -141,7 +150,7 @@
             // Success state
             const button = preorderForm.querySelector('button');
             const originalText = button.textContent;
-            button.textContent = '✓ Subscribed';
+            button.textContent = '\u2713 Subscribed';
             button.disabled = true;
             button.style.background = 'var(--vermillion)';
             email.disabled = true;
@@ -161,7 +170,7 @@
                 email.value = '';
                 email.style.borderColor = '';
                 if (preorderNote) {
-                    preorderNote.textContent = 'Bilingual edition · Hardcover & e-book · Worldwide shipping';
+                    preorderNote.textContent = 'Bilingual edition \u00B7 Hardcover & e-book \u00B7 Worldwide shipping';
                     preorderNote.style.color = '';
                     preorderNote.style.fontWeight = '';
                 }
@@ -208,12 +217,12 @@
             `;
             requestAnimationFrame(animateBg);
         };
-        // Only run if user hasn't requested reduced motion
         if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             requestAnimationFrame(animateBg);
         }
     }
 
-    console.log('%c儒道 · RuDao', 'font-family: serif; font-size: 24px; color: #a93226; padding: 8px 0;');
-    console.log('%cBeyond The Art of War — The Confucian Co-opetition Way', 'font-style: italic; color: #6b6b6b;');
+    console.log('%c\u5112\u9053 \u00B7 RuDao', 'font-family: serif; font-size: 24px; color: #a93226; padding: 8px 0;');
+    console.log('%cBeyond The Art of War \u2014 The Confucian Co-opetition Way', 'font-style: italic; color: #6b6b6b;');
+    console.log('%c3 Parts \u00B7 16 Chapters \u2014 RuDao.us', 'color: #c9a961;');
 })();
