@@ -10,7 +10,7 @@
     'use strict';
 
     // ============================================
-    // Audiobook intro bar (V4)
+    // Audiobook intro player — robust implementation
     // ============================================
     const audioBar = document.getElementById('audioIntroBar');
     const audio = document.getElementById('introAudio');
@@ -24,7 +24,7 @@
     const dismissBtn = document.getElementById('audioDismiss');
 
     function formatTime(sec) {
-        if (isNaN(sec) || sec < 0) return '0:00';
+        if (isNaN(sec) || sec < 0 || !isFinite(sec)) return '0:00';
         var m = Math.floor(sec / 60);
         var s = Math.floor(sec % 60);
         return m + ':' + (s < 10 ? '0' : '') + s;
@@ -32,69 +32,68 @@
 
     function updatePlayUI(playing) {
         if (!playBtn) return;
+        var hint = document.getElementById('audioHint');
         if (playing) {
             playBtn.classList.add('playing');
             if (iconPlay) iconPlay.style.display = 'none';
             if (iconPause) iconPause.style.display = 'block';
+            if (hint) hint.classList.add('hidden');
         } else {
             playBtn.classList.remove('playing');
             if (iconPlay) iconPlay.style.display = 'block';
             if (iconPause) iconPause.style.display = 'none';
+            if (hint) {
+                hint.classList.remove('hidden');
+                hint.textContent = 'Click the red button to play';
+            }
         }
     }
 
-    // Try autoplay — most browsers block this unless muted.
-    // Strategy: attempt unmuted autoplay first; if rejected, show pulsing
-    // play button to invite the user to click.
+    function toggleAudio() {
+        if (!audio) return;
+        if (audio.paused) {
+            // User explicitly clicked play — call play() and handle result
+            var promise = audio.play();
+            if (promise && typeof promise.then === 'function') {
+                promise.then(function() {
+                    updatePlayUI(true);
+                    playBtn.classList.remove('icon-pulse');
+                }).catch(function(err) {
+                    // Still blocked — keep pulsing, log error to console
+                    console.log('Audio play was blocked:', err && err.name ? err.name : err);
+                    playBtn.classList.add('icon-pulse');
+                    updatePlayUI(false);
+                });
+            } else {
+                // Older browsers — no promise
+                updatePlayUI(true);
+            }
+        } else {
+            audio.pause();
+            updatePlayUI(false);
+        }
+    }
+
     if (audio) {
+        // Set volume
         audio.volume = 0.85;
 
-        // Attempt autoplay
-        var playPromise = audio.play();
-        if (playPromise !== undefined) {
-            playPromise.then(function() {
-                // Autoplay succeeded
-                updatePlayUI(true);
-            }).catch(function() {
-                // Autoplay blocked — show pulsing button
-                if (playBtn) {
-                    playBtn.classList.add('icon-pulse');
-                    // Auto-retry on first user interaction
-                    var retryPlay = function() {
-                        audio.play().then(function() {
-                            updatePlayUI(true);
-                            playBtn.classList.remove('icon-pulse');
-                        }).catch(function() {});
-                        document.removeEventListener('click', retryPlay);
-                        document.removeEventListener('touchstart', retryPlay);
-                        document.removeEventListener('keydown', retryPlay);
-                    };
-                    document.addEventListener('click', retryPlay, { once: true });
-                    document.addEventListener('touchstart', retryPlay, { once: true });
-                    document.addEventListener('keydown', retryPlay, { once: true });
-                }
-            });
-        }
+        // Force-load the audio
+        audio.load();
 
-        // Play/pause button click
+        // Play/pause button click — this is the primary interaction
         if (playBtn) {
             playBtn.addEventListener('click', function(e) {
+                e.preventDefault();
                 e.stopPropagation();
-                if (audio.paused) {
-                    audio.play().then(function() {
-                        updatePlayUI(true);
-                        playBtn.classList.remove('icon-pulse');
-                    }).catch(function() {});
-                } else {
-                    audio.pause();
-                    updatePlayUI(false);
-                }
+                toggleAudio();
+                return false;
             });
         }
 
         // Progress bar update
         audio.addEventListener('timeupdate', function() {
-            if (progressBar && audio.duration) {
+            if (progressBar && audio.duration && isFinite(audio.duration)) {
                 var pct = (audio.currentTime / audio.duration) * 100;
                 progressBar.style.width = pct + '%';
             }
@@ -105,12 +104,28 @@
 
         // Duration display
         audio.addEventListener('loadedmetadata', function() {
-            if (timeDuration) {
+            if (timeDuration && audio.duration) {
                 timeDuration.textContent = formatTime(audio.duration);
             }
         });
 
-        // Ended
+        // Can play through — audio is ready
+        audio.addEventListener('canplaythrough', function() {
+            if (timeDuration && audio.duration) {
+                timeDuration.textContent = formatTime(audio.duration);
+            }
+        });
+
+        // Error handling — if audio fails to load
+        audio.addEventListener('error', function() {
+            console.log('Audio failed to load. src:', audio.currentSrc || audio.src);
+            if (playBtn) {
+                playBtn.style.opacity = '0.5';
+                playBtn.style.cursor = 'not-allowed';
+            }
+        });
+
+        // Ended — reset
         audio.addEventListener('ended', function() {
             updatePlayUI(false);
             if (progressBar) progressBar.style.width = '0%';
@@ -118,20 +133,68 @@
             audio.currentTime = 0;
         });
 
+        // Playing state sync (in case audio is played/paused by other means)
+        audio.addEventListener('play', function() {
+            updatePlayUI(true);
+            playBtn.classList.remove('icon-pulse');
+        });
+        audio.addEventListener('pause', function() {
+            updatePlayUI(false);
+        });
+
         // Click on progress track to seek
         if (progressTrack) {
             progressTrack.addEventListener('click', function(e) {
-                if (!audio.duration) return;
+                if (!audio.duration || !isFinite(audio.duration)) return;
                 var rect = progressTrack.getBoundingClientRect();
                 var pct = (e.clientX - rect.left) / rect.width;
                 audio.currentTime = pct * audio.duration;
             });
         }
+
+        // Attempt autoplay — Chrome blocks unmuted autoplay without user interaction
+        // Strategy: try muted autoplay first (allowed by Chrome), then unmute
+        // after first interaction. If that also fails, show pulsing button.
+        setTimeout(function() {
+            var playPromise = audio.play();
+            if (playPromise !== undefined && playPromise !== null) {
+                playPromise.then(function() {
+                    // Autoplay succeeded!
+                    updatePlayUI(true);
+                }).catch(function() {
+                    // Autoplay blocked — show pulsing button to invite click
+                    playBtn.classList.add('icon-pulse');
+                    // Also try muted autoplay as fallback
+                    audio.muted = true;
+                    audio.play().then(function() {
+                        // Muted autoplay worked — unmute on first interaction
+                        updatePlayUI(true);
+                        var unmuteOnInteraction = function() {
+                            audio.muted = false;
+                            audio.volume = 0.85;
+                            playBtn.classList.remove('icon-pulse');
+                            document.removeEventListener('click', unmuteOnInteraction);
+                            document.removeEventListener('touchstart', unmuteOnInteraction);
+                            document.removeEventListener('keydown', unmuteOnInteraction);
+                        };
+                        document.addEventListener('click', unmuteOnInteraction);
+                        document.addEventListener('touchstart', unmuteOnInteraction);
+                        document.addEventListener('keydown', unmuteOnInteraction);
+                    }).catch(function() {
+                        // Even muted autoplay failed — just show pulsing button
+                        audio.muted = false;
+                        playBtn.classList.add('icon-pulse');
+                    });
+                });
+            }
+        }, 800);
     }
 
     // Dismiss button
     if (dismissBtn) {
-        dismissBtn.addEventListener('click', function() {
+        dismissBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             if (audio) {
                 audio.pause();
             }
@@ -139,6 +202,7 @@
             if (audioBar) {
                 audioBar.classList.add('dismissed');
             }
+            return false;
         });
     }
 
