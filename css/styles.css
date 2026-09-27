@@ -2172,6 +2172,105 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 }
 
 /* ============================================
+   PREFACE
+   ============================================ */
+.preface {
+    background: var(--paper);
+    position: relative;
+}
+.preface-container {
+    max-width: 880px;
+}
+.preface-head {
+    margin-bottom: clamp(1.8rem, 3.5vw, 2.8rem);
+}
+.preface-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 420px;
+    margin: 0 auto clamp(2rem, 4vw, 3rem);
+}
+.preface-divider::before,
+.preface-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-soft), transparent);
+}
+.preface-divider span {
+    font-family: var(--font-cn);
+    font-size: 1.6rem;
+    line-height: 1;
+    color: var(--vermillion);
+    border: 1.5px solid var(--vermillion);
+    border-radius: 6px;
+    padding: 0.35rem 0.5rem;
+    transform: rotate(-3deg);
+    box-shadow: 0 3px 10px rgba(169, 50, 38, 0.18);
+}
+.preface-body {
+    max-width: 780px;
+    margin: 0 auto;
+}
+.preface-body p {
+    font-size: clamp(1rem, 1.25vw, 1.1rem);
+    line-height: 1.95;
+    color: var(--ink-mid);
+    margin-bottom: 1.4rem;
+    text-align: justify;
+    text-justify: inter-word;
+}
+.preface-body p:last-child {
+    margin-bottom: 0;
+}
+.preface-body strong {
+    color: var(--ink-black);
+    font-weight: 600;
+}
+.preface-body em {
+    font-family: var(--font-serif-en);
+    font-style: italic;
+}
+.preface-drop::first-letter {
+    float: left;
+    font-family: var(--font-serif-en);
+    font-size: 3.6rem;
+    line-height: 0.82;
+    padding: 0.05em 0.14em 0 0;
+    color: var(--vermillion);
+}
+.preface-signature {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.15rem;
+    max-width: 780px;
+    margin: clamp(2.4rem, 5vw, 3.4rem) auto 0;
+    padding-top: 1.8rem;
+    border-top: 1px solid rgba(184, 146, 58, 0.32);
+}
+.preface-sig-cn {
+    font-family: var(--font-cn);
+    font-size: 1.8rem;
+    line-height: 1;
+    color: var(--vermillion);
+}
+.preface-sig-name {
+    font-family: var(--font-serif-en);
+    font-size: 1.15rem;
+    letter-spacing: 0.05em;
+    color: var(--ink-black);
+}
+.preface-sig-place {
+    font-family: var(--font-serif-en);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--gray);
+}
+
+/* ============================================
    SCROLL REVEAL
    ============================================ */
 .reveal {
