@@ -291,6 +291,7 @@
                 <a href="#compare">vs Art of War</a>
                 <a href="#lineage">Lineage</a>
                 <a href="#author">Author</a>
+                <a href="#contact">Contact</a>
                 <a href="https://www.amazon.com/dp/B0HJ458RRC" target="_blank" rel="noopener noreferrer" class="nav-cta">Pre-Order on Amazon</a>
             </nav>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
@@ -344,7 +345,7 @@
                             <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
                         </button>
                     </div>
-                    <audio id="introAudio1" preload="auto">
+                    <audio id="introAudio1" preload="metadata">
                         <source src="assets/rudao-voice-intro-en.mp3" type="audio/mpeg" />
                     </audio>
                 </div>
@@ -372,7 +373,7 @@
                             <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
                         </button>
                     </div>
-                    <audio id="introAudio2" preload="auto">
+                    <audio id="introAudio2" preload="metadata">
                         <source src="assets/rudao-voice-intro-bilingual.mp3" type="audio/mpeg" />
                     </audio>
                 </div>
@@ -1032,6 +1033,71 @@
         </div>
     </section>
 
+    <!-- ========== XI. CONTACT THE AUTHOR ========== -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-head">
+                <span class="section-num">XI.</span>
+                <h2 class="section-title">Contact the Author</h2>
+                <p class="section-subtitle">Questions, speaking invitations, bulk orders, or thoughts on <em>RuDao</em>? Write to Tony directly — 联系作者 · 欢迎留言.</p>
+            </div>
+
+            <div class="contact-grid">
+                <aside class="contact-aside">
+                    <h3 class="contact-aside-title">Write to Tony Tong 唐仪</h3>
+                    <p class="contact-aside-text">Messages are delivered straight to the author's inbox. Whether you are a reader, a publisher, an event organiser or a fellow 儒商 — your note is welcome.</p>
+                    <ul class="contact-list">
+                        <li>
+                            <span class="contact-ico" aria-hidden="true">✉</span>
+                            <div>
+                                <strong>Email</strong>
+                                <a href="mailto:Tony@RuDao.us">Tony@RuDao.us</a>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="contact-ico" aria-hidden="true">🌐</span>
+                            <div>
+                                <strong>Author site</strong>
+                                <a href="https://TonyTong.cc" target="_blank" rel="noopener">TonyTong.cc</a>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="contact-ico" aria-hidden="true">📚</span>
+                            <div>
+                                <strong>Pre-order</strong>
+                                <a href="https://www.amazon.com/dp/B0HJ458RRC" target="_blank" rel="noopener noreferrer">Amazon · B0HJ458RRC</a>
+                            </div>
+                        </li>
+                    </ul>
+                </aside>
+
+                <form class="contact-form" id="contactForm" novalidate>
+                    <div class="contact-row">
+                        <div class="contact-field">
+                            <label for="contactName">Your name · 姓名</label>
+                            <input type="text" id="contactName" name="name" placeholder="How should Tony address you?" autocomplete="name" />
+                        </div>
+                        <div class="contact-field">
+                            <label for="contactEmail">Your email · 邮箱 <span class="req">*</span></label>
+                            <input type="email" id="contactEmail" name="email" placeholder="you@example.com" required autocomplete="email" />
+                        </div>
+                    </div>
+                    <div class="contact-field">
+                        <label for="contactMessage">Your message · 留言内容 <span class="req">*</span></label>
+                        <textarea id="contactMessage" name="message" rows="7" placeholder="Write your message to the author here… · 请在此写下给作者的留言…" required></textarea>
+                    </div>
+                    <!-- Honeypot: invisible to humans, catches spam bots -->
+                    <input type="checkbox" name="botcheck" class="contact-botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" />
+                    <div class="contact-actions">
+                        <button type="submit" class="btn btn-primary" id="contactSubmit">Send Message · 发送留言</button>
+                        <span class="contact-status" id="contactStatus" role="status" aria-live="polite"></span>
+                    </div>
+                    <p class="contact-privacy">Your message goes to the author only — no mailing list, no sharing. · 您的留言只会送达作者本人，不会被用于任何邮件列表或第三方。</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- ========== FOOTER ========== -->
     <footer class="footer">
         <div class="container footer-inner">
@@ -1052,6 +1118,7 @@
                 <a href="#compare">vs Art of War</a>
                 <a href="#lineage">Lineage</a>
                 <a href="#author">Author</a>
+                <a href="#contact">Contact</a>
             </div>
             <div class="footer-meta">
                 <div class="footer-social">

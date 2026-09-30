@@ -2436,6 +2436,186 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 }
 
 /* ============================================
+   CONTACT THE AUTHOR (XI)
+   ============================================ */
+.contact {
+    background: var(--paper-warm);
+}
+.contact-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 3.5rem;
+    margin-top: 3rem;
+    align-items: start;
+}
+.contact-aside-title {
+    font-family: var(--font-serif-en);
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    color: var(--ink-black);
+}
+.contact-aside-text {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--gray);
+    margin-bottom: 2rem;
+    max-width: 42ch;
+}
+.contact-list {
+    list-style: none;
+    display: grid;
+    gap: 1.25rem;
+}
+.contact-list li {
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
+}
+.contact-ico {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(169, 50, 38, 0.25);
+    border-radius: 50%;
+    background: var(--paper);
+    font-size: 0.95rem;
+    line-height: 1;
+}
+.contact-list strong {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray);
+    font-weight: 500;
+    margin-bottom: 0.15rem;
+}
+.contact-list a {
+    font-size: 0.98rem;
+    color: var(--ink-black);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(169, 50, 38, 0.35);
+    transition: color .2s ease, border-color .2s ease;
+}
+.contact-list a:hover {
+    color: var(--vermillion);
+    border-color: var(--vermillion);
+}
+
+.contact-form {
+    background: var(--paper);
+    border: 1px solid rgba(10, 10, 10, 0.08);
+    border-radius: var(--radius);
+    padding: 2.25rem;
+    box-shadow: 0 18px 50px -30px rgba(10, 10, 10, 0.35);
+}
+.contact-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+}
+.contact-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    margin-bottom: 1.2rem;
+}
+.contact-field label {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+    font-weight: 500;
+}
+.contact-field .req { color: var(--vermillion); }
+.contact-field input,
+.contact-field textarea {
+    width: 100%;
+    padding: 0.9rem 1.05rem;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--ink-black);
+    background: var(--paper);
+    border: 1.5px solid rgba(10, 10, 10, 0.15);
+    border-radius: var(--radius);
+    transition: border-color .2s ease, box-shadow .2s ease;
+    resize: vertical;
+}
+.contact-field input:focus,
+.contact-field textarea:focus {
+    outline: none;
+    border-color: var(--vermillion);
+    box-shadow: 0 0 0 3px rgba(169, 50, 38, 0.08);
+}
+.contact-field input::placeholder,
+.contact-field textarea::placeholder {
+    color: var(--gray-light);
+}
+.contact-field input.invalid,
+.contact-field textarea.invalid {
+    border-color: var(--vermillion);
+    background: rgba(169, 50, 38, 0.03);
+}
+.contact-botcheck {
+    display: none !important;
+}
+.contact-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    flex-wrap: wrap;
+    margin-top: 0.4rem;
+}
+.contact-actions .btn {
+    padding: 1rem 1.9rem;
+}
+.contact-status {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    max-width: 34ch;
+    color: var(--gray);
+}
+.contact-status.ok { color: #2f6b4f; }
+.contact-status.err { color: var(--vermillion); }
+.contact-privacy {
+    font-size: 0.78rem;
+    line-height: 1.6;
+    color: var(--gray);
+    margin-top: 1.2rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid rgba(10, 10, 10, 0.07);
+}
+.contact-fallback {
+    margin-top: 0.6rem;
+    font-size: 0.85rem;
+}
+.contact-fallback a {
+    color: var(--vermillion);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(169, 50, 38, 0.35);
+}
+
+@media (max-width: 900px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    .contact-row {
+        grid-template-columns: 1fr;
+    }
+    .contact-form {
+        padding: 1.6rem;
+    }
+    .contact-actions .btn {
+        width: 100%;
+    }
+}
+
+/* ============================================
    PRINT
    ============================================ */
 @media print {

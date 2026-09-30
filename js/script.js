@@ -1,6 +1,6 @@
 /* ============================================
    RuDao V4 - Book Website Interactions
-   New: Audiobook intro bar with autoplay
+   New: Audiobook intro bar (click-to-play ONLY - no autoplay)
    Sections: AudioBar, Hero, Concept, Book, Contents (16 ch),
    Editions, Pillars, Principles, Compare, Lineage+Quotes,
    Author, Pre-Order
@@ -128,6 +128,9 @@
 
         // State sync
         audio.addEventListener('play', function() {
+            // Safety net: never let both players sound at the same time,
+            // no matter how playback was triggered.
+            pauseOtherPlayer();
             updateUI(true);
             playBtn.classList.remove('icon-pulse');
         });
@@ -156,17 +159,10 @@
             });
         }
 
-        // Attempt autoplay after 800ms
-        setTimeout(function() {
-            var playPromise = audio.play();
-            if (playPromise !== undefined && playPromise !== null) {
-                playPromise.then(function() {
-                    updateUI(true);
-                }).catch(function() {
-                    playBtn.classList.add('icon-pulse');
-                });
-            }
-        }, 800 + (opts.delay || 0));
+        // NOTE: Autoplay intentionally removed.
+        // Both players used to auto-start ~800ms after page load, so visitors
+        // heard two narrations playing at the same time. Audio now starts ONLY
+        // on an explicit click of the play button (toggleAudio above).
 
         return {
             pause: function() {
@@ -366,6 +362,167 @@
                     preorderNote.style.fontWeight = '';
                 }
             }, 6000);
+        });
+    }
+
+    // ============================================
+    // Contact form — "Contact the Author"
+    // ------------------------------------------------------------
+    // Every message is delivered to BOTH:
+    //   Tony@RuDao.us          (author)
+    //   com2000@agent.qq.com   (author's WorkBuddy / Agent Mail inbox)
+    //
+    // Delivery backends, tried in this order:
+    //   1. Web3Forms  — free, no server required. Create one free access
+    //      key per recipient at https://web3forms.com and paste them into
+    //      web3formsKeys below. The free plan allows 1 recipient per form
+    //      (unlimited forms), so two keys reach two inboxes.
+    //   2. /api/contact — optional Cloudflare Pages Function (Resend).
+    //   3. mailto: — if nothing is configured above, the visitor's own
+    //      email app opens with both recipients pre-filled.
+    // ============================================
+    var CONTACT_CONFIG = {
+        // Paste Web3Forms access keys here (see https://web3forms.com)
+        web3formsKeys: [
+            // 'YOUR_KEY_FOR_TONY_RUDAO_US',
+            // 'YOUR_KEY_FOR_COM2000_AGENT_QQ_COM'
+        ],
+        web3formsEndpoint: 'https://api.web3forms.com/submit',
+        // Optional Cloudflare Pages Function endpoint (see functions/api/contact.js)
+        apiEndpoint: '/api/contact',
+        recipients: ['Tony@RuDao.us', 'com2000@agent.qq.com']
+    };
+
+    var contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        var contactStatus = document.getElementById('contactStatus');
+        var contactSubmit = document.getElementById('contactSubmit');
+        var contactNameEl = document.getElementById('contactName');
+        var contactEmailEl = document.getElementById('contactEmail');
+        var contactMessageEl = document.getElementById('contactMessage');
+
+        var setContactStatus = function(msg, kind) {
+            if (!contactStatus) return;
+            contactStatus.textContent = msg;
+            contactStatus.className = 'contact-status' + (kind ? ' ' + kind : '');
+        };
+
+        var postJson = function(url, body) {
+            return fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(body)
+            }).then(function(res) {
+                return res.json().catch(function() { return {}; }).then(function(data) {
+                    return { ok: res.ok && (!data || data.success !== false), status: res.status };
+                });
+            });
+        };
+
+        var buildPayload = function() {
+            var fields = {
+                name: (contactNameEl && contactNameEl.value.trim()) || 'Anonymous visitor',
+                email: contactEmailEl.value.trim(),
+                message: contactMessageEl.value.trim(),
+                subject: 'RuDao.us \u2014 new message from the contact form',
+                from_name: 'RuDao.us Contact Form',
+                page: window.location.href,
+                to_recipients: CONTACT_CONFIG.recipients.join(', ')
+            };
+            return fields;
+        };
+
+        var sendViaWeb3Forms = function(fields) {
+            var keys = CONTACT_CONFIG.web3formsKeys.filter(function(k) {
+                return k && k.indexOf('YOUR_KEY') !== 0;
+            });
+            // Not configured yet -> let the caller fall through to the next backend
+            if (!keys.length) return Promise.resolve({ ok: false, configured: false });
+            var sends = keys.map(function(key) {
+                var body = { access_key: key, botcheck: false };
+                Object.keys(fields).forEach(function(k) { body[k] = fields[k]; });
+                return postJson(CONTACT_CONFIG.web3formsEndpoint, body)
+                    .then(function(r) { return !!r.ok; })
+                    .catch(function() { return false; });
+            });
+            return Promise.all(sends).then(function(results) {
+                var wins = results.filter(Boolean).length;
+                return { ok: wins > 0, configured: true, delivered: wins, total: results.length };
+            });
+        };
+
+        var sendViaApi = function(fields) {
+            return postJson(CONTACT_CONFIG.apiEndpoint, {
+                name: fields.name,
+                email: fields.email,
+                message: fields.message,
+                page: fields.page
+            }).then(function(r) {
+                return { ok: !!r.ok, configured: r.status !== 404 && r.status !== 405 };
+            }).catch(function() {
+                return { ok: false, configured: false };
+            });
+        };
+
+        var openMailtoFallback = function(fields) {
+            var to = CONTACT_CONFIG.recipients.join(',');
+            var subject = encodeURIComponent('RuDao.us \u2014 message from ' + fields.name);
+            var body = encodeURIComponent(fields.message + '\n\n\u2014 ' + fields.name + ' (' + fields.email + ')');
+            window.location.href = 'mailto:' + to + '?subject=' + subject + '&body=' + body;
+            setContactStatus('Your email app is opening with the message ready to send\u2026 If nothing opens, email ' + CONTACT_CONFIG.recipients[0] + ' directly.', 'ok');
+        };
+
+        var resetContactForm = function() {
+            contactForm.reset();
+            contactSubmit.disabled = false;
+            contactSubmit.textContent = 'Send Message \u00B7 \u53D1\u9001\u7559\u8A00';
+        };
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var fields = buildPayload();
+            var validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email);
+            var validMessage = fields.message.length >= 5;
+
+            contactEmailEl.classList.toggle('invalid', !validEmail);
+            contactMessageEl.classList.toggle('invalid', !validMessage);
+
+            if (!validEmail) {
+                setContactStatus('Please enter a valid email address so Tony can reply. \u00B7 \u8BF7\u586B\u5199\u6709\u6548\u7684\u90AE\u7BB1\u5730\u5740\u3002', 'err');
+                contactEmailEl.focus();
+                return;
+            }
+            if (!validMessage) {
+                setContactStatus('Please write a short message (a few words is enough). \u00B7 \u8BF7\u7A0D\u5FAE\u5199\u4E00\u4E9B\u5185\u5BB9\u3002', 'err');
+                contactMessageEl.focus();
+                return;
+            }
+
+            contactSubmit.disabled = true;
+            contactSubmit.textContent = 'Sending\u2026';
+            setContactStatus('Sending your message\u2026');
+
+            sendViaWeb3Forms(fields)
+                .then(function(res) {
+                    if (res.configured) return res;
+                    return sendViaApi(fields);
+                })
+                .then(function(res) {
+                    if (!res.configured) {
+                        // No backend configured yet -> never lose the visitor's message
+                        resetContactForm();
+                        openMailtoFallback(fields);
+                        return;
+                    }
+                    if (!res.ok) throw new Error('send failed');
+                    setContactStatus('\u2713 Thank you \u2014 your message has been sent to Tony Tong. \u00B7 \u60A8\u7684\u7559\u8A00\u5DF2\u9001\u8FBE\uFF0C\u611F\u8C22!', 'ok');
+                    resetContactForm();
+                })
+                .catch(function() {
+                    resetContactForm();
+                    setContactStatus('Sending failed \u2014 please try again, or email ' + CONTACT_CONFIG.recipients[0] + ' directly. \u00B7 \u53D1\u9001\u5931\u8D25\uFF0C\u8BF7\u91CD\u8BD5\u6216\u76F4\u63A5\u53D1\u90AE\u4EF6\u3002', 'err');
+                });
         });
     }
 
