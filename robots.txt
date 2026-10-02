@@ -62,6 +62,6 @@ User-agent: *
 Allow: /
 
 # Sitemap
+# Only rudao.us — declaring the pages.dev / github.io mirrors here would
+# point crawlers at duplicate content and dilute the canonical domain.
 Sitemap: https://rudao.us/sitemap.xml
-Sitemap: https://rudao-tonytong.pages.dev/sitemap.xml
-Sitemap: https://com1010.github.io/rudao/sitemap.xml

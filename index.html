@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="RuDao (儒道) - RuJiang: Beyond The Art of War - The Confucian Co-opetition Path to Balanced Profit and Enduring Partnerships. Author: Tony Tong (唐仪). A three-part, 16-chapter business philosophy weaving Confucian virtue with modern commerce. www.TonyTong.cc · RuDao.us" />
-    <meta name="keywords" content="RuDao, 儒道, 儒将, RuJiang, 唐仪, Tony Tong, Beyond The Art of War, Confucian Co-opetition, 儒商, 儒将, 天人合一, 道家, Balanced Profit, Enduring Partnerships, co-opetition, 竞合, 竞合之道, 儒家商业, 商业伦理, HKBA, Hong Kong Blockchain Association, TonyTong.cc, RuDao.us, US Patent 6012066, 内圣外王, 超越孙子兵法, 儒将竞合, 竞合战略, 跨境经营, 商业共赢" />
+    <meta name="description" content="RuDao (儒道): Beyond The Art of War — 唐仪 Tony Tong 的双语之作，以儒将竞合之道，求平衡利润与长久伙伴关系。Bilingual guide to Confucian co-opetition. 3 parts, 18 chapters." />
+    <meta name="keywords" content="RuDao, 儒道, 儒将, RuJiang, 唐仪, Tony Tong, Beyond The Art of War, Confucian Co-opetition, 儒商, 天人合一, 道家, Balanced Profit, Enduring Partnerships, co-opetition, 竞合, 竞合之道, 儒家商业, 商业伦理, HKBA, Hong Kong Blockchain Association, TonyTong.cc, US Patent 6012066, 内圣外王, 超越孙子兵法, 儒将竞合, 竞合战略, 跨境经营, 商业共赢" />
     <meta name="author" content="Tony Tong (唐仪) - www.TonyTong.cc" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow, max-image-preview:large" />
@@ -15,10 +15,15 @@
     <meta name="rating" content="general" />
     <meta name="distribution" content="global" />
 
-    <!-- Canonical URLs -->
+    <!-- Canonical URL
+         This is a single bilingual page served from ONE URL, so every language
+         signal must point back to itself. Do NOT add hreflang pointing at the
+         pages.dev or github.io mirrors: that tells Google those mirrors are the
+         real versions and dilutes rudao.us. -->
     <link rel="canonical" href="https://rudao.us/" />
-    <link rel="alternate" href="https://rudao-tonytong.pages.dev/" hreflang="x-default" />
-    <link rel="alternate" href="https://com1010.github.io/rudao/" hreflang="en" />
+    <link rel="alternate" href="https://rudao.us/" hreflang="en" />
+    <link rel="alternate" href="https://rudao.us/" hreflang="zh-Hans" />
+    <link rel="alternate" href="https://rudao.us/" hreflang="x-default" />
 
     <!-- Cross-reference links for SEO / AI SEO -->
     <link rel="author" href="https://TonyTong.cc" />
@@ -31,14 +36,17 @@
     <link rel="me" href="https://link1.in/tonytong" />
     <link rel="me" href="https://linktr.ee/TonyTong" />
     <link rel="publisher" href="https://TonyTong.cc" />
-    <link rel="external" href="https://rudao-tonytong.pages.dev" />
 
     <!-- Open Graph -->
     <meta property="og:title" content="RuDao — Beyond The Art of War | Tony Tong (唐仪)" />
     <meta property="og:description" content="RuJiang: Beyond The Art of War — The Confucian Co-opetition Path to Balanced Profit and Enduring Partnerships. By Tony Tong (唐仪). 儒道·超越孙子兵法·平衡利润与长久伙伴关系的儒家竞合之道。" />
     <meta property="og:type" content="book" />
-    <meta property="og:url" content="https://RuDao.us" />
-    <meta property="og:image" content="https://RuDao.us/assets/tony-tong-portrait.jpg" />
+    <meta property="og:url" content="https://rudao.us/" />
+    <meta property="og:image" content="https://rudao.us/assets/tony-tong-portrait.jpg" />
+    <meta property="og:image:secure_url" content="https://rudao.us/assets/tony-tong-portrait.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1276" />
+    <meta property="og:image:height" content="1920" />
     <meta property="og:image:alt" content="Tony Tong (唐仪) — Author of RuDao" />
     <meta property="og:site_name" content="RuDao — Beyond The Art of War" />
     <meta property="og:locale" content="en_US" />
@@ -53,7 +61,7 @@
     <meta name="twitter:creator" content="@TonyTongHKBA" />
     <meta name="twitter:title" content="RuDao — Beyond The Art of War | Tony Tong (唐仪)" />
     <meta name="twitter:description" content="The Confucian Co-opetition Path to Balanced Profit and Enduring Partnerships. 儒道·超越孙子兵法·儒家竞合之道。By Tony Tong (唐仪)." />
-    <meta name="twitter:image" content="https://RuDao.us/assets/tony-tong-portrait.jpg" />
+    <meta name="twitter:image" content="https://rudao.us/assets/tony-tong-portrait.jpg" />
     <meta name="twitter:image:alt" content="Tony Tong (唐仪) — Author of RuDao" />
 
     <title>RuDao — Beyond The Art of War | Tony Tong (唐仪) | RuDao.us</title>
@@ -86,7 +94,7 @@
         "alternateName": "儒道",
         "subtitle": "Beyond The Art of War",
         "alternateSubtitle": "儒将：超越孙子兵法",
-        "description": "The Confucian Co-opetition Path to Balanced Profit and Enduring Partnerships. A bilingual business philosophy book weaving Confucian virtue with modern commerce, structured in three parts and 16 chapters.",
+        "description": "The Confucian Co-opetition Path to Balanced Profit and Enduring Partnerships. A bilingual business philosophy book weaving Confucian virtue with modern commerce, structured in three parts (内圣 / 外王 / 融合) and 18 chapters.",
         "inLanguage": ["en", "zh"],
         "author": {
             "@type": "Person",
@@ -119,15 +127,12 @@
         },
         "datePublished": "2026",
         "bookFormat": ["Hardcover", "Paperback", "EBook", "Audiobook"],
-        "numberOfPages": "280",
         "keywords": "RuDao, 儒道, 儒将, RuJiang, Beyond The Art of War, Confucian co-opetition, 唐仪, Tony Tong, Balanced Profit, Enduring Partnerships, 儒商, 天人合一, 内圣外王, 超越孙子兵法, 竞合之道",
-        "url": "https://RuDao.us",
-        "image": "https://RuDao.us/assets/tony-tong-portrait.jpg",
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5",
-            "reviewCount": "1"
-        },
+        "url": "https://rudao.us/",
+        "image": "https://rudao.us/assets/tony-tong-portrait.jpg",
+        "sameAs": [
+            "https://www.amazon.com/dp/B0HJ458RRC"
+        ],
         "offers": {
             "@type": "Offer",
             "availability": "https://schema.org/PreOrder",
@@ -153,7 +158,7 @@
         "familyName": "Tong",
         "description": "Global cross-border entrepreneur, seasoned investor, business strategist, and author of RuDao. Co-founder of the Hong Kong Blockchain Association (HKBA). Creator of the Ru-Jiang co-opetition framework.",
         "url": "https://TonyTong.cc",
-        "image": "https://RuDao.us/assets/tony-tong-portrait.jpg",
+        "image": "https://rudao.us/assets/tony-tong-portrait.jpg",
         "jobTitle": "Cross-border Entrepreneur · Investor · Author · Adjunct Professor",
         "knowsLanguage": ["English", "Chinese", "Cantonese"],
         "alumniOf": [
@@ -175,7 +180,7 @@
             "@type": "Book",
             "name": "RuDao",
             "alternateName": "儒道",
-            "url": "https://RuDao.us"
+            "url": "https://rudao.us/"
         },
         "sameAs": [
             "https://x.com/TonyTongHKBA",
@@ -201,7 +206,7 @@
                 "name": "What is RuDao (儒道)?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "RuDao (儒道) is a bilingual business philosophy book by Tony Tong (唐仪), subtitled 'Beyond The Art of War.' It presents the Confucian co-opetition path to balanced profit and enduring partnerships, structured in three parts and 16 chapters."
+                    "text": "RuDao (儒道) is a bilingual business philosophy book by Tony Tong (唐仪), subtitled 'Beyond The Art of War.' It presents the Confucian co-opetition path to balanced profit and enduring partnerships, structured in three parts and 18 chapters."
                 }
             },
             {
@@ -241,7 +246,7 @@
                 "name": "什么是《儒道》？",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "《儒道：超越孙子兵法》是唐仪（Tony Tong）的著作，阐述儒家竞合之道——平衡利润与长久伙伴关系。全书三篇十六章，从内圣（儒商之德）到外王（儒将之道）再到融合（天人合一）。"
+                    "text": "《儒道：超越孙子兵法》是唐仪（Tony Tong）的著作，阐述儒家竞合之道——平衡利润与长久伙伴关系。全书三篇十八章，从内圣（儒商之德）到外王（儒将之道）再到融合（天人合一）。"
                 }
             }
         ]
@@ -258,7 +263,7 @@
                 "@type": "ListItem",
                 "position": 1,
                 "name": "RuDao",
-                "item": "https://RuDao.us"
+                "item": "https://rudao.us/"
             },
             {
                 "@type": "ListItem",
@@ -381,7 +386,7 @@
 
             <div class="hero-actions">
                 <a href="https://www.amazon.com/dp/B0HJ458RRC" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Pre-Order on Amazon</a>
-                <a href="#contents" class="btn btn-ghost">Explore the 16 Chapters →</a>
+                <a href="#contents" class="btn btn-ghost">Explore the 18 Chapters →</a>
             </div>
         </div>
         <div class="hero-scroll" aria-hidden="true">
@@ -438,7 +443,7 @@
                 <h2 class="section-title">About the Book</h2>
                 <p class="book-lead">A business philosophy for leaders who refuse to choose between <em>profit</em> and <em>principle</em>.</p>
                 <p>In <strong>RuDao</strong>, Tony Tong weaves two and a half millennia of Confucian thought with the hard realities of modern commerce. The result is neither a self-help book nor a strategy manual — it is a <em>way</em>: a frame for decisions, partnerships, and growth that produces balanced profit and relationships that don't break when the cycle turns.</p>
-                <p>Drawing on his decades across finance, technology and cross-border enterprise, Tony shows how the Confucian virtues are not soft ideals but operational disciplines — the operating system of enduring business. The book is structured in three parts — <strong>Inner Sage (内圣篇)</strong>, <strong>Outer King (外王篇)</strong>, and <strong>Unity (融合篇)</strong> — spanning 16 chapters from the foundational meaning of 儒道 to the practical art of the co-opetition alliance.</p>
+                <p>Drawing on his decades across finance, technology and cross-border enterprise, Tony shows how the Confucian virtues are not soft ideals but operational disciplines — the operating system of enduring business. The book is structured in three parts — <strong>Inner Sage (内圣篇)</strong>, <strong>Outer King (外王篇)</strong>, and <strong>Unity (融合篇)</strong> — spanning 18 chapters from the foundational meaning of 儒道 to the practical art of the co-opetition alliance.</p>
                 <blockquote class="book-quote">
                     <p class="book-quote-cn">长久以来，《孙子兵法》被奉为商业博弈的经典，教会人们战胜对手、夺取胜利。但以击败竞争者为目标的零和思维，常常摧毁合作根基、损耗信任、难以维系长期伙伴关系。《儒道-儒将》跳出单纯对抗的商战逻辑，阐释源自儒家思想的竞合之道：不必在利润和情义之间二选一，在激烈竞争的同时，依然可以构建稳固、长久的伙伴网络。</p>
                     <p class="book-quote-en">For generations, <em>The Art of War</em> has been revered as the bible of business competition. Yet zero-sum thinking focused on beating opponents often undermines cooperation, erodes trust, and makes long-lasting partnerships nearly impossible. <em>RuDao</em> moves beyond pure adversarial strategy and unfolds the Confucian path of co-opetition — profit and meaningful relationships do not need to be trade-offs.</p>
@@ -449,7 +454,7 @@
                     <li><span>English Subtitle</span><strong>Beyond The Art of War</strong></li>
                     <li><span>Framework</span><strong>Ru-Jiang Co-opetition (儒将竞合)</strong></li>
                     <li><span>Author</span><strong>Tony Tong (唐仪)</strong></li>
-                    <li><span>Structure</span><strong>3 Parts · 16 Chapters</strong></li>
+                    <li><span>Structure</span><strong>3 Parts · 18 Chapters</strong></li>
                     <li><span>Year</span><strong>2026</strong></li>
                     <li><span>Language</span><strong>Bilingual · English / 中文</strong></li>
                 </ul>
@@ -489,57 +494,57 @@
             <div class="section-head">
                 <span class="section-num">III.</span>
                 <h2 class="section-title">The Structure of the Way</h2>
-                <p class="section-subtitle">三篇十六章 — Three parts, sixteen chapters, from the inner sage to the enduring alliance.</p>
+                <p class="section-subtitle">三篇十八章 — Three parts, eighteen chapters, from the inner sage to the enduring alliance.</p>
             </div>
 
             <!-- Part I: Inner Sage -->
             <div class="toc-part">
                 <div class="toc-part-header">
                     <span class="toc-part-num">Part I</span>
-                    <h3 class="toc-part-title">内圣篇 · The Inner Sage</h3>
-                    <p class="toc-part-desc">Cultivating the self before commanding the field. Virtue as the foundation of strategy.</p>
+                    <h3 class="toc-part-title">内圣篇 · The Inner Sage — 儒商</h3>
+                    <p class="toc-part-desc">The RuShang's foundation of virtue — from 义以生利 to the eight virtues. Why trust, not tactics, is the merchant's first asset.</p>
                 </div>
                 <div class="toc-chapters">
                     <div class="toc-chapter">
                         <span class="toc-ch-num">Ch. 1</span>
                         <div class="toc-ch-body">
-                            <h4>儒道 — The Way of the Confucian</h4>
-                            <p>What RuDao means. Why Confucius and Sun Tzu are not opposites but complements — and why the 21st century demands their synthesis.</p>
+                            <h4>儒商本源 — The Origin of RuShang: Confucius, ZiGong and 义以生利</h4>
+                            <p>Where the Confucian merchant begins: Confucius's own disciple 子贡, and the classical formula <em>义以生利</em> — righteousness generates profit, rather than opposing it.</p>
                         </div>
                     </div>
                     <div class="toc-chapter">
                         <span class="toc-ch-num">Ch. 2</span>
                         <div class="toc-ch-body">
-                            <h4>仁商 — The Benevolent Merchant</h4>
-                            <p>The Confucian ideal of the merchant-scholar. Commerce as service, not extraction. Why kindness compounds in the balance sheet of trust.</p>
+                            <h4>儒商八德 — The Eight Virtues: 仁 义 礼 智 信 忠 孝 恕</h4>
+                            <p>A quotation system for the eight Confucian virtues — 仁 benevolence, 义 righteousness, 礼 propriety, 智 wisdom, 信 trust, 忠 loyalty, 孝 filial piety, 恕 reciprocity — and how each one actually operates in business.</p>
                         </div>
                     </div>
                     <div class="toc-chapter">
                         <span class="toc-ch-num">Ch. 3</span>
                         <div class="toc-ch-body">
-                            <h4>义利合一 — Profit &amp; Righteousness Unified</h4>
-                            <p>The false dichotomy between doing well and doing good. How Confucian 义 (righteousness) and 利 (profit) are not enemies but partners.</p>
+                            <h4>儒学演进 — The Evolution of Confucianism: From 周虽旧邦，其命维新 to Modern New Confucianism</h4>
+                            <p>How a 2,500-year tradition renews itself — from Confucius and Mencius through Dong Zhongshu to the modern New Confucians, and why a living tradition can still guide a digital economy.</p>
                         </div>
                     </div>
                     <div class="toc-chapter">
                         <span class="toc-ch-num">Ch. 4</span>
                         <div class="toc-ch-body">
-                            <h4>诚信之道 — The Way of Integrity</h4>
-                            <p>信 (Trust) as the supreme business currency. Why trust is the only asset that compounds without depreciation — and how to earn, keep, and protect it.</p>
+                            <h4>儒商标杆 — Nine Exemplars Across 2,500 Years: From 子贡 to 稻盛和夫</h4>
+                            <p>Six Chinese and three Japanese exemplars — from 子贡 to 稻盛和夫, 涩泽荣一 and 松下幸之助 — read side by side to find the repeatable pattern behind enduring business virtue.</p>
                         </div>
                     </div>
                     <div class="toc-chapter">
                         <span class="toc-ch-num">Ch. 5</span>
                         <div class="toc-ch-body">
-                            <h4>修身齐家 — Self-Cultivation &amp; Household</h4>
-                            <p>From The Great Learning: cultivate the self, regulate the family, then govern the enterprise. The Confucian sequence of scale.</p>
+                            <h4>儒家诚信 — Confucian Trustworthiness: From 民无信不立 to Cross-Border Credit Systems</h4>
+                            <p>Why 信 is the one asset that compounds without depreciating — and how classical trustworthiness maps onto modern credit, compliance, and cross-border reputation.</p>
                         </div>
                     </div>
                     <div class="toc-chapter">
                         <span class="toc-ch-num">Ch. 6</span>
                         <div class="toc-ch-body">
-                            <h4>知行合一 — Knowledge &amp; Action as One</h4>
-                            <p>Wang Yangming's insight: knowing without doing is not knowing. How the Confucian merchant turns principle into practice, every day.</p>
+                            <h4>核心过渡 — The Pivotal Question: Why Virtue Alone Cannot Survive the Market</h4>
+                            <p>Inner virtue is necessary but not sufficient. The turning point of the book: why the RuShang must also become the RuJiang — the Confucian merchant must learn to lead in competition.</p>
                         </div>
                     </div>
                 </div>
@@ -549,36 +554,50 @@
             <div class="toc-part toc-part-alt">
                 <div class="toc-part-header">
                     <span class="toc-part-num">Part II</span>
-                    <h3 class="toc-part-title">外王篇 · The Outer King</h3>
-                    <p class="toc-part-desc">From inner virtue to outward strategy. Competing and cooperating in the real marketplace.</p>
+                    <h3 class="toc-part-title">外王篇 · The Outer King — 儒将</h3>
+                    <p class="toc-part-desc">From inner virtue to outward strategy — the RuJiang's co-opetition path beyond Sun Tzu: negotiation, alliance, crisis, and the ancient scholar-generals.</p>
                 </div>
                 <div class="toc-chapters">
                     <div class="toc-chapter">
                         <span class="toc-ch-num">Ch. 7</span>
                         <div class="toc-ch-body">
-                            <h4>儒将之道 — The Confucian General</h4>
-                            <p>Power tempered by learning, force guided by virtue. The scholar-general who wins without burning the field he intends to harvest.</p>
+                            <h4>竞合之道 — The Boundary of Sun Tzu and the Way of Co-opetition</h4>
+                            <p>Where <em>The Art of War</em> stops being useful: 不战而屈人之兵 read as a discipline, not a boast. How zero-sum strategy erodes the trust that durable partnerships require.</p>
                         </div>
                     </div>
                     <div class="toc-chapter">
                         <span class="toc-ch-num">Ch. 8</span>
                         <div class="toc-ch-body">
-                            <h4>竞合之术 — The Art of Co-opetition</h4>
-                            <p>Compete fiercely where stakes are real; cooperate where value is shared. The strategic logic of frenemies, alliances, and shared infrastructure.</p>
+                            <h4>儒道五德 — The Five Constants in Market Competition: 仁 义 礼 智 信</h4>
+                            <p>The five virtues turned into operating disciplines — how 仁义礼智信 translate into pricing, negotiation, dispute resolution, and long-horizon investment decisions.</p>
                         </div>
                     </div>
                     <div class="toc-chapter">
                         <span class="toc-ch-num">Ch. 9</span>
                         <div class="toc-ch-body">
-                            <h4>和而不同 — Harmony in Difference</h4>
-                            <p>The most misunderstood Confucian concept. Not conformity, but productive disagreement. How diverse teams outperform homogeneous ones.</p>
+                            <h4>儒将谈判与同盟 — RuJiang Negotiation and Alliance</h4>
+                            <p>Negotiation as relationship-building rather than extraction — the move from transaction to alliance, worked through cross-border and Southeast Asian case scenarios.</p>
                         </div>
                     </div>
                     <div class="toc-chapter">
                         <span class="toc-ch-num">Ch. 10</span>
                         <div class="toc-ch-body">
-                            <h4>以柔克刚 — Softness Overcomes Hardness</h4>
-                            <p>From Lao Tzu to modern negotiation: the power of patience, the leverage of restraint, and the strategic value of yielding at the right moment.</p>
+                            <h4>儒将危机 — The RuJiang in Crisis: 岁寒知松柏</h4>
+                            <p>Character shows under pressure. How to hold both 道义 and partnership through the worst quarter — the 岁寒知松柏 test, and what it costs to pass it.</p>
+                        </div>
+                    </div>
+                    <div class="toc-chapter">
+                        <span class="toc-ch-num">Ch. 11</span>
+                        <div class="toc-ch-body">
+                            <h4>中国古代儒将 — Ancient RuJiang Wisdom: 诸葛亮、刘备、曹操、周瑜</h4>
+                            <p>Four scholar-generals read as strategists rather than heroes: 诸葛亮's restraint, 刘备's alliance-building, 曹操's pragmatism, and 周瑜's fatal imbalance.</p>
+                        </div>
+                    </div>
+                    <div class="toc-chapter">
+                        <span class="toc-ch-num">Ch. 12</span>
+                        <div class="toc-ch-body">
+                            <h4>儒将实战案例集 — The RuJiang Casebook</h4>
+                            <p>Field cases in four modes — genuine co-opetition, crisis leadership, the traps of 伪竞合 pseudo-co-opetition, and the cross-cultural misreadings that break alliances.</p>
                         </div>
                     </div>
                 </div>
@@ -588,50 +607,50 @@
             <div class="toc-part">
                 <div class="toc-part-header">
                     <span class="toc-part-num">Part III</span>
-                    <h3 class="toc-part-title">融合篇 · The Unity</h3>
-                    <p class="toc-part-desc">Where inner sage and outer king converge. The Taoist insight that completes the Confucian frame.</p>
+                    <h3 class="toc-part-title">融合篇 · The Unity — 内圣外王</h3>
+                    <p class="toc-part-desc">Where inner sage and outer king converge — a complete commercial system for the digital age: AI governance, Web3, and a new Confucian business civilization.</p>
                 </div>
                 <div class="toc-chapters">
                     <div class="toc-chapter">
-                        <span class="toc-ch-num">Ch. 11</span>
-                        <div class="toc-ch-body">
-                            <h4>天人合一 — Unity of Heaven &amp; Humanity</h4>
-                            <p>The Taoist root: heaven, earth, and people form one living system. Business is not separate from life; profit is not separate from people.</p>
-                        </div>
-                    </div>
-                    <div class="toc-chapter">
-                        <span class="toc-ch-num">Ch. 12</span>
-                        <div class="toc-ch-body">
-                            <h4>中庸之道 — The Doctrine of the Mean</h4>
-                            <p>Not moderation for its own sake, but the dynamic balance point between extremes. The practical art of calibrated decision-making.</p>
-                        </div>
-                    </div>
-                    <div class="toc-chapter">
                         <span class="toc-ch-num">Ch. 13</span>
                         <div class="toc-ch-body">
-                            <h4>天下为公 — All Under Heaven, Shared</h4>
-                            <p>The Confucian vision of a shared world. Stakeholder capitalism before the term existed. Why the long view is the only view that endures.</p>
+                            <h4>内圣外王 — Inner Sage, Outer King: The Philosophical Unity</h4>
+                            <p>The synthesis the whole book has been building toward: 内圣 and 外王 are not two roles but one discipline — the RuShang and the RuJiang are one person.</p>
                         </div>
                     </div>
                     <div class="toc-chapter">
                         <span class="toc-ch-num">Ch. 14</span>
                         <div class="toc-ch-body">
-                            <h4>共生共荣 — Mutual Flourishing</h4>
-                            <p>Beyond win-win: the goal is not splitting the pie but growing it together. The economics of ecosystems, platforms, and enduring partnerships.</p>
+                            <h4>儒家德性伦理与AI治理 — Confucian Virtue Ethics and AI Business Governance</h4>
+                            <p>Virtue ethics as an AI governance framework — 仁 as design constraint, 义 as alignment test, 信 as accountability — for enterprises deploying automated decisions.</p>
                         </div>
                     </div>
                     <div class="toc-chapter">
                         <span class="toc-ch-num">Ch. 15</span>
                         <div class="toc-ch-body">
-                            <h4>匠人之心 — The Craftsman's Heart</h4>
-                            <p>Excellence as devotion. The Confucian respect for craft — 廉 (purity of purpose) applied to product, service, and relationship alike.</p>
+                            <h4>儒家诚信与Web3 — Confucian Trustworthiness and Web3, DAO and the Token Economy</h4>
+                            <p>What blockchain changes and what it cannot: 信 between strangers without an intermediary — and why code-enforced trust still needs a moral foundation.</p>
                         </div>
                     </div>
                     <div class="toc-chapter">
                         <span class="toc-ch-num">Ch. 16</span>
                         <div class="toc-ch-body">
-                            <h4>共创长远 — Co-Creating the Long Horizon</h4>
-                            <p>The culmination: building alliances, institutions, and legacies that outlast the deal, the quarter, and the founder. The art of the enduring partnership.</p>
+                            <h4>文明对话 — Dialogue of Civilizations and the New Confucian Business Civilization</h4>
+                            <p>Toynbee's warning and Ikeda's answer, read toward a Web4 horizon: what a Confucian-rooted business civilization could contribute to global governance.</p>
+                        </div>
+                    </div>
+                    <div class="toc-chapter">
+                        <span class="toc-ch-num">Ch. 17</span>
+                        <div class="toc-ch-body">
+                            <h4>华学恩学 — HuaXue-EnXue: A Complete Modern RuShang Practice System</h4>
+                            <p>A concrete contemporary practice system — 张海标校长's 士商理论 — turning the book's principles into an operable personal curriculum.</p>
+                        </div>
+                    </div>
+                    <div class="toc-chapter">
+                        <span class="toc-ch-num">Ch. 18</span>
+                        <div class="toc-ch-body">
+                            <h4>三十年见证 — A Thirty-Year Practitioner's Witness: From Web1.0 to Web4</h4>
+                            <p>The author's own thirty years across four technology waves — closing the loop between classical principle and lived practice, and where the reader's own thirty years begin.</p>
                         </div>
                     </div>
                 </div>
@@ -949,7 +968,7 @@
                 </div>
                 <div class="author-links">
                     <a href="https://TonyTong.cc" target="_blank" rel="noopener" class="btn btn-outline">TonyTong.cc →</a>
-                    <a href="https://RuDao.us" target="_blank" rel="noopener" class="btn btn-outline">RuDao.us →</a>
+                    <a href="https://rudao.us/" target="_blank" rel="noopener" class="btn btn-outline">RuDao.us →</a>
                     <a href="https://link1.in/tonytong" target="_blank" rel="noopener" class="btn btn-outline">Link1.in →</a>
                     <a href="https://linktr.ee/TonyTong" target="_blank" rel="noopener" class="btn btn-outline">Linktree →</a>
                 </div>
@@ -1148,7 +1167,7 @@
             <div class="container">
                 <p class="xref-title">Official Links · 官方链接</p>
                 <div class="xref-grid">
-                    <a href="https://RuDao.us" target="_blank" rel="noopener" class="xref-link">
+                    <a href="https://rudao.us/" target="_blank" rel="noopener" class="xref-link">
                         <span class="xref-icon">🌐</span>
                         <span class="xref-url">RuDao.us</span>
                         <span class="xref-desc">Official Book Website</span>

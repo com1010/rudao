@@ -1,75 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<!--
+  RuDao — https://rudao.us/
+  This is a single-page bilingual book site, so only the real page URL belongs here.
+  Two things deliberately NOT included:
+    1. "#anchor" fragments — Google/Baidu treat them as part of the same page,
+       not as separate URLs. Listing them adds no pages and dilutes quality signals.
+    2. The pages.dev / github.io mirrors — listing them advertises duplicate
+       content and splits authority away from rudao.us.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
         <loc>https://rudao.us/</loc>
-        <lastmod>2026-09-26</lastmod>
+        <lastmod>2026-10-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
-    </url>
-    <url>
-        <loc>https://rudao.us/#concept</loc>
-        <lastmod>2026-09-26</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://rudao.us/#book</loc>
-        <lastmod>2026-09-26</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://rudao.us/#contents</loc>
-        <lastmod>2026-09-26</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://rudao.us/#editions</loc>
-        <lastmod>2026-09-26</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://rudao.us/#pillars</loc>
-        <lastmod>2026-09-26</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://rudao.us/#principles</loc>
-        <lastmod>2026-09-26</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://rudao.us/#compare</loc>
-        <lastmod>2026-09-26</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://rudao.us/#lineage</loc>
-        <lastmod>2026-09-26</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://rudao.us/#author</loc>
-        <lastmod>2026-09-26</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://rudao.us/#preorder</loc>
-        <lastmod>2026-09-26</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://rudao-tonytong.pages.dev/</loc>
-        <lastmod>2026-09-26</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://rudao.us/assets/rudao-cover-full.jpg</image:loc>
+            <image:title>RuDao 儒道 — Beyond The Art of War, book cover</image:title>
+            <image:caption>RuDao《儒道：超越孙子兵法》— the Confucian co-opetition path to balanced profit and enduring partnerships.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://rudao.us/assets/cover-hardcover.jpg</image:loc>
+            <image:title>RuDao — hardcover edition</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://rudao.us/assets/tony-tong-portrait.jpg</image:loc>
+            <image:title>Tony Tong 唐仪 — author of RuDao</image:title>
+        </image:image>
     </url>
 </urlset>

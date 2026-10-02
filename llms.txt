@@ -1,15 +1,36 @@
 # RuDao (儒道) — Beyond The Art of War
 # By Tony Tong (唐仪)
-# https://RuDao.us | https://TonyTong.cc
+# https://rudao.us/ | https://TonyTong.cc
 
 ## About This Book
 
 RuDao (儒道) is a bilingual (English / 中文) business philosophy book by Tony Tong (唐仪), subtitled "RuJiang: Beyond The Art of War — The Confucian Co-opetition Path to Balanced Profit and Enduring Partnerships."
 
-The book is structured in three parts and 16 chapters:
-- Part I: 内圣篇 The Inner Sage (Chapters 1–6)
-- Part II: 外王篇 The Outer King (Chapters 7–10)
-- Part III: 融合篇 The Unity (Chapters 11–16)
+The book is structured in three parts of six chapters each — 18 chapters in total:
+- Part I: 内圣篇 The Inner Sage (Chapters 1–6) — the RuShang's foundation of virtue
+- Part II: 外王篇 The Outer King (Chapters 7–12) — co-opetition strategy, beyond Sun Tzu
+- Part III: 融合篇 The Unity (Chapters 13–18) — a complete system for the digital age
+
+### Table of Contents / 全书目录
+
+1. The Origin of RuShang: Confucius, ZiGong, and "Righteousness Generates Profit" 义以生利
+2. The Eight Virtues of the RuShang 儒商八德: A System of Quotations
+3. The Evolution of Confucianism: From "An Old State, A New Mandate" to Modern New Confucianism
+4. Nine Exemplars Across 2,500 Years: From ZiGong to Inamori Kazuo
+5. Confucian Trustworthiness: From "Without Trust, No Standing" to Global Cross-Border Credit Systems
+6. The Pivotal Question: Why Virtue Alone Cannot Survive the Market
+7. The Boundary of SunTzu and the Way of Co-opetition 竞合之道
+8. The Five Constants in Market Competition: Ren 仁, Yi 义, Li 礼, Zhi 智, Xin 信
+9. RuJiang Negotiation and Alliance: Turning Counterparties into Cross-Cycle Partners
+10. The RuJiang in Crisis: "Bitter Cold Reveals the Pine and Cypress" 岁寒知松柏
+11. Ancient RuJiang Wisdom: ZhugeLiang, LiuBei, CaoCao, ZhouYu
+12. The RuJiang Casebook: Co-opetition, Crisis, Pseudo-Co-opetition, and Cross-Culture
+13. Inner Sage, Outer King 内圣外王: The Philosophical Unity of RuShang and RuJiang
+14. Confucian Virtue Ethics and AI Business Governance
+15. Confucian Trustworthiness and Web3, DAO, and the Token Economy
+16. Dialogue of Civilizations and the New Confucian Business Civilization: Toynbee, Ikeda, and the Web4 Society
+17. HuaXue-EnXue 华学恩学: A Complete Modern RuShang Practice System
+18. A Thirty-Year Practitioner's Witness: From Web1.0 Through AI and Web3 to Web4
 
 ## Core Thesis
 
@@ -47,7 +68,7 @@ Chinese: 儒道, 儒将, 唐仪, 超越孙子兵法, 儒家竞合之道, 平衡�
 - Author: Tony Tong (唐仪)
 - Year: 2026
 - Language: Bilingual English / 中文
-- Structure: 3 Parts, 16 Chapters
+- Structure: 3 Parts, 18 Chapters
 - ISBN: Forthcoming
 - ASIN: B0HJ458RRC
 - Amazon Pre-Order URL: https://www.amazon.com/dp/B0HJ458RRC
