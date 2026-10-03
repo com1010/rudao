@@ -2622,3 +2622,16 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     .nav, .hero-scroll, .nav-cta, .btn { display: none; }
     body { background: white; color: black; }
 }
+/* ========== ENDORSEMENTS ========== */
+.endorse-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:22px;margin-top:44px}
+.endorse-card{background:var(--paper-warm, #faf6ee);border:1px solid rgba(0,0,0,.08);border-radius:var(--radius, 12px);padding:24px 26px 20px;display:flex;flex-direction:column;gap:12px;transition:transform .2s,box-shadow .2s}
+.endorse-card:hover{transform:translateY(-3px);box-shadow:var(--paper-shadow, 0 8px 28px rgba(0,0,0,.08))}
+.endorse-head{border-bottom:1px solid rgba(0,0,0,.08);padding-bottom:12px}
+.endorse-name{font-family:var(--font-serif-en),serif;font-size:17px;color:var(--ink-black);margin:0 0 4px}
+.endorse-role{font-size:12px;color:var(--gray);margin:0;line-height:1.5}
+.endorse-body{flex:1}
+.endorse-p{font-size:13.5px;line-height:1.75;color:var(--ink-mid);margin:0 0 10px}
+.endorse-p.zh{font-family:var(--font-cn),'Noto Sans SC',sans-serif;color:var(--ink-soft)}
+.endorse-p:last-child{margin-bottom:0}
+.endorse-sig{font-size:12px;font-style:italic;color:var(--vermillion);margin:4px 0 0;line-height:1.6}
+@media (max-width:760px){.endorse-grid{grid-template-columns:1fr}.endorse-p{font-size:13px}}
