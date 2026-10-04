@@ -23,8 +23,9 @@
     /* Typography */
     --font-serif-en: 'Lugrasimo', 'Cormorant Garamond', Georgia, serif;
     --font-sans: 'Lugrasimo', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    --font-body: 'Joan', 'Ma Shan Zheng', 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+    --font-body: 'Merriweather', 'Noto Serif TC', 'Noto Serif SC', Georgia, 'Times New Roman', serif;
     --font-cn: 'Ma Shan Zheng', 'Noto Serif SC', serif;
+    --font-cn-body: 'Noto Serif TC', 'Noto Serif SC', serif;
     --font-brush: 'Ma Shan Zheng', 'Lugrasimo', cursive;
 
     /* Layout */
@@ -478,7 +479,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     margin-bottom: 0.4rem;
 }
 .hero-subtitle-cn {
-    font-family: var(--font-cn);
+    font-family: var(--font-cn-body);
     font-size: clamp(1rem, 1.6vw, 1.2rem);
     font-weight: 500;
     color: var(--ink-mid);
@@ -862,7 +863,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     position: relative;
 }
 .book-quote-cn {
-    font-family: var(--font-cn);
+    font-family: var(--font-cn-body);
     font-size: 0.95rem;
     line-height: 1.75;
     color: var(--ink-mid);
@@ -1026,7 +1027,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     line-height: 1.3;
 }
 .toc-ch-body h4 em {
-    font-family: var(--font-cn);
+    font-family: var(--font-cn-body);
     font-style: normal;
     font-weight: 600;
     color: var(--vermillion);
@@ -2631,7 +2632,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .endorse-role{font-size:12px;color:var(--gray);margin:0;line-height:1.5}
 .endorse-body{flex:1}
 .endorse-p{font-size:13.5px;line-height:1.75;color:var(--ink-mid);margin:0 0 10px}
-.endorse-p.zh{font-family:var(--font-cn),'Noto Sans SC',sans-serif;color:var(--ink-soft)}
+.endorse-p.zh{font-family:var(--font-cn-body),'Noto Sans SC',sans-serif;color:var(--ink-soft)}
 .endorse-p:last-child{margin-bottom:0}
 .endorse-sig{font-size:12px;font-style:italic;color:var(--vermillion);margin:4px 0 0;line-height:1.6}
 @media (max-width:760px){.endorse-grid{grid-template-columns:1fr}.endorse-p{font-size:13px}}
@@ -2646,7 +2647,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 @media (max-width:760px){.gallery-item-wide{grid-column:span 1}.gallery-item-wide img{aspect-ratio:4/5}}
 .gallery-item figcaption{display:flex;flex-direction:column;gap:3px;padding:12px 14px 14px;border-top:1px solid rgba(0,0,0,.06)}
 .gallery-cap-en{font-size:13px;letter-spacing:.04em;color:var(--ink-soft,#1a1a1a)}
-.gallery-cap-zh{font-size:12.5px;color:var(--vermillion,#a93226);font-family:"Noto Serif SC","Songti SC",serif}
+.gallery-cap-zh{font-size:12.5px;color:var(--vermillion,#a93226);font-family:var(--font-cn-body),"Noto Serif SC",serif}
 /* Endorsement feature letter (full-width) */
 .endorse-card-letter{grid-column:1/-1}
 .endorse-card-letter .endorse-body{columns:1}
