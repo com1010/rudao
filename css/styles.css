@@ -2635,3 +2635,15 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .endorse-p:last-child{margin-bottom:0}
 .endorse-sig{font-size:12px;font-style:italic;color:var(--vermillion);margin:4px 0 0;line-height:1.6}
 @media (max-width:760px){.endorse-grid{grid-template-columns:1fr}.endorse-p{font-size:13px}}
+
+/* ===== Gallery · 书影 ===== */
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;margin-top:44px}
+.gallery-item{margin:0;background:var(--paper-warm,#faf6ee);border:1px solid rgba(0,0,0,.08);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s ease,box-shadow .25s ease}
+.gallery-item:hover{transform:translateY(-4px);box-shadow:0 14px 38px var(--paper-shadow,#e8e0cf)}
+.gallery-item img{width:100%;height:auto;display:block;aspect-ratio:4/5;object-fit:cover}
+.gallery-item-wide{grid-column:span 2}
+.gallery-item-wide img{aspect-ratio:16/9}
+@media (max-width:760px){.gallery-item-wide{grid-column:span 1}.gallery-item-wide img{aspect-ratio:4/5}}
+.gallery-item figcaption{display:flex;flex-direction:column;gap:3px;padding:12px 14px 14px;border-top:1px solid rgba(0,0,0,.06)}
+.gallery-cap-en{font-size:13px;letter-spacing:.04em;color:var(--ink-soft,#1a1a1a)}
+.gallery-cap-zh{font-size:12.5px;color:var(--vermillion,#a93226);font-family:"Noto Serif SC","Songti SC",serif}

@@ -12,7 +12,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
         <loc>https://rudao.us/</loc>
-        <lastmod>2026-10-02</lastmod>
+        <lastmod>2026-10-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <image:image>
@@ -27,6 +27,31 @@
         <image:image>
             <image:loc>https://rudao.us/assets/tony-tong-portrait.jpg</image:loc>
             <image:title>Tony Tong 唐仪 — author of RuDao</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://rudao.us/assets/gallery/rudao-book-launch-event-keynote.jpg</image:loc>
+            <image:title>RuDao 儒道 book launch keynote event</image:title>
+            <image:caption>Author Tony Tong on stage at the RuDao — Beyond The Art of War launch event.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://rudao.us/assets/gallery/rudao-book-bamboo-classics-still-life.jpg</image:loc>
+            <image:title>RuDao 儒道 with the Confucian classics</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://rudao.us/assets/gallery/rudao-book-stacked-editions.jpg</image:loc>
+            <image:title>RuDao 儒道 hardcover editions stacked</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://rudao.us/assets/gallery/rudao-book-go-board-strategy.jpg</image:loc>
+            <image:title>RuDao 儒道 beside a Go board — strategy and balance</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://rudao.us/assets/gallery/rudao-book-library-bookshelf.jpg</image:loc>
+            <image:title>RuDao 儒道 on a classical Chinese bookshelf</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://rudao.us/assets/gallery/rudao-cover-poster-calligraphy.jpg</image:loc>
+            <image:title>RuDao 儒道 vermillion ink-brush calligraphy poster</image:title>
         </image:image>
     </url>
 </urlset>
