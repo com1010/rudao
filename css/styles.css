@@ -2647,3 +2647,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .gallery-item figcaption{display:flex;flex-direction:column;gap:3px;padding:12px 14px 14px;border-top:1px solid rgba(0,0,0,.06)}
 .gallery-cap-en{font-size:13px;letter-spacing:.04em;color:var(--ink-soft,#1a1a1a)}
 .gallery-cap-zh{font-size:12.5px;color:var(--vermillion,#a93226);font-family:"Noto Serif SC","Songti SC",serif}
+/* Endorsement feature letter (full-width) */
+.endorse-card-letter{grid-column:1/-1}
+.endorse-card-letter .endorse-body{columns:1}
+@media (min-width:1100px){.endorse-card-letter .endorse-body{column-count:2;column-gap:34px}.endorse-card-letter .endorse-p{break-inside:avoid}}
+.endorse-card-letter .endorse-p{font-size:14px}
