@@ -313,6 +313,13 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     letter-spacing: 0.02em;
     white-space: nowrap;
 }
+/* Top bar brand: small plain Georgia "RuDao" */
+.nav-brand .brand-en {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+}
 .nav-links {
     display: flex;
     align-items: center;
