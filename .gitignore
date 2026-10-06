@@ -18,3 +18,5 @@ node_modules/
 
 # WorkBuddy
 .workbuddy-ai/
+_src_*.jpg
+_src_crop_*.png
