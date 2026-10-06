@@ -2653,3 +2653,32 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .endorse-card-letter .endorse-body{columns:1}
 @media (min-width:1100px){.endorse-card-letter .endorse-body{column-count:2;column-gap:34px}.endorse-card-letter .endorse-p{break-inside:avoid}}
 .endorse-card-letter .endorse-p{font-size:14px}
+
+/* Endorsement catalog / table of endorsers */
+.endorse-toc{margin-top:36px;background:var(--paper-warm,#faf6ee);border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:22px 26px 24px}
+.endorse-toc-title{font-family:var(--font-serif-en),serif;font-size:16px;color:var(--ink-black);margin:0 0 16px;display:flex;flex-wrap:wrap;align-items:baseline;gap:10px}
+.endorse-toc-hint{font-family:var(--font-body);font-size:11.5px;font-weight:400;color:var(--gray);letter-spacing:0}
+.endorse-toc-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px 20px;counter-reset:toc}
+.endorse-toc-list li{margin:0}
+.endorse-toc-list a{display:flex;align-items:baseline;gap:9px;padding:7px 10px;border-radius:6px;text-decoration:none;border-left:2px solid transparent;transition:background .18s,border-color .18s}
+.endorse-toc-list a:hover{background:rgba(169,50,38,.06);border-left-color:var(--vermillion)}
+.toc-num{font-family:var(--font-serif-en),serif;font-size:11.5px;color:var(--vermillion);min-width:18px;letter-spacing:.04em}
+.toc-name{font-size:13.5px;color:var(--ink-black);font-weight:600}
+.toc-role{font-size:11px;color:var(--gray);display:block}
+@media (max-width:760px){.endorse-toc{padding:18px 16px}.endorse-toc-list{grid-template-columns:1fr}}
+
+/* Endorser bio block */
+.endorse-bio{margin-top:16px;padding-top:16px;border-top:1px dashed rgba(169,50,38,.35)}
+.endorse-bio-title{font-family:var(--font-serif-en),serif;font-size:13.5px;color:var(--vermillion);margin:0 0 10px;letter-spacing:.04em}
+.endorse-bio-lead{font-size:13px;font-weight:700;color:var(--ink-black);margin:0 0 10px}
+.endorse-bio-list{margin:0 0 10px;padding-left:18px;font-size:12.5px;line-height:1.7;color:var(--ink-mid)}
+.endorse-bio-list li{margin-bottom:5px}
+.endorse-bio-works{font-size:12.5px;line-height:1.7;color:var(--ink-mid);margin:0 0 12px}
+.endorse-bio-links-label{font-size:12px;font-weight:600;color:var(--ink-soft);margin:0 0 8px}
+.endorse-bio-links{list-style:none;margin:0;padding:0;font-size:12.5px;line-height:1.65}
+.endorse-bio-links li{margin-bottom:6px;padding-left:14px;position:relative}
+.endorse-bio-links li::before{content:'→';position:absolute;left:0;color:var(--vermillion);font-size:11px}
+.endorse-bio-links a{color:var(--vermillion-deep);text-decoration:none;border-bottom:1px solid rgba(169,50,38,.3)}
+.endorse-bio-links a:hover{color:var(--vermillion);border-bottom-color:var(--vermillion)}
+/* anchor offset under fixed nav */
+.endorse-card{scroll-margin-top:110px}
