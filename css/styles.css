@@ -2682,3 +2682,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .endorse-bio-links a:hover{color:var(--vermillion);border-bottom-color:var(--vermillion)}
 /* anchor offset under fixed nav */
 .endorse-card{scroll-margin-top:110px}
+/* Links inside endorsement body text */
+.endorse-p a{color:var(--vermillion-deep);text-decoration:none;border-bottom:1px solid rgba(169,50,38,.3);transition:color .18s,border-color .18s}
+.endorse-p a:hover{color:var(--vermillion);border-bottom-color:var(--vermillion)}
+.endorse-p em{font-style:italic}
