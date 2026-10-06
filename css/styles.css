@@ -284,11 +284,11 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .nav-inner {
     max-width: var(--container);
     margin: 0 auto;
-    padding: 1.1rem clamp(1.5rem, 4vw, 3rem);
+    padding: 0.8rem clamp(1.5rem, 4vw, 3rem);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 .nav-brand {
     display: flex;
@@ -316,7 +316,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 1.8rem;
+    gap: 1.5rem;
 }
 .nav-links a {
     font-size: 0.88rem;
@@ -325,6 +325,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     color: var(--ink-mid);
     transition: color .2s ease;
     position: relative;
+    white-space: nowrap;
 }
 .nav-links a:not(.nav-cta)::after {
     content: '';
@@ -2334,8 +2335,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 
 @media (max-width: 860px) {
     .nav-links {
-        position: fixed;
-        top: 65px; left: 0; right: 0;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
         flex-direction: column;
         align-items: stretch;
         background: var(--paper);
@@ -2345,7 +2346,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
         transform: translateY(-110%);
         opacity: 0;
         transition: transform .35s ease, opacity .35s ease;
-        max-height: calc(100vh - 65px);
+        max-height: calc(100vh - 60px);
         overflow-y: auto;
     }
     .nav-links.open {
