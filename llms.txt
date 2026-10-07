@@ -6,31 +6,29 @@
 
 RuDao (儒道) is a bilingual (English / 中文) business philosophy book by Tony Tong (唐仪), subtitled "RuJiang: Beyond The Art of War — The Confucian Co-opetition Path to Balanced Profit and Enduring Partnerships."
 
-The book is structured in three parts of six chapters each — 18 chapters in total:
-- Part I: 内圣篇 The Inner Sage (Chapters 1–6) — the RuShang's foundation of virtue
-- Part II: 外王篇 The Outer King (Chapters 7–12) — co-opetition strategy, beyond Sun Tzu
-- Part III: 融合篇 The Unity (Chapters 13–18) — a complete system for the digital age
+The book is structured in six parts and nine chapters, framed by Front Matter and Back Matter:
+- Part One: The Roots 源 — The Source of the Commercial Tradition (Ch. 1)
+- Part Two: The Confucian Core 儒 — Righteousness + Profit, Harmony vs Co-opetition (Ch. 2–3)
+- Part Three: Ru + Dao 内圣外王 — Inner Sage, Outer King (Ch. 4–5)
+- Part Four: The Practice 实践 — The Way of the Confucian Merchant (Ch. 6–7)
+- Part Five: The Exemplars 范例 — The Confucian Tycoons of Asia (Ch. 8)
+- Part Six: RuDao in the Digital Age 数字时代 (Ch. 9)
 
 ### Table of Contents / 全书目录
 
-1. The Origin of RuShang: Confucius, ZiGong, and "Righteousness Generates Profit" 义以生利
-2. The Eight Virtues of the RuShang 儒商八德: A System of Quotations
-3. The Evolution of Confucianism: From "An Old State, A New Mandate" to Modern New Confucianism
-4. Nine Exemplars Across 2,500 Years: From ZiGong to Inamori Kazuo
-5. Confucian Trustworthiness: From "Without Trust, No Standing" to Global Cross-Border Credit Systems
-6. The Pivotal Question: Why Virtue Alone Cannot Survive the Market
-7. The Boundary of SunTzu and the Way of Co-opetition 竞合之道
-8. The Five Constants in Market Competition: Ren 仁, Yi 义, Li 礼, Zhi 智, Xin 信
-9. RuJiang Negotiation and Alliance: Turning Counterparties into Cross-Cycle Partners
-10. The RuJiang in Crisis: "Bitter Cold Reveals the Pine and Cypress" 岁寒知松柏
-11. Ancient RuJiang Wisdom: ZhugeLiang, LiuBei, CaoCao, ZhouYu
-12. The RuJiang Casebook: Co-opetition, Crisis, Pseudo-Co-opetition, and Cross-Culture
-13. Inner Sage, Outer King 内圣外王: The Philosophical Unity of RuShang and RuJiang
-14. Confucian Virtue Ethics and AI Business Governance
-15. Confucian Trustworthiness and Web3, DAO, and the Token Economy
-16. Dialogue of Civilizations and the New Confucian Business Civilization: Toynbee, Ikeda, and the Web4 Society
-17. HuaXue-EnXue 华学恩学: A Complete Modern RuShang Practice System
-18. A Thirty-Year Practitioner's Witness: From Web1.0 Through AI and Web3 to Web4
+Front Matter 前文: Foreword 序言; Author: Why RuDao Matters Today; The Purpose of This Book 本书宗旨; RuDao and the AI Digital Economy 儒道与AI数字经济; Who This Book Is For 读者对象; How to Read This Book 如何阅读
+
+1. Shang (c. 1600–1046 BCE): Business Begins 商朝 · 商业起源 — the character 商, 《货殖列传》善因论, Fan Li 范蠡 / Zigong 子贡 / Bai Gui 白圭, and the RuDao Trust System
+2. The Ethical Core: The Eight Virtues and Li Ren 八德 · 里仁 — 兵儒之辨, 和而不同, 儒商八德 仁义礼智信忠孝恕, 仁为体、义为用、忠恕贯之
+3. The Five Constants in Market Competition 仁义礼智信 — 义利并举、富而好礼
+4. Confucian Structure, Daoist Spirit 以儒为骨，以道为神 — 正己、礼、五常、民本; 无为而治、上善若水、反者道之动、知止; 以德驭术
+5. Inner Sage, Outer King, and the RuJiang 内圣外王 · 儒将 — 庄子·天下篇 → 大学·八目; co-opetition beyond The Art of War
+6. RuShang: The Confucian Entrepreneur 儒商 — definition and ideal; 信誉人格，生意来求你
+7. Yi Before Profit 义先于利 — exemplars from 子贡、孟洛川、张謇 to 渋沢栄一、稻盛和夫、松下幸之助; Li Ka-shing 李嘉诚 and Robert Kuok 郭鹤年
+8. RuShang Exemplars: Asia's Confucian Tycoons 儒商先贤 · 亚洲儒商列传 — 郭鹤年、李嘉诚、汤恩佳、曹德旺、谢国民家族、陈永栽、霍英东、李国宝家族、董建华、梁振英、李东海; 陈济棠家族三代
+9. RuDao in the AI Digital Economy 儒道 × AI 数字经济 — 数字巨头的儒道之鉴 (Apple/Google/Microsoft/Amazon), Web3/Web4 RuDao Trust System, Dr. Zhu Jia-ming 朱嘉明, 文明对话与新儒商商业文明, 内圣外王与未来
+
+Back Matter 后文: Afterword 后记; Appendix A · Classified Index of Quotes 《论语》原文对照《货殖列传》名句集; Appendix B · Core Terminology 核心术语中英对照; Sources & References 参考文献与链接
 
 ## Core Thesis
 
@@ -68,7 +66,7 @@ Chinese: 儒道, 儒将, 唐仪, 超越孙子兵法, 儒家竞合之道, 平衡�
 - Author: Tony Tong (唐仪)
 - Year: 2026
 - Language: Bilingual English / 中文
-- Structure: 3 Parts, 18 Chapters
+- Structure: Six Parts, Nine Chapters (with Front Matter & Back Matter)
 - ISBN: Forthcoming
 - ASIN: B0HJ458RRC
 - Amazon Pre-Order URL: https://www.amazon.com/dp/B0HJ458RRC

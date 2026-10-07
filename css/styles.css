@@ -2712,3 +2712,70 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .preface-body a,.toc-ch-points a{color:var(--vermillion-deep);text-decoration:none;border-bottom:1px solid rgba(169,50,38,.3)}
 .preface-body a:hover,.toc-ch-points a:hover{color:var(--vermillion);border-bottom-color:var(--vermillion)}
 .dedication-thanks{margin-top:18px;padding-top:16px;border-top:1px dashed rgba(169,50,38,.35)}
+
+/* ============================================
+   TABLE OF CONTENTS — standard TOC list table (v4)
+   Replaces the card layout with a printed-book
+   style list: front/back matter, six parts, nine
+   chapters, each with its detail lines.
+   ============================================ */
+.toc-table{width:100%;border-collapse:collapse;table-layout:fixed;margin:clamp(1.6rem,3vw,2.4rem) 0 0}
+.toc-col-num{width:104px}
+.toc-table td{vertical-align:top}
+
+/* Part / matter divider rows */
+.toc-row-sec td{padding:clamp(1.6rem,3vw,2.4rem) 0 .7rem;border-bottom:2px solid var(--vermillion)}
+.toc-table tbody tr.toc-row-sec:first-child td{padding-top:.4rem}
+.toc-sec-en{display:block;font-family:var(--font-body);font-style:italic;font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--vermillion);margin-bottom:.35rem}
+.toc-sec-zh{font-family:var(--font-cn-body);font-size:clamp(1.08rem,1.7vw,1.32rem);font-weight:700;color:var(--ink-black);letter-spacing:.03em;line-height:1.35}
+
+/* Entry rows */
+.toc-row .toc-cell-num{padding:.75rem 1.1rem .75rem 0;font-family:var(--font-body);font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--vermillion);white-space:nowrap;border-bottom:1px dotted rgba(169,50,38,.28)}
+.toc-row .toc-cell-title{padding:.75rem 0;font-family:var(--font-body);font-size:clamp(.95rem,1.1vw,1.03rem);font-weight:600;color:var(--ink-black);line-height:1.55;border-bottom:1px dotted rgba(169,50,38,.28);transition:color .18s ease}
+.toc-row:hover .toc-cell-title{color:var(--vermillion-deep)}
+
+/* Chapter detail lines */
+.toc-points{list-style:none;margin:.65rem 0 .15rem;padding:0}
+.toc-points li{position:relative;padding-left:1.15rem;font-family:var(--font-body);font-weight:400;font-size:.85rem;line-height:1.7;color:var(--ink-mid);margin-bottom:.4rem}
+.toc-points li:last-child{margin-bottom:0}
+.toc-points li::before{content:'—';position:absolute;left:0;top:0;font-size:.78rem;color:rgba(169,50,38,.55)}
+
+@media (max-width:760px){
+    .toc-table,.toc-table tbody,.toc-table tr,.toc-table td{display:block;width:100%}
+    .toc-col-num{width:auto}
+    .toc-row .toc-cell-num{padding:.7rem 0 0;border-bottom:0;font-size:.68rem;letter-spacing:.12em}
+    .toc-row .toc-cell-title{padding:.2rem 0 .8rem;font-size:.95rem}
+    .toc-row-sec td{padding-top:1.7rem}
+    .toc-points li{font-size:.82rem}
+}
+
+/* ============================================
+   CO-EDITORS · 编者 (sits before Dedication)
+   ============================================ */
+.coeditors{background:var(--paper-warm);position:relative}
+.coeditor-container{max-width:960px}
+.coeditor{position:relative;margin-top:clamp(1.8rem,3.5vw,2.8rem);padding:clamp(1.3rem,2.4vw,2.1rem) clamp(1.2rem,2.4vw,2.3rem) clamp(1.1rem,2vw,1.7rem);background:var(--paper);border:1px solid var(--paper-shadow);border-radius:var(--radius);scroll-margin-top:110px}
+.coeditor::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--vermillion);border-radius:var(--radius) 0 0 var(--radius)}
+.coeditor-head{display:flex;gap:1rem;align-items:flex-start;padding-bottom:.9rem;border-bottom:1px solid rgba(169,50,38,.22)}
+.coeditor-num{font-family:var(--font-body);font-size:.78rem;font-weight:700;letter-spacing:.14em;color:var(--vermillion);padding-top:.4rem;min-width:2.1rem}
+.coeditor-name{font-family:var(--font-serif-en);font-size:clamp(1.12rem,1.7vw,1.4rem);font-weight:600;color:var(--ink-black);margin:0 0 .3rem;line-height:1.3}
+.coeditor-role{font-family:var(--font-body);font-size:.78rem;line-height:1.6;color:var(--gray);margin:0}
+.coeditor-letter{margin-top:1.1rem}
+.coeditor-letter p{font-family:var(--font-body);font-size:clamp(.95rem,1.15vw,1.02rem);line-height:1.9;color:var(--ink-mid);margin-bottom:1.05rem;text-align:justify;text-justify:inter-word}
+.coeditor-letter p:last-child{margin-bottom:0}
+.coeditor-letter em{font-style:italic}
+.coeditor-letter a{color:var(--vermillion-deep);text-decoration:none;border-bottom:1px solid rgba(169,50,38,.3);transition:color .18s,border-color .18s}
+.coeditor-letter a:hover{color:var(--vermillion);border-bottom-color:var(--vermillion)}
+.coeditor-letter .coeditor-sig{font-size:.9rem;font-style:italic;color:var(--vermillion);text-align:right;margin-top:1rem}
+.coeditor-bio,.coeditor-note{margin-top:1.3rem;padding-top:1.1rem;border-top:1px dashed rgba(169,50,38,.35)}
+.coeditor-bio p,.coeditor-note p{font-family:var(--font-body);font-size:.85rem;line-height:1.75;color:var(--gray);margin-bottom:.7rem;text-align:justify;text-justify:inter-word}
+.coeditor-bio p:last-child,.coeditor-note p:last-child{margin-bottom:0}
+.coeditor-bio .coeditor-bio-title{font-weight:700;color:var(--ink-black);letter-spacing:.04em;font-size:.86rem}
+.coeditor-note a{color:var(--vermillion-deep);text-decoration:none;border-bottom:1px solid rgba(169,50,38,.3)}
+.coeditor-note a:hover{color:var(--vermillion)}
+@media (max-width:760px){
+    .coeditor-head{flex-direction:column;gap:.4rem}
+    .coeditor-num{padding-top:0}
+    .coeditor-letter p,.coeditor-bio p,.coeditor-note p{text-align:left;font-size:.94rem;line-height:1.85}
+    .coeditor-letter .coeditor-sig{text-align:left}
+}

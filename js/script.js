@@ -572,5 +572,5 @@
 
     console.log('%c\u5112\u9053 \u00B7 RuDao', 'font-family: serif; font-size: 24px; color: #a93226; padding: 8px 0;');
     console.log('%cBeyond The Art of War \u2014 The Confucian Co-opetition Way', 'font-style: italic; color: #6b6b6b;');
-    console.log('%c3 Parts \u00B7 16 Chapters \u2014 RuDao.us', 'color: #c9a961;');
+    console.log('%cSix Parts \u00B7 Nine Chapters \u2014 RuDao.us', 'color: #c9a961;');
 })();
