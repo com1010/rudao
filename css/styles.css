@@ -702,10 +702,24 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 
 .concept-divider {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 0.55rem;
     width: 70px;
     position: relative;
+}
+.divider-en {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gray);
+    background: var(--paper);
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    z-index: 2;
 }
 .divider-cn {
     font-family: var(--font-brush);
@@ -2379,7 +2393,10 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     .concept-divider {
         width: 100%;
         height: 50px;
+        flex-direction: row;
+        gap: 0.7rem;
     }
+    .divider-en { font-size: 0.62rem; padding: 0.1rem 0.45rem; }
     .concept-divider::before {
         left: 0; right: 0;
         top: 50%;
