@@ -2865,3 +2865,62 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     .nav-links a { font-size: 0.76rem; padding: 0.28rem 0.35rem; letter-spacing: 0; }
     section[id], .endorse-card, .coeditor { scroll-margin-top: 140px; }
 }
+
+/* ============================================
+   PREFACE — Chinese 自序 (sits before the
+   signature / seal chop)
+   ============================================ */
+.preface-cn {
+    max-width: 780px;
+    margin: clamp(2.6rem, 5vw, 3.6rem) auto 0;
+    padding-top: clamp(1.8rem, 3vw, 2.4rem);
+    border-top: 1px dashed rgba(169, 50, 38, 0.35);
+}
+.preface-cn-title {
+    font-family: var(--font-cn-body);
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    font-weight: 700;
+    color: var(--ink-black);
+    letter-spacing: 0.04em;
+    text-align: center;
+    margin: 0 0 1.4rem;
+    line-height: 1.5;
+}
+.preface-cn-quote {
+    text-align: center;
+    margin-bottom: clamp(1.8rem, 3.5vw, 2.6rem);
+    padding: 1.2rem 1rem;
+    background: var(--paper-warm, rgba(184, 146, 58, 0.06));
+    border-radius: var(--radius, 10px);
+}
+.preface-cn-quote-zh {
+    font-family: var(--font-cn-body);
+    font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+    font-weight: 700;
+    color: var(--vermillion);
+    letter-spacing: 0.12em;
+    margin: 0 0 0.6rem;
+    line-height: 1.5;
+}
+.preface-cn-quote-en {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.92rem;
+    color: var(--gray);
+    margin: 0;
+    line-height: 1.7;
+}
+.preface-cn > p {
+    font-family: var(--font-cn-body);
+    font-size: clamp(1rem, 1.25vw, 1.1rem);
+    line-height: 2.05;
+    color: var(--ink-mid);
+    margin-bottom: 1.4rem;
+    text-align: justify;
+    text-justify: inter-ideograph;
+}
+.preface-cn > p:last-child { margin-bottom: 0; }
+@media (max-width: 640px) {
+    .preface-cn > p { font-size: 1rem; line-height: 1.95; text-align: left; }
+    .preface-cn-quote-zh { letter-spacing: 0.06em; }
+}
