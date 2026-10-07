@@ -210,23 +210,9 @@
     handleScroll();
 
     // ============================================
-    // Mobile menu toggle
+    // Navigation links are always visible (no hamburger),
+    // so there is no mobile menu to toggle.
     // ============================================
-    const navToggle = document.getElementById('navToggle');
-    const navLinks = document.querySelector('.nav-links');
-    if (navToggle && navLinks) {
-        navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('open');
-            navLinks.classList.toggle('open');
-        });
-        // Close menu on link click
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navToggle.classList.remove('open');
-                navLinks.classList.remove('open');
-            });
-        });
-    }
 
     // ============================================
     // Scroll reveal animation

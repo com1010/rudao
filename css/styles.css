@@ -360,23 +360,6 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .nav-links a:hover::after,
 .nav-links a:focus-visible::after { transform: scaleX(1); }
 
-.nav-toggle {
-    display: none;
-    width: 32px; height: 32px;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-}
-.nav-toggle span {
-    display: block;
-    width: 24px; height: 1.5px;
-    background: var(--ink-black);
-    transition: transform .3s ease, opacity .3s ease;
-}
-.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.nav-toggle.open span:nth-child(2) { opacity: 0; }
-.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
 /* ============================================
    HERO
    ============================================ */
@@ -2345,36 +2328,50 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 }
 
 @media (max-width: 860px) {
-    .nav-links {
-        position: absolute;
-        top: 100%; left: 0; right: 0;
+    /* No hamburger: the five items stay permanently visible.
+       Brand on its own row, the four links in a wrapped row beneath. */
+    .nav-inner {
         flex-direction: column;
-        align-items: stretch;
-        background: var(--paper);
-        padding: 2rem clamp(1.5rem, 4vw, 3rem);
-        border-bottom: 1px solid rgba(10,10,10,0.08);
-        gap: 0.35rem;
-        transform: translateY(-110%);
-        opacity: 0;
-        transition: transform .35s ease, opacity .35s ease;
-        max-height: calc(100vh - 60px);
-        overflow-y: auto;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 0.1rem;
+        row-gap: 0.15rem;
+        padding: 0.5rem 0.75rem 0.45rem;
+    }
+    .nav-brand { justify-content: center; }
+    .nav-brand .brand-en { font-size: 1.05rem; }
+    .nav-links {
+        position: static;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        background: transparent;
+        padding: 0;
+        border: 0;
+        gap: 0.1rem 0.15rem;
+        transform: none;
+        opacity: 1;
+        max-height: none;
+        overflow: visible;
     }
     .nav-links a {
-        display: block;
-        padding: 0.85rem 0.9rem;
-        border-radius: 8px;
-        font-size: 1rem;
-        border-bottom: 1px solid rgba(10,10,10,0.06);
+        display: inline-block;
+        padding: 0.3rem 0.45rem;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        border-bottom: 0;
     }
     .nav-links a::after { display: none; }
     .nav-links a:hover,
     .nav-links a:focus-visible { background-color: rgba(169, 50, 38, 0.08); }
-    .nav-links.open {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    .nav-toggle { display: flex; }
+    /* keep anchor jumps clear of the taller two-row bar */
+    section[id],
+    .endorse-card,
+    .coeditor { scroll-margin-top: 150px; }
     .concept-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
@@ -2792,4 +2789,17 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     .coeditor-num{padding-top:0}
     .coeditor-letter p,.coeditor-bio p,.coeditor-note p{text-align:left;font-size:.94rem;line-height:1.85}
     .coeditor-letter .coeditor-sig{text-align:left}
+}
+
+/* ============================================
+   NAV — small phones (<=420px)
+   Keep all five items visible on one or two lines
+   without a hamburger; tighten sizes so they fit.
+   ============================================ */
+@media (max-width: 420px) {
+    .nav-inner { padding: 0.45rem 0.5rem 0.4rem; gap: 0.05rem; }
+    .nav-brand .brand-en { font-size: 1rem; }
+    .nav-links { gap: 0.05rem 0.1rem; }
+    .nav-links a { font-size: 0.76rem; padding: 0.28rem 0.35rem; letter-spacing: 0; }
+    section[id], .endorse-card, .coeditor { scroll-margin-top: 140px; }
 }
