@@ -2737,13 +2737,17 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 /* Part / matter divider rows */
 .toc-row-sec td{padding:clamp(1.6rem,3vw,2.4rem) 0 .7rem;border-bottom:2px solid var(--vermillion)}
 .toc-table tbody tr.toc-row-sec:first-child td{padding-top:.4rem}
-.toc-sec-en{display:block;font-family:var(--font-body);font-style:italic;font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--vermillion);margin-bottom:.35rem}
-.toc-sec-zh{font-family:var(--font-cn-body);font-size:clamp(1.08rem,1.7vw,1.32rem);font-weight:700;color:var(--ink-black);letter-spacing:.03em;line-height:1.35}
+.toc-sec-en{display:block;font-family:var(--font-body);font-style:italic;font-weight:800;font-size:.88rem;letter-spacing:.22em;text-transform:uppercase;color:var(--vermillion);margin-bottom:.45rem}
+.toc-sec-zh{font-family:var(--font-cn-body);font-size:clamp(1.4rem,2.6vw,1.85rem);font-weight:800;color:var(--ink-black);letter-spacing:.03em;line-height:1.35}
 
 /* Entry rows */
 .toc-row .toc-cell-num{padding:.75rem 1.1rem .75rem 0;font-family:var(--font-body);font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--vermillion);white-space:nowrap;border-bottom:1px dotted rgba(169,50,38,.28)}
 .toc-row .toc-cell-title{padding:.75rem 0;font-family:var(--font-body);font-size:clamp(.95rem,1.1vw,1.03rem);font-weight:600;color:var(--ink-black);line-height:1.55;border-bottom:1px dotted rgba(169,50,38,.28);transition:color .18s ease}
 .toc-row:hover .toc-cell-title{color:var(--vermillion-deep)}
+
+/* Chapter headings — larger, bold */
+.toc-row-ch .toc-cell-num{font-size:.82rem;letter-spacing:.16em}
+.toc-row-ch .toc-cell-title{font-family:var(--font-serif-en),var(--font-cn-body),serif;font-size:clamp(1.18rem,2vw,1.5rem);font-weight:800;line-height:1.45;letter-spacing:.01em}
 
 /* Chapter detail lines */
 .toc-points{list-style:none;margin:.65rem 0 .15rem;padding:0}
@@ -2756,6 +2760,10 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     .toc-col-num{width:auto}
     .toc-row .toc-cell-num{padding:.7rem 0 0;border-bottom:0;font-size:.68rem;letter-spacing:.12em}
     .toc-row .toc-cell-title{padding:.2rem 0 .8rem;font-size:.95rem}
+    .toc-row-ch .toc-cell-num{font-size:.74rem}
+    .toc-row-ch .toc-cell-title{font-size:1.18rem}
+    .toc-sec-en{font-size:.8rem}
+    .toc-sec-zh{font-size:1.32rem}
     .toc-row-sec td{padding-top:1.7rem}
     .toc-points li{font-size:.82rem}
 }
