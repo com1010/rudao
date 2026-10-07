@@ -2281,6 +2281,43 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     color: var(--gray);
 }
 
+/* Preface signature with the author's seal chop */
+.preface-signature-seal {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 1.4rem;
+}
+.preface-sig-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.15rem;
+    text-align: right;
+}
+.preface-sig-name {
+    color: var(--ink-black);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(169, 50, 38, 0.3);
+    transition: color .18s ease, border-color .18s ease;
+}
+.preface-sig-name:hover {
+    color: var(--vermillion);
+    border-bottom-color: var(--vermillion);
+}
+.preface-sig-seal {
+    display: block;
+    width: 108px;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(10, 10, 10, 0.14);
+    transform: rotate(1.2deg);
+}
+@media (max-width: 640px) {
+    .preface-signature-seal { gap: 1rem; }
+    .preface-sig-seal { width: 84px; }
+}
+
 /* ============================================
    BODY TEXT FONT — Joan (readability pass)
    Running / smaller body copy uses the clean,
