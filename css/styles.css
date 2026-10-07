@@ -2700,3 +2700,15 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   .endorse-card-wide .endorse-body{column-count:2;column-gap:34px}
   .endorse-card-wide .endorse-p{break-inside:avoid}
 }
+
+/* TOC: Front Matter / Back Matter list & chapter bullet points */
+.toc-fm-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:8px 24px}
+.toc-fm-list li{position:relative;padding:8px 0 8px 22px;font-size:14px;color:var(--ink-mid);border-bottom:1px dashed rgba(169,50,38,.18)}
+.toc-fm-list li::before{content:'·';position:absolute;left:4px;color:var(--vermillion);font-weight:700}
+@media (max-width:760px){.toc-fm-list{grid-template-columns:1fr}}
+.toc-ch-points{margin:10px 0 0;padding-left:18px}
+.toc-ch-points li{font-size:13px;line-height:1.75;color:var(--ink-mid);margin-bottom:6px}
+.toc-ch-points li::marker{color:var(--vermillion)}
+.preface-body a,.toc-ch-points a{color:var(--vermillion-deep);text-decoration:none;border-bottom:1px solid rgba(169,50,38,.3)}
+.preface-body a:hover,.toc-ch-points a:hover{color:var(--vermillion);border-bottom-color:var(--vermillion)}
+.dedication-thanks{margin-top:18px;padding-top:16px;border-top:1px dashed rgba(169,50,38,.35)}
