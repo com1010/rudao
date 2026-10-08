@@ -321,6 +321,14 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     letter-spacing: 0.01em;
     transition: color .2s ease;
 }
+.nav-brand .brand-cn {
+    font-family: var(--font-cn-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--vermillion);
+    transition: color .2s ease;
+}
 .nav-brand:hover .brand-en { color: var(--vermillion); }
 .nav-links {
     display: flex;
@@ -2392,6 +2400,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     }
     .nav-brand { justify-content: center; }
     .nav-brand .brand-en { font-size: 1.05rem; }
+    .nav-brand .brand-cn { font-size: 0.86rem; }
     .nav-links {
         position: static;
         flex-direction: row;
