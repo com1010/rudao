@@ -16,6 +16,9 @@ desktop.ini
 # Dependencies (if added later)
 node_modules/
 
+# Wrangler local cache (Cloudflare CLI)
+.wrangler/
+
 # WorkBuddy
 .workbuddy-ai/
 _src_*.jpg
