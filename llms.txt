@@ -6,29 +6,52 @@
 
 RuDao (儒道) is a bilingual (English / 中文) business philosophy book by Tony Tong (唐仪), subtitled "RuJiang: Beyond The Art of War — The Confucian Co-opetition Path to Balanced Profit and Enduring Partnerships."
 
-The book is structured in six parts and nine chapters, framed by Front Matter and Back Matter:
-- Part One: The Roots 源 — The Source of the Commercial Tradition (Ch. 1)
-- Part Two: The Confucian Core 儒 — Righteousness + Profit, Harmony vs Co-opetition (Ch. 2–3)
-- Part Three: Ru + Dao 内圣外王 — Inner Sage, Outer King (Ch. 4–5)
-- Part Four: The Practice 实践 — The Way of the Confucian Merchant (Ch. 6–7)
-- Part Five: The Exemplars 范例 — The Confucian Tycoons of Asia (Ch. 8)
-- Part Six: RuDao in the Digital Age 数字时代 (Ch. 9)
+The book is structured in six chapters, framed by Front Matter (0) and Back Matter (7):
+- Ch. 1: The Roots 源 — Natural Pursuit of Profit 人性趋利, from 1600 BCE
+- Ch. 2: The Confucian Core 儒 — Righteousness + Profit, Harmony vs Co-opetition
+- Ch. 3: Ru + Dao 内圣外王 — Inner Sage, Outer King
+- Ch. 4: Inner Sage, Outer King, and the RuJiang 内圣外王 · 儒将
+- Ch. 5: RuShang Practice 实践 — The Way of the Confucian Merchant
+- Ch. 6: RuDao in the AI Digital Age 数字时代
 
 ### Table of Contents / 全书目录
 
-Front Matter 前文: Foreword 序言; Author: Why RuDao Matters Today; The Purpose of This Book 本书宗旨; RuDao and the AI Digital Economy 儒道与AI数字经济; Who This Book Is For 读者对象; How to Read This Book 如何阅读
+0 Front Matter 前文: 0.1 Foreword 序言; 0.2 Author: Why RuDao Matters Today 为什么今天需要儒道?; 0.3 The Purpose of This Book 本书宗旨; 0.4 RuDao and the AI Digital Economy 儒道与AI数字经济; 0.5 Who This Book Is For: Tech Executives & Entrepreneurs 读者对象; 0.6 How to Read This Book 如何阅读
 
-1. Shang (c. 1600–1046 BCE): Business Begins 商朝 · 商业起源 — the character 商, 《货殖列传》善因论, Fan Li 范蠡 / Zigong 子贡 / Bai Gui 白圭, and the RuDao Trust System
-2. The Ethical Core: The Eight Virtues and Li Ren 八德 · 里仁 — 兵儒之辨, 和而不同, 儒商八德 仁义礼智信忠孝恕, 仁为体、义为用、忠恕贯之
-3. The Five Constants in Market Competition 仁义礼智信 — 义利并举、富而好礼
-4. Confucian Structure, Daoist Spirit 以儒为骨，以道为神 — 正己、礼、五常、民本; 无为而治、上善若水、反者道之动、知止; 以德驭术
-5. Inner Sage, Outer King, and the RuJiang 内圣外王 · 儒将 — 庄子·天下篇 → 大学·八目; co-opetition beyond The Art of War
-6. RuShang: The Confucian Entrepreneur 儒商 — definition and ideal; 信誉人格，生意来求你
-7. Yi Before Profit 义先于利 — exemplars from 子贡、孟洛川、张謇 to 渋沢栄一、稻盛和夫、松下幸之助; Li Ka-shing 李嘉诚 and Robert Kuok 郭鹤年
-8. RuShang Exemplars: Asia's Confucian Tycoons 儒商先贤 · 亚洲儒商列传 — 郭鹤年、李嘉诚、汤恩佳、曹德旺、谢国民家族、陈永栽、霍英东、李国宝家族、董建华、梁振英、李东海; 陈济棠家族三代
-9. RuDao in the AI Digital Economy 儒道 × AI 数字经济 — 数字巨头的儒道之鉴 (Apple/Google/Microsoft/Amazon), Web3/Web4 RuDao Trust System, Dr. Zhu Jia-ming 朱嘉明, 文明对话与新儒商商业文明, 内圣外王与未来
+Ch.1 The Roots 源 · Natural Pursuit of Profit 人性趋利 from 1600 BCE
+- 1.1 Shang (c. 1600–1046 BCE): Business Begins 商朝 · 商业起源 — the character 商, 《货殖列传》善因论, Division of Labor, Natural Pursuit of Profit
+- 1.2 The wisdom of FanLi 范蠡, ZiGong 子贡, BaiGui 白圭 — 智勇仁强; 君子富，好行其德
+- 1.3 RuDao Trust System: From ancient philosophy to global cross-border credit — why virtue alone cannot survive the market
 
-Back Matter 后文: Afterword 后记; Appendix A · Classified Index of Quotes 《论语》原文对照《货殖列传》名句集; Appendix B · Core Terminology 核心术语中英对照; Sources & References 参考文献与链接
+Ch.2 The Confucian Core 儒 · Righteousness + Profit, Harmony vs Co-opetition
+- 2.1 Why Sun Tzu Alone Is Not Enough 兵儒之辨 — Co-opetition: Harmony in Difference 和而不同
+- 2.2 The Ethical Core: The Eight Virtues and Li Ren 八德 · 里仁 — 儒商八德 仁义礼智信忠孝恕, Inner Sage 内圣 / Outer King 外王, 以仁德为核心
+- 2.3 仁为体、义为用、忠恕贯之 — the righteousness–profit distinction
+- 2.4 The Five Constants in Market Competition 仁义礼智信 — 义利并举、富而好礼
+
+Ch.3 Ru + Dao 内圣外王 · Inner Sage, Outer King
+- 3.1 Confucian Structure, Daoist Spirit 以儒为骨，以道为神 — 正己、礼、五常、民本
+- 3.2 The Daoist spirit: 无为而治、上善若水、反者道之动、知止; 以德驭术
+
+Ch.4 Inner Sage, Outer King, and the RuJiang 内圣外王 · 儒将
+- 4.1 Origin: 庄子·天下篇 → 大学·八目; 内圣是根、外王是果
+- 4.2 The Outer King as RuJiang 儒将 — Co-opetition Strategy Beyond The Art of War
+- 4.3 The Art of War (Sun Tzu) vs Co-opetition 竞合之道 — turning counterparties into partners; surviving adversity and crisis; Three Kingdoms RuJiang wisdom
+
+Ch.5 RuShang Practice 实践 · The Way of the Confucian Merchant
+- 5.1 RuShang: The Confucian Entrepreneur 儒商 — definition and ideal
+- 5.2 Yi Before Profit 义先于利 — 仁 / 义 / 利 and sustainable wealth
+- 5.3 RuShang Exemplars Across 2,500 Years 儒商先贤 — 子贡、孟洛川（瑞蚨祥）、张謇 to 渋沢栄一、稻盛和夫、松下幸之助
+- 5.4 Modern RuShang Exemplars: Asia's Confucian Tycoons 亚洲儒商列传 — Li Ka-shing 李嘉诚 (信誉人格，生意来求你), Robert Kuok 郭鹤年, Cao Dewang 曹德旺, Chearavanont family 谢国民家族, Lucio Tan 陈永栽, Henry Fok 霍英东, Li family / BEA 李国宝家族, Tung Chee-hwa 董建华, Leung Chun-ying 梁振英, Li Tung-hoy 李东海, Tong Yun-kai 汤恩佳; 陈济棠家族三代 (儒将・儒商・儒家)
+
+Ch.6 RuDao in the AI Digital Age 数字时代
+- 6.1 RuDao in the AI Digital Economy 儒道 × AI 数字经济 — Dr. Zhu Jia-ming 朱嘉明; Web3/Web4 RuDao Trust System
+- 6.2 Dialogue of Civilizations and the New Confucian Business Civilization (文明对话与新儒商商业文明) — Toynbee, Ikeda
+- 6.3 The Digital Giants Through the Lens（数字巨头的儒道之鉴）— Apple, Google, Microsoft, Amazon; personal IP and enterprise system
+- 6.4 A 30-year practitioner's witness: from Web1 to AI, Web3, Web4 — 内圣外王与未来 · Conclusion
+- 6.5 Synthesis: 以德驭术 as the operating system of the digital age — 以内圣之德，行外王之利
+
+7 Back Matter 后文: 7.1 Afterword 后记; 7.2 Appendix A · Classified Index of Quotes 《论语》原文对照《货殖列传》名句集; 7.3 Appendix B · Core Terminology 核心术语中英对照; 7.4 Sources & References 参考文献与链接; 7.5 HuaXue 华学 — the Confucian Academy and modern RuShang education
 
 ## Core Thesis
 
@@ -66,7 +89,7 @@ Chinese: 儒道, 儒将, 唐仪, 超越孙子兵法, 儒家竞合之道, 平衡�
 - Author: Tony Tong (唐仪)
 - Year: 2026
 - Language: Bilingual English / 中文
-- Structure: Six Parts, Nine Chapters (with Front Matter & Back Matter)
+- Structure: Six Chapters (with Front Matter 0 & Back Matter 7)
 - ISBN: Forthcoming
 - ASIN: B0HJ458RRC
 - Amazon Pre-Order URL: https://www.amazon.com/dp/B0HJ458RRC
