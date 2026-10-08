@@ -349,12 +349,14 @@
 
   /* ------------------------------------------------------ rating ---- */
 
-  function paintStars(value) {
+  function paintStars(value, preview) {
     stars.forEach(function (btn) {
       var v = parseInt(btn.getAttribute('data-value'), 10);
       btn.classList.toggle('on', v <= value);
-      btn.setAttribute('aria-checked', v === value ? 'true' : 'false');
-      btn.tabIndex = v === value ? 0 : -1;
+      if (!preview) {
+        btn.setAttribute('aria-checked', v === value ? 'true' : 'false');
+        btn.tabIndex = v === value ? 0 : -1;
+      }
     });
     ratingText.textContent = value + ' / 5 — ' + (LABELS[value] || '');
   }
@@ -367,8 +369,7 @@
   stars.forEach(function (btn) {
     btn.addEventListener('click', function () {
       setRating(parseInt(btn.getAttribute('data-value'), 10));
-    });
-    btn.addEventListener('keydown', function (ev) {
+    });    btn.addEventListener('keydown', function (ev) {
       var v = parseInt(ratingInput.value, 10) || 5;
       if (ev.key === 'ArrowRight' || ev.key === 'ArrowUp') {
         ev.preventDefault();
@@ -381,6 +382,19 @@
       }
     });
   });
+
+  /* Hovering the gold bar previews the score, so it is obvious it is clickable. */
+  (function () {
+    var starBox = document.getElementById('blogStars');
+    if (!starBox) return;
+    starBox.addEventListener('mouseover', function (ev) {
+      var hit = ev.target && ev.target.closest ? ev.target.closest('.blog-star') : null;
+      if (hit) paintStars(parseInt(hit.getAttribute('data-value'), 10), true);
+    });
+    starBox.addEventListener('mouseleave', function () {
+      paintStars(parseInt(ratingInput.value, 10) || 5);
+    });
+  })();
 
   /* --------------------------------------- own-post control bar ---- */
 
