@@ -472,6 +472,20 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     letter-spacing: 0.02em;
     margin-top: 0.5rem;
 }
+a.title-by {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color .2s ease;
+}
+a.title-by::after {
+    content: ' →';
+    font-size: 0.8em;
+    opacity: 0;
+    transition: opacity .2s ease;
+}
+a.title-by:hover { color: var(--vermillion); }
+a.title-by:hover::after { opacity: 1; }
 
 .hero-subtitle-en {
     font-family: var(--font-serif-en);
