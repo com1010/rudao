@@ -1694,12 +1694,20 @@ a.title-by:hover::after { opacity: 1; }
     gap: clamp(3rem, 6vw, 5rem);
     align-items: center;
 }
+/* column wrapper so the seal chop sits under the portrait */
+.author-portrait-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.15rem;
+}
 .author-portrait {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     aspect-ratio: 1;
+    width: 100%;
     max-width: 380px;
     margin: 0 auto;
 }
@@ -1759,6 +1767,17 @@ a.title-by:hover::after { opacity: 1; }
     transform: rotate(-8deg);
     box-shadow: 0 10px 25px rgba(169, 50, 38, 0.4);
 }
+/* the real seal chop under the author photo */
+.portrait-seal {
+    display: block;
+    width: 110px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(185, 146, 58, 0.28);
+    transform: rotate(1.5deg);
+    transition: transform .35s ease;
+}
+.portrait-seal:hover { transform: rotate(0deg) scale(1.03); }
 
 .author-info .section-num { color: var(--gold-soft); }
 .author-name {
@@ -2494,6 +2513,7 @@ a.title-by:hover::after { opacity: 1; }
         grid-template-columns: 1fr;
     }
     .author-portrait { max-width: 260px; }
+    .portrait-seal { width: 92px; }
     .author-credentials {
         grid-template-columns: 1fr;
     }
