@@ -1715,7 +1715,15 @@
             <div class="blog-layout">
                 <!-- Post form -->
                 <form class="blog-form" id="blogForm" novalidate>
-                    <h3 class="blog-form-title">Post your message · 发表留言</h3>
+                    <div class="blog-form-head">
+                        <h3 class="blog-form-title">Post your message · 发表留言</h3>
+                        <span class="blog-window" id="blogWindow">Withdraw or rewrite within 10 minutes · 发布后 10 分钟内可撤回或修改</span>
+                    </div>
+
+                    <p class="blog-edit-banner" id="blogEditBanner" hidden>
+                        <span class="blog-edit-banner-text">Editing your message · 正在修改您的留言</span>
+                        <button type="button" class="blog-edit-cancel" id="blogEditCancel">Cancel · 取消修改</button>
+                    </p>
 
                     <div class="blog-row">
                         <div class="blog-field">
@@ -1738,18 +1746,19 @@
 
                     <div class="blog-row">
                         <div class="blog-field">
-                            <label for="blogDate">Date / Time · 日期时间</label>
-                            <input type="datetime-local" id="blogDate" name="dateText" />
-                        </div>
-                        <div class="blog-field">
                             <label for="blogLocation">Location · 地点</label>
                             <input type="text" id="blogLocation" name="location" maxlength="60" placeholder="e.g. Hong Kong · 香港" />
                         </div>
+                        <div class="blog-field blog-field-auto">
+                            <label>Date / Time · 日期时间</label>
+                            <p class="blog-auto-time" id="blogAutoTime">—</p>
+                            <span class="blog-auto-hint">Set automatically — nothing to type · 系统自动记录，无需填写</span>
+                        </div>
                     </div>
 
-                    <div class="blog-field">
+                    <div class="blog-field blog-field-message">
                         <label for="blogMessage">Reader's Message · 读者留言 <span class="req">*</span></label>
-                        <textarea id="blogMessage" name="message" rows="7" maxlength="2000" required placeholder="What did RuDao mean to you? Share a review, a reflection, or a note to the author… · 与读者分享您的书评、心得或对作者的话…"></textarea>
+                        <textarea id="blogMessage" name="message" rows="12" maxlength="2000" required placeholder="What did RuDao mean to you? Share a review, a reflection, or a note to the author… · 与读者分享您的书评、心得或对作者的话…"></textarea>
                         <span class="blog-counter" id="blogCounter" aria-hidden="true">0 / 2000</span>
                     </div>
 
@@ -1760,7 +1769,7 @@
                         <button type="submit" class="btn btn-primary" id="blogSubmit">Post Message · 发布留言</button>
                         <span class="blog-status" id="blogStatus" role="status" aria-live="polite"></span>
                     </div>
-                    <p class="blog-note">Your message is published publicly and instantly. Please keep it respectful. · 留言将立即公开展示，请文明用语。</p>
+                    <p class="blog-note">Your message is published publicly and instantly. You may <strong>withdraw it or rewrite it within 10 minutes</strong> of posting — after that it stays on the board. · 留言将立即公开展示；发布后 <strong>10 分钟内可撤回或修改重发</strong>，超时后留言将永久保留。</p>
                 </form>
 
                 <!-- Public stream -->
