@@ -1703,6 +1703,84 @@
         </div>
     </section>
 
+    <!-- ========== XIV. READERS' BLOG ========== -->
+    <section class="section readers-blog" id="readers-blog">
+        <div class="container">
+            <div class="section-head">
+                <span class="section-num">XIV.</span>
+                <h2 class="section-title">Readers' Blog · 读者博客</h2>
+                <p class="section-subtitle">Share your review of <em>RuDao</em> with fellow readers — 读者公开留言板：写下您的评分、书评与感想，与全球读者共享。</p>
+            </div>
+
+            <div class="blog-layout">
+                <!-- Post form -->
+                <form class="blog-form" id="blogForm" novalidate>
+                    <h3 class="blog-form-title">Post your message · 发表留言</h3>
+
+                    <div class="blog-row">
+                        <div class="blog-field">
+                            <label for="blogName">Name and Title · 姓名与头衔 <span class="req">*</span></label>
+                            <input type="text" id="blogName" name="name" maxlength="80" required autocomplete="name" placeholder="e.g. Jane Lee · Investor, Singapore" />
+                        </div>
+                        <div class="blog-field blog-field-rating">
+                            <label id="blogRatingLabel">Review Rating · 评分 <span class="req">*</span></label>
+                            <div class="blog-stars" id="blogStars" role="radiogroup" aria-labelledby="blogRatingLabel" aria-describedby="blogRatingText">
+                                <button type="button" class="blog-star" data-value="1" role="radio" aria-checked="false" aria-label="1 star — 一星">★</button>
+                                <button type="button" class="blog-star" data-value="2" role="radio" aria-checked="false" aria-label="2 stars — 二星">★</button>
+                                <button type="button" class="blog-star" data-value="3" role="radio" aria-checked="false" aria-label="3 stars — 三星">★</button>
+                                <button type="button" class="blog-star" data-value="4" role="radio" aria-checked="false" aria-label="4 stars — 四星">★</button>
+                                <button type="button" class="blog-star" data-value="5" role="radio" aria-checked="true" aria-label="5 stars — 五星">★</button>
+                            </div>
+                            <input type="hidden" id="blogRating" name="rating" value="5" />
+                            <span class="blog-rating-text" id="blogRatingText">5 / 5 — Excellent 极好</span>
+                        </div>
+                    </div>
+
+                    <div class="blog-row">
+                        <div class="blog-field">
+                            <label for="blogDate">Date / Time · 日期时间</label>
+                            <input type="datetime-local" id="blogDate" name="dateText" />
+                        </div>
+                        <div class="blog-field">
+                            <label for="blogLocation">Location · 地点</label>
+                            <input type="text" id="blogLocation" name="location" maxlength="60" placeholder="e.g. Hong Kong · 香港" />
+                        </div>
+                    </div>
+
+                    <div class="blog-field">
+                        <label for="blogMessage">Reader's Message · 读者留言 <span class="req">*</span></label>
+                        <textarea id="blogMessage" name="message" rows="7" maxlength="2000" required placeholder="What did RuDao mean to you? Share a review, a reflection, or a note to the author… · 与读者分享您的书评、心得或对作者的话…"></textarea>
+                        <span class="blog-counter" id="blogCounter" aria-hidden="true">0 / 2000</span>
+                    </div>
+
+                    <!-- Honeypot: invisible to humans, catches spam bots -->
+                    <input type="checkbox" name="botcheck" class="contact-botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+                    <div class="blog-actions">
+                        <button type="submit" class="btn btn-primary" id="blogSubmit">Post Message · 发布留言</button>
+                        <span class="blog-status" id="blogStatus" role="status" aria-live="polite"></span>
+                    </div>
+                    <p class="blog-note">Your message is published publicly and instantly. Please keep it respectful. · 留言将立即公开展示，请文明用语。</p>
+                </form>
+
+                <!-- Public stream -->
+                <div class="blog-stream">
+                    <div class="blog-stream-head">
+                        <h3>Recent Messages · 最新留言</h3>
+                        <span class="blog-count" id="blogCount" aria-live="polite"></span>
+                    </div>
+                    <div class="blog-posts" id="blogPosts">
+                        <p class="blog-loading">Loading messages… · 正在加载留言…</p>
+                    </div>
+                    <div class="blog-stream-foot">
+                        <button type="button" class="btn btn-ghost" id="blogMore" hidden>Load more · 加载更多</button>
+                        <button type="button" class="btn btn-ghost" id="blogRefresh" hidden>Refresh · 刷新</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ========== FOOTER ========== -->
     <footer class="footer">
         <div class="container footer-inner">
@@ -1727,6 +1805,7 @@
                 <a href="#lineage">Lineage</a>
                 <a href="#author">Author</a>
                 <a href="#endorsements">Endorsements · 推荐语</a>
+                <a href="#readers-blog">Readers' Blog · 读者博客</a>
                 <a href="#contact">Contact</a>
             </div>
             <div class="footer-meta">
@@ -1804,5 +1883,6 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <script src="js/blog.js"></script>
 </body>
 </html>
