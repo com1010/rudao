@@ -355,7 +355,7 @@
     // Contact form — "Contact the Author"
     // ------------------------------------------------------------
     // Every message is delivered to BOTH:
-    //   Tony@RuDao.us          (author)
+    //   Tony@RuDao.org          (author)
     //   com2000@agent.qq.com   (author's WorkBuddy / Agent Mail inbox)
     //
     // Delivery backends, tried in this order:
@@ -376,7 +376,7 @@
         web3formsEndpoint: 'https://api.web3forms.com/submit',
         // Optional Cloudflare Pages Function endpoint (see functions/api/contact.js)
         apiEndpoint: '/api/contact',
-        recipients: ['Tony@RuDao.us', 'com2000@agent.qq.com']
+        recipients: ['Tony@RuDao.org', 'com2000@agent.qq.com']
     };
 
     var contactForm = document.getElementById('contactForm');

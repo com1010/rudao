@@ -4,7 +4,7 @@
  * Sends "Contact the Author" form submissions to the author's inboxes
  * using Resend (https://resend.com). Two recipients by default:
  *
- *     Tony@RuDao.us  +  com2000@agent.qq.com
+ *     Tony@RuDao.org  +  com2000@agent.qq.com
  *
  * This is OPTIONAL. If it is not deployed, the site automatically falls
  * back to Web3Forms keys configured in js/script.js, and if those are not
@@ -19,7 +19,7 @@
  *
  *        RESEND_API_KEY = re_xxxxxxxxxxxxxxxx
  *        CONTACT_FROM   = RuDao.us Contact Form <noreply@rudao.us>
- *        CONTACT_TO     = Tony@RuDao.us,com2000@agent.qq.com
+ *        CONTACT_TO     = Tony@RuDao.org,com2000@agent.qq.com
  *
  * 4. Commit and push — Cloudflare Pages deploys this function automatically
  *    (the /functions directory is detected on any Pages project connected
@@ -78,7 +78,7 @@ export async function onRequestPost(context) {
   }
 
   const from = env.CONTACT_FROM || 'RuDao.us Contact Form <noreply@rudao.us>';
-  const to = (env.CONTACT_TO || 'Tony@RuDao.us,com2000@agent.qq.com')
+  const to = (env.CONTACT_TO || 'Tony@RuDao.org,com2000@agent.qq.com')
     .split(',')
     .map((s) => s.trim())
     .filter(Boolean);
