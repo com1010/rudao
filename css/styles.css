@@ -2978,6 +2978,42 @@ a.title-by:hover::after { opacity: 1; }
 }
 
 /* ============================================
+   7.3 · CORE TERMINOLOGY GLOSSARY · 核心术语中英对照
+   Four-column bilingual glossary table.
+   ============================================ */
+.glossary { background: var(--paper-warm); }
+.glossary-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: clamp(1.6rem, 3vw, 2.4rem); }
+.glossary-table { width: 100%; min-width: 720px; border-collapse: collapse; background: var(--paper, #fff); font-size: 0.95rem; }
+.glossary-table th {
+    font-family: var(--font-body);
+    text-align: left;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--vermillion-deep, var(--vermillion));
+    padding: 0.9rem 1rem;
+    border-bottom: 2px solid var(--ink-black);
+    white-space: nowrap;
+}
+.glossary-table td {
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid rgba(169, 50, 38, 0.16);
+    vertical-align: top;
+    line-height: 1.65;
+}
+.glossary-table tbody tr:nth-child(even) td { background: rgba(184, 146, 58, 0.06); }
+.glossary-table tbody tr:last-child td { border-bottom: 2px solid var(--ink-black); }
+.glossary-zh { font-family: var(--font-cn-body); font-size: 1.18rem; font-weight: 700; color: var(--ink-black); white-space: nowrap; }
+.glossary-py { font-style: italic; color: var(--gray); white-space: nowrap; }
+.glossary-en { font-weight: 700; color: var(--ink-black); }
+.glossary-def { color: var(--ink-mid); min-width: 240px; }
+@media (max-width: 640px) {
+    .glossary-zh { font-size: 1.08rem; }
+    .glossary-table { font-size: 0.88rem; }
+    .glossary-table th, .glossary-table td { padding: 0.75rem 0.8rem; }
+}
+
+/* ============================================
    XIV. READERS' BLOG · 读者博客
    Public message board: post form + live stream.
    ============================================ */
