@@ -138,6 +138,17 @@ export async function onRequestGet(context) {
   if (!env.BLOG_KV) return json({ success: false, error: 'not_configured' }, 503);
 
   const url = new URL(request.url);
+
+  // Password check for the hidden "Author Admin" panel. It only ever answers
+  // whether the token that was sent is the right one — never whether one exists.
+  if (url.searchParams.get('whoami') === 'admin') {
+    const sent = request.headers.get('x-admin-token') || '';
+    if (env.BLOG_ADMIN_TOKEN && sent === env.BLOG_ADMIN_TOKEN) {
+      return json({ success: true, admin: true });
+    }
+    return json({ success: false, admin: false, error: 'unauthorized' }, 401);
+  }
+
   const limit = Math.min(Math.max(parseInt(url.searchParams.get('limit') || '10', 10) || 10, 1), 50);
   const cursor = url.searchParams.get('cursor') || undefined;
 

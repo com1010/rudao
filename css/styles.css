@@ -3327,6 +3327,121 @@ a.title-by:hover::after { opacity: 1; }
 }
 .blog-stream-foot .btn { padding: 0.7rem 1.4rem; font-size: 0.85rem; }
 
+/* ---- Hidden author / moderation panel ---- */
+.blog-admin {
+    margin-top: 1rem;
+    padding-top: 0.9rem;
+    border-top: 1px dashed rgba(10, 10, 10, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.blog-admin-toggle {
+    background: none;
+    border: 0;
+    padding: 0.2rem 0;
+    font-family: inherit;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    cursor: pointer;
+    transition: color .18s ease;
+}
+.blog-admin-toggle:hover { color: var(--vermillion); }
+.blog-admin-panel {
+    width: 100%;
+    margin-top: 0.8rem;
+    padding: 1rem 1.1rem;
+    background: var(--paper-warm);
+    border: 1px solid rgba(10, 10, 10, 0.1);
+    border-radius: var(--radius);
+}
+.blog-admin-panel[hidden] { display: none; }
+.blog-admin-panel.unlocked { border-color: rgba(47, 122, 79, 0.4); }
+.blog-admin-label {
+    display: block;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 0.5rem;
+}
+.blog-admin-row {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+.blog-admin-row input {
+    flex: 1 1 220px;
+    min-width: 0;
+    padding: 0.7rem 0.9rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-black);
+    background: var(--paper);
+    border: 1.5px solid rgba(10, 10, 10, 0.15);
+    border-radius: var(--radius);
+}
+.blog-admin-row input:focus {
+    outline: none;
+    border-color: var(--vermillion);
+    box-shadow: 0 0 0 3px rgba(169, 50, 38, 0.08);
+}
+.blog-admin-btn { padding: 0.7rem 1.3rem; font-size: 0.82rem; }
+.blog-admin-link {
+    background: none;
+    border: 0;
+    padding: 0.7rem 0.2rem;
+    font-family: inherit;
+    font-size: 0.78rem;
+    color: var(--gray);
+    text-decoration: underline;
+    cursor: pointer;
+}
+.blog-admin-link:hover { color: var(--vermillion); }
+.blog-admin-status {
+    display: block;
+    margin-top: 0.6rem;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--gray);
+}
+.blog-admin-status.ok { color: #2f7a4f; }
+.blog-admin-status.err { color: var(--vermillion); }
+.blog-admin-note {
+    margin: 0.5rem 0 0;
+    font-size: 0.72rem;
+    line-height: 1.6;
+    color: var(--gray-light);
+}
+
+/* Delete button that appears on every card while unlocked */
+.blog-card-admin-del {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.9rem;
+    z-index: 2;
+    font-family: inherit;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    padding: 0.34rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid rgba(169, 50, 38, 0.4);
+    background: var(--paper);
+    color: var(--vermillion);
+    transition: background .18s ease, color .18s ease;
+}
+.blog-card-admin-del:hover {
+    background: var(--vermillion);
+    border-color: var(--vermillion);
+    color: #fff;
+}
+.blog-card-admin-del:disabled { opacity: 0.5; cursor: not-allowed; }
+.blog-admin-mode .blog-card-head { padding-right: 5.6rem; }
+
 /* Two fields per row once there is room (Name + Rating · Location + Date/Time) */
 @media (min-width: 720px) {
     .blog-row { grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 1.1rem 1.6rem; }
@@ -3340,4 +3455,8 @@ a.title-by:hover::after { opacity: 1; }
     .blog-card-own-label { width: 100%; }
     .blog-card-btn-danger { margin-left: 0; }
     .blog-card-btn { flex: 1 1 auto; }
+    .blog-admin { align-items: stretch; }
+    .blog-admin-toggle { text-align: right; }
+    .blog-admin-mode .blog-card-head { padding-right: 4.6rem; }
+    .blog-card-admin-del { font-size: 0.66rem; padding: 0.3rem 0.6rem; }
 }

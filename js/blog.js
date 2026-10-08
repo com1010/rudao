@@ -30,10 +30,17 @@
   var refreshBtn = document.getElementById('blogRefresh');
   var editBanner = document.getElementById('blogEditBanner');
   var editCancel = document.getElementById('blogEditCancel');
+  var adminToggle = document.getElementById('blogAdminToggle');
+  var adminPanel = document.getElementById('blogAdminPanel');
+  var adminKey = document.getElementById('blogAdminKey');
+  var adminUnlock = document.getElementById('blogAdminUnlock');
+  var adminLock = document.getElementById('blogAdminLock');
+  var adminStatus = document.getElementById('blogAdminStatus');
 
   var API = '/api/blog';
   var EDIT_WINDOW_MS = 10 * 60 * 1000;
   var TOKENS_KEY = 'rudaoBlogTokens';
+  var ADMIN_KEY = 'rudaoBlogAdmin';
 
   var LABELS = {
     5: 'Excellent · 极好',
@@ -48,6 +55,177 @@
   var cursor = null;
   var busy = false;
   var editing = null;
+
+  /* --------------------------------------------- author admin mode ---- */
+  /* A hidden moderation panel: enter the password once (kept in
+     sessionStorage, so it disappears when the tab is closed) and every
+     message gets a "Delete" button. */
+
+  var adminToken = null;
+  try {
+    adminToken = window.sessionStorage.getItem(ADMIN_KEY) || null;
+  } catch (err) {
+    adminToken = null;
+  }
+
+  function saveAdminToken(value) {
+    adminToken = value || null;
+    try {
+      if (adminToken) window.sessionStorage.setItem(ADMIN_KEY, adminToken);
+      else window.sessionStorage.removeItem(ADMIN_KEY);
+    } catch (err) {
+      /* session storage blocked — admin mode lasts only for this page view */
+    }
+  }
+
+  function setAdminStatus(text, kind) {
+    if (!adminStatus) return;
+    adminStatus.textContent = text || '';
+    adminStatus.className = 'blog-admin-status' + (kind ? ' ' + kind : '');
+  }
+
+  function buildAdminDeleteBtn() {
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'blog-card-admin-del';
+    btn.setAttribute('data-act', 'admin-delete');
+    btn.title = 'Admin: delete this message · 管理员删除';
+    btn.textContent = 'Delete · 删除';
+    return btn;
+  }
+
+  function applyAdminMode() {
+    postsEl.classList.toggle('blog-admin-mode', !!adminToken);
+    var cards = postsEl.querySelectorAll('.blog-card');
+    Array.prototype.forEach.call(cards, function (card) {
+      var existing = card.querySelector('.blog-card-admin-del');
+      if (adminToken && !existing) card.appendChild(buildAdminDeleteBtn());
+      else if (!adminToken && existing && existing.parentNode) existing.parentNode.removeChild(existing);
+    });
+  }
+
+  function openAdmin() {
+    if (!adminPanel) return;
+    adminPanel.hidden = false;
+    if (adminToggle) adminToggle.setAttribute('aria-expanded', 'true');
+    if (!adminToken && adminKey) adminKey.focus();
+  }
+
+  function closeAdmin() {
+    if (!adminPanel) return;
+    adminPanel.hidden = true;
+    if (adminToggle) adminToggle.setAttribute('aria-expanded', 'false');
+  }
+
+  function paintAdminPanel() {
+    if (!adminPanel) return;
+    var on = !!adminToken;
+    adminPanel.classList.toggle('unlocked', on);
+    if (adminUnlock) adminUnlock.hidden = on;
+    if (adminKey) adminKey.hidden = on;
+    if (adminLock) adminLock.hidden = !on;
+    if (on) setAdminStatus('Unlocked — delete buttons are shown on every message. · 已解锁：每条留言都有删除按钮。', 'ok');
+  }
+
+  function verifyAdmin(token) {
+    return fetch(API + '?whoami=admin', {
+      headers: { Accept: 'application/json', 'x-admin-token': token },
+    })
+      .then(parse)
+      .then(function (out) {
+        return out.status === 200 && out.data && out.data.admin === true;
+      })
+      .catch(function () {
+        return false;
+      });
+  }
+
+  function unlockAdmin() {
+    var token = adminKey ? adminKey.value.trim() : '';
+    if (!token) {
+      setAdminStatus('Please type the admin password. · 请输入管理密码。', 'err');
+      return;
+    }
+    setAdminStatus('Checking… · 正在验证…', 'pending');
+    verifyAdmin(token).then(function (ok) {
+      if (!ok) {
+        setAdminStatus('Wrong password — nothing was unlocked. · 密码不正确，未解锁。', 'err');
+        if (adminKey) {
+          adminKey.value = '';
+          adminKey.focus();
+        }
+        return;
+      }
+      saveAdminToken(token);
+      if (adminKey) adminKey.value = '';
+      paintAdminPanel();
+      applyAdminMode();
+      load(true);
+    });
+  }
+
+  function lockAdmin() {
+    saveAdminToken(null);
+    paintAdminPanel();
+    applyAdminMode();
+    setAdminStatus('Locked — delete buttons removed. · 已锁定，删除按钮已隐藏。', 'pending');
+  }
+
+  function adminDelete(id, btn) {
+    if (!adminToken) return;
+    if (!window.confirm('Delete this message permanently? · 确认永久删除这条留言？')) return;
+    btn.disabled = true;
+    btn.textContent = '…';
+    fetch(API + '?id=' + encodeURIComponent(id), {
+      method: 'DELETE',
+      headers: { Accept: 'application/json', 'x-admin-token': adminToken },
+    })
+      .then(parse)
+      .then(function (out) {
+        var data = out.data || {};
+        if (!data.success) {
+          if (out.status === 401) {
+            lockAdmin();
+            setAdminStatus('The admin password was rejected — please unlock again. · 管理密码无效，请重新解锁。', 'err');
+          } else if (data.error === 'not_found') {
+            removeCard(id);
+            setCount(Object.keys(renderedIds).length);
+            setAdminStatus('That message was already gone. · 该留言已不存在。', 'pending');
+          } else {
+            setAdminStatus('Could not delete the message. Please try again. · 删除失败，请稍后重试。', 'err');
+            btn.disabled = false;
+            btn.textContent = 'Delete · 删除';
+          }
+          return;
+        }
+        forgetPost(id);
+        removeCard(id);
+        setCount(Object.keys(renderedIds).length);
+        setAdminStatus('Message deleted. · 留言已删除。', 'ok');
+      })
+      .catch(function () {
+        setAdminStatus('Could not delete the message. Please try again. · 删除失败，请稍后重试。', 'err');
+        btn.disabled = false;
+        btn.textContent = 'Delete · 删除';
+      });
+  }
+
+  if (adminToggle) {
+    adminToggle.addEventListener('click', function () {
+      if (adminPanel && !adminPanel.hidden) closeAdmin();
+      else openAdmin();
+    });
+  }
+  if (adminUnlock) adminUnlock.addEventListener('click', unlockAdmin);
+  if (adminLock) adminLock.addEventListener('click', lockAdmin);
+  if (adminKey) {
+    adminKey.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Enter') {
+        ev.preventDefault();
+        unlockAdmin();
+      }
+    });
+  }
 
   /* -------------------------------------------- author token store ---- */
   /* After posting we keep the one-off token in localStorage so this browser
@@ -293,6 +471,11 @@
     if (tokens[post.id] && timeLeft(post) > 0) {
       card.classList.add('blog-card-owned');
       card.appendChild(buildOwnBar(post));
+    }
+
+    if (adminToken) {
+      card.classList.add('blog-card-has-admin');
+      card.appendChild(buildAdminDeleteBtn());
     }
 
     return card;
@@ -562,7 +745,17 @@
   /* --------------------------------------------- card actions ---- */
 
   postsEl.addEventListener('click', function (ev) {
-    var btn = ev.target && ev.target.closest ? ev.target.closest('.blog-card-btn') : null;
+    var target = ev.target;
+    if (!target || !target.closest) return;
+
+    var delBtn = target.closest('.blog-card-admin-del');
+    if (delBtn) {
+      var delCard = delBtn.closest('.blog-card');
+      if (delCard) adminDelete(delCard.getAttribute('data-post-id'), delBtn);
+      return;
+    }
+
+    var btn = target.closest('.blog-card-btn');
     if (!btn) return;
     var bar = btn.closest('.blog-card-own');
     var id = bar ? bar.getAttribute('data-post-id') : null;
@@ -670,5 +863,17 @@
   paintAutoTime();
   window.setInterval(paintAutoTime, 20000);
   window.setInterval(tick, 1000);
+
+  // A password remembered in this tab is re-checked quietly on every visit.
+  if (adminToken) {
+    verifyAdmin(adminToken).then(function (ok) {
+      if (!ok) {
+        saveAdminToken(null);
+        paintAdminPanel();
+        applyAdminMode();
+      }
+    });
+  }
+  paintAdminPanel();
   load(true);
 })();

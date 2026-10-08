@@ -1785,6 +1785,21 @@
                         <button type="button" class="btn btn-ghost" id="blogMore" hidden>Load more · 加载更多</button>
                         <button type="button" class="btn btn-ghost" id="blogRefresh" hidden>Refresh · 刷新</button>
                     </div>
+
+                    <!-- Hidden author / moderation entry -->
+                    <div class="blog-admin" id="blogAdmin">
+                        <button type="button" class="blog-admin-toggle" id="blogAdminToggle" aria-expanded="false" aria-controls="blogAdminPanel">Author Admin · 作者管理</button>
+                        <div class="blog-admin-panel" id="blogAdminPanel" hidden>
+                            <label class="blog-admin-label" for="blogAdminKey">Admin password · 管理密码</label>
+                            <div class="blog-admin-row">
+                                <input type="password" id="blogAdminKey" name="adminKey" autocomplete="off" spellcheck="false" placeholder="password · 密码" />
+                                <button type="button" class="btn btn-ghost blog-admin-btn" id="blogAdminUnlock">Unlock · 解锁</button>
+                                <button type="button" class="blog-admin-btn blog-admin-link" id="blogAdminLock" hidden>Lock · 退出管理</button>
+                            </div>
+                            <span class="blog-admin-status" id="blogAdminStatus" role="status" aria-live="polite"></span>
+                            <p class="blog-admin-note">Unlocked: a “Delete · 删除” button appears on every message so you can remove spam in one click. · 解锁后每条留言右上角会出现「删除」按钮，可直接清除垃圾留言。</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
