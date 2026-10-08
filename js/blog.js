@@ -22,6 +22,7 @@
   var counter = document.getElementById('blogCounter');
   var autoTimeEl = document.getElementById('blogAutoTime');
   var stars = Array.prototype.slice.call(document.querySelectorAll('.blog-star'));
+  var starsBox = document.getElementById('blogStars');
   var submitBtn = document.getElementById('blogSubmit');
   var statusEl = document.getElementById('blogStatus');
   var postsEl = document.getElementById('blogPosts');
@@ -358,6 +359,8 @@
         btn.tabIndex = v === value ? 0 : -1;
       }
     });
+    // Drive the gold colour bar so the score is visible as a fill, not just stars.
+    if (starsBox) starsBox.style.setProperty('--rate', String(value));
     ratingText.textContent = value + ' / 5 — ' + (LABELS[value] || '');
   }
 
