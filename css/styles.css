@@ -2973,6 +2973,9 @@ a.title-by:hover::after { opacity: 1; }
    Public message board: post form + live stream.
    ============================================ */
 .readers-blog { background: var(--paper-warm); }
+/* The message board gets a wider canvas than the text sections, so the
+   Reader's Message box is as wide as the screen comfortably allows. */
+.readers-blog .container { max-width: 1420px; }
 
 .blog-layout {
     display: grid;
@@ -3098,13 +3101,16 @@ a.title-by:hover::after { opacity: 1; }
 }
 
 /* ---- Message box: big, wide, long ---- */
-.blog-field-message { margin-bottom: 1.2rem; }
-.blog-field-message label { font-size: 0.78rem; color: var(--ink-mid); }
+.blog-field-message { margin-bottom: 1.5rem; }
+.blog-field-message label { font-size: 0.9rem; color: var(--ink-mid); }
 .blog-field-message textarea {
-    min-height: clamp(290px, 42vh, 460px);
-    padding: 1.1rem 1.25rem;
-    font-size: 1.06rem;
-    line-height: 1.95;
+    display: block;
+    width: 100%;
+    min-height: clamp(380px, 58vh, 700px);
+    padding: 1.4rem 1.6rem;
+    font-size: 1.15rem;
+    line-height: 2.05;
+    resize: vertical;
 }
 .blog-field-message textarea:focus {
     box-shadow: 0 0 0 4px rgba(169, 50, 38, 0.1);
@@ -3498,7 +3504,7 @@ a.title-by:hover::after { opacity: 1; }
     .blog-window { white-space: normal; }
     .blog-stars { gap: 0.05rem; padding: 0.4rem 0.6rem; }
     .blog-star { font-size: 1.85rem; }
-    .blog-field-message textarea { min-height: 280px; }
+    .blog-field-message textarea { min-height: 380px; padding: 1.15rem 1.2rem; font-size: 1.08rem; }
     .blog-card-own-label { width: 100%; }
     .blog-card-btn-danger { margin-left: 0; }
     .blog-card-btn { flex: 1 1 auto; }
