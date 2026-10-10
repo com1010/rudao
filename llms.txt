@@ -83,7 +83,7 @@ Chinese: 儒道, 儒将, 唐仪, 超越孙子兵法, 儒家竞合之道, 平衡�
 ## Book Metadata
 
 - Title: RuDao (儒道)
-- Chinese subtitle: 《儒将：超越孙子兵法》
+- Chinese subtitle: 《儒将:超越孙子兵法》
 - English subtitle: Beyond The Art of War
 - Framework: Ru-Jiang Co-opetition (儒将竞合)
 - Author: Tony Tong (唐仪)

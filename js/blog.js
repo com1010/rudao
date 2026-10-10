@@ -125,7 +125,7 @@
     if (adminUnlock) adminUnlock.hidden = on;
     if (adminKey) adminKey.hidden = on;
     if (adminLock) adminLock.hidden = !on;
-    if (on) setAdminStatus('Unlocked — delete buttons are shown on every message. · 已解锁：每条留言都有删除按钮。', 'ok');
+    if (on) setAdminStatus('Unlocked — delete buttons are shown on every message. · 已解锁:每条留言都有删除按钮。', 'ok');
   }
 
   function verifyAdmin(token) {
@@ -629,7 +629,7 @@
     updateCounter();
     editBanner.hidden = false;
     submitBtn.textContent = 'Update Message · 更新留言';
-    setStatus('Editing your message — press “Update Message” to save it. · 正在修改，完成后请点「更新留言」。', 'pending');
+    setStatus('Editing your message — press "Update Message" to save it. · 正在修改，完成后请点「更新留言」。', 'pending');
     try {
       form.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } catch (err) {
