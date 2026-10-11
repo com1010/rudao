@@ -580,7 +580,7 @@ a.title-by:hover::after { opacity: 1; }
     line-height: 1.55;
     color: var(--ink-mid);
     max-width: 640px;
-    margin: 0 auto 2.6rem;
+    margin: 0 auto 0.6rem;
 }
 
 .hero-actions {
@@ -2499,31 +2499,36 @@ a.title-by:hover::after { opacity: 1; }
 }
 
 @media (max-width: 860px) {
-    /* No hamburger: the five items stay permanently visible.
-       Brand on its own row, the four links in a wrapped row beneath. */
+    /* No hamburger and NO wrapping: everything lives on one single row —
+       RuDao 儒道 · TOC 目录 · Author · Reviews 读者评语 */
     .nav-inner {
-        flex-direction: column;
-        flex-wrap: wrap;
+        flex-direction: row;
+        flex-wrap: nowrap;
         justify-content: center;
         align-items: center;
-        gap: 0.1rem;
-        row-gap: 0.15rem;
-        padding: 0.5rem 0.75rem 0.45rem;
+        gap: 0.05rem;
+        padding: 0.5rem 0.45rem 0.45rem;
     }
-    .nav-brand { justify-content: center; }
-    .nav-brand .brand-en { font-size: 1.05rem; }
-    .nav-brand .brand-cn { font-size: 0.86rem; }
+    .nav-brand {
+        justify-content: center;
+        gap: 0.3rem;
+        flex-shrink: 0;
+    }
+    .nav-brand .brand-en { font-size: 1rem; }
+    .nav-brand .brand-cn { font-size: 0.82rem; }
     .nav-links {
         position: static;
+        display: flex;
         flex-direction: row;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         justify-content: center;
         align-items: center;
-        width: 100%;
+        width: auto;
+        min-width: 0;
         background: transparent;
         padding: 0;
         border: 0;
-        gap: 0.1rem 0.15rem;
+        gap: 0;
         transform: none;
         opacity: 1;
         max-height: none;
@@ -2531,19 +2536,20 @@ a.title-by:hover::after { opacity: 1; }
     }
     .nav-links a {
         display: inline-block;
-        padding: 0.3rem 0.45rem;
+        padding: 0.3rem 0.3rem;
         border-radius: 6px;
-        font-size: 0.8rem;
+        font-size: 0.78rem;
         font-weight: 600;
         border-bottom: 0;
+        white-space: nowrap;
     }
     .nav-links a::after { display: none; }
     .nav-links a:hover,
     .nav-links a:focus-visible { background-color: rgba(169, 50, 38, 0.08); }
-    /* keep anchor jumps clear of the taller two-row bar */
+    /* keep anchor jumps clear of the single-row bar */
     section[id],
     .endorse-card,
-    .coeditor { scroll-margin-top: 150px; }
+    .coeditor { scroll-margin-top: 78px; }
     .concept-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
@@ -2900,6 +2906,12 @@ a.title-by:hover::after { opacity: 1; }
 .preface-body a:hover,.toc-ch-points a:hover{color:var(--vermillion);border-bottom-color:var(--vermillion)}
 .dedication-thanks{margin-top:18px;padding-top:16px;border-top:1px dashed rgba(169,50,38,.35)}
 
+/* Dedication: Mayer Lutheran HS / University of Minnesota tribute block */
+.dedication-mlhs{margin-top:clamp(2.4rem,4vw,3.2rem);padding-top:clamp(1.6rem,3vw,2.2rem);border-top:1px dashed rgba(169,50,38,.35)}
+.dedication-mlhs .dedication-subhead{font-family:var(--font-cn-body),var(--font-serif-en);font-size:clamp(1.05rem,1.75vw,1.3rem);font-weight:700;line-height:1.5;color:var(--ink-black);margin:clamp(1.9rem,3.2vw,2.5rem) 0 .9rem;letter-spacing:.01em}
+.dedication-mlhs .dedication-subhead:first-child{margin-top:0}
+.dedication-mlhs .dedication-sign{margin-top:1.9rem;font-family:var(--font-serif-en);font-style:italic;font-size:1.05rem;color:var(--ink-black);text-align:right}
+
 /* ============================================
    TABLE OF CONTENTS — standard TOC list table (v4)
    Replaces the card layout with a printed-book
@@ -2981,11 +2993,13 @@ a.title-by:hover::after { opacity: 1; }
    without a hamburger; tighten sizes so they fit.
    ============================================ */
 @media (max-width: 420px) {
-    .nav-inner { padding: 0.45rem 0.5rem 0.4rem; gap: 0.05rem; }
-    .nav-brand .brand-en { font-size: 1rem; }
-    .nav-links { gap: 0.05rem 0.1rem; }
-    .nav-links a { font-size: 0.76rem; padding: 0.28rem 0.35rem; letter-spacing: 0; }
-    section[id], .endorse-card, .coeditor { scroll-margin-top: 140px; }
+    .nav-inner { padding: 0.45rem 0.3rem 0.4rem; gap: 0.02rem; }
+    .nav-brand { gap: 0.22rem; }
+    .nav-brand .brand-en { font-size: 0.94rem; }
+    .nav-brand .brand-cn { font-size: 0.74rem; }
+    .nav-links { gap: 0; }
+    .nav-links a { font-size: 0.72rem; padding: 0.26rem 0.22rem; letter-spacing: 0; }
+    section[id], .endorse-card, .coeditor { scroll-margin-top: 74px; }
 }
 
 /* ============================================
