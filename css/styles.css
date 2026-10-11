@@ -2912,6 +2912,16 @@ a.title-by:hover::after { opacity: 1; }
 .dedication-mlhs .dedication-subhead:first-child{margin-top:0}
 .dedication-mlhs .dedication-sign{margin-top:1.9rem;font-family:var(--font-serif-en);font-style:italic;font-size:1.05rem;color:var(--ink-black);text-align:right}
 
+/* Dedication opening list — This book is dedicated to / 謹以此書獻給 */
+.dedication-dedicate{max-width:780px;margin:0 auto clamp(2rem,4vw,2.8rem);padding:clamp(1.4rem,2.6vw,2rem) clamp(1.2rem,2.6vw,1.9rem);background:rgba(169,50,38,.045);border:1px solid rgba(169,50,38,.18);border-radius:10px}
+.dedication-ded-lead{font-family:var(--font-serif-en);font-size:clamp(1.08rem,1.7vw,1.25rem);font-weight:600;letter-spacing:.03em;color:var(--ink-black);margin-bottom:.9rem}
+.dedication-ded-list{list-style:none;margin:0;padding:0}
+.dedication-ded-list li{position:relative;padding:.28rem 0 .28rem 1.15rem;font-family:var(--font-body);font-size:clamp(.97rem,1.2vw,1.05rem);line-height:1.75;color:var(--ink-mid)}
+.dedication-ded-list li::before{content:'·';position:absolute;left:.15rem;top:.28rem;color:var(--vermillion);font-weight:700}
+.dedication-ded-sig{margin-top:1.1rem;font-family:var(--font-serif-en);font-style:italic;font-size:1.05rem;color:var(--ink-black);text-align:right}
+.dedication-ded-cn{margin-top:clamp(1.4rem,2.6vw,1.9rem);padding-top:clamp(1.1rem,2vw,1.5rem);border-top:1px dashed rgba(169,50,38,.32)}
+.dedication-ded-cn .dedication-ded-lead{font-family:var(--font-cn-body),var(--font-serif-en)}
+
 /* ============================================
    TABLE OF CONTENTS — standard TOC list table (v4)
    Replaces the card layout with a printed-book
