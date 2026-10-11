@@ -530,6 +530,33 @@ a.title-by::after {
 a.title-by:hover { color: var(--vermillion); }
 a.title-by:hover::after { opacity: 1; }
 
+/* by-line shown just above the hero audio players */
+.hero-by {
+    font-family: var(--font-serif-en);
+    font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+    letter-spacing: 0.06em;
+    color: var(--ink-mid);
+    margin: 1.5rem 0 0.7rem;
+}
+.hero-by a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(169, 50, 38, 0.35);
+    padding-bottom: 2px;
+    transition: color .2s ease, border-color .2s ease;
+}
+.hero-by a::after {
+    content: ' →';
+    font-size: 0.8em;
+    opacity: 0;
+    transition: opacity .2s ease;
+}
+.hero-by a:hover {
+    color: var(--vermillion);
+    border-color: var(--vermillion);
+}
+.hero-by a:hover::after { opacity: 1; }
+
 .hero-subtitle-en {
     font-family: var(--font-serif-en);
     font-size: clamp(1.3rem, 2.8vw, 2rem);
