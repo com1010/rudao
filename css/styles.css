@@ -956,23 +956,29 @@ a.title-by:hover::after { opacity: 1; }
 
 /* Author portrait placed at the end of the About the Book section */
 .book-author-figure {
+    display: flex;
+    align-items: flex-end;
+    gap: 1.1rem;
     margin: clamp(1.6rem, 3vw, 2.2rem) 0 0;
     padding-top: clamp(1.2rem, 2.4vw, 1.6rem);
     border-top: 1px dashed rgba(169, 50, 38, 0.3);
 }
 .book-author-figure img {
     display: block;
+    flex: 0 0 auto;
     width: 100%;
-    max-width: 340px;
+    max-width: 190px;          /* compact on desktop */
     aspect-ratio: 4 / 5;
     object-fit: cover;
     object-position: center 22%;
     border-radius: 6px;
     border: 1px solid rgba(169, 50, 38, 0.22);
-    box-shadow: 0 18px 40px -18px rgba(10, 10, 10, 0.45);
+    box-shadow: 0 10px 26px -14px rgba(10, 10, 10, 0.4);
 }
 .book-author-figure figcaption {
-    margin-top: 0.75rem;
+    margin-top: 0;
+    max-width: 24rem;
+    padding-bottom: 0.15rem;
     font-family: var(--font-body);
     font-size: 0.84rem;
     font-style: italic;
@@ -980,8 +986,13 @@ a.title-by:hover::after { opacity: 1; }
     color: var(--gray);
 }
 .book-author-figure figcaption em { color: var(--vermillion); font-style: italic; }
+@media (max-width: 860px) {
+    .book-author-figure img { max-width: 160px; }
+}
 @media (max-width: 640px) {
+    .book-author-figure { display: block; }
     .book-author-figure img { max-width: 100%; }
+    .book-author-figure figcaption { margin-top: 0.75rem; max-width: none; }
 }
 
 /* Book quote block — long Chinese + English description (NEW V3) */
