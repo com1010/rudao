@@ -2973,6 +2973,18 @@ a.title-by:hover::after { opacity: 1; }
     .appendix-a .q-src{white-space:normal}
 }
 
+/* ===== 7.4 Sources & References ===== */
+.references .ref-cat{margin:clamp(1.9rem,3.4vw,2.5rem) 0 .85rem;padding-bottom:.42rem;border-bottom:1px solid rgba(169,50,38,.28);font-family:var(--font-serif-en);font-size:clamp(1.06rem,1.6vw,1.22rem);font-weight:700;color:var(--ink-black);letter-spacing:.01em}
+.references .ref-cat:first-of-type{margin-top:clamp(1.3rem,2.2vw,1.8rem)}
+.references .ref-cat-cn{margin-left:.65rem;font-family:var(--font-cn-body);font-size:.98rem;font-weight:600;color:var(--vermillion)}
+.references .ref-list{list-style:none;margin:0;padding:0}
+.references .ref-list li{position:relative;padding:.55rem 0 .55rem 1.2rem;font-family:var(--font-serif-en);font-size:clamp(.95rem,1.1vw,1.02rem);line-height:1.78;color:var(--ink-black);border-bottom:1px dashed rgba(169,50,38,.16)}
+.references .ref-list li:last-child{border-bottom:0}
+.references .ref-list li::before{content:"";position:absolute;left:.15rem;top:1.1rem;width:6px;height:6px;background:var(--vermillion);transform:rotate(45deg);opacity:.72}
+.references .ref-src{margin-right:.45rem;color:var(--vermillion);font-family:var(--font-body);font-size:.88rem;font-weight:700;letter-spacing:.02em}
+.references .ref-zh{font-family:var(--font-cn-body);color:var(--ink-black)}
+.references .ref-en{font-style:italic}
+
 /* Dedication: Mayer Lutheran HS / University of Minnesota tribute block */
 .dedication-mlhs{margin-top:clamp(2.4rem,4vw,3.2rem);padding-top:clamp(1.6rem,3vw,2.2rem);border-top:1px dashed rgba(169,50,38,.35)}
 .dedication-mlhs .dedication-subhead{font-family:var(--font-cn-body),var(--font-serif-en);font-size:clamp(1.05rem,1.75vw,1.3rem);font-weight:700;line-height:1.5;color:var(--ink-black);margin:clamp(1.9rem,3.2vw,2.5rem) 0 .9rem;letter-spacing:.01em}
