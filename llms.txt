@@ -145,6 +145,17 @@ RuDao braids three traditions:
 - Link1: https://link1.in/tonytong
 - Linktree: https://linktr.ee/TonyTong
 
+## Full Chapters Online (linked from TOC)
+
+The following chapters are published in full on this site, each linked from its TOC row:
+- 2.4 The Five Constants in Market Competition 仁义礼智信 (#ch24) — WuChang 五常: Ren/Yi/Li/Zhi/Xin with Mencius four beginnings, Dong Zhongshu, tables and quote wall.
+- Ch. 4 Inner Sage, Outer King, and the RuJiang 内圣外王 · 儒将 (#ch4) — NeiShengWaiWang philosophical unity of RuShang and RuJiang.
+- 4.3 The Art of War (Sun Tzu) vs Co-opetition 竞合之道 (#ch43) — incl. 4.3.1 Co-opetition, 4.3.2 Surviving Adversity and Crisis, 4.3.3 Three Kingdoms RuJiang wisdom, RuJiang Casebook.
+- 6.1 Confucian Trustworthiness and Web3, DAO, and the Digital Economy (#ch61) — incl. 6.1.1 dialogue with Dr. Zhu Jia-ming 朱嘉明, AI as New Species, Web3+AI programmable trust.
+- 6.2 Dialogue of Civilizations and the New Confucian Business Civilization (#ch62) — Toynbee & Ikeda, Web4, Globalization 4.0.
+- 6.4 A Thirty-Year Practitioner's Witness (#ch64) — King's College HK, Web1.0 Nasdaq, Web2.0 governance, Web3/AI, Web4.
+- 6.5 Synthesis: 以德驭术 as the Operating System of the Digital Age (#ch65).
+
 ## Built By
 
 Website built with WorkBuddy AI.
