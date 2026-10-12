@@ -3099,6 +3099,40 @@ a.title-by:hover::after { opacity: 1; }
     margin: 0 0 1.4rem;
     line-height: 1.5;
 }
+/* ============================================
+   7.6 Afterword — Tong Legacy & A Father's Pride
+   ============================================ */
+.afterword .aw-head {
+    font-family: var(--font-serif-en);
+    font-size: clamp(1.05rem, 1.7vw, 1.25rem);
+    font-weight: 700;
+    color: var(--ink-black);
+    letter-spacing: 0.01em;
+    margin: clamp(1.9rem, 3.2vw, 2.4rem) 0 0.85rem;
+}
+.afterword .aw-head:first-child { margin-top: 0; }
+.afterword .aw-head-cn {
+    font-family: var(--font-cn-body);
+    font-size: clamp(1.08rem, 1.8vw, 1.3rem);
+    font-weight: 700;
+    color: var(--ink-black);
+    letter-spacing: 0.02em;
+    margin: clamp(1.9rem, 3.2vw, 2.4rem) 0 0.85rem;
+}
+.afterword .aw-head-cn:first-child { margin-top: 0; }
+.afterword .aw-sign {
+    margin-top: 1.9rem;
+    font-family: var(--font-serif-en);
+    font-style: italic;
+    font-size: 1.02rem;
+    line-height: 1.65;
+    color: var(--ink-black);
+    text-align: right;
+}
+.afterword .preface-cn .aw-sign {
+    font-family: var(--font-cn-body);
+    font-style: normal;
+}
 .preface-cn-quote {
     text-align: center;
     margin-bottom: clamp(1.8rem, 3.5vw, 2.6rem);
