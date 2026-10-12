@@ -1774,13 +1774,15 @@ a.title-by:hover::after { opacity: 1; }
 .author-portrait {
     position: relative;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    aspect-ratio: 1;
+    gap: 1.15rem;
     width: 100%;
     max-width: 380px;
     margin: 0 auto;
 }
+.portrait-frame-hands .portrait-photo { object-position: center 28%; }
 .portrait-frame {
     width: 100%;
     aspect-ratio: 1;
