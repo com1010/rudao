@@ -867,6 +867,34 @@ a.title-by:hover::after { opacity: 1; }
 }
 
 /* ============================================
+   CONCEPT — framed I. A New Way to Win
+   Vermillion frame, matching .preface-frame / .qijing-frame
+   ============================================ */
+.concept-frame {
+    position: relative;
+    padding: clamp(2.2rem, 4vw, 3.4rem) clamp(1.6rem, 3.4vw, 3rem) clamp(1.8rem, 3.2vw, 2.6rem);
+    border: 1px solid rgba(169, 50, 38, 0.38);
+    border-radius: 14px;
+    background: rgba(169, 50, 38, 0.028);
+}
+.concept-frame::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px dashed rgba(169, 50, 38, 0.20);
+    border-radius: 10px;
+    pointer-events: none;
+}
+.concept-frame .section-head { margin-bottom: clamp(2.6rem, 5vw, 4.2rem); }
+.concept-frame .concept-grid { margin-bottom: clamp(1.2rem, 3vw, 2.4rem); }
+.concept-frame .quote-block { padding: 2.2rem 1.4rem 0.8rem; }
+@media (max-width: 640px) {
+    .concept-frame { padding: 1.6rem 0.9rem 1.2rem; }
+    .concept-frame::before { inset: 4px; }
+    .concept-frame .quote-block { padding: 1.6rem 0.4rem 0.4rem; }
+}
+
+/* ============================================
    THE BOOK
    ============================================ */
 .book { background: var(--paper-warm); }
