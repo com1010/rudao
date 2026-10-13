@@ -48,6 +48,7 @@ Ch.6 RuDao in the AI Digital Age 数字时代
 - 6.1 RuDao in the AI Digital Economy 儒道 × AI 数字经济 — Dr. Zhu Jia-ming 朱嘉明; Web3/Web4 RuDao Trust System
 - 6.2 Dialogue of Civilizations and the New Confucian Business Civilization (文明对话与新儒商商业文明) — Toynbee, Ikeda
 - 6.3 The Digital Giants Through the Lens（数字巨头的儒道之鉴）— Apple, Google, Microsoft, Amazon; personal IP and enterprise system
+- 6.3 Case · Microsoft Saved Apple: Co-opetition and Coexistence 微软救苹果：竞合与共存 (#ch63) — Confucius 君子和而不同; the 1997 Macworld Boston moment when Microsoft invested $150M in non-voting Apple shares, read through three RuDao principles: harmony without uniformity 和而不同, unity of righteousness and profit 义利合一, standing on trust 以信立身; lessons for the AI/blockchain ecosystem era.
 - 6.4 A 30-year practitioner's witness: from Web1 to AI, Web3, Web4 — 内圣外王与未来 · Conclusion
 - 6.5 Synthesis: 以德驭术 as the operating system of the digital age — 以内圣之德，行外王之利
 

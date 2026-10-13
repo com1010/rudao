@@ -3984,3 +3984,12 @@ table th a[href^="http"] {
 @media (max-width: 640px) {
     .afterword-subtitle { font-size: 0.5em; margin-top: 0.6rem; line-height: 1.6; }
 }
+
+/* ============================================
+   REFERENCE TABLES — 来源 (source) column at 10px
+   ============================================ */
+.refs-links-table th:nth-child(2),
+.refs-links-table td:nth-child(2) {
+    font-size: 10px;
+    line-height: 1.6;
+}
