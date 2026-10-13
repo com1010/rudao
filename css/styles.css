@@ -3965,3 +3965,22 @@ table th a[href^="http"] {
     margin-bottom: clamp(2.4rem, 5vw, 4rem);
     background: var(--vermillion);
 }
+
+/* ============================================
+   7.6 AFTERWORD — smaller two-line sub-title
+   ============================================ */
+.afterword-subtitle {
+    display: block;
+    margin-top: 0.85rem;
+    font-family: var(--font-serif-en);
+    font-size: 0.44em;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.65;
+    letter-spacing: 0.02em;
+    color: var(--ink-mid);
+}
+.afterword-subtitle em { font-style: italic; }
+@media (max-width: 640px) {
+    .afterword-subtitle { font-size: 0.5em; margin-top: 0.6rem; line-height: 1.6; }
+}

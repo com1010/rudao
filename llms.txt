@@ -51,7 +51,7 @@ Ch.6 RuDao in the AI Digital Age 数字时代
 - 6.4 A 30-year practitioner's witness: from Web1 to AI, Web3, Web4 — 内圣外王与未来 · Conclusion
 - 6.5 Synthesis: 以德驭术 as the operating system of the digital age — 以内圣之德，行外王之利
 
-7 Back Matter 后文: 7.1 Afterword 后记; 7.2 Appendix A · Classified Index of Quotes RuDao 儒道 RuShang 儒商 The Analects 论语 原文对照 名句集; 7.3 Appendix B · Core Terminology 核心术语中英对照; 7.4 Sources & References 参考文献与链接; 7.5 HuaXue 华学 — the Confucian Academy and modern RuShang education; 7.6 Tong Legacy and A Father's Pride: Afterword to RuDao 唐氏传奇与父亲的骄傲:《儒道》后记
+7 Back Matter 后文: 7.1 Afterword 后记; 7.2 Appendix A · Classified Index of Quotes RuDao 儒道 RuShang 儒商 The Analects 论语 原文对照 名句集; 7.3 Appendix B · Core Terminology 核心术语中英对照; 7.4 Sources & References 参考文献与链接; 7.5 HuaXue 华学 — the Confucian Academy and modern RuShang education; 7.6 Tong Legacy and A Father's Pride: Afterword to RuDao 唐氏传奇-父亲的骄傲:《儒道》后记
 
 ## Core Thesis
 
@@ -145,9 +145,11 @@ RuDao braids three traditions:
 - Link1: https://link1.in/tonytong
 - Linktree: https://linktr.ee/TonyTong
 
-## 7.4 Source Note — The Classic of Go (Qi Jing 棋经十三篇)
+## 7.4 Source Note — The Classic of WeiQi/Go (Qi Jing 棋经十三篇)
 
 At the end of 7.4 Sources & References, a framed source note (The Origin 经典出处与原文字源) documents the provenance of the Go quotation used in RuDao's co-opetition chapters: Zhang Ni 张拟, Scholar of the Hanlin Academy 翰林学士, Song Dynasty (北宋皇祐年间, c. 1049-1054 CE), author of the Qi Jing Shi San Pian 《棋经十三篇》(the first systematic theory of Go, often called the Art of War of Go), Lun Ju 论局篇: "善胜者不争，善败者不乱" — those who excel at winning do not contend, those who excel at losing do not lose order.
+
+In the same 7.4 bibliography, the "Civilization Conversations 文明对话" list also records "The Song Flying out of Haibuwutian" 《从海武田飞出的歌》 — the biographical account of Tong Cho Sam 唐楚三 (Tang ChuSan), Hong Kong industrialist and father of the author, co-authored by Qin Zhong and Chen Yanru 秦忠、陈妍如, published by Guangxi Ethnic Publishing House 广西民族出版社, 1995.
 
 ## Full Chapters Online (linked from TOC)
 
