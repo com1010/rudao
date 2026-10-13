@@ -3917,3 +3917,47 @@ table th a[href^="http"] {
     word-break: break-all;
     overflow-wrap: anywhere;
 }
+
+/* ============================================
+   GENERIC RED FRAME (.ru-frame)
+   Same treatment as .concept-frame / .preface-frame / .virtues-frame
+   ============================================ */
+.ru-frame {
+    position: relative;
+    margin: clamp(1.8rem, 3.5vw, 2.6rem) 0;
+    padding: clamp(1.5rem, 3vw, 2.2rem) clamp(1.2rem, 2.6vw, 2rem) clamp(1.2rem, 2.4vw, 1.8rem);
+    border: 1px solid rgba(169, 50, 38, 0.38);
+    border-radius: 14px;
+    background: rgba(169, 50, 38, 0.028);
+}
+.ru-frame::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px dashed rgba(169, 50, 38, 0.20);
+    border-radius: 10px;
+    pointer-events: none;
+}
+.ru-frame > :first-child { margin-top: 0; }
+.ru-frame > :last-child { margin-bottom: 0; }
+.ru-frame .compare-table-wrap:last-child { margin-bottom: 0; }
+.ru-frame .dedication-subhead { margin-bottom: 1.1rem; }
+@media (max-width: 640px) {
+    .ru-frame { padding: 1.1rem 0.8rem 1rem; }
+    .ru-frame::before { inset: 4px; }
+}
+
+/* ============================================
+   CHAPTER HEADER BAND — red bar (2cm tall, full page width)
+   Auto-applied to every chapter section (.chap-sec / .chapter-one)
+   ============================================ */
+.chap-sec::before,
+.chapter-one::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2cm;
+    margin-top: calc(var(--section-py) * -1);
+    margin-bottom: clamp(2.4rem, 5vw, 4rem);
+    background: var(--vermillion);
+}
