@@ -3949,11 +3949,15 @@ table th a[href^="http"] {
 
 /* ============================================
    CHAPTER HEADER BAND — red bar (2cm tall, full page width)
-   Auto-applied to every chapter section (.chap-sec / .chapter-one)
+   A real <div class="chapter-band"> element is the first child of
+   every major section (numbered I.-XIV., Preface, Co-Editors,
+   Dedication, 7.2-7.6 reference sections and every online chapter).
+   A real element is used instead of ::before so it never collides
+   with the decorative watermark pseudo-elements already defined
+   on .contents / .editions / .pillars / .principles / .lineage /
+   .preorder (which use their own ::before).
    ============================================ */
-.chap-sec::before,
-.chapter-one::before {
-    content: '';
+.chapter-band {
     display: block;
     width: 100%;
     height: 2cm;
