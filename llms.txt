@@ -145,6 +145,10 @@ RuDao braids three traditions:
 - Link1: https://link1.in/tonytong
 - Linktree: https://linktr.ee/TonyTong
 
+## 7.4 Source Note — The Classic of Go (Qi Jing 棋经十三篇)
+
+At the end of 7.4 Sources & References, a framed source note (The Origin 经典出处与原文字源) documents the provenance of the Go quotation used in RuDao's co-opetition chapters: Zhang Ni 张拟, Scholar of the Hanlin Academy 翰林学士, Song Dynasty (北宋皇祐年间, c. 1049-1054 CE), author of the Qi Jing Shi San Pian 《棋经十三篇》(the first systematic theory of Go, often called the Art of War of Go), Lun Ju 论局篇: "善胜者不争，善败者不乱" — those who excel at winning do not contend, those who excel at losing do not lose order.
+
 ## Full Chapters Online (linked from TOC)
 
 The following chapters are published in full on this site, each linked from its TOC row:
