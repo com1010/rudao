@@ -3185,6 +3185,40 @@ a.title-by:hover::after { opacity: 1; }
 }
 
 /* ============================================
+   PREFACE — framed Chinese 自序 + signature/seal
+   ============================================ */
+.preface-frame {
+    position: relative;
+    max-width: 848px;
+    margin: clamp(2.6rem, 5vw, 3.6rem) auto 0;
+    padding: 2.2rem 2.05rem 1.5rem;
+    border: 1px solid rgba(169, 50, 38, 0.38);
+    border-radius: 14px;
+    background: rgba(169, 50, 38, 0.028);
+}
+.preface-frame::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px dashed rgba(169, 50, 38, 0.20);
+    border-radius: 10px;
+    pointer-events: none;
+}
+.preface-frame .preface-cn {
+    max-width: 100%;
+    margin: 0;
+    padding-top: 0;
+    border-top: 0;
+}
+.preface-frame .preface-signature {
+    max-width: 100%;
+    margin: clamp(1.8rem, 3vw, 2.4rem) 0 0;
+}
+@media (max-width: 640px) {
+    .preface-frame { padding: 1.4rem 1.1rem 1rem; }
+}
+
+/* ============================================
    7.3 · CORE TERMINOLOGY GLOSSARY · 核心术语中英对照
    Four-column bilingual glossary table.
    ============================================ */
