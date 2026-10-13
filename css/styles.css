@@ -3862,3 +3862,58 @@ a.title-by:hover::after { opacity: 1; }
     .blog-admin-mode .blog-card-head { padding-right: 4.6rem; }
     .blog-card-admin-del { font-size: 0.66rem; padding: 0.3rem 0.6rem; }
 }
+
+/* ============================================
+   CH 2.2 — framed "The Eight Virtues at a Glance"
+   Vermillion frame, matching .concept-frame / .preface-frame
+   ============================================ */
+.virtues-frame {
+    position: relative;
+    margin: clamp(2rem, 4vw, 3rem) 0;
+    padding: clamp(1.6rem, 3vw, 2.4rem) clamp(1.3rem, 2.8vw, 2.2rem) clamp(0.8rem, 1.8vw, 1.2rem);
+    border: 1px solid rgba(169, 50, 38, 0.38);
+    border-radius: 14px;
+    background: rgba(169, 50, 38, 0.028);
+}
+.virtues-frame::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px dashed rgba(169, 50, 38, 0.20);
+    border-radius: 10px;
+    pointer-events: none;
+}
+.virtues-frame h3 {
+    margin-top: 0;
+    padding: 0 0.4rem;
+}
+.virtues-frame .compare-table-wrap { margin-bottom: 0.8rem; }
+@media (max-width: 640px) {
+    .virtues-frame { padding: 1.2rem 0.8rem 0.6rem; }
+    .virtues-frame::before { inset: 4px; }
+}
+
+/* ============================================
+   REFERENCE LINK TABLES — column widths + smallest URL text
+   .refs-links-table = （二）核心文章与演讲链接
+   ============================================ */
+.refs-links-table {
+    table-layout: fixed;
+    min-width: 560px;
+}
+.refs-links-table th:nth-child(1),
+.refs-links-table td:nth-child(1) { width: 54%; }
+.refs-links-table th:nth-child(2),
+.refs-links-table td:nth-child(2) { width: 20%; }
+.refs-links-table th:nth-child(3),
+.refs-links-table td:nth-child(3) { width: 26%; }
+
+/* Site-wide: URL link text inside any table cell renders at the smallest size */
+table td a[href^="http"],
+table th a[href^="http"] {
+    font-size: 6px;
+    line-height: 1.4;
+    letter-spacing: 0;
+    word-break: break-all;
+    overflow-wrap: anywhere;
+}
