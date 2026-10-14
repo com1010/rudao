@@ -4023,3 +4023,6 @@ table th a[href^="http"] {
    ============================================ */
 .endorse-grid { align-items: stretch; }
 .endorse-card { min-height: 100%; }
+
+/* Legal line inside the copyright notice — smallest size (5px) */
+.book-copyright-legal { font-size: 5px; }
