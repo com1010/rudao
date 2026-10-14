@@ -1009,15 +1009,16 @@ a.title-by:hover::after { opacity: 1; }
     line-height: 1;
 }
 .book-details .book-meta li {
-    grid-template-columns: 104px 1fr;
+    grid-template-columns: 116px 1fr;
     gap: 0.55rem;
     padding: 0.3rem 0;
     font-size: 0.86rem;
     line-height: 1;
 }
 .book-details .book-meta span {
-    font-size: 0.64rem;
-    letter-spacing: 0.08em;
+    font-size: 0.6rem;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
     padding-top: 0;
     line-height: 1;
 }
