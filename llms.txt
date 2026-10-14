@@ -154,7 +154,19 @@ In the same 7.4 bibliography, the "Civilization Conversations 文明对话" list
 
 ## 7.2 Appendix A — Wall of Ru-Shang Aphorisms 儒商格言墙
 
-The opening "Wall of Ru-Shang (儒商 Confucian Merchant) Aphorisms 儒商格言墙" in 7.2 Appendix A · Classified Index of Quotes gathers 25 bilingual aphorisms (English + 原文): Confucius 孔子 (仁者爱人, 见利思义, 君子怀德小人怀利, 君子易事而难说, 其身正不令而行, 工欲善其事必先利其器, 德不孤必有邻, 君子喻于义小人喻于利), the classics (The Great Learning 大学 仁者以财发身 / 修身齐家治国平天下 / 苟日新日日新, The Book of Rites 礼记 信者事之本也, I Ching 易经 天行健君子以自强不息), the early RuShang 儒商先贤 (Zigong 子贡 先修其德而后营其事 / 信以通商久交之本 / 君子之威源于德, Fan Li 范蠡 富好行其德, Fan Li (Tao Zhu Gong) 范蠡（陶朱公）贵出如粪土贱取如珠玉, Bai Gui 白圭 人弃我取人取我予, Ji Ran 计然 旱则资舟水则资车, Guan Zhong 管仲 明主审时顺人心 / 和则能聚争则能进, Xunzi 荀子 积善成德而神明自得), plus Mencius 孟子 得道者多助 and Sun Tzu 孙子 知彼知己百战不殆.
+The "Wall of Ru-Shang (儒商 Confucian Merchant) Aphorisms 儒商格言墙 · RuShang Quote Wall 儒商名言墙" in 7.2 Appendix A · Classified Index of Quotes gathers 66 bilingual aphorisms (English + 原文), de-duplicated and grouped into ten themes 按主题分十篇:
+- Learning & Self-Cultivation 为学修身篇 — 学而时习之不亦说乎 (《论语·学而》), 工欲善其事必先利其器, 德不孤必有邻, 苟日新日日新又日新 (《礼记·大学》), 周虽旧邦其命维新 (《诗经·大雅·文王》), 天行健君子以自强不息, 修身齐家治国平天下, 先修其德而后营其事, 积善成德而神明自得, 王阳明 知而不行只是未知 (《传习录》).
+- Righteousness & Profit 义利篇 — 富与贵不以其道得之不处也, 不义而富且贵于我如浮云, 见利思义, 君子怀德小人怀利, 君子喻于义小人喻于利, 义以生利利以平民政之大节也 (《左传·成公二年》), 仁者以财发身不仁者以身发财, 范蠡 富好行其德, 陶朱公商训 积计以诚信为本聚财以义理为先取之有道用之有度, 舍生而取义, 涩泽荣一 一手持算盘一手持《论语》.
+- Integrity & Trust 诚信篇 — 人而无信不知其可也, 言必信行必果, 民无信不立, 信者事之本也, 子贡 信以通商久交之本, 李嘉诚 信誉是第二生命, 霍英东 我从来没有负过任何人.
+- Benevolence & Empathy 仁恕篇 — 己所不欲勿施于人 (《论语·卫灵公》), 己欲立而立人己欲达而达人 (《论语·雍也》), 仁者爱人, 老吾老以及人之老, 杜维明 儒家伦理是一种关系伦理, 稻盛和夫 敬天爱人.
+- Co-opetition 竞合篇 — 不战而屈人之兵善之善者也, 上兵伐谋其次伐交, 君子和而不同小人同而不和 (《论语·子路》), 天时不如地利地利不如人和 (《孟子·公孙丑下》), 得道者多助失道者寡助, 知彼知己百战不殆.
+- The Way of Heaven & the Virtue of Water 天道与水德篇 — 上善若水水善利万物而不争 (《道德经·第八章》), 江海所以能为百谷王者以其善下之 (《道德经·第六十六章》), 上德不德是以有德 (《道德经·第三十八章》), 庄子 天地与我并生而万物与我为一 (《庄子·齐物论》), 夫兵形象水避高而趋下避实而击虚 (《孙子兵法·虚实篇》), Bruce Lee 李小龙 "Be water, my friend".
+- The Way of Commerce & Adaptation 商道与应变篇 — 穷则变变则通通则久 (《易经·系辞下》), 计然 旱则资舟水则资车, 范蠡（陶朱公）贵出如粪土贱取如珠玉, 白圭 人弃我取人取我予, 管仲 明主审时顺人心 / 和则能聚争则能进.
+- Crisis & Adversity 危机篇 — 岁寒然后知松柏之后凋也, 刘备 勿以恶小而为之勿以善小而不为, 诸葛亮 鞠躬尽瘁死而后已 / 非淡泊无以明志非宁静无以致远.
+- Leadership 领导力篇 — 其身正不令而行, 君子易事而难说也, 子贡 君子之威源于德, 刘备 惟贤惟德能服于人, 曹操 周公吐哺天下归心, 诸葛亮 将不可骄骄则失礼, 稻盛和夫 人生工作的结果=思维方式×热情×能力.
+- Civilization & the Future 文明与未来篇 — 汤因比 21世纪的人类必须从东方文明尤其是中国文明中汲取智慧 (《展望二十一世纪》) / 历史是文明与文明之间的对话, 池田大作 二十一世纪正渴望一个共生的道德气质.
+
+De-duplication: 己所不欲勿施于人, 己欲立而立人己欲达而达人, 天时不如地利, 君子和而不同, 苟日新日日新, 义以生利 and Toynbee's 21st-century line each appear only once — merged into one entry carrying the full classical citation. Newly added voices include the Book of Songs 诗经, Wang Yangming 王阳明, Tu Weiming 杜维明, Zuo Zhuan 左传, Laozi 老子 (三章), Zhuangzi 庄子, the Book of Changes 易经, Tao Zhu Gong 陶朱公商训, Bruce Lee 李小龙 and Sun Tzu on water tactics 兵形象水.
 
 ## Full Chapters Online (linked from TOC)
 

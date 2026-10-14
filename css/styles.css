@@ -3046,6 +3046,8 @@ a.title-by:hover::after { opacity: 1; }
 .appendix-a .quote-wall p{margin:0;font-family:var(--font-serif-en);font-size:clamp(.98rem,1.15vw,1.06rem);line-height:1.75;color:var(--ink-black)}
 .appendix-a .q-src{display:inline-block;margin-right:.5rem;color:var(--vermillion);font-family:var(--font-body);font-size:.88rem;font-weight:700;letter-spacing:.02em;white-space:nowrap}
 .appendix-a .q-zh{color:var(--ink-mid);font-family:var(--font-cn-body)}
+/* citation of the original text (newly sourced aphorisms) */
+.appendix-a .q-ref{display:inline-block;margin-left:.5rem;font-family:var(--font-body);font-size:.78rem;letter-spacing:.01em;color:var(--gray)}
 .appendix-a .quote-cat{margin:clamp(1.9rem,3.4vw,2.5rem) 0 .85rem;padding-bottom:.42rem;border-bottom:1px solid rgba(169,50,38,.28);font-family:var(--font-serif-en);font-size:clamp(1.06rem,1.6vw,1.22rem);font-weight:700;color:var(--ink-black);letter-spacing:.01em}
 .appendix-a .quote-cat-cn{margin-left:.65rem;font-family:var(--font-cn-body);font-size:.98rem;font-weight:600;color:var(--vermillion)}
 .appendix-a .quote-list{list-style:none;margin:0;padding:0}
