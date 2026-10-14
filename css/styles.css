@@ -908,8 +908,15 @@ a.title-by:hover::after { opacity: 1; }
 .book-art {
     position: relative;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     perspective: 1500px;
+}
+/* keeps the cover + its ground shadow together, above the author portrait */
+.book-cover-stack {
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
 .book-cover-real {
     position: relative;
@@ -982,7 +989,14 @@ a.title-by:hover::after { opacity: 1; }
 }
 .book-meta strong { color: var(--ink-black); font-weight: 500; }
 
-/* Author portrait placed at the end of the About the Book section */
+/* Author portrait — sits directly under the book cover in About the Book */
+.book-art .book-author-figure {
+    width: min(380px, 85vw);
+    margin: clamp(1.5rem, 2.8vw, 2rem) 0 0;
+    padding-top: 0;
+    border-top: 0;
+}
+/* (legacy placement, in case the figure is ever moved back into .book-info) */
 .book-author-figure {
     display: flex;
     align-items: flex-end;
@@ -4024,5 +4038,9 @@ table th a[href^="http"] {
 .endorse-grid { align-items: stretch; }
 .endorse-card { min-height: 100%; }
 
-/* Legal line inside the copyright notice — smallest size (5px) */
-.book-copyright-legal { font-size: 5px; }
+/* Legal line inside the copyright notice — 6.5px, tightly set (line-height 1) */
+.book-copyright-legal {
+    font-size: 6.5px;
+    line-height: 1;
+    display: inline-block;
+}
