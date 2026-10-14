@@ -3993,3 +3993,26 @@ table th a[href^="http"] {
     font-size: 10px;
     line-height: 1.6;
 }
+
+/* ============================================
+   BOOK META — copyright notice, very small text
+   ============================================ */
+.book-copyright {
+    margin: 0.9rem 0 0;
+    max-width: 640px;
+    font-family: var(--font-body);
+    font-size: 10px;
+    line-height: 1.65;
+    letter-spacing: 0.01em;
+    color: var(--ink-soft);
+}
+.book-copyright a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(169, 50, 38, 0.28);
+    word-break: break-all;
+}
+.book-copyright a:hover { color: var(--vermillion); }
+@media (max-width: 640px) {
+    .book-copyright { font-size: 9px; }
+}
