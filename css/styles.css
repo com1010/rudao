@@ -4001,8 +4001,8 @@ table th a[href^="http"] {
     margin: 0.9rem 0 0;
     max-width: 640px;
     font-family: var(--font-body);
-    font-size: 10px;
-    line-height: 1.65;
+    font-size: 6px;
+    line-height: 1.6;
     letter-spacing: 0.01em;
     color: var(--ink-soft);
 }
@@ -4014,5 +4014,12 @@ table th a[href^="http"] {
 }
 .book-copyright a:hover { color: var(--vermillion); }
 @media (max-width: 640px) {
-    .book-copyright { font-size: 9px; }
+    .book-copyright { font-size: 6px; }
 }
+
+/* ============================================
+   ENDORSEMENT GRID — cards sharing a row keep the same size
+   (Steve Chen 陈安之 + Li RunMin 李润铭 sit next to each other)
+   ============================================ */
+.endorse-grid { align-items: stretch; }
+.endorse-card { min-height: 100%; }
