@@ -996,6 +996,42 @@ a.title-by:hover::after { opacity: 1; }
     padding-top: 0;
     border-top: 0;
 }
+
+/* Book details (meta list + copyright notice) — sits directly under the author
+   portrait, lines set very tight (line-height 1) */
+.book-details {
+    width: min(380px, 85vw);
+    margin-top: clamp(1rem, 2vw, 1.4rem);
+    line-height: 1;
+}
+.book-details .book-meta {
+    margin-top: 0;
+    line-height: 1;
+}
+.book-details .book-meta li {
+    grid-template-columns: 104px 1fr;
+    gap: 0.55rem;
+    padding: 0.3rem 0;
+    font-size: 0.86rem;
+    line-height: 1;
+}
+.book-details .book-meta span {
+    font-size: 0.64rem;
+    letter-spacing: 0.08em;
+    padding-top: 0;
+    line-height: 1;
+}
+.book-details .book-meta strong { line-height: 1; }
+.book-details .book-copyright {
+    margin: 0.45rem 0 0;
+    max-width: none;
+    font-size: 6px;
+    line-height: 1;
+}
+.book-details .book-copyright-legal {
+    font-size: 6.5px;
+    line-height: 1;
+}
 /* (legacy placement, in case the figure is ever moved back into .book-info) */
 .book-author-figure {
     display: flex;
@@ -2704,6 +2740,10 @@ a.title-by:hover::after { opacity: 1; }
     .book-meta li {
         grid-template-columns: 1fr;
         gap: 0.2rem;
+    }
+    .book-details .book-meta li {
+        grid-template-columns: 1fr;
+        gap: 0.15rem;
     }
     .preorder-formats { grid-template-columns: 1fr; }
     .preorder-form {
