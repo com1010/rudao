@@ -10,7 +10,7 @@ The book is structured in six chapters, framed by Front Matter (0) and Back Matt
 - Ch. 1: The Roots 源 — Natural Pursuit of Profit 人性趋利, from 1600 BCE
 - Ch. 2: The Confucian Core 儒 — Righteousness + Profit, Harmony vs Co-opetition
 - Ch. 3: Ru + Dao 内圣外王 — Inner Sage, Outer King
-- Ch. 4: Inner Sage, Outer King, and the RuJiang 内圣外王 · 儒将
+- Ch. 4: RuJiang 儒将 : Co-opetition 竞合之道 vs The Art of War (Sun Tzu)  超越孙子兵法
 - Ch. 5: RuShang Practice 实践 — The Way of the Confucian Merchant
 - Ch. 6: RuDao in the AI Digital Age 数字时代
 
@@ -33,7 +33,7 @@ Ch.3 Ru + Dao 内圣外王 · Inner Sage, Outer King
 - 3.1 Confucian Structure, Daoist Spirit 以儒为骨，以道为神 — 正己、礼、五常、民本
 - 3.2 The Daoist spirit: 无为而治、上善若水、反者道之动、知止; 以德驭术
 
-Ch.4 Inner Sage, Outer King, and the RuJiang 内圣外王 · 儒将
+Ch.4 RuJiang 儒将 : Co-opetition 竞合之道 vs The Art of War (Sun Tzu)  超越孙子兵法
 - 4.1 Origin: 庄子·天下篇 → 大学·八目; 内圣是根、外王是果
 - 4.2 The Outer King as RuJiang 儒将 — Co-opetition Strategy Beyond The Art of War
 - 4.3 The Art of War (Sun Tzu) vs Co-opetition 竞合之道 — turning counterparties into partners; surviving adversity and crisis; Three Kingdoms RuJiang wisdom
@@ -173,7 +173,7 @@ De-duplication: 己所不欲勿施于人, 己欲立而立人己欲达而达人, 
 The following chapters are published in full on this site, each linked from its TOC row:
 - Ch. 2 What Is RuDao: A Philosophy and Ethics of Business 何谓儒道：一套商业的哲学与伦理 (#ch2) — Ru vs Dao, Ru + Dao 儒与道，儒加道; Greek philosophia/ethos vs Chinese 哲/伦理/道德 etymologies; philosophy without ethics (the cunning operator) vs ethics without philosophy (the well-meaning failure); the RuDao position; Ru+Dao fusion (tree analogy); key persons and events timeline tables (EN + 中文).
 - 2.4 The Five Constants in Market Competition 仁义礼智信 (#ch24) — WuChang 五常: Ren/Yi/Li/Zhi/Xin with Mencius four beginnings, Dong Zhongshu, tables and quote wall.
-- Ch. 4 Inner Sage, Outer King, and the RuJiang 内圣外王 · 儒将 (#ch4) — NeiShengWaiWang philosophical unity of RuShang and RuJiang.
+- Ch. 4 RuJiang 儒将 : Co-opetition 竞合之道 vs The Art of War (Sun Tzu)  超越孙子兵法 (#ch4) — Co-opetition, turning counterparties into partners.
 - 4.3 The Art of War (Sun Tzu) vs Co-opetition 竞合之道 (#ch43) — incl. 4.3.1 Co-opetition, 4.3.2 Surviving Adversity and Crisis, 4.3.3 Three Kingdoms RuJiang wisdom, RuJiang Casebook.
 - 6.1 Confucian Trustworthiness and Web3, DAO, and the Digital Economy (#ch61) — incl. 6.1.1 dialogue with Dr. Zhu Jia-ming 朱嘉明, AI as New Species, Web3+AI programmable trust.
 - 6.2 Dialogue of Civilizations and the New Confucian Business Civilization (#ch62) — Toynbee & Ikeda, Web4, Globalization 4.0.
