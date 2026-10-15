@@ -38,6 +38,7 @@ Ch.4 RuJiang 儒将 : Co-opetition 竞合之道 vs The Art of War 超越孙子�
 - 4.1 Origin: 庄子·天下篇 → 大学·八目; 内圣是根、外王是果
 - 4.2 The Outer King as RuJiang 儒将 — Co-opetition Strategy Beyond The Art of War
 - 4.3 The Art of War (Sun Tzu) vs Co-opetition 竞合之道 — turning counterparties into partners; surviving adversity and crisis; Three Kingdoms RuJiang wisdom
+- 4.4 From Board Game Success to Boardroom Success 从棋盘到董事会：棋品见人品 — LiYi 礼仪 in contest; Liu Qi liubo incident; from board to boardroom; character under pressure
 
 Ch.5 RuShang Practice 实践 · The Way of the Confucian Merchant
 - 5.1 RuShang: The Confucian Entrepreneur 儒商 — definition and ideal
@@ -176,6 +177,7 @@ The following chapters are published in full on this site, each linked from its 
 - 2.4 The Five Constants in Market Competition 仁义礼智信 (#ch24) — WuChang 五常: Ren/Yi/Li/Zhi/Xin with Mencius four beginnings, Dong Zhongshu, tables and quote wall.
 - Ch. 4 RuJiang 儒将 : Co-opetition 竞合之道 vs The Art of War 超越孙子兵法 (#ch4) — Co-opetition, turning counterparties into partners.
 - 4.3 The Art of War (Sun Tzu) vs Co-opetition 竞合之道 (#ch43) — incl. 4.3.1 Co-opetition, 4.3.2 Surviving Adversity and Crisis, 4.3.3 Three Kingdoms RuJiang wisdom, RuJiang Casebook.
+- 4.4 From Board Game Success to Boardroom Success 从棋盘到董事会：棋品见人品 (#ch44) — LiYi 礼仪 in contest; Liu Qi liubo incident; from WeiQi board to boardroom; character revealed under pressure.
 - 6.1 Confucian Trustworthiness and Web3, DAO, and the Digital Economy (#ch61) — incl. 6.1.1 dialogue with Dr. Zhu Jia-ming 朱嘉明, AI as New Species, Web3+AI programmable trust.
 - 6.2 Dialogue of Civilizations and the New Confucian Business Civilization (#ch62) — Toynbee & Ikeda, Web4, Globalization 4.0.
 - 6.4 A Thirty-Year Practitioner's Witness (#ch64) — King's College HK, Web1.0 Nasdaq, Web2.0 governance, Web3/AI, Web4.
