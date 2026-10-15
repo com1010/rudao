@@ -812,6 +812,20 @@ a.title-by:hover::after { opacity: 1; }
     color: var(--ink-mid);
 }
 .section-subtitle em, em { font-style: italic; }
+.section-anchor {
+    font-family: var(--font-sans);
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    color: var(--vermillion);
+    text-decoration: none;
+    margin-left: 0.6rem;
+    opacity: 0.25;
+    transition: opacity .25s ease;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.section-anchor:hover {
+    opacity: 1;
+}
 
 /* ============================================
    CONCEPT
