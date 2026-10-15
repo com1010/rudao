@@ -319,10 +319,9 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     align-items: center;
     justify-content: center;
     padding: 0.45rem 3rem 0.45rem 1rem;
-    font-family: var(--font-sans);
+    font-family: Georgia, 'Times New Roman', serif;
     font-size: 0.88rem;
     line-height: 1.5;
-    z-index: 101;
     transition: max-height .3s ease, padding .3s ease, opacity .3s ease;
 }
 .blog-alert.dismissed {
