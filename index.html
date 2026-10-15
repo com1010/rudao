@@ -74,7 +74,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Joan&family=Lugrasimo&family=Ma+Shan+Zheng&family=Merriweather:wght@300;400;700&family=Noto+Serif+TC:wght@400;500;600;700&family=ZCOOL+XiaoWei&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/styles.css?v=20261014h" />
+    <link rel="stylesheet" href="css/styles.css?v=20261015a" />
 
     <!-- Self-hosted Traditional Chinese brush calligraphy font -->
     <style>
@@ -363,6 +363,17 @@
     </script>
 </head>
 <body>
+
+    <!-- ========== BLOG ALERT BANNER ========== -->
+    <div class="blog-alert" id="blogAlert">
+        <a href="#readers-blog" class="blog-alert-link">
+            <span class="blog-alert-icon">&#9998;</span>
+            <span class="blog-alert-text">
+                <strong>Reader's Blog</strong> &mdash; click to leave your messages : Readers' Reviews &amp; Messages 读者评语留言
+            </span>
+        </a>
+        <button class="blog-alert-close" id="blogAlertClose" aria-label="Close alert">&times;</button>
+    </div>
 
     <!-- ========== NAVIGATION ========== -->
     <header class="nav" id="nav">
@@ -4800,6 +4811,21 @@
         </div>
     </footer>
 
+    <script>
+    (function() {
+        var alert = document.getElementById('blogAlert');
+        var close = document.getElementById('blogAlertClose');
+        if (!alert || !close) return;
+        close.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert.classList.add('dismissed');
+            try { localStorage.setItem('rudaoBlogAlertDismissed', '1'); } catch(_) {}
+        });
+        if (localStorage.getItem('rudaoBlogAlertDismissed') === '1') {
+            alert.classList.add('dismissed');
+        }
+    })();
+    </script>
     <script src="js/script.js"></script>
     <script src="js/blog.js"></script>
 </body>
