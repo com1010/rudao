@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  RuDao — https://rudao.us/
+  RuDao - https://rudao.us/
   This is a single-page bilingual book site, so only the real page URL belongs here.
   Two things deliberately NOT included:
-    1. "#anchor" fragments — Google/Baidu treat them as part of the same page,
+    1. "#anchor" fragments - Google/Baidu treat them as part of the same page,
        not as separate URLs. Listing them adds no pages and dilutes quality signals.
-    2. The pages.dev / github.io mirrors — listing them advertises duplicate
+    2. The pages.dev / github.io mirrors - listing them advertises duplicate
        content and splits authority away from rudao.us.
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -17,30 +17,30 @@
         <priority>1.0</priority>
         <image:image>
             <image:loc>https://rudao.us/assets/rudao-cover-primary.jpg</image:loc>
-            <image:title>RuDao 儒道 — primary book cover, vermillion calligraphy with golden glow</image:title>
+            <image:title>RuDao 儒道 - primary book cover, vermillion calligraphy with golden glow</image:title>
         </image:image>
         <image:image>
             <image:loc>https://rudao.us/assets/rudao-cover-bamboo-vermillion.jpg</image:loc>
-            <image:title>RuDao 儒道 — primary book cover</image:title>
-            <image:caption>Cover of RuDao — Beyond The Art of War: vermillion red ink-wash design with golden RuDao calligraphy, giant 儒道 brush characters, bamboo scrolls of the classics and a Go board, by Tony Tong 唐仪.</image:caption>
+            <image:title>RuDao 儒道 - primary book cover</image:title>
+            <image:caption>Cover of RuDao - Beyond The Art of War: vermillion red ink-wash design with golden RuDao calligraphy, giant 儒道 brush characters, bamboo scrolls of the classics and a Go board, by Tony Tong 唐仪.</image:caption>
         </image:image>
         <image:image>
             <image:loc>https://rudao.us/assets/rudao-cover-full.jpg</image:loc>
-            <image:title>RuDao 儒道 — Beyond The Art of War, book cover</image:title>
-            <image:caption>RuDao《儒道:超越孙子兵法》— the Confucian co-opetition path to balanced profit and enduring partnerships.</image:caption>
+            <image:title>RuDao 儒道 - Beyond The Art of War, book cover</image:title>
+            <image:caption>RuDao《儒道:超越孙子兵法》- the Confucian co-opetition path to balanced profit and enduring partnerships.</image:caption>
         </image:image>
         <image:image>
             <image:loc>https://rudao.us/assets/cover-hardcover.jpg</image:loc>
-            <image:title>RuDao — hardcover edition</image:title>
+            <image:title>RuDao - hardcover edition</image:title>
         </image:image>
         <image:image>
             <image:loc>https://rudao.us/assets/tony-tong-portrait.jpg</image:loc>
-            <image:title>Tony Tong 唐仪 — author of RuDao</image:title>
+            <image:title>Tony Tong 唐仪 - author of RuDao</image:title>
         </image:image>
         <image:image>
             <image:loc>https://rudao.us/assets/gallery/rudao-book-launch-event-keynote.jpg</image:loc>
             <image:title>RuDao 儒道 book launch keynote event</image:title>
-            <image:caption>Author Tony Tong on stage at the RuDao — Beyond The Art of War launch event.</image:caption>
+            <image:caption>Author Tony Tong on stage at the RuDao - Beyond The Art of War launch event.</image:caption>
         </image:image>
         <image:image>
             <image:loc>https://rudao.us/assets/gallery/rudao-book-bamboo-classics-still-life.jpg</image:loc>
@@ -52,7 +52,7 @@
         </image:image>
         <image:image>
             <image:loc>https://rudao.us/assets/gallery/rudao-book-go-board-strategy.jpg</image:loc>
-            <image:title>RuDao 儒道 beside a Go board — strategy and balance</image:title>
+            <image:title>RuDao 儒道 beside a Go board - strategy and balance</image:title>
         </image:image>
         <image:image>
             <image:loc>https://rudao.us/assets/gallery/rudao-book-library-bookshelf.jpg</image:loc>
