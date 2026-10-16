@@ -813,6 +813,37 @@ a.title-by:hover::after { opacity: 1; }
     color: var(--ink-mid);
 }
 .section-subtitle em, em { font-style: italic; }
+.section-title-cn {
+    font-family: var(--font-cn);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    color: var(--vermillion);
+    margin-top: 0.2rem;
+    margin-bottom: 0.6rem;
+    line-height: 1.2;
+}
+.section-subtitle-cn {
+    font-family: var(--font-cn);
+    font-size: clamp(0.85rem, 1.3vw, 1.0rem);
+    color: var(--ink-mid);
+    margin-top: 0.2rem;
+    line-height: 1.4;
+}
+.chap-h2-cn {
+    font-family: var(--font-cn);
+    font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+    color: var(--vermillion);
+    margin-top: -0.4rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+}
+.chap-h3-cn {
+    font-family: var(--font-cn);
+    font-size: clamp(0.8rem, 1.2vw, 0.92rem);
+    color: var(--ink-mid);
+    margin-top: -0.3rem;
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+}
 .section-anchor {
     font-family: var(--font-sans);
     font-size: clamp(1.1rem, 2vw, 1.5rem);
