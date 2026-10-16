@@ -4368,65 +4368,70 @@ table th a[href^="http"] {
 .ruinfo {
     position: relative;
     background: var(--paper-warm);
-    padding: clamp(2.4rem, 4.6vw, 3.6rem) 0;
+    padding: clamp(1.1rem, 2.2vw, 1.6rem) 0;
     border-top: 1px solid rgba(169, 50, 38, 0.16);
     border-bottom: 1px solid rgba(169, 50, 38, 0.16);
 }
 .ruinfo-frame {
     margin: 0;
+    padding: 0.95rem 1.1rem 0.85rem;
     text-align: center;
+    line-height: 1;
 }
 .ruinfo-title {
     font-family: var(--font-serif-en);
-    font-size: clamp(1.05rem, 2.1vw, 1.55rem);
+    font-size: 13px;
     font-weight: 600;
-    line-height: 1.32;
-    letter-spacing: -0.005em;
+    line-height: 1;
+    letter-spacing: 0;
     color: var(--ink-black);
     max-width: 900px;
-    margin: 0 auto 0.6rem;
+    margin: 0 auto 4px;
 }
 .ruinfo-cn {
     font-family: var(--font-cn-body);
-    font-size: clamp(0.92rem, 1.6vw, 1.15rem);
-    line-height: 1.45;
+    font-size: 12px;
+    line-height: 1;
     color: var(--vermillion);
-    margin-bottom: 0.7rem;
+    margin-bottom: 4px;
 }
 .ruinfo-byline {
-    font-size: 0.88rem;
+    font-size: 11px;
     font-style: italic;
-    letter-spacing: 0.02em;
+    letter-spacing: 0;
+    line-height: 1;
     color: var(--ink-mid);
-    margin-bottom: clamp(1.3rem, 2.6vw, 1.9rem);
+    margin-bottom: 8px;
 }
 .ruinfo-links-title {
     font-family: var(--font-sans);
-    font-size: 0.76rem;
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.12em;
+    line-height: 1;
     text-transform: uppercase;
     color: var(--vermillion);
-    margin-bottom: 0.75rem;
+    margin-bottom: 5px;
 }
 .ruinfo-links {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.4rem 1.5rem;
+    gap: 3px 12px;
     padding: 0;
     margin: 0;
+    line-height: 1;
 }
-.ruinfo-links li { margin: 0; }
+.ruinfo-links li { margin: 0; line-height: 1; }
 .ruinfo-links a {
     font-family: var(--font-sans);
-    font-size: clamp(0.76rem, 1.25vw, 0.88rem);
-    line-height: 1.5;
+    font-size: 8px;
+    line-height: 1;
     color: var(--ink-mid);
     text-decoration: underline;
     text-decoration-thickness: 1px;
-    text-underline-offset: 3px;
+    text-underline-offset: 1px;
     text-decoration-color: rgba(169, 50, 38, 0.45);
     word-break: break-all;
     transition: color .25s ease, text-decoration-color .25s ease;
@@ -4436,11 +4441,15 @@ table th a[href^="http"] {
     text-decoration-color: var(--vermillion);
 }
 @media (max-width: 860px) {
-    .ruinfo { padding: 2.2rem 0; }
-    .ruinfo-links { gap: 0.4rem 1.1rem; }
+    .ruinfo { padding: 1rem 0; }
+    .ruinfo-links { gap: 3px 10px; }
 }
 @media (max-width: 640px) {
-    .ruinfo-frame { padding: 1.2rem 0.9rem 1.1rem; }
-    .ruinfo-links { flex-direction: column; gap: 0.45rem; }
-    .ruinfo-links a { font-size: 0.78rem; }
+    .ruinfo { padding: 0.8rem 0; }
+    .ruinfo-frame { padding: 0.75rem 0.6rem 0.65rem; }
+    .ruinfo-title { font-size: 12px; }
+    .ruinfo-cn { font-size: 11px; }
+    .ruinfo-byline { font-size: 10px; }
+    .ruinfo-links { flex-direction: column; gap: 3px; }
+    .ruinfo-links a { font-size: 8px; }
 }
