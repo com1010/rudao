@@ -38,7 +38,7 @@ https://com2000.github.io/RuDao/
 3. **The Book** - Description + 3D cover mockup
 4. **Editions** - Three cover designs (Heritage / Scholar's / Quiet)
 5. **Five Pillars** - 仁 義 禮 智 信 (The Five Constants)
-6. **Lineage** - 儒商 · 儒將 · 天人合一
+6. **Lineage** - 儒商 - 儒將 - 天人合一
 7. **Author** - Tony Tong (唐儀) bio + social links
 8. **Pre-Order** - Email capture + format cards
 
