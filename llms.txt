@@ -8,7 +8,7 @@ RuDao (儒道) is a bilingual (English / 中文) business philosophy book by Ton
 
 The book is structured in six chapters, framed by Front Matter (0) and Back Matter (7):
 - Ch. 1: The Roots 源 — Natural Pursuit of Profit 人性趋利, from 1600 BCE
-- Ch. 2: The Confucian Core 儒 — Righteousness + Profit, Harmony vs Co-opetition
+- Ch. 2: What Is Ru+Dao 何谓儒+道 — A Philosophy and Ethics of Business 一套商业的哲学与伦理; Righteousness + Profit, Harmony vs Co-opetition
 - Ch. 3: Ru + Dao 内圣外王 — Inner Sage, Outer King
 - Ch. 4: RuJiang 儒将 : Co-opetition 竞合之道 vs The Art of War 超越孙子兵法
 - Ch. 5: RuShang Legends 儒商典范 — The Way of the Confucian Merchant
@@ -23,7 +23,7 @@ Ch.1 The Roots 源 · Natural Pursuit of Profit 人性趋利 from 1600 BCE
 - 1.2 The wisdom of FanLi 范蠡, ZiGong 子贡, BaiGui 白圭 — 智勇仁强; 君子富，好行其德
 - 1.3 RuDao Trust System: From ancient philosophy to global cross-border credit — why virtue alone cannot survive the market
 
-Ch.2 The Confucian Core 儒 · Righteousness + Profit, Harmony vs Co-opetition
+Ch.2 What Is Ru+Dao 何谓儒+道 · A Philosophy and Ethics of Business 一套商业的哲学与伦理
 - 2.1 Why Sun Tzu Alone Is Not Enough 兵儒之辨 — Co-opetition: Harmony in Difference 和而不同
 - 2.2 The Ethical Core: The Eight Virtues and Li Ren 八德 · 里仁 — 儒商八德 仁义礼智信忠孝恕, Inner Sage 内圣 / Outer King 外王, 以仁德为核心
 - 2.3 仁为体、义为用、忠恕贯之 — the righteousness–profit distinction
