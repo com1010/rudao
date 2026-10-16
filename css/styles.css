@@ -4357,3 +4357,90 @@ table th a[href^="http"] {
     line-height: 1;
     display: inline-block;
 }
+
+/* ============================================
+   RUDAO BOOK IDENTITY BAND (#rudao-info)
+   Sits directly above "I. A New Way to Win" —
+   book title (EN + CN), author byline and the
+   full RuDao / TonyTong social URLs as links.
+   NOT a numbered section: no chapter-band.
+   ============================================ */
+.ruinfo {
+    position: relative;
+    background: var(--paper-warm);
+    padding: clamp(2.4rem, 4.6vw, 3.6rem) 0;
+    border-top: 1px solid rgba(169, 50, 38, 0.16);
+    border-bottom: 1px solid rgba(169, 50, 38, 0.16);
+}
+.ruinfo-frame {
+    margin: 0;
+    text-align: center;
+}
+.ruinfo-title {
+    font-family: var(--font-serif-en);
+    font-size: clamp(1.05rem, 2.1vw, 1.55rem);
+    font-weight: 600;
+    line-height: 1.32;
+    letter-spacing: -0.005em;
+    color: var(--ink-black);
+    max-width: 900px;
+    margin: 0 auto 0.6rem;
+}
+.ruinfo-cn {
+    font-family: var(--font-cn-body);
+    font-size: clamp(0.92rem, 1.6vw, 1.15rem);
+    line-height: 1.45;
+    color: var(--vermillion);
+    margin-bottom: 0.7rem;
+}
+.ruinfo-byline {
+    font-size: 0.88rem;
+    font-style: italic;
+    letter-spacing: 0.02em;
+    color: var(--ink-mid);
+    margin-bottom: clamp(1.3rem, 2.6vw, 1.9rem);
+}
+.ruinfo-links-title {
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--vermillion);
+    margin-bottom: 0.75rem;
+}
+.ruinfo-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem 1.5rem;
+    padding: 0;
+    margin: 0;
+}
+.ruinfo-links li { margin: 0; }
+.ruinfo-links a {
+    font-family: var(--font-sans);
+    font-size: clamp(0.76rem, 1.25vw, 0.88rem);
+    line-height: 1.5;
+    color: var(--ink-mid);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(169, 50, 38, 0.45);
+    word-break: break-all;
+    transition: color .25s ease, text-decoration-color .25s ease;
+}
+.ruinfo-links a:hover {
+    color: var(--vermillion);
+    text-decoration-color: var(--vermillion);
+}
+@media (max-width: 860px) {
+    .ruinfo { padding: 2.2rem 0; }
+    .ruinfo-links { gap: 0.4rem 1.1rem; }
+}
+@media (max-width: 640px) {
+    .ruinfo-frame { padding: 1.2rem 0.9rem 1.1rem; }
+    .ruinfo-links { flex-direction: column; gap: 0.45rem; }
+    .ruinfo-links a { font-size: 0.78rem; }
+}
