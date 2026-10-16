@@ -33,8 +33,8 @@ Ch.3 Ru + Dao 内圣外王 · Inner Sage, Outer King
 - 3.1 Inner Sage, Outer King 内圣外王 (#ch31) — from the Zhuangzi to the Great Learning: the four-character compass, the eight steps (八目), root-and-fruit principle, modern boardroom translation, RuDao's dual-root correction
 - 3.3 The Daoist spirit: 无为而治、上善若水、反者道之动、知止; 以德驭术
 
-Ch.4 RuJiang 儒将 : Co-opetition 竞合之道 vs The Art of War 超越孙子兵法
-- 4.1 Origin: 庄子·天下篇 → 大学·八目; 内圣是根、外王是果
+Ch.4 RuJiang 儒将 : Co-opetition 竞合之道 vs The Art of War 超越孙子兵法 · chapter opener 内圣是根、外王是果 (庄子·天下篇 → 大学·八目)
+- 4.1 Art of War vs Art of Business 兵者诡道也 vs 商者信道 (#ch41) — from "Warfare is Deception" to "Merchants Abide by Trust": why business needs the RuDao paradigm; the military foundation (Five Factors, 五事) and its limits; RuDao reinterpretation (West Point, Sandhurst, Harvard, Gulf War, Matsushita); from war fighting to value creation; the dual paradigm RuShang 儒商 / RuJiang 儒将; merchants abide by trust 商者信道 and its historical origin (Shang traders 商人, Zigong 子贡); the strategic choice of XinDao over GuiDao; three executive maxims (己所不欲勿施于人; 得道者多助失道者寡助; 不战而屈人之兵)
 - 4.2 The Outer King as RuJiang 儒将 — Co-opetition Strategy Beyond The Art of War
 - 4.3 The Art of War (Sun Tzu) vs Co-opetition 竞合之道 — turning counterparties into partners; surviving adversity and crisis; Three Kingdoms RuJiang wisdom
 - 4.4 Board Game Manners to Boardroom Success 从棋盘到董事会：棋品见人品 — LiYi 礼仪 in contest; Liu Qi liubo incident; from board to boardroom; character under pressure
@@ -185,6 +185,7 @@ The following chapters are published in full on this site, each linked from its 
 - Ch. 2 What Is RuDao: A Philosophy and Ethics of Business 何谓儒道：一套商业的哲学与伦理 (#ch2) — Ru vs Dao, Ru + Dao 儒与道，儒加道; Greek philosophia/ethos vs Chinese 哲/伦理/道德 etymologies; philosophy without ethics (the cunning operator) vs ethics without philosophy (the well-meaning failure); the RuDao position; Ru+Dao fusion (tree analogy); key persons and events timeline tables (EN + 中文).
 - 2.4 The Five Constants in Market Competition 仁义礼智信 (#ch24) — WuChang 五常: Ren/Yi/Li/Zhi/Xin with Mencius four beginnings, Dong Zhongshu, tables and quote wall.
 - Ch. 4 RuJiang 儒将 : Co-opetition 竞合之道 vs The Art of War 超越孙子兵法 (#ch4) — Co-opetition, turning counterparties into partners.
+- 4.1 Art of War vs Art of Business 兵者诡道也 vs 商者信道 (#ch41) — from "Warfare is Deception" to "Merchants Abide by Trust"; why business needs the RuDao paradigm; the military foundation and its limits; from war fighting to value creation; RuShang/RuJiang dual paradigm; merchants abide by trust and its historical origin; three executive maxims.
 - 4.3 The Art of War (Sun Tzu) vs Co-opetition 竞合之道 (#ch43) — incl. 4.3.1 Co-opetition, 4.3.2 Surviving Adversity and Crisis, 4.3.3 Three Kingdoms RuJiang wisdom, RuJiang Casebook.
 - 4.4 Board Game Manners to Boardroom Success 从棋盘到董事会：棋品见人品 (#ch44) — LiYi 礼仪 in contest; Liu Qi liubo incident; from WeiQi board to boardroom; character revealed under pressure.
 - 6.1 Confucian Trustworthiness and Web3, DAO, and the Digital Economy (#ch61) — incl. 6.1.1 dialogue with Dr. Zhu Jia-ming 朱嘉明, AI as New Species, Web3+AI programmable trust.
