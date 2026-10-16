@@ -11,7 +11,7 @@ The book is structured in six chapters, framed by Front Matter (0) and Back Matt
 - Ch. 2: The Confucian Core 儒 — Righteousness + Profit, Harmony vs Co-opetition
 - Ch. 3: Ru + Dao 内圣外王 — Inner Sage, Outer King
 - Ch. 4: RuJiang 儒将 : Co-opetition 竞合之道 vs The Art of War 超越孙子兵法
-- Ch. 5: RuShang Practice 实践 — The Way of the Confucian Merchant
+- Ch. 5: RuShang Legends 儒商典范 — The Way of the Confucian Merchant
 - Ch. 6: RuDao in the AI Digital Age 数字时代
 
 ### Table of Contents / 全书目录
@@ -39,7 +39,7 @@ Ch.4 RuJiang 儒将 : Co-opetition 竞合之道 vs The Art of War 超越孙子�
 - 4.3 The Art of War (Sun Tzu) vs Co-opetition 竞合之道 — turning counterparties into partners; surviving adversity and crisis; Three Kingdoms RuJiang wisdom
 - 4.4 From Board Game Success to Boardroom Success 从棋盘到董事会：棋品见人品 — LiYi 礼仪 in contest; Liu Qi liubo incident; from board to boardroom; character under pressure
 
-Ch.5 RuShang Practice 实践 · The Way of the Confucian Merchant
+Ch.5 RuShang Legends 儒商典范 · The Way of the Confucian Merchant
 - 5.1 RuShang: The Confucian Entrepreneur 儒商 — definition and ideal
 - 5.2 Yi Before Profit 义先于利 — 仁 / 义 / 利 and sustainable wealth
 - 5.3 RuShang Exemplars Across 2,500 Years 儒商先贤 — 子贡、孟洛川（瑞蚨祥）、张謇 to 渋沢栄一、稻盛和夫、松下幸之助
