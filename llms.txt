@@ -16,7 +16,7 @@ The book is structured in six chapters, framed by Front Matter (0) and Back Matt
 
 ### Table of Contents / 全书目录
 
-0 Front Matter 前文: 0.1 Foreword 序言; 0.2 Author: Why RuDao Matters Today 为什么今天需要儒道?; 0.3 The Purpose of This Book 本书宗旨; 0.4 RuDao and the AI Digital Economy 儒道与AI数字经济; 0.5 Who This Book Is For: Tech Executives & Entrepreneurs 读者对象; 0.6 How to Read This Book 如何阅读
+0 Front Matter 前文: 0.1 Foreword 序言; 0.2 Author: Why RuDao Matters Today 为什么今天需要儒道?; 0.3 The Purpose of This Book 本书宗旨; 0.4 RuDao AI Digital Age 数字时代; 0.5 Who This Book Is For: Tech Executives & Entrepreneurs 读者对象; 0.6 How to Read This Book 如何阅读
 
 Ch.1 The Roots 源 · Natural Pursuit of Profit 人性趋利 from 1600 BCE
 - 1.1 Shang (c. 1600–1046 BCE): Business Begins 商朝 · 商业起源 — the character 商, 《货殖列传》善因论, Division of Labor, Natural Pursuit of Profit
@@ -43,7 +43,7 @@ Ch.5 RuShang Legends 儒商典范 · The Way of the Confucian Merchant
 - 5.1 RuShang: The Confucian Entrepreneur 儒商 — definition and ideal
 - 5.2 Yi Before Profit 义先于利 — 仁 / 义 / 利 and sustainable wealth
 - 5.3 RuShang Exemplars Across 2,500 Years 儒商先贤 — 子贡、孟洛川（瑞蚨祥）、张謇 to 渋沢栄一、稻盛和夫、松下幸之助
-- 5.4 Modern RuShang Exemplars: Asia's Confucian Tycoons 亚洲儒商列传 — Li Ka-shing 李嘉诚 (信誉人格，生意来求你), Robert Kuok 郭鹤年, Cao Dewang 曹德旺, Chearavanont family 谢国民家族 (CP Group Thailand 正大集团 利国利民利企业), Dr. Lucio Tan (陈永栽) Philippine Taipans, Root-Seeking donations (寻根之旅), Henry Fok 霍英东, Sir David Li Kwok-po (李国宝家族-五代传承) Century-old Li family behind the Bank of East Asia (HKBEA.com), Tung Chee-hwa 董建华, Leung Chun-ying 梁振英, Li Tung-hoy 李东海 Securities Philanthropist 证券义商 Father and son Vincent Lee Marshall Kwan Ho 李君豪, Tong Yun-kai 汤恩佳, Oei Hong Leong 黄鸿年 · Oei Ek Tjhong (Eka Tjipta Widjaja) 黄奕聪 印尼金光集团家族 Sinar Mas Group; 陈济棠家族三代 (儒将・儒商・儒家)
+- 5.4 Asian RuShang 亚洲儒商典范 — Li Ka-shing 李嘉诚 (信誉人格，生意来求你), Robert Kuok 郭鹤年, Cao Dewang 曹德旺, Chearavanont family 谢国民家族 (CP Group Thailand 正大集团 利国利民利企业), Dr. Lucio Tan (陈永栽) Philippine Taipans, Root-Seeking donations (寻根之旅), Henry Fok 霍英东, Sir David Li Kwok-po (李国宝家族-五代传承) Century-old Li family behind the Bank of East Asia (HKBEA.com), Tung Chee-hwa 董建华, Leung Chun-ying 梁振英, Li Tung-hoy 李东海 Securities Philanthropist 证券义商 Father and son Vincent Lee Marshall Kwan Ho 李君豪, Tong Yun-kai 汤恩佳, Oei Hong Leong 黄鸿年 · Oei Ek Tjhong (Eka Tjipta Widjaja) 黄奕聪 印尼金光集团家族 Sinar Mas Group; 陈济棠家族三代 (儒将・儒商・儒家)
 
 Ch.6 RuDao in the AI Digital Age 数字时代
 - 6.1 RuDao in the AI Digital Economy 儒道 × AI 数字经济 — Dr. Zhu Jia-ming 朱嘉明; Web3/Web4 RuDao Trust System
