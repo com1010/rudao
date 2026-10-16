@@ -4235,14 +4235,41 @@ a.title-by:hover::after { opacity: 1; }
 .refs-links-table th:nth-child(3),
 .refs-links-table td:nth-child(3) { width: 26%; }
 
-/* Site-wide: URL link text inside any table cell renders at the smallest size */
+/* ============================================
+   SITE-WIDE URL LINK TEXT
+   Every anchor that displays a raw URL / domain as its visible
+   text carries class="urltext" (plus the table + copyright
+   selectors below as a safety net). Rules:
+     - plain system sans face (never the decorative Lugrasimo
+       serif and never the body serif)
+     - font-style normal -> kills the italic inherited from
+       .coeditor-sig and similar italic paragraphs
+     - regular weight, no letter-spacing, no small-caps
+     - small: relative 0.78em so it stays small inside prose,
+       absolute 8px in tables (standalone URL lists)
+   ============================================ */
+a.urltext,
+.book-copyright a,
 table td a[href^="http"],
 table th a[href^="http"] {
-    font-size: 6px;
-    line-height: 1.4;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Microsoft YaHei', sans-serif;
+    font-style: normal;
+    font-weight: 400;
     letter-spacing: 0;
+    text-transform: none;
     word-break: break-all;
     overflow-wrap: anywhere;
+}
+a.urltext {
+    font-size: 0.78em;
+    line-height: 1.35;
+}
+
+/* Standalone URL link text inside any table cell — the smallest size */
+table td a[href^="http"],
+table th a[href^="http"] {
+    font-size: 8px;
+    line-height: 1.4;
 }
 
 /* ============================================
@@ -4425,8 +4452,10 @@ table th a[href^="http"] {
 }
 .ruinfo-links li { margin: 0; line-height: 1; }
 .ruinfo-links a {
-    font-family: var(--font-sans);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Microsoft YaHei', sans-serif;
     font-size: 8px;
+    font-style: normal;
+    font-weight: 400;
     line-height: 1;
     color: var(--ink-mid);
     text-decoration: underline;
