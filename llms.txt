@@ -30,8 +30,7 @@ Ch.2 The Confucian Core 儒 · Righteousness + Profit, Harmony vs Co-opetition
 - 2.4 The Five Constants in Market Competition 仁义礼智信 — 义利并举、富而好礼
 
 Ch.3 Ru + Dao 内圣外王 · Inner Sage, Outer King
-- 3.1 Confucian Structure, Daoist Spirit 以儒为骨，以道为神 — 正己、礼、五常、民本
-- 3.2 Origin: Zhuangzi · Tian Xia（庄子·天下篇）→ completed in the Confucian Great Learning（大学·八目）; 内圣是根、外王是果
+- 3.1 Inner Sage, Outer King 内圣外王 (#ch31) — from the Zhuangzi to the Great Learning: the four-character compass, the eight steps (八目), root-and-fruit principle, modern boardroom translation, RuDao's dual-root correction
 - 3.3 The Daoist spirit: 无为而治、上善若水、反者道之动、知止; 以德驭术
 
 Ch.4 RuJiang 儒将 : Co-opetition 竞合之道 vs The Art of War 超越孙子兵法
