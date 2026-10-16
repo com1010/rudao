@@ -93,8 +93,8 @@ Chinese: 儒道, 儒将, 唐仪, 超越孙子兵法, 儒家竞合之道, 平衡�
 - Language: Bilingual English / 中文
 - Structure: Six Chapters (with Front Matter 0 & Back Matter 7)
 - ISBN: Forthcoming
-- ASIN: B0HJ458RRC
-- Amazon Pre-Order URL: https://www.amazon.com/dp/B0HJ458RRC
+- ASIN: B0HN7VS2HZ
+- Amazon Pre-Order URL: https://www.amazon.com/dp/B0HN7VS2HZ
 - Formats: Hardcover, Kindle e-Book, Audiobook
 
 ## Official URLs
