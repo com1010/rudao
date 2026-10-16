@@ -74,7 +74,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Joan&family=Lugrasimo&family=Ma+Shan+Zheng&family=Merriweather:wght@300;400;700&family=Noto+Serif+TC:wght@400;500;600;700&family=ZCOOL+XiaoWei&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/styles.css?v=20261016h" />
+    <link rel="stylesheet" href="css/styles.css?v=20261016i" />
 
     <!-- Self-hosted Traditional Chinese brush calligraphy font -->
     <style>
@@ -372,7 +372,47 @@
                 <span class="brand-cn">儒道</span>
             </a>
             <nav class="nav-links">
-                <a href="#contents">TOC 目录</a>
+                <div class="nav-dropdown" id="tocDropdown">
+                    <button type="button" class="nav-dropbtn" id="tocDropBtn" aria-haspopup="true" aria-expanded="false" aria-controls="tocDropMenu">
+                        TOC 目录 <span class="nav-caret" aria-hidden="true">&#9662;</span>
+                    </button>
+                    <div class="nav-dropmenu" id="tocDropMenu" role="menu" aria-label="Table of contents">
+                        <a class="nav-dropfull" href="#contents" role="menuitem">Full Table of Contents 完整目录</a>
+                        <a class="nav-dropitem" href="#dedication" role="menuitem"><span class="nav-dropnum">0.1</span><span class="nav-droplabel">Foreword · Dedication · Co-Editors 序言</span></a>
+                        <a class="nav-dropitem" href="#author" role="menuitem"><span class="nav-dropnum">0.2</span><span class="nav-droplabel">Author 作者 · Why RuDao Matters</span></a>
+                        <a class="nav-dropitem" href="#concept" role="menuitem"><span class="nav-dropnum">0.3</span><span class="nav-droplabel">Purpose of This Book 本书宗旨</span></a>
+                        <a class="nav-dropitem" href="#concept" role="menuitem"><span class="nav-dropnum">0.4</span><span class="nav-droplabel">RuDao & the AI Digital Economy 儒道与AI</span></a>
+                        <a class="nav-dropitem" href="#book" role="menuitem"><span class="nav-dropnum">0.5</span><span class="nav-droplabel">Who Should Read 读者对象</span></a>
+                        <a class="nav-dropitem" href="#book" role="menuitem"><span class="nav-dropnum">0.6</span><span class="nav-droplabel">How to Read 如何阅读</span></a>
+                        <a class="nav-dropitem" href="#chapter-one" role="menuitem"><span class="nav-dropnum">1.1</span><span class="nav-droplabel">Shang 商朝 · Business Begins</span></a>
+                        <a class="nav-dropitem" href="#chapter-one" role="menuitem"><span class="nav-dropnum">1.2</span><span class="nav-droplabel">FanLi · ZiGong · BaiGui 先贤</span></a>
+                        <a class="nav-dropitem" href="#chapter-one" role="menuitem"><span class="nav-dropnum">1.3</span><span class="nav-droplabel">Trust System 信用体系</span></a>
+                        <a class="nav-dropitem" href="#ch2" role="menuitem"><span class="nav-dropnum">2.1</span><span class="nav-droplabel">Beyond Sun Tzu 兵儒之辨</span></a>
+                        <a class="nav-dropitem" href="#ch22" role="menuitem"><span class="nav-dropnum">2.2</span><span class="nav-droplabel">Eight Virtues 八德 · 里仁</span></a>
+                        <a class="nav-dropitem" href="#ch22" role="menuitem"><span class="nav-dropnum">2.3</span><span class="nav-droplabel">Yi vs Profit 义利之辨</span></a>
+                        <a class="nav-dropitem" href="#ch24" role="menuitem"><span class="nav-dropnum">2.4</span><span class="nav-droplabel">Five Constants 五常 · 仁义礼智信</span></a>
+                        <a class="nav-dropitem" href="#ch31" role="menuitem"><span class="nav-dropnum">3.1</span><span class="nav-droplabel">Inner Sage, Outer King 内圣外王</span></a>
+                        <a class="nav-dropitem" href="#ch31" role="menuitem"><span class="nav-dropnum">3.3</span><span class="nav-droplabel">Daoist Spirit 道家精神</span></a>
+                        <a class="nav-dropitem" href="#ch4" role="menuitem"><span class="nav-dropnum">4.2</span><span class="nav-droplabel">RuJiang 儒将 · Co-opetition</span></a>
+                        <a class="nav-dropitem" href="#ch43" role="menuitem"><span class="nav-dropnum">4.3</span><span class="nav-droplabel">Art of War vs Co-opetition 竞合</span></a>
+                        <a class="nav-dropitem" href="#ch44" role="menuitem"><span class="nav-dropnum">4.4</span><span class="nav-droplabel">Board Game → Boardroom 棋品见人品</span></a>
+                        <a class="nav-dropitem" href="#lineage" role="menuitem"><span class="nav-dropnum">5.1</span><span class="nav-droplabel">RuShang 儒商 · Confucian Entrepreneur</span></a>
+                        <a class="nav-dropitem" href="#lineage" role="menuitem"><span class="nav-dropnum">5.2</span><span class="nav-droplabel">Yi Before Profit 义先于利</span></a>
+                        <a class="nav-dropitem" href="#lineage" role="menuitem"><span class="nav-dropnum">5.3</span><span class="nav-droplabel">RuShang Exemplars 儒商先贤</span></a>
+                        <a class="nav-dropitem" href="#lineage" role="menuitem"><span class="nav-dropnum">5.4</span><span class="nav-droplabel">Modern RuShang 亚洲儒商列传</span></a>
+                        <a class="nav-dropitem" href="#ch61" role="menuitem"><span class="nav-dropnum">6.1</span><span class="nav-droplabel">AI Digital Economy 儒道 × AI</span></a>
+                        <a class="nav-dropitem" href="#ch62" role="menuitem"><span class="nav-dropnum">6.2</span><span class="nav-droplabel">Dialogue of Civilizations 文明对话</span></a>
+                        <a class="nav-dropitem" href="#ch63" role="menuitem"><span class="nav-dropnum">6.3</span><span class="nav-droplabel">Digital Giants 数字巨头</span></a>
+                        <a class="nav-dropitem" href="#ch64" role="menuitem"><span class="nav-dropnum">6.4</span><span class="nav-droplabel">30-Year Witness 三十年见证</span></a>
+                        <a class="nav-dropitem" href="#ch65" role="menuitem"><span class="nav-dropnum">6.5</span><span class="nav-droplabel">Synthesis 以德驭术</span></a>
+                        <a class="nav-dropitem" href="#afterword" role="menuitem"><span class="nav-dropnum">7.1</span><span class="nav-droplabel">Afterword 后记</span></a>
+                        <a class="nav-dropitem" href="#appendix-a" role="menuitem"><span class="nav-dropnum">7.2</span><span class="nav-droplabel">Appendix A · Quotes 名句集</span></a>
+                        <a class="nav-dropitem" href="#glossary" role="menuitem"><span class="nav-dropnum">7.3</span><span class="nav-droplabel">Appendix B · Glossary 术语表</span></a>
+                        <a class="nav-dropitem" href="#references" role="menuitem"><span class="nav-dropnum">7.4</span><span class="nav-droplabel">Sources & References 参考文献</span></a>
+                        <a class="nav-dropitem" href="#huaxue" role="menuitem"><span class="nav-dropnum">7.5</span><span class="nav-droplabel">HuaXue 华学恩学</span></a>
+                        <a class="nav-dropitem" href="#afterword" role="menuitem"><span class="nav-dropnum">7.6</span><span class="nav-droplabel">Tong Legacy 唐氏传奇</span></a>
+                    </div>
+                </div>
                 <a href="#author">Author</a>
                 <a href="#endorsements">Reviews 读者评语</a>
             </nav>
@@ -722,7 +762,7 @@
                     <tr class="toc-row">
                         <td class="toc-cell-num">2.4</td>
                         <td class="toc-cell-title">
-                            <a class="toc-link" href="#ch24">The Five Constants in Market Competition 仁义礼智信</a>
+                            <a class="toc-link" href="#ch24">The Five Constants as the Ethical Code of Enterprise 五常 - 仁义礼智信</a>
                             <ul class="toc-points">
                                 <li>The Five Constants 仁义礼智信 as the ethical code of enterprise in market competition</li>
                                 <li>义利并举、富而好礼 (righteousness and profit held together; the wealthy who love propriety)</li>
@@ -1310,8 +1350,7 @@
         <div class="container preface-container">
             <div class="section-head preface-head">
                 <span class="section-num">Chapter 2.2</span>
-                <h2 class="section-title">The Eight Virtues of the RuShang<a class="section-anchor" href="#ch22" aria-label="Copy link to this chapter">#</a></h2><p class="section-title-cn">儒商八德</p>
-                <p class="section-subtitle">A System of Quotations — Ren · Yi · Li · Zhi · Xin · Zhong · Xiao · Shu</p><p class="section-subtitle-cn">仁 · 义 · 礼 · 智 · 信 · 忠 · 孝 · 恕</p>
+                <h2 class="section-title">The Eight Virtues of the RuShang<a class="section-anchor" href="#ch22" aria-label="Copy link to this chapter">#</a></h2><p class="section-title-cn">儒商八德 - 仁义礼智信忠孝恕</p>
             </div>
             <div class="preface-divider" aria-hidden="true"><span>德</span></div>
             <div class="preface-body">
@@ -1437,8 +1476,7 @@
         <div class="container preface-container">
             <div class="section-head preface-head">
                 <span class="section-num">Chapter 2.4</span>
-                <h2 class="section-title">The Five Constants in Market Competition<a class="section-anchor" href="#ch24" aria-label="Copy link to this chapter">#</a></h2><p class="section-title-cn">仁义礼智信</p>
-                <p class="section-subtitle">Ren · Yi · Li · Zhi · Xin — the WuChang as the Ethical Code of Enterprise</p><p class="section-subtitle-cn">五常</p>
+                <h2 class="section-title">The Five Constants as the Ethical Code of Enterprise<a class="section-anchor" href="#ch24" aria-label="Copy link to this chapter">#</a></h2><p class="section-title-cn">五常 - 仁义礼智信</p>
             </div>
             <div class="preface-divider" aria-hidden="true"><span>常</span></div>
             <div class="preface-body">
@@ -1471,8 +1509,7 @@
 <p class="quote-attr">— Book of Han · Biography of Dong Zhongshu</p>
 </blockquote>
 <p>The White Tiger Hall Conference (79 CE) of the Eastern Han fixed the canon, and the Three Character Classic carried it through a millennium of schooling: "Ren and Yi, Li, Zhi and Xin  —  these five constants admit no disorder." Confucius planted the seed; Mencius assembled four; Dong Zhongshu added Trustworthiness to complete the Five Constants  —  the ethical backbone this book carries into market competition.</p>
-<h4 class="chap-h3">Ren: The Irreplaceable Partner Trust</h4>
-<p class="chap-h3-cn">仁</p>
+<h4 class="chap-h3">Ren 仁 : The Irreplaceable Partner Trust</h4>
 <blockquote class="quote-block">
 <p class="quote">"The benevolent person loves others."</p>
 <p class="quote-cn" lang="zh">仁者爱人。</p>
@@ -1480,24 +1517,21 @@
 </blockquote>
 <p>Benevolence is not weakness  —  it is the deepest moat. Treat employees, customers, and partners well, and you earn a loyalty that money cannot buy.</p>
 <p>Case: In the JAL rebuild, Inamori Kazuo cut no jobs and no salaries; "revere heaven, love people" roused the whole workforce, and the turnaround came in a V-shape within two-plus years. This is the modern business proof of "the benevolent has no enemies."</p>
-<h4 class="chap-h3">Yi: The Dynamic Balance of Profit and Righteousness</h4>
-<p class="chap-h3-cn">义</p>
+<h4 class="chap-h3">Yi 义 : The Dynamic Balance of Profit and Righteousness</h4>
 <blockquote class="quote-block">
 <p class="quote">"When seeing profit, think of righteousness."</p>
 <p class="quote-cn" lang="zh">见利思义。</p>
 <p class="quote-attr">— The Analects · Xian Wen</p>
 </blockquote>
 <p>The RuJiang pursues profit but refuses to trade righteousness for short-term gain. Before every major decision, ask: does this accord with Yi? (The five righteousness-profit boundaries are given in full in Section 5.4  —  harm to user health, exploitation of the vulnerable, environmental destruction, fraud through information asymmetry, monopoly corrosion of the industry. Check each before deciding.)</p>
-<h4 class="chap-h3">Li: Fair and Transparent Rules of Cooperation</h4>
-<p class="chap-h3-cn">礼</p>
+<h4 class="chap-h3">Li 礼 : Fair and Transparent Rules of Cooperation</h4>
 <blockquote class="quote-block">
 <p class="quote">"Without learning propriety, one cannot take a stand."</p>
 <p class="quote-cn" lang="zh">不学礼，无以立。</p>
 <p class="quote-attr">— The Analects · Ji Shi</p>
 </blockquote>
 <p>Li stands for rules, institutions, processes. A clear, fair, predictable cooperation framework lowers transaction friction and increases partners' sense of security. The RuJiang's three principles of Li: state the rules of cooperation in advance  —  no turning the table afterwards; allocate benefits transparently  —  no back-room deals; provide channels for resolving conflict  —  no surprise attacks.</p>
-<h4 class="chap-h3">Zhi: Reading the Market's Data  —  and Human Nature</h4>
-<p class="chap-h3-cn">智</p>
+<h4 class="chap-h3">Zhi 智 : Reading the Market's Data — and Human Nature</h4>
 <blockquote class="quote-block">
 <p class="quote">"The wise are free from perplexity."</p>
 <p class="quote-cn" lang="zh">知者不惑。</p>
@@ -1510,8 +1544,7 @@
 <tr><td>Human intelligence</td><td>Understanding motives, fears, trust</td><td>Negotiation, alliances</td></tr>
 <tr><td>Moral intelligence</td><td>Telling right from wrong; conscience</td><td>Righteousness-profit boundaries</td></tr>
 </tbody></table></div>
-<h4 class="chap-h3">Xin: Crossing Cycles on Credit</h4>
-<p class="chap-h3-cn">信</p>
+<h4 class="chap-h3">Xin 信 : Crossing Cycles on Credit</h4>
 <blockquote class="quote-block">
 <p class="quote">"A person without trustworthiness  —  I do not know what they are good for."</p>
 <p class="quote-cn" lang="zh">人而无信，不知其可也。</p>
@@ -2367,7 +2400,7 @@
             <div class="section-head preface-head">
                 <span class="section-num">Chapter 6.1</span>
                 <h2 class="section-title">Confucian Trustworthiness and Web3, DAO, and the Digital Economy<a class="section-anchor" href="#ch61" aria-label="Copy link to this chapter">#</a></h2>
-                <p class="section-subtitle">RuDao in the Modern AI Digital Economy — with Dr. Zhu Jia-ming</p><p class="section-subtitle-cn">朱嘉明</p>
+                <p class="section-subtitle">RuDao in the Modern AI Digital Economy — with Dr. Zhu Jia-ming</p><p class="section-subtitle-cn">朱嘉明 : AI·Web3·数字经济学术思想与儒道的时代共振</p>
             </div>
             <div class="preface-divider" aria-hidden="true"><span>信</span></div>
             <div class="preface-body">
@@ -3302,7 +3335,7 @@
             <div class="section-head preface-head">
                 <span class="section-num">7.5</span>
                 <h2 class="section-title">HuaXue 华学 — the Confucian Academy and modern RuShang education</h2>
-                <p class="section-subtitle">HuaXue-EnXue 华学恩学 · Class Insights 课程心得</p>
+                <p class="section-subtitle">HuaXue-EnXue 华学恩学 · Class Insights 诗情画意 课程心得</p>
             </div>
             <div class="preface-body">
 <p>HuaXue EnXue (华学恩学), founded by Professor Xiao Xianhua (肖先华 / 萧先华), is a contemporary system of teachings that blends traditional Chinese philosophies — primarily Confucianism, Song-Ming Neo-Confucianism, Taoism, and Buddhism — into practical principles for modern life, family dynamics, and business management.</p>
@@ -3406,9 +3439,9 @@
 </ul>
             </div>
             <div class="class-insights-frame">
-                <h3 class="chap-h2">HuaXue-EnXue 华学恩学 · Class Insights 课程心得</h3>
+                <h3 class="chap-h2">HuaXue-EnXue 华学恩学 · Class Insights 诗情画意 课程心得</h3>
                 <div class="preface-body" lang="en">
-                    <h3 class="preface-cn-title">HuaXue-EnXue 华学恩学 Class Insights</h3>
+                    <h3 class="preface-cn-title">HuaXue-EnXue 华学恩学 · Class Insights 诗情画意 课程心得</h3>
                     <p><strong>Chinese Key Words:</strong> 诗情画意、琴棋书画、涵养心性、礼乐文脉润人生<br />
                     <strong>Author:</strong> HKBA Tony Tong (唐仪), Student of HuaXue-357 Class<br />
                     <strong>Date &amp; Location:</strong> May 1-6, 2026, Shenzhen, China</p>
@@ -5120,6 +5153,33 @@
         });
         if (localStorage.getItem('rudaoBlogAlertDismissed') === '1') {
             alert.classList.add('dismissed');
+        }
+    })();
+    </script>
+    <script>
+    (function() {
+        var dd = document.getElementById('tocDropdown');
+        var btn = document.getElementById('tocDropBtn');
+        if (!dd || !btn) return;
+        function closeMenu() {
+            dd.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+        }
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var isOpen = dd.classList.toggle('open');
+            btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        document.addEventListener('click', function(e) {
+            if (!dd.contains(e.target)) closeMenu();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' || e.keyCode === 27) closeMenu();
+        });
+        var links = dd.querySelectorAll('.nav-dropmenu a');
+        for (var i = 0; i < links.length; i++) {
+            links[i].addEventListener('click', closeMenu);
         }
     })();
     </script>
