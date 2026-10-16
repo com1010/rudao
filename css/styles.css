@@ -524,12 +524,13 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     top: calc(100% + 0.55rem);
     right: 0;
     width: min(92vw, 700px);
-    max-height: min(72vh, 620px);
+    max-height: min(86vh, 760px);
     overflow-y: auto;
+    overscroll-behavior: contain;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.08rem 0.8rem;
-    padding: 0.75rem 0.85rem;
+    gap: 0.05rem 0.8rem;
+    padding: 0.7rem 0.8rem;
     background: var(--paper-warm);
     border: 1px solid rgba(169, 50, 38, 0.28);
     border-radius: 12px;
@@ -540,7 +541,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
     z-index: 130;
     text-align: left;
-    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
 }
 .nav-dropdown.open .nav-dropmenu {
     opacity: 1;
@@ -565,12 +566,12 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     display: flex;
     align-items: baseline;
     gap: 0.5rem;
-    padding: 0.32rem 0.5rem;
+    padding: 0.24rem 0.5rem;
     border-radius: 8px;
     font-family: var(--font-body);
-    font-size: 0.78rem;
+    font-size: 0.77rem;
     font-weight: 500;
-    line-height: 1.35;
+    line-height: 1.3;
     letter-spacing: 0;
     color: var(--ink-black);
     text-decoration: none;
@@ -581,8 +582,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 }
 .nav-links .nav-dropfull {
     grid-column: 1 / -1;
-    margin-bottom: 0.4rem;
-    padding: 0.3rem 0.5rem 0.55rem;
+    margin-bottom: 0.35rem;
+    padding: 0.26rem 0.5rem 0.5rem;
     border-radius: 0;
     border-bottom: 1px solid rgba(169, 50, 38, 0.18);
     color: var(--vermillion);
@@ -2899,12 +2900,12 @@ a.title-by:hover::after { opacity: 1; }
         left: 0.5rem;
         right: 0.5rem;
         width: auto;
-        max-height: 68vh;
+        max-height: 78vh;
         grid-template-columns: 1fr;
         padding: 0.6rem 0.7rem;
     }
     .nav-links .nav-dropitem,
-    .nav-links .nav-dropfull { font-size: 0.8rem; padding: 0.34rem 0.4rem; }
+    .nav-links .nav-dropfull { font-size: 0.8rem; padding: 0.3rem 0.4rem; }
     .nav-dropnum { min-width: 2.1rem; }
     /* keep anchor jumps clear of the single-row bar */
     section[id],
