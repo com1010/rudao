@@ -3227,6 +3227,8 @@ a.title-by:hover::after { opacity: 1; }
 .endorse-role{font-size:12px;color:var(--gray);margin:0;line-height:1.5}
 .endorse-body{flex:1}
 .endorse-p{font-size:13.5px;line-height:1.75;color:var(--ink-mid);margin:0 0 10px}
+.endorse-p-list{margin:0 0 10px;padding-left:18px;font-size:13.5px;line-height:1.75;color:var(--ink-mid);break-inside:avoid}
+.endorse-p-list li{margin-bottom:4px}
 .endorse-p.zh{font-family:var(--font-cn-body),'Noto Sans SC',sans-serif;color:var(--ink-soft)}
 .endorse-p:last-child{margin-bottom:0}
 .endorse-sig{font-size:12px;font-style:italic;color:var(--vermillion);margin:4px 0 0;line-height:1.6}
