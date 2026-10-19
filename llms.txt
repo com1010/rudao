@@ -48,8 +48,13 @@ Ch.5 RuShang Legends 儒商典范 - The Way of the Confucian Merchant
 Ch.6 RuDao in the AI Digital Age 数字时代
 - 6.1 RuDao in the AI Digital Economy 儒道 × AI 数字经济 - Dr. Zhu Jia-ming 朱嘉明; Web3/Web4 RuDao Trust System
 - 6.2 Dialogue of Civilizations and the New Confucian Business Civilization (文明对话与新儒商商业文明) - Toynbee, Ikeda
-- 6.3 Co-opetition Biz Cases 网络商战竞合 - Power Alliances: Microsoft, Apple, and Wall Street Tycoons
-- 6.3 Case - Microsoft Saved Apple: Co-opetition and Coexistence 微软救苹果:竞合与共存 (#ch63) - Confucius 君子和而不同; the 1997 Macworld Boston moment when Microsoft invested $150M in non-voting Apple shares, read through three RuDao principles: harmony without uniformity 和而不同, unity of righteousness and profit 义利合一, standing on trust 以信立身; lessons for the AI/blockchain ecosystem era.
+- 6.3 Biz Cases - Power Alliances 权力 资本 同盟: Microsoft, Apple, and Wall Street Tycoons 商业案例:权力 资本 同盟 - 微软 苹果 华尔街巨头 (five US business cases, bilingual)
+- 6.3 Case 1 - Microsoft vs Apple: Co-opetition 微软救苹果:竞合与共存 (#ch63) - Confucius 君子和而不同; the 1997 Macworld Boston moment when Microsoft invested $150M in non-voting Apple shares, read through three RuDao principles: harmony without uniformity 和而不同, unity of righteousness and profit 义利合一, standing on trust 以信立身.
+- 6.3 Case 2 - Buffett x RuDao: Investment as Character 巴菲特 x 儒道:投资即人格 - five bridges: Bai Gui 白圭 counter-cyclical buying, integrity, margin of safety, circle of competence, time and compounding; investment theory as a theory of character.
+- 6.3 Case 3 - Munger x RuDao: Inversion and Deservability 芒格 x 儒道:逆向与配得上 - Invert, always invert 反者道之动; deserve what you want 义利合一; not-stupid over brilliant 知止; incentives; integrity and the WeiQi 围棋 lesson.
+- 6.3 Case 4 - Wall Street Tycoons: Gekko, Soros, and Sun Tzu 华尔街巨头:盖柯,索罗斯与孙子兵法 - zero-sum finance vs RuDao; brilliance without trust self-destructs; 不战而屈人之兵 as the true reading of The Art of War.
+- 6.3 Case 5 - Other People's Money: The Two Extremes 抢钱世界:利之极与义之极 - Larry the Liquidator vs Andrew Jorgenson; renewal not abandonment; money's unconditionality is its trap; the mean 以义统利,以利成义.
+- 6.3 US Business Case Studies - Summary 案例线总览与结语 - the unity of righteousness and profit as the single thread; trust is the scarcest asset of the digital economy.
 - 6.4 A 30-year practitioner's witness: from Web1 to AI, Web3, Web4 - 内圣外王与未来 - Conclusion
 - 6.5 Synthesis: 以德驭术 as the operating system of the digital age - 以内圣之德,行外王之利
 
