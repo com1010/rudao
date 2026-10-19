@@ -16,17 +16,15 @@ The book is structured in six chapters, framed by Front Matter (0) and Back Matt
 
 ### Table of Contents / 全书目录
 
-0 Front Matter 前文: 0.1 Foreword 序言; 0.2 Author: Why RuDao Matters Today 为什么今天需要儒道?; 0.3 The Purpose of This Book 本书宗旨 (#ch03) - threefold purpose: 体用贯通, 超越零和, 古今融合; 0.4 RuDao AI Digital Age 数字时代; 0.5 Who Should Read RuDao? 读者对象 (#ch05) - 企业领袖, 跨境精英, 超越兵法者, 义利兼顾者; 0.6 How to Read This Book 如何阅读
+0 Front Matter 前文: 0.1 Foreword 序言; 0.2 Author: Why RuDao Matters Today 为什么今天需要儒道?; 0.3 The Purpose of This Book 本书宗旨 (#ch03) - threefold purpose: 体用贯通, 超越零和, 古今融合; 0.4 Who Should Read RuDao? 读者对象 (#ch05) - 企业领袖, 跨境精英, 超越兵法者, 义利兼顾者; 0.5 How to Read This Book 如何阅读
 
 Ch.1 The Roots 源 - Natural Pursuit of Profit 人性趋利 from 1600 BCE
 - 1.1 Shang (c. 1600-1046 BCE): Business Begins 商朝 - 商业起源 - the character 商, "货殖列传"善因论, Division of Labor, Natural Pursuit of Profit
 - 1.3 RuDao Trust System: From ancient philosophy to global cross-border credit - why virtue alone cannot survive the market
 
 Ch.2 What Is Ru+Dao 何谓儒+道 - A Philosophy and Ethics of Business 一套商业的哲学与伦理
-- 2.1 Why Sun Tzu Alone Is Not Enough 兵儒之辨 - Co-opetition: Harmony in Difference 和而不同
-- 2.2 The Ethical Core: The Eight Virtues and Li Ren 八德 - 里仁 - 儒商八德 仁义礼智信忠孝恕, Inner Sage 内圣 / Outer King 外王, 以仁德为核心
-- 2.3 仁为体,义为用,忠恕贯之 - the righteousness-profit distinction
-- 2.4 The Five Constants in Market Competition 仁义礼智信 - 义利并举,富而好礼
+- 2.1 The Ethical Core: The Eight Virtues and Li Ren 八德 - 里仁 - 儒商八德 仁义礼智信忠孝恕, Inner Sage 内圣 / Outer King 外王, 以仁德为核心
+- 2.2 The Five Constants in Market Competition 仁义礼智信 - 义利并举,富而好礼
 
 Ch.3 Ru + Dao 内圣外王 - Inner Sage, Outer King
 - 3.1 Inner Sage, Outer King 内圣外王 (#ch31) - from the Zhuangzi to the Great Learning: the four-character compass, the eight steps (八目), root-and-fruit principle, modern boardroom translation, RuDao's dual-root correction
@@ -40,7 +38,7 @@ Ch.4 RuJiang 儒将 : Co-opetition 竞合之道 vs The Art of War 超越孙子�
 - 4.4 Board Game Manners to Boardroom Success 从棋盘到董事会:棋品见人品 - LiYi 礼仪 in contest; Liu Qi liubo incident; from board to boardroom; character under pressure
 
 Ch.5 RuShang Legends 儒商典范 - The Way of the Confucian Merchant
-- 5.1 RuShang: The Confucian Entrepreneur 儒商 (#ch51) - the three ancient masters Fan Li 范蠡 (counter-cyclical strategist: buy boats in drought, buy carts in flood; capital velocity 务完物; ten percent margins 逐什一之利; 富好行其德), ZiGong 子贡 (以商养道; 富而好礼; strategic humility) and BaiGui 白圭 (智勇仁强; 乐观时变; 人弃我取,人取我与). Key thesis: 君子富,好行其德. 5.1.6 traces contrarian thinking 逆向思维 from Fan Li to Wall Street: De Bondt and Thaler Market Overreaction Hypothesis (1985), Buffett on American Express 1963 and Coca-Cola 1988.
+- 5.1 RuShang Archetypes - FanLi, ZiGong, BaiGui (#ch51) - the three ancient masters Fan Li 范蠡 (counter-cyclical strategist: buy boats in drought, buy carts in flood; capital velocity 务完物; ten percent margins 逐什一之利; 富好行其德), ZiGong 子贡 (以商养道; 富而好礼; strategic humility) and BaiGui 白圭 (智勇仁强; 乐观时变; 人弃我取,人取我与). Key thesis: 君子富,好行其德. 5.1.6 traces contrarian thinking 逆向思维 from Fan Li to Wall Street: De Bondt and Thaler Market Overreaction Hypothesis (1985), Buffett on American Express 1963 and Coca-Cola 1988.
 - 5.2 Yi Before Profit 义先于利 - 仁 / 义 / 利 and sustainable wealth
 - 5.3 RuShang Exemplars Across 2,500 Years 儒商先贤 - 子贡,孟洛川(瑞蚨祥),张謇 to 渋沢栄一,稻盛和夫,松下幸之助
 - 5.4 Asian RuShang 亚洲儒商典范 - Li Ka-shing 李嘉诚 (信誉人格,生意来求你), Robert Kuok 郭鹤年, Cao Dewang 曹德旺, Chearavanont family 谢国民家族 (CP Group Thailand 正大集团 利国利民利企业), Dr. Lucio Tan (陈永栽) Philippine Taipans, Root-Seeking donations (寻根之旅), Henry Fok 霍英东, Sir David Li Kwok-po (李国宝家族-五代传承) Century-old Li family behind the Bank of East Asia (HKBEA.com), Tung Chee-hwa 董建华, Leung Chun-ying 梁振英, Li Tung-hoy 李东海 Securities Philanthropist 证券义商 Father and son Vincent Lee Marshall Kwan Ho 李君豪, Tong Yun-kai 汤恩佳, Oei Hong Leong 黄鸿年 - Oei Ek Tjhong (Eka Tjipta Widjaja) 黄奕聪 印尼金光集团家族 Sinar Mas Group; 陈济棠家族三代 (儒将-儒商-儒家)
@@ -188,7 +186,7 @@ De-duplication: 己所不欲勿施于人, 己欲立而立人己欲达而达人, 
 
 The following chapters are published in full on this site, each linked from its TOC row:
 - Ch. 2 What Is RuDao: A Philosophy and Ethics of Business 何谓儒道:一套商业的哲学与伦理 (#ch2) - Ru vs Dao, Ru + Dao 儒与道,儒加道; Greek philosophia/ethos vs Chinese 哲/伦理/道德 etymologies; philosophy without ethics (the cunning operator) vs ethics without philosophy (the well-meaning failure); the RuDao position; Ru+Dao fusion (tree analogy); key persons and events timeline tables (EN + 中文).
-- 2.4 The Five Constants in Market Competition 仁义礼智信 (#ch24) - WuChang 五常: Ren/Yi/Li/Zhi/Xin with Mencius four beginnings, Dong Zhongshu, tables and quote wall.
+- 2.2 The Five Constants in Market Competition 仁义礼智信 (#ch24) - WuChang 五常: Ren/Yi/Li/Zhi/Xin with Mencius four beginnings, Dong Zhongshu, tables and quote wall.
 - Ch. 4 RuJiang 儒将 : Co-opetition 竞合之道 vs The Art of War 超越孙子兵法 (#ch4) - Co-opetition, turning counterparties into partners.
 - 4.1 Art of War vs Art of Business 兵者诡道也 vs 商者信道 (#ch41) - from "Warfare is Deception" to "Merchants Abide by Trust"; why business needs the RuDao paradigm; the military foundation and its limits; from war fighting to value creation; RuShang/RuJiang dual paradigm; merchants abide by trust and its historical origin; three executive maxims.
 - 4.3 The Art of War (Sun Tzu) vs Co-opetition 竞合之道 (#ch43) - incl. 4.3.1 Co-opetition, 4.3.2 Surviving Adversity and Crisis, 4.3.3 Three Kingdoms RuJiang wisdom, RuJiang Casebook.
