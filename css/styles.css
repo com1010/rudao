@@ -694,6 +694,16 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     z-index: 2;
     text-align: center;
     max-width: 920px;
+    /* flex-item guard: allow the block to shrink below the longest
+       unbreakable text run, otherwise the hero overflows narrow screens */
+    min-width: 0;
+    width: 100%;
+}
+.hero-subtitle-en,
+.hero-tagline,
+.hero-subtitle-cn,
+.hero-by {
+    overflow-wrap: break-word;
 }
 
 .hero-eyebrow {
@@ -2808,6 +2818,40 @@ a.title-by:hover::after { opacity: 1; }
     .preface-sig-seal { width: 84px; }
 }
 
+@media (max-width: 640px) {
+    .hero {
+        padding: 5rem 1rem 3rem;
+    }
+    /* smaller display sizes so every hero line fits inside
+       a 320-430px phone viewport with no sideways clipping */
+    .title-en {
+        font-size: clamp(2.7rem, 15.5vw, 5rem);
+        letter-spacing: -0.03em;
+    }
+    .title-cn {
+        font-size: clamp(2.1rem, 9.5vw, 3.4rem);
+    }
+    .hero-subtitle-en {
+        font-size: clamp(0.98rem, 4.5vw, 1.3rem);
+        line-height: 1.3;
+        padding-inline: 0.25rem;
+    }
+    .hero-tagline {
+        font-size: clamp(0.9rem, 3.95vw, 1.05rem);
+        line-height: 1.5;
+        padding-inline: 0.25rem;
+    }
+    .hero-subtitle-cn {
+        font-size: clamp(0.85rem, 3.7vw, 1rem);
+        line-height: 1.55;
+        letter-spacing: 0.02em;
+    }
+    .hero-by {
+        font-size: 0.85rem;
+        letter-spacing: 0.03em;
+    }
+}
+
 /* ============================================
    BODY TEXT FONT — Joan (readability pass)
    Running / smaller body copy uses the clean,
@@ -3018,6 +3062,11 @@ a.title-by:hover::after { opacity: 1; }
         gap: 0.15rem;
     }
     .preorder-formats { grid-template-columns: 1fr; }
+    .preorder-content { min-width: 0; }
+    .preorder-cta .btn {
+        min-width: 0;
+        white-space: normal;
+    }
     .preorder-form {
         flex-direction: column;
     }
