@@ -4534,3 +4534,16 @@ table th a[href^="http"] {
     .ruinfo-links { flex-direction: column; gap: 3px; }
     .ruinfo-links a { font-size: 8px; }
 }
+
+/* Compact variant for quote blocks that stack several lines (Ch.5.3.2 Kuok maxims) */
+.quote-block.quote-block-sm .quote {
+    font-size: clamp(1.02rem, 1.5vw, 1.2rem);
+    line-height: 1.45;
+    margin-bottom: 0.45rem;
+}
+.quote-block.quote-block-sm .quote-cn {
+    font-size: 1.02rem;
+    line-height: 1.6;
+    margin-bottom: 0.7rem;
+}
+.quote-block.quote-block-sm .quote-attr { margin-top: 0.2rem; }
