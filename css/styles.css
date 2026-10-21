@@ -4547,3 +4547,54 @@ table th a[href^="http"] {
     margin-bottom: 0.7rem;
 }
 .quote-block.quote-block-sm .quote-attr { margin-top: 0.2rem; }
+
+/* ============================================
+   SUN TZU'S FIVE FACTORS (五事) — monospace figure
+   Courier New block inside the generic .ru-frame
+   ============================================ */
+.wushi-frame { padding-bottom: clamp(1.1rem, 2.2vw, 1.5rem); }
+.wushi-title {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.76rem, 1.05vw, 0.86rem);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    line-height: 1.5;
+    color: var(--vermillion);
+    margin: 0 0 0.95rem;
+}
+.wushi-title span[lang="zh"] { letter-spacing: 0.08em; }
+.wushi-map {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.wushi-row {
+    display: grid;
+    grid-template-columns: 2.6ch 27ch max-content minmax(0, 1fr);
+    align-items: baseline;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.7rem, 1.02vw, 0.84rem);
+    line-height: 2.1;
+    color: var(--ink-black);
+}
+.wushi-row > span { white-space: nowrap; }
+.wushi-no { color: var(--gray); }
+.wushi-term { font-weight: 600; letter-spacing: 0.01em; }
+.wushi-arrow {
+    font-family: 'Courier New', 'Segoe UI Symbol', Courier, monospace;
+    color: var(--vermillion);
+    padding-right: 2ch;
+}
+.wushi-mean { color: var(--ink-mid); }
+@media (max-width: 640px) {
+    .wushi-title { letter-spacing: 0.1em; }
+    .wushi-row {
+        font-size: 0.7rem;
+        grid-template-columns: 2.6ch minmax(0, 1fr);
+        row-gap: 0.1rem;
+        line-height: 1.7;
+        margin-bottom: 0.5rem;
+    }
+    .wushi-arrow { display: none; }
+    .wushi-mean { grid-column: 2; white-space: normal; }
+}
