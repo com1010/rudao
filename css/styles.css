@@ -4598,3 +4598,89 @@ table th a[href^="http"] {
     .wushi-arrow { display: none; }
     .wushi-mean { grid-column: 2; white-space: normal; }
 }
+
+/* ============================================
+   Chapter 6.3.2 - Digital Co-opetition cascade diagram
+   ============================================ */
+.coop-flow {
+    max-width: 760px;
+    margin: clamp(1.6rem, 3vw, 2.4rem) auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+.coop-layer {
+    border: 1px solid var(--paper-shadow);
+    border-left: 3px solid var(--vermillion);
+    background: var(--paper-warm);
+    padding: 1rem 1.15rem;
+    border-radius: var(--radius);
+}
+.coop-layer.is-mid { border-left-color: var(--gold); background: #fdfbf6; }
+.coop-layer.is-base { border-left-color: var(--ink-black); }
+.coop-layer-tag {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--vermillion);
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+}
+.coop-layer-title {
+    font-family: var(--font-body);
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--ink-black);
+    line-height: 1.35;
+    margin: 0 0 0.5rem;
+}
+.coop-layer-title span {
+    display: block;
+    font-family: var(--font-cn-body);
+    font-size: 0.86rem;
+    color: var(--gray);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin-top: 0.15rem;
+}
+.coop-layer-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--ink-mid);
+}
+.coop-layer-list li { position: relative; padding-left: 0.95rem; margin: 0.18rem 0; }
+.coop-layer-list li::before { content: "-"; position: absolute; left: 0; color: var(--gold); }
+.coop-arrow {
+    text-align: center;
+    color: var(--gold);
+    font-size: 0.9rem;
+    line-height: 1;
+    padding: 0.3rem 0;
+}
+.coop-arrow small {
+    display: block;
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-top: 0.2rem;
+}
+.coop-loop {
+    margin-top: 0.55rem;
+    text-align: center;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--vermillion);
+    border-top: 1px dashed var(--paper-shadow);
+    padding-top: 0.55rem;
+}
+@media (max-width: 640px) {
+    .coop-layer { padding: 0.85rem 0.9rem; }
+    .coop-layer-list { font-size: 0.85rem; }
+    .coop-loop { letter-spacing: 0.04em; }
+}
