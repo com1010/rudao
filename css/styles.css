@@ -2414,6 +2414,141 @@ a.title-by:hover::after { opacity: 1; }
 .social-link:hover svg { opacity: 1; }
 
 /* ============================================
+   VIP SIGNATURE EDITION - DIRECT PAYMENT FRAME
+   ============================================ */
+.vip-frame {
+    position: relative;
+    z-index: 1;
+    max-width: 920px;
+    margin: clamp(2.5rem, 5vw, 4rem) auto 0;
+    padding: clamp(1.5rem, 3vw, 2.6rem);
+    background: var(--paper);
+    border: 1px solid rgba(169, 50, 38, 0.28);
+    box-shadow: 0 0 0 6px rgba(169, 50, 38, 0.045), 0 18px 40px rgba(10, 10, 10, 0.06);
+}
+.vip-frame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--vermillion), var(--gold-soft));
+}
+.vip-frame-kicker {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--vermillion);
+    margin-bottom: 0.55rem;
+}
+.vip-frame-title {
+    font-family: var(--font-serif-en);
+    font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--ink-black);
+    margin: 0 0 0.9rem;
+    text-align: left;
+}
+.vip-frame-lead {
+    font-family: var(--font-body);
+    font-size: 0.94rem;
+    line-height: 1.8;
+    color: var(--ink-mid);
+    margin: 0 0 1.6rem;
+    max-width: 70ch;
+}
+.vip-wallets {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+}
+.vip-wallet {
+    padding: 0.85rem 1rem;
+    background: var(--paper-warm);
+    border: 1px solid rgba(10, 10, 10, 0.07);
+}
+.vip-wallet-label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+}
+.vip-wallet-num {
+    flex: 0 0 auto;
+    width: 1.55rem;
+    height: 1.55rem;
+    border-radius: 50%;
+    background: var(--ink-black);
+    color: var(--paper);
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.vip-wallet-name {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1.45;
+    color: var(--ink-soft);
+}
+.vip-wallet-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.vip-wallet-addr {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--ink-black);
+    word-break: break-all;
+}
+.vip-copy {
+    flex: 0 0 auto;
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.42rem 0.78rem;
+    border: 1px solid rgba(169, 50, 38, 0.35);
+    border-radius: var(--radius);
+    background: transparent;
+    color: var(--vermillion);
+    cursor: pointer;
+    transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.vip-copy:hover {
+    background: var(--vermillion);
+    border-color: var(--vermillion);
+    color: var(--paper);
+}
+.vip-copy.is-copied {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--paper);
+}
+.vip-frame-note {
+    margin: 1.3rem 0 0;
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: var(--gray);
+}
+@media (max-width: 640px) {
+    .vip-wallet-row { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+    .vip-wallet-addr { font-size: 0.73rem; }
+}
+
+/* ============================================
    PRE-ORDER
    ============================================ */
 .preorder {

@@ -104,6 +104,7 @@ Chinese: 儒道, 儒将, 唐仪, 超越孙子兵法, 儒家竞合之道, 平衡�
 - ASIN: B0HN7VS2HZ
 - Amazon Pre-Order URL: https://www.amazon.com/dp/B0HN7VS2HZ
 - Formats: Hardcover, Kindle e-Book, Audiobook
+- VIP Signature Edition: order direct from the author Tony Tong, paid online in USDC over ERC20, BASE, BEP20 or Solana - wallet addresses listed in the Pre-Order section of https://RuDao.us (#vip-edition); after payment email the transaction hash to Tony@RuDao.org
 
 ## Official URLs
 

@@ -556,6 +556,46 @@
         }
     }
 
+    // ============================================
+    // Copy-to-clipboard for the VIP edition wallets
+    // ============================================
+    const copyButtons = document.querySelectorAll('.vip-copy');
+    if (copyButtons.length) {
+        const legacyCopy = (text) => {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.setAttribute('readonly', '');
+            ta.style.position = 'fixed';
+            ta.style.top = '-1000px';
+            document.body.appendChild(ta);
+            ta.select();
+            let ok = false;
+            try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+            document.body.removeChild(ta);
+            return ok;
+        };
+        copyButtons.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const text = btn.getAttribute('data-copy') || '';
+                if (!text) return;
+                const flash = (ok) => {
+                    const original = btn.textContent;
+                    btn.textContent = ok ? 'Copied' : 'Select';
+                    btn.classList.toggle('is-copied', ok);
+                    setTimeout(() => {
+                        btn.textContent = original;
+                        btn.classList.remove('is-copied');
+                    }, 1600);
+                };
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).then(() => flash(true)).catch(() => flash(legacyCopy(text)));
+                } else {
+                    flash(legacyCopy(text));
+                }
+            });
+        });
+    }
+
     console.log('%c\u5112\u9053 \u00B7 RuDao', 'font-family: serif; font-size: 24px; color: #a93226; padding: 8px 0;');
     console.log('%cBeyond The Art of War \u2014 The Confucian Co-opetition Way', 'font-style: italic; color: #6b6b6b;');
     console.log('%cSix Chapters \u00B7 RuDao.us', 'color: #c9a961;');
