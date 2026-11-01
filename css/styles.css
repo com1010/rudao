@@ -3541,6 +3541,8 @@ a.title-by:hover::after { opacity: 1; }
 .references .ref-src{margin-right:.45rem;color:var(--vermillion);font-family:var(--font-body);font-size:.88rem;font-weight:700;letter-spacing:.02em}
 .references .ref-zh{font-family:var(--font-cn-body);color:var(--ink-black)}
 .references .ref-en{font-style:italic}
+.book-xlink{color:inherit;text-decoration:none;border-bottom:1px solid currentColor;transition:opacity .15s ease}
+.book-xlink:hover{opacity:.72}
 
 /* Dedication: Mayer Lutheran HS / University of Minnesota tribute block */
 .dedication-mlhs{margin-top:clamp(2.4rem,4vw,3.2rem);padding-top:clamp(1.6rem,3vw,2.2rem);border-top:1px dashed rgba(169,50,38,.35)}
