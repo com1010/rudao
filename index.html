@@ -95,6 +95,14 @@
       #ch21 .preface-cn ul.zhu-list li::marker { color: var(--vermillion, #a93226); }
       #ch21 .preface-cn h4.chap-h3 { font-family: 'Noto Serif SC', 'cwTeXQKai', serif; }
       #ch21 .preface-cn p strong { font-family: 'Noto Serif SC', 'cwTeXQKai', serif; }
+      /* Ch 2.1 - Key Classic Sayings: tightened vertical rhythm */
+      #ch21 .sayings-tight h4.chap-h3 { margin: 1.1rem 0 .25rem; font-size: 1.06rem; }
+      #ch21 .sayings-tight h4.chap-h3:first-child { margin-top: .1rem; }
+      #ch21 .sayings-tight .quote-block { margin: .3rem 0 .35rem; padding: .15rem .6rem .1rem; }
+      #ch21 .sayings-tight .quote { font-size: clamp(1.05rem, 1.5vw, 1.2rem); line-height: 1.45; margin-bottom: .2rem; }
+      #ch21 .sayings-tight .quote-cn { margin: .1rem 0 .05rem; font-size: .97rem; line-height: 1.75; }
+      #ch21 .sayings-tight .quote-attr { font-size: .84rem; line-height: 1.4; }
+      #ch21 .sayings-tight p { margin: .3rem 0 .2rem; line-height: 1.78; }
       .ch22-table-wrap { overflow-x: auto; margin: 1.4rem 0 1.8rem; }
       .ch22-table { width: 100%; border-collapse: collapse; font-size: .95rem; }
       .ch22-table th, .ch22-table td { border: 1px solid rgba(0,0,0,.14); padding: .55rem .8rem; text-align: left; vertical-align: top; }
@@ -784,7 +792,7 @@
                             <ul class="toc-points">
                                 <li>Birth and naming: Qiu 丘, courtesy name Zhongni 仲尼, Niqiu Mountain 尼丘山 - the Shiji - House of Confucius account</li>
                                 <li>Life story from adversity to moral leadership; the Six Classics 六经 he edited and transmitted; The Analects 论语 as the core repository</li>
-                                <li>3,000 disciples and the 72 Worthies 七十二贤; classical sayings - Rectification of Names 正名, Harmony Without Uniformity 和而不同, Reciprocity 恕</li>
+                                <li>3,000 disciples and the 72 Sages 七十二贤; classical sayings - Rectification of Names 正名, Harmony Without Uniformity 和而不同, Reciprocity 恕</li>
                             </ul>
                         </td>
                     </tr>
@@ -1552,7 +1560,7 @@
             <div class="preface-divider" aria-hidden="true"><span>孔</span></div>
             <div class="preface-body">
                 <h3 class="chap-h2">1. Birth and Naming of Confucius</h3>
-                <p>Confucius (551 BCE - 479 BCE), given name Qiu, courtesy name Zhongni. He was born in Zouyi, State of Lu, present-day Qufu City, Shandong Province, and is revered as the founder of Confucianism.</p>
+                <p>Confucius (孔子 551 BCE - 479 BCE), given name Qiu, courtesy name Zhongni. He was born in Zouyi, State of Lu, present-day Qufu City, Shandong Province, and is revered as the founder of Confucianism.</p>
                 <p><strong>Zhong (仲):</strong> This follows the ancient sibling ranking system of Bo, Zhong, Shu, Ji. "Zhong" signifies the second surviving son. His elder half-brother Meng Pi was born to a concubine and had a physical disability; thus, Confucius became the viable second male heir of the lineage.</p>
                 <p><strong>Ni (尼):</strong> Derived from Niqiu Mountain (later renamed Nishan). According to <em>Records of the Grand Historian</em> (Shiji), his father Shuliang He and mother Yan Zhengzai prayed at Niqiu Mountain for a child before Confucius was conceived.</p>
                 <p><strong>Qiu (丘):</strong> Meaning a hill or mound. Historical records state he was born with a sunken crown on his head, shaped like a mound. His given name Qiu and courtesy name Zhongni share a unified origin tied to Niqiu Mountain, reflecting standard Zhou dynasty aristocratic naming conventions.</p>
@@ -1578,11 +1586,11 @@
                     <li><strong>The Analects (Lun Yu / 论语):</strong> While Confucius did not write <em>The Analects</em> himself, this monumental text was compiled by his disciples and second-generation students during the Warring States period. It remains the core repository of his sayings, dialogues, and philosophical insights.</li>
                 </ul>
 
-                <h3 class="chap-h2">4. The Disciples: 3,000 Scholars and the Seventy-Two Worthies</h3>
+                <h3 class="chap-h2">4. The Disciples: 3,000 Scholars &amp; 72 Sages</h3>
                 <p>Confucius revolutionized ancient education by declaring that "in education there should be no class distinctions" (You Jiao Wu Lei).</p>
                 <ul class="zhu-list">
                     <li><strong>The 3,000 Students:</strong> Over his lifetime, he taught approximately 3,000 disciples from diverse socioeconomic backgrounds, instilling in them the ideals of benevolence (Ren), righteousness (Yi), and ritual propriety (Li).</li>
-                    <li><strong>The 72 Worthies (Sheng Xian Qi Shi Er / 七十二贤):</strong> Among his thousands of students, 72 mastered the core curriculum and the Six Arts completely. These elite disciples became the vanguard who spread Confucian thought across China, including legendary figures such as Yan Hui (exemplar of moral virtue), Zeng Shen (transmitter of filial piety), Zigong (master of diplomacy and commerce), and Zilu (exemplar of courage and loyalty).</li>
+                    <li><strong>The 72 Sages (Sheng Xian Qi Shi Er / 七十二贤):</strong> Among his thousands of students, 72 mastered the core curriculum and the Six Arts completely. These elite disciples became the vanguard who spread Confucian thought across China, including legendary figures such as Yan Hui (exemplar of moral virtue), Zeng Shen (transmitter of filial piety), Zigong (master of diplomacy and commerce), and Zilu (exemplar of courage and loyalty).</li>
                 </ul>
 
                 <h3 class="chap-h2">5. Historical Achievement and Civilizational Impact</h3>
@@ -1593,7 +1601,7 @@
                     <li><strong>Statecraft and Governance:</strong> Established the moral framework for state administration, transforming virtue into the ultimate standard of leadership - a foundational premise that continues to echo through modern governance, global education, and the RuDao framework.</li>
                 </ul>
 
-                <h3 class="chap-h2">6. Opening of The Analects and Classic Quotations</h3>
+                <h3 class="chap-h2">6. The Analects 论语 - Quotations</h3>
                 <p>The opening of <em>The Analects</em> (Xue Er / 学而篇, 1.1) sets the definitive tone for Confucian self-cultivation, fellowship, and moral resilience:</p>
                 <blockquote class="quote-block">
                     <p class="quote">"Is it not a pleasure, having learned something, to try it out at due intervals? Is it not a joy to have friends come from afar? Is it not gentlemanly not to take offense when others fail to appreciate your abilities?"</p>
@@ -1603,7 +1611,7 @@
                 <p><strong>Explanation:</strong> Confucius outlines three pillars of lifelong leadership: internal joy through deliberate practice (Xue), global strategic fellowship (Peng), and unwavering moral confidence despite a lack of external recognition (Junzi).</p>
 
                 <h3 class="chap-h2">Key Classic Sayings</h3>
-
+                <div class="sayings-tight">
                 <h4 class="chap-h3">The Rectification of Names (正名)</h4>
                 <blockquote class="quote-block">
                     <p class="quote">"If names are not rectified, then language will not be in accord with truth. If language is not in accord with truth, then things cannot be accomplished."</p>
@@ -1659,6 +1667,7 @@
                     <p class="quote-attr">- The Analects 7.16</p>
                 </blockquote>
                 <p><strong>Explanation:</strong> Confucius despises wealth gotten wrongly, not wealth itself; the merchant is welcome to riches, only the unrighteous path is rejected. Profit and virtue are partners, not enemies.</p>
+                </div>
             </div>
             <div class="preface-cn" lang="zh">
                 <h3 class="preface-cn-title">孔子的生平与弟子</h3>
@@ -4750,7 +4759,7 @@
             </div>
 
             <div class="preface-body" lang="en">
-                <p class="preface-drop">Tony Tong (唐仪) in Chinese is "Tang-Yi". Tang or Tong is our family name, and "Yi" 仪/义 means Righteousness/Integrity. As the ancient sages once observed: "If names are not correctly rectified, words will not accord with reality; if words do not accord with reality, nothing can be successfully achieved." (名不正 则言不顺 言不顺 则事不成 — The Analects 论语 Book 13 Zilu 子路篇 13.3 — Confucius 孔子 551–479 BCE) Reflecting upon his half-century of conduct, the character "Yi" (仪 - Stature/Law/Majesty) in his name has served as a profound spiritual anchor across the grand rivers of his life journey. It embodies the majestic stature of the Great Tang Dynasty and stands as the pride of the Tong family lineage.</p>
+                <p class="preface-drop">Tony Tong (唐仪) in Chinese is "Tang-Yi". Tang or Tong is our family name, and "Yi" 仪/义 means Righteousness/Integrity. As the ancient sages once observed: "If names are not correctly rectified, words will not accord with reality; if words do not accord with reality, nothing can be successfully achieved." (名不正 则言不顺 言不顺 则事不成 - The Analects 论语 Book 13 Zilu 子路篇 13.3 - Confucius 孔子 551-479 BCE) Reflecting upon his half-century of conduct, the character "Yi" (仪 - Stature/Law/Majesty) in his name has served as a profound spiritual anchor across the grand rivers of his life journey. It embodies the majestic stature of the Great Tang Dynasty and stands as the pride of the Tong family lineage.</p>
 
                 <h3 class="aw-head">I. Sacred Ancestry and the Golden Era of Tong/Tang</h3>
                 <p>Since antiquity, the Tong family has carried a baseline genetic code of profound strategy, grand wisdom, and statecraft. Tracing back to the absolute dawn of Chinese civilization, the roots of the Tong lineage extend directly to the golden era of Sage Kings Yao and Shun. The ancient sovereign Emperor Yao was originally enfeoffed in the lands of Tang, establishing the legendary "Tao-Tang" epoch celebrated across thousands of generations. His descendants adopted the name of the realm as their surname, forging one of the oldest and most revered family lines in Chinese history. From the benevolent abdication policies of Emperor Yao to the Warring States diplomat Zhang Yi-who neutralized entire enemy states through sheer strategic alliance without spilling a single drop of blood-this bloodline totem of prioritizing grand strategy over blunt force has long been etched into our family ethos.</p>
@@ -5850,9 +5859,9 @@
 <article class="endorse-card endorse-card-wide" id="endorse-siu">
 <header class="endorse-head"><h3 class="endorse-name">Johnny YuNing Siu 蕭宇寧</h3><p class="endorse-role">Macao Polytechnic University 澳門理工大學 MPU.edu.mo - Deputy Director, Centre for Gaming and Tourism Studies 博彩旅遊教學及研究中心副主任 - Vice Chairman, Editorial Board, Journal of Global Gaming and Tourism Research 澳理大世界博彩與旅遊研究學術期刊編輯委員會副主任</p></header>
 <div class="endorse-body">
-<p class="endorse-p en">Endorsement for TonyTong's new book "RuDao - Beyond the Art of War": "One who is benevolent brings wisdom to business. With people as the foundation and virtue as the substance, like-minded friends will naturally gather—and in their company, all are uplifted."</p>
-<p class="endorse-p en">I have known Tony for many years and can attest that he is a man of many talents with profound business knowledge. He is equally at home delving into classical texts and grasping the essence of Confucianism as he is navigating the commercial world with keen insight into the art of management—a rare entrepreneur who truly integrates scholarship with practice.</p>
-<p class="endorse-p en">TonyTong's "RuDao - Beyond The Art of War - The Confucian Co-opetition Way to Balanced Profit and Enduring Partnerships" is the crystallization of his years of reflection and experience. The book explores how to conduct business in the spirit of Confucianism—not by paying lip service to benevolence and righteousness, but by embedding them into the underlying logic of business decisions: building an enterprise on integrity, pursuing profit through righteousness, treating others with propriety, and responding with wisdom. Throughout the book, Tony repeatedly returns to a central idea: business competition need not be a zero-sum battle, but can be a symbiosis of co-opetition in which all parties thrive together. The Confucian principle—"wishing to establish oneself, one establishes others; wishing to succeed, one helps others succeed"—offers modern business precisely a path beyond the law of the jungle: to succeed oneself while helping others succeed, and to enlarge the pie through relationships built on trust and mutual benefit, rather than merely fighting over the piece at hand.</p>
+<p class="endorse-p en">Endorsement for TonyTong's new book "RuDao - Beyond the Art of War": "One who is benevolent brings wisdom to business. With people as the foundation and virtue as the substance, like-minded friends will naturally gather - and in their company, all are uplifted."</p>
+<p class="endorse-p en">I have known Tony for many years and can attest that he is a man of many talents with profound business knowledge. He is equally at home delving into classical texts and grasping the essence of Confucianism as he is navigating the commercial world with keen insight into the art of management - a rare entrepreneur who truly integrates scholarship with practice.</p>
+<p class="endorse-p en">TonyTong's "RuDao - Beyond The Art of War - The Confucian Co-opetition Way to Balanced Profit and Enduring Partnerships" is the crystallization of his years of reflection and experience. The book explores how to conduct business in the spirit of Confucianism - not by paying lip service to benevolence and righteousness, but by embedding them into the underlying logic of business decisions: building an enterprise on integrity, pursuing profit through righteousness, treating others with propriety, and responding with wisdom. Throughout the book, Tony repeatedly returns to a central idea: business competition need not be a zero-sum battle, but can be a symbiosis of co-opetition in which all parties thrive together. The Confucian principle - "wishing to establish oneself, one establishes others; wishing to succeed, one helps others succeed" - offers modern business precisely a path beyond the law of the jungle: to succeed oneself while helping others succeed, and to enlarge the pie through relationships built on trust and mutual benefit, rather than merely fighting over the piece at hand.</p>
 <p class="endorse-p en">The book combines theoretical depth with practical warmth. It reads not as empty theorizing but as something that can be put into practice at every turn. I wholeheartedly recommend it to anyone in business who is pondering how to go far and go right.</p>
 <p class="endorse-p zh">推薦語：仁者商智，以人為本，以德為體，君朋自來，交之俱勝。</p>
 <p class="endorse-p zh">我認識唐儀多年，深知他是一位多才多藝、商業學識淵博的人。他既能深入典籍、體悟儒學精髓，又長期馳騁商場、洞察經營之道，是一位難得能將學問與實踐融會貫通的企業家。</p>
