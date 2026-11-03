@@ -4913,3 +4913,146 @@ table th a[href^="http"] {
     .zhu-frame { padding: 1.1rem 1rem; }
     .preface-body .zhu-frame p { text-align: left; }
 }
+
+/* ============================================
+   Chapter 6.1 - 5IR ladder & AI history timeline
+   ============================================ */
+.ir-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1.4rem 0 2.2rem;
+}
+.ir-item {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    align-items: start;
+    gap: 0.9rem;
+    padding: 0.85rem 1.05rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--paper-shadow);
+    border-left: 3px solid var(--gold-soft);
+    border-radius: var(--radius);
+}
+.ir-item:hover { border-left-color: var(--vermillion); background: #fff; }
+.ir-item-latest {
+    background: #fff;
+    border-left-color: var(--vermillion);
+    box-shadow: 0 6px 18px rgba(10, 10, 10, 0.06);
+}
+.ir-num {
+    font-family: var(--font-serif-en);
+    font-size: 1.45rem;
+    line-height: 1;
+    color: var(--vermillion);
+    opacity: 0.85;
+    padding-top: 0.15rem;
+}
+.preface-body .ir-era {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 0.15rem;
+}
+.preface-body .ir-title {
+    font-family: var(--font-serif-en);
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: var(--ink-black);
+    line-height: 1.35;
+    margin-bottom: 0.25rem;
+}
+.preface-body .ir-body p:last-child {
+    font-size: 0.94rem;
+    line-height: 1.65;
+    color: var(--ink-mid);
+}
+ol.ai-phases {
+    list-style: none;
+    margin: 1.4rem 0 2.2rem;
+    padding: 0 0 0 0.2rem;
+}
+ol.ai-phases > li {
+    position: relative;
+    margin-left: 0.5rem;
+    padding: 0 0 1.15rem 1.55rem;
+    border-left: 1px solid var(--paper-shadow);
+}
+ol.ai-phases > li:last-child {
+    border-left-color: transparent;
+    padding-bottom: 0;
+}
+ol.ai-phases > li::before {
+    content: "";
+    position: absolute;
+    left: -4.5px;
+    top: 0.55rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--vermillion);
+}
+ol.ai-phases > li:last-child::before {
+    box-shadow: 0 0 0 4px rgba(169, 50, 38, 0.12);
+}
+.ai-phase-era {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--vermillion);
+    border: 1px solid var(--paper-shadow);
+    background: var(--paper-warm);
+    border-radius: 999px;
+    padding: 0.1rem 0.55rem;
+    margin-bottom: 0.3rem;
+}
+.ai-phase-title {
+    font-family: var(--font-serif-en);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink-black);
+    margin-bottom: 0.15rem;
+}
+.preface-body ol.ai-phases p {
+    font-size: 0.93rem;
+    color: var(--gray);
+    line-height: 1.6;
+}
+@media (max-width: 640px) {
+    .ir-item { grid-template-columns: 2.2rem 1fr; gap: 0.6rem; padding: 0.75rem 0.85rem; }
+    .ir-num { font-size: 1.15rem; }
+    .ir-title { font-size: 0.96rem; }
+}
+
+/* scoped CN sub-headings inside the long chapter body */
+.preface-body p.chap-h2-cn {
+    font-family: var(--font-cn);
+    font-size: clamp(0.95rem, 1.4vw, 1.08rem);
+    color: var(--vermillion);
+    text-align: left;
+    line-height: 1.5;
+    margin: -0.5rem 0 1.3rem;
+}
+.preface-body p.chap-h3-cn {
+    font-family: var(--font-cn);
+    font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+    color: var(--ink-mid);
+    text-align: left;
+    line-height: 1.5;
+    margin: -0.6rem 0 1.1rem;
+}
+
+/* compact variant for the wide 5IR matrices in Ch 6.1 */
+.compare-table.compact th {
+    padding: 0.7rem 0.6rem;
+    font-size: 0.85rem;
+    line-height: 1.35;
+}
+.compare-table.compact td {
+    padding: 0.7rem 0.6rem;
+    font-size: 0.85rem;
+    line-height: 1.45;
+}
