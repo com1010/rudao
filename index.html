@@ -85,17 +85,23 @@
         font-style: normal;
         font-display: swap;
       }
-      /* Ch 2.2 - Eight Virtues 儒商八德 */
+      /* Ch 2.1 - Hundred Schools 诸子百家-先秦 */
+      #ch20 .preface-body ul { margin: 0 0 1.5rem; padding-left: 1.35rem; list-style: disc; }
+      #ch20 .preface-body ul li { line-height: 1.92; margin-bottom: .5rem; text-align: justify; }
+      #ch20 .preface-body ul li::marker { color: var(--vermillion, #a93226); }
+      #ch20 .fam-list { font-family: 'Noto Serif SC', 'cwTeXQKai', serif; font-size: .97rem; line-height: 2; color: var(--ink-mid, #555); text-align: justify; margin: 0 0 1.3rem; }
+      #ch20 .quote-cn { font-family: 'Noto Serif SC', 'cwTeXQKai', serif; font-size: 1rem; color: var(--ink-mid, #555); line-height: 1.95; }
+      /* Ch 2.4 - Eight Virtues 儒商八德 */
       #ch22 .quote-cn { font-family: 'Noto Serif SC', 'cwTeXQKai', serif; font-size: 1.02rem; color: var(--vermillion, #a93226); margin: .5rem 0 .2rem; }
       #ch22 .quote-block { margin: 1.4rem 0; }
       #ch22 h3 { margin-top: 2.2rem; }
-      /* Ch 2.1 - Confucius: Birth & Legacy 孔子的生平与弟子 */
+      /* Ch 2.2 - Confucius 551BCE Ru-School 孔子 儒家 */
       #ch21 .preface-cn ul.zhu-list { margin: 0 0 1.4rem; padding-left: 1.2rem; list-style: disc; }
       #ch21 .preface-cn ul.zhu-list li { font-family: 'Noto Serif SC', 'cwTeXQKai', serif; font-size: clamp(1rem,1.2vw,1.08rem); line-height: 1.95; color: var(--ink-mid, #555); margin-bottom: .5rem; text-align: justify; }
       #ch21 .preface-cn ul.zhu-list li::marker { color: var(--vermillion, #a93226); }
       #ch21 .preface-cn h4.chap-h3 { font-family: 'Noto Serif SC', 'cwTeXQKai', serif; }
       #ch21 .preface-cn p strong { font-family: 'Noto Serif SC', 'cwTeXQKai', serif; }
-      /* Ch 2.1 - Key Classic Sayings: tightened vertical rhythm */
+      /* Ch 2.2 - Key Classic Sayings: tightened vertical rhythm */
       #ch21 .sayings-tight h4.chap-h3 { margin: 1.1rem 0 .25rem; font-size: 1.06rem; }
       #ch21 .sayings-tight h4.chap-h3:first-child { margin-top: .1rem; }
       #ch21 .sayings-tight .quote-block { margin: .3rem 0 .35rem; padding: .15rem .6rem .1rem; }
@@ -103,11 +109,11 @@
       #ch21 .sayings-tight .quote-cn { margin: .1rem 0 .05rem; font-size: .97rem; line-height: 1.75; }
       #ch21 .sayings-tight .quote-attr { font-size: .84rem; line-height: 1.4; }
       #ch21 .sayings-tight p { margin: .3rem 0 .2rem; line-height: 1.78; }
-      /* Ch 2.2 - Chinese block for the Origins section */
+      /* Ch 2.3 - Chinese block for the Origins section */
       #ch24 .preface-cn.origins-cn { max-width: none; margin: 1.4rem 0 1.8rem; padding-top: 1.2rem; }
       #ch24 .preface-cn.origins-cn h4.chap-h3 { font-family: 'Noto Serif SC', 'cwTeXQKai', serif; margin: .1rem 0 1rem; text-align: left; }
       #ch24 .preface-cn.origins-cn p { font-family: 'Noto Serif SC', 'cwTeXQKai', serif; font-size: clamp(1rem,1.2vw,1.06rem); line-height: 1.95; color: var(--ink-mid, #555); margin: 0 0 1.1rem; text-align: justify; }
-      /* Ch 2.3 - Education Values: Zhu Xi eight virtues school motto frame */
+      /* Ch 2.4 - Education Values: Zhu Xi eight virtues school motto frame */
       #ch22 .edu-frame .edu-frame-title { margin: 0 0 .9rem; padding: 0 .5rem; font-size: clamp(1.08rem,1.7vw,1.24rem); line-height: 1.6; color: var(--ink-black, #0a0a0a); }
       #ch22 .edu-frame p { padding: 0 .5rem; margin: .7rem 0; }
       #ch22 .edu-frame .edu-lead { font-size: clamp(.98rem,1.2vw,1.05rem); line-height: 1.9; }
@@ -415,18 +421,19 @@
                         <a class="nav-dropitem" href="#ch05" role="menuitem"><span class="nav-dropnum">0.4</span><span class="nav-droplabel">Who Should Read 读者对象</span></a>
                         <a class="nav-dropitem" href="#book" role="menuitem"><span class="nav-dropnum">0.5</span><span class="nav-droplabel">How to Read 如何阅读</span></a>
                         <a class="nav-dropgroup" href="#chapter-one" role="menuitem"><span class="nav-dropnum">1.0</span><span class="nav-droplabel">Roots of Profit 源 趋利</span></a>
-                        <a class="nav-dropitem" href="#chapter-one" role="menuitem"><span class="nav-dropnum">1.1</span><span class="nav-droplabel">Shang 商朝 - Business Begins</span></a>
+                        <a class="nav-dropitem" href="#chapter-one" role="menuitem"><span class="nav-dropnum">1.1</span><span class="nav-droplabel">Shang 商朝 1600BCE Business Begins</span></a>
                         <a class="nav-dropitem" href="#chapter-one" role="menuitem"><span class="nav-dropnum">1.3</span><span class="nav-droplabel">Trust System 信用体系</span></a>
                         <a class="nav-dropgroup" href="#ch2" role="menuitem"><span class="nav-dropnum">2.0</span><span class="nav-droplabel">RuDao: Philosophy Ethics 哲学伦理</span></a>
-                        <a class="nav-dropitem" href="#ch21" role="menuitem"><span class="nav-dropnum">2.1</span><span class="nav-droplabel">Confucius - Birth &amp; Legacy 孔子的生平与弟子</span></a>
-                        <a class="nav-dropitem" href="#ch24" role="menuitem"><span class="nav-dropnum">2.2</span><span class="nav-droplabel">Five Constants 五常 - 仁义礼智信</span></a>
-                        <a class="nav-dropitem" href="#ch22" role="menuitem"><span class="nav-dropnum">2.3</span><span class="nav-droplabel">Eight Virtues 八德 - 里仁</span></a>
+                        <a class="nav-dropitem" href="#ch20" role="menuitem"><span class="nav-dropnum">2.1</span><span class="nav-droplabel">Hundred Schools 770-221BCE 诸子百家-先秦</span></a>
+                        <a class="nav-dropitem" href="#ch21" role="menuitem"><span class="nav-dropnum">2.2</span><span class="nav-droplabel">Confucius 551BCE Ru-School 孔子 儒家</span></a>
+                        <a class="nav-dropitem" href="#ch24" role="menuitem"><span class="nav-dropnum">2.3</span><span class="nav-droplabel">Five Constants 五常 - 仁义礼智信</span></a>
+                        <a class="nav-dropitem" href="#ch22" role="menuitem"><span class="nav-dropnum">2.4</span><span class="nav-droplabel">Eight Virtues 八德 - 里仁</span></a>
                         <a class="nav-dropgroup" href="#ch31" role="menuitem"><span class="nav-dropnum">3.0</span><span class="nav-droplabel">Inner Sage, Outer King 内圣外王</span></a>
-                        <a class="nav-dropitem" href="#ch31" role="menuitem"><span class="nav-dropnum">3.1</span><span class="nav-droplabel">Inner Sage, Outer King 内圣外王</span></a>
+                        <a class="nav-dropitem" href="#ch31" role="menuitem"><span class="nav-dropnum">3.1</span><span class="nav-droplabel">Daoism by LaoZi 571BCE 老子 道家</span></a>
                         <a class="nav-dropitem" href="#ch32" role="menuitem"><span class="nav-dropnum">3.2</span><span class="nav-droplabel">Ru &amp; Dao 儒与道 - Substance &amp; Function</span></a>
                         <a class="nav-dropitem" href="#ch31" role="menuitem"><span class="nav-dropnum">3.3</span><span class="nav-droplabel">Daoist Spirit 道家精神</span></a>
                         <a class="nav-dropgroup" href="#ch4" role="menuitem"><span class="nav-dropnum">4.0</span><span class="nav-droplabel">Co-opetition 儒将 竞合之道</span></a>
-                        <a class="nav-dropitem" href="#ch41" role="menuitem"><span class="nav-dropnum">4.1</span><span class="nav-droplabel">Art of War vs Art of Business 诡道 vs 信道</span></a>
+                        <a class="nav-dropitem" href="#ch41" role="menuitem"><span class="nav-dropnum">4.1</span><span class="nav-droplabel">Art of War - SunTzu 544BCE 孙子</span></a>
                         <a class="nav-dropitem" href="#ch4" role="menuitem"><span class="nav-dropnum">4.2</span><span class="nav-droplabel">RuJiang 儒将 - Co-opetition</span></a>
                         <a class="nav-dropitem" href="#ch43" role="menuitem"><span class="nav-dropnum">4.3</span><span class="nav-droplabel">Art of War vs Co-opetition 竞合</span></a>
                         <a class="nav-dropitem" href="#ch44" role="menuitem"><span class="nav-dropnum">4.4</span><span class="nav-droplabel">Board Game - Boardroom 棋品见人品</span></a>
@@ -784,7 +791,7 @@
                     <tr class="toc-row">
                         <td class="toc-cell-num">1.1</td>
                         <td class="toc-cell-title">
-                            <a class="toc-link" href="#chapter-one">Shang (c. 1600-1046 BCE): Business Begins 商朝 - 商业起源</a>
+                            <a class="toc-link" href="#chapter-one">Shang 商朝 1600BCE Business Begins</a>
                             <ul class="toc-points">
                                 <li>The Shang Dynasty - the origin of written Chinese commerce; the character 商 and the word 商人 (merchant)</li>
                                 <li>Records of the Grand Historian - Biographies of the Money-makers(货殖列传):善因论 (the doctrine of "letting be"), Division of Labor, Natural Pursuit of Profit 人性趋利</li>
@@ -804,7 +811,19 @@
                     <tr class="toc-row">
                         <td class="toc-cell-num">2.1</td>
                         <td class="toc-cell-title">
-                            <a class="toc-link" href="#ch21">Confucius - Birth &amp; Legacy 孔子的生平与弟子</a>
+                            <a class="toc-link" href="#ch20">Hundred Schools (770-221 BCE) 诸子百家-先秦</a>
+                            <ul class="toc-points">
+                                <li>The great flowering of Chinese philosophy from Spring and Autumn 春秋 (c. 770-476 BCE) to Warring States 战国 (c. 475-221 BCE) - 诸子百家, "the many masters, the hundred schools"</li>
+                                <li>Sima Tan's six families 六家, expanded by Liu Xin and Ban Gu to ten schools 十家 / nine doctrines 九流; the 189 schools and 4,324 chapters 篇 of the 《汉书·艺文志·诸子略》</li>
+                                <li>The thirty most influential schools and masters at a glance 清单 - Confucian, Daoist, Military, Legalist, Mohist, Logician, Yin-Yang, Diplomatist, Agrarian, Eclectic, and the merchant sages Fan Li 范蠡 and Bai Gui 白圭</li>
+                                <li>Full catalogue of the 189 schools 家, grouped by the ten families, with the closing text of the Han bibliography 卷末原文</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr class="toc-row">
+                        <td class="toc-cell-num">2.2</td>
+                        <td class="toc-cell-title">
+                            <a class="toc-link" href="#ch21">Confucius 551BCE Ru-School 孔子 儒家</a>
                             <ul class="toc-points">
                                 <li>Birth and naming: Qiu 丘, courtesy name Zhongni 仲尼, Niqiu Mountain 尼丘山 - the Shiji - House of Confucius account</li>
                                 <li>Life story from adversity to moral leadership; the Six Classics 六经 he edited and transmitted; The Analects 论语 as the core repository</li>
@@ -813,7 +832,7 @@
                         </td>
                     </tr>
                     <tr class="toc-row">
-                        <td class="toc-cell-num">2.2</td>
+                        <td class="toc-cell-num">2.3</td>
                         <td class="toc-cell-title">
                             <a class="toc-link" href="#ch24">The Five Constants as the Ethical Code of Enterprise 五常 - 仁义礼智信</a>
                             <ul class="toc-points">
@@ -824,11 +843,11 @@
                         </td>
                     </tr>
                     <tr class="toc-row">
-                        <td class="toc-cell-num">2.3</td>
+                        <td class="toc-cell-num">2.4</td>
                         <td class="toc-cell-title">
                             <a class="toc-link" href="#ch22">The Ethical Core: The Eight Virtues and Li Ren 八德 - 里仁</a>
                             <ul class="toc-points">
-                                <li>The Eight Virtues of RuShang(儒商八德 仁义礼智信忠孝恕)as items of inner cultivation (Inner Sage 内圣) and rules of outer conduct (Outer King 外王) - <a class="toc-link" href="#ch22">read Ch. 2.3 →</a></li>
+                                <li>The Eight Virtues of RuShang(儒商八德 仁义礼智信忠孝恕)as items of inner cultivation (Inner Sage 内圣) and rules of outer conduct (Outer King 外王) - <a class="toc-link" href="#ch22">read Ch. 2.4 →</a></li>
                                 <li>Li Ren - Dwelling in Benevolence(里仁): benevolence as the core (以仁德为核心)</li>
                                 <li>The Eight Virtues of Education Values 朱熹-朱子八德校训 孝悌忠信礼义廉耻 - school mission and institutional values, sourced from Confucius Hall School 香港孔聖堂禮仁書院 and Confucian Academy 香港孔教學院</li>
                             </ul>
@@ -843,7 +862,7 @@
                     <tr class="toc-row">
                         <td class="toc-cell-num">3.1</td>
                         <td class="toc-cell-title">
-                            <a class="toc-link" href="#ch31">Inner Sage, Outer King 内圣外王 - 修身 齐家 治国 平天下</a>
+                            <a class="toc-link" href="#ch31">Daoism by LaoZi 571BCE 老子 道家 - 修身 齐家 治国 平天下</a>
                             <ul class="toc-points">
                                 <li>The Four-Character Compass: from the Zhuangzi to the Great Learning, from root to fruit</li>
                                 <li>Origin in Daoism, ladder in Confucianism - the eight steps of self-cultivation and leadership</li>
@@ -880,7 +899,7 @@
                     <tr class="toc-row">
                         <td class="toc-cell-num">4.1</td>
                         <td class="toc-cell-title">
-                            <a class="toc-link" href="#ch41">Art of War vs Art of Business 兵者诡道也 vs 商者信道</a>
+                            <a class="toc-link" href="#ch41">Art of War - SunTzu 544BCE 孙子</a>
                             <ul class="toc-points">
                                 <li>From 'Warfare is Deception' to 'Merchants Abide by Trust'</li>
                                 <li>Why business needs the RuDao paradigm</li>
@@ -1370,7 +1389,7 @@
             <div class="section-head preface-head">
                 <span class="section-num">Chapter 1</span>
                 <h2 class="section-title">The Roots - Natural Pursuit of Profit from 1600 BCE<a class="section-anchor" href="#chapter-one" aria-label="Copy link to this chapter">#</a></h2><p class="section-title-cn">源 - 人性趋利</p>
-                <p class="section-subtitle">1.1 - Shang (c. 1600-1046 BCE): Business Begins</p><p class="section-subtitle-cn">商朝 - 商业起源</p>
+                <p class="section-subtitle">1.1 Shang 商朝 1600BCE Business Begins</p><p class="section-subtitle-cn">商朝 1600BCE - 商业起源</p>
             </div>
             <div class="preface-divider" aria-hidden="true"><span>源</span></div>
             <div class="preface-cn-quote">
@@ -1568,12 +1587,130 @@
         </div>
     </section>
     <!-- ========== CH 2.1 - CONFUCIUS: BIRTH & LEGACY 孔子的生平与弟子 ========== -->
-    <section class="section preface chap-sec" id="ch21">
+    <section class="section preface chap-sec" id="ch20">
         <div class="chapter-band" aria-hidden="true"></div>
         <div class="container preface-container">
             <div class="section-head preface-head">
                 <span class="section-num">Chapter 2.1</span>
-                <h2 class="section-title">Confucius - Birth &amp; Legacy<a class="section-anchor" href="#ch21" aria-label="Copy link to this chapter">#</a></h2><p class="section-title-cn">孔子的生平与弟子</p>
+                <h2 class="section-title">Hundred Schools (770-221 BCE)<a class="section-anchor" href="#ch20" aria-label="Copy link to this chapter">#</a></h2><p class="section-title-cn">诸子百家-先秦</p>
+                <p class="section-subtitle">The Hundred Schools of Thought during the Pre-Qin Era</p><p class="section-subtitle-cn">诸子百家-先秦-九流十家与思想背景</p>
+            </div>
+            <div class="preface-divider" aria-hidden="true"><span>百</span></div>
+            <div class="preface-body">
+<h3 class="chap-h2">The Hundred Schools of Thought during Pre-Qin Era (770-221 BCE)</h3>
+<p class="chap-h2-cn">诸子百家-先秦-九流十家与思想背景</p>
+<p>The Hundred Schools of Thought 诸子百家 is the great flowering of Chinese philosophy that ran from the Spring and Autumn 春秋 (c. 770-476 BCE) through the Warring States 战国 (c. 475-221 BCE) periods, ending when Qin unified China in 221 BCE. "Zhuzi 诸子" means "the many masters" and "Baijia 百家" means "the hundred schools" - not literally a hundred, but "a great many"; Western scholarship renders it "The Hundred Schools of Thought." The two periods that produced them are collectively the pre-Qin era 先秦 (before the Qin dynasty).</p>
+<p>The schools were first grouped by the Han historian Sima Tan 司马谈 into six major families 六家: the Yin-Yang 阴阳, Confucian 儒, Mohist 墨, Legalist 法, Logician 名, and Daoist 道德. Liu Xin 刘歆 and Ban Gu 班固, in the History of the Han, Treatise on Bibliography 《汉书·艺文志》, expanded this to ten schools 十家 - adding the Diplomatists 纵横, Eclecticists 杂, Agriculturalists 农, and Storytellers 小说 - of which only nine 九流 were held to be real doctrines. The same catalogue records, in its "Various Masters" section 诸子略, a literal count of 189 schools 家 in 4,324 chapters 篇, though the family subtotals add to 190 (a known textual discrepancy). This appendix sets out the thirty most influential schools and masters, then the full catalogue of the 189 as a historical record.</p>
+<h4 class="chap-h3">（一）The Thirty Schools at a Glance 清单</h4>
+<p class="chap-h3-cn">先秦诸子 Top 30</p>
+<ul>
+    <li><strong>Confucianism 儒家</strong> - Confucius 孔子, Mencius 孟子, Xunzi 荀子 (c. 313-238, author of the doctrine that human nature is evil 性恶论). Ritual, integrity, benevolence, social order.</li>
+    <li><strong>Daoism 道家</strong> - Laozi 老子, Zhuangzi 庄子. The Way 道, effortless action 无为, heaven-human harmony 天人合一; it supplies the "dao" half of RuDao.</li>
+    <li><strong>Military Strategists 兵家</strong> - Sun Tzu 孙武, Sun Bin 孙膑. Calculation, adaptability, winning without conflict.</li>
+    <li><strong>Legalism 法家</strong> - Shang Yang 商鞅, Han Feizi 韩非子. Strict laws, statecraft, central authority.</li>
+    <li><strong>Mohism 墨家</strong> - Mozi 墨子. Universal love 兼爱, anti-aggression, meritocracy, frugality.</li>
+    <li><strong>School of Names 名家</strong> - Hui Shi 惠施, Gongsun Long 公孙龙. Logic and the paradoxes of name and reality.</li>
+    <li><strong>Yin-Yang School 阴阳家</strong> - Zou Yan 邹衍. Cosmology of the five elements and cosmic cycles.</li>
+    <li><strong>Diplomatists 纵横家</strong> - Su Qin 苏秦, Zhang Yi 张仪, teacher Gui Guzi 鬼谷子. Alliance politics.</li>
+    <li><strong>Agriculturalism 农家</strong> - Xu Xing 许行. Agrarian communalism, equal labor.</li>
+    <li><strong>Eclecticism 杂家</strong> - Lü Buwei 吕不韦, the Lüshi Chunqiu 吕氏春秋. A synthesis of all schools.</li>
+    <li><strong>Guan Zhong 管仲 (d. 645)</strong> - Qi reformer, "prosper the state, enrich the people" 富国强兵; ancestor of the Confucian merchant 儒商.</li>
+    <li><strong>Yangism 杨朱学派</strong> - Yang Zhu 杨朱. Self-preservation; criticized by Mencius.</li>
+    <li><strong>The Storytellers 小说家</strong> - the traditional tenth school; street-level records and anecdotes.</li>
+    <li><strong>Later Mohists 后期墨家</strong> - the dialecticians of the Mohist Canons 墨经.</li>
+    <li><strong>The Medical School 医家</strong> - Bian Que 扁鹊, Huangdi Neijing 黄帝内经.</li>
+    <li><strong>Immortalists 神仙家 / Fangshi 方士</strong> - seekers of longevity, forebears of alchemy.</li>
+    <li><strong>Zengzi 曾子 and Zisi 子思</strong> - Confucian lineage keepers behind the Great Learning 大学 and the Doctrine of the Mean 中庸.</li>
+    <li><strong>Gaozi 告子</strong> - debated human nature with Mencius.</li>
+    <li><strong>Early Legalists 法家前贤</strong> - Li Kui 李悝, Shen Buhai 申不害, Shen Dao 慎到.</li>
+    <li><strong>Qi-Lu Military Line 齐鲁兵学</strong> - Wu Qi 吴起, Sima Rangju 司马穰苴, Wei Liaozi 尉缭子.</li>
+    <li><strong>Fan Li 范蠡 (c. 536-448)</strong> - the merchant sage 陶朱公, and his economic teacher Ji Ran 计然; counter-cyclical wealth and "wealth with virtue."</li>
+    <li><strong>Bai Gui 白圭 (c. 370-300)</strong> - father of the art of making a living 治生之祖; "when others discard, I take 人弃我取."</li>
+    <li><strong>Liezi 列子 (c. 450-375)</strong> - Daoist master of the Liezi 列子.</li>
+    <li><strong>Wenzi 文子 (c. 5th-4th c.)</strong> - Daoist text 文子, later elaborated into the Huainanzi.</li>
+    <li><strong>Yan Ying 晏婴 (d. 500)</strong> - Qi minister of the Yanzi Chunqiu 晏子春秋.</li>
+    <li><strong>Song Xing 宋钘 (c. 370-291)</strong> - pacifist of the Song-Yin school 宋尹学派.</li>
+    <li><strong>Qin Guli 禽滑厘</strong> - Mozi's chief disciple, keeper of the Mohist order.</li>
+    <li><strong>Zixia 子夏 (c. 507-400)</strong> - Confucius's disciple and key transmitter of the classics.</li>
+    <li><strong>Gan De 甘德 and Shi Shen 石申 (4th c.)</strong> - astronomers of the Gan Shi Xing Jing 甘石星经.</li>
+    <li><strong>Shi Jiao 尸佼 (c. 390-330)</strong> - eclectic thinker of the Shi Zi 尸子, a bridge among schools.</li>
+</ul>
+<h3 class="chap-h2">先秦诸子百家 - 中文</h3>
+<p class="chap-h2-cn">诸子百家，先秦思想之大盛</p>
+<p>诸子百家，先秦思想之大盛。其流衍于春秋（约前770-前476）与战国（约前475-前221），至秦并于公元前221年一统而终。"诸子"指众多思想宗师，"百家"非实数一百，而是言其众多；西文习译作 "The Hundred Schools of Thought"。它们所处的两个大时代合称先秦（秦统一之前）。</p>
+<p>学派之分，首见于汉司马谈《论六家要旨》，分阴阳、儒、墨、法、名、道德六家；刘歆、班固于《汉书·艺文志》扩为十家，增纵横、杂、农、小说，其中可称"流"者为九家（九流）。同书《诸子略》实载189家、4324篇（各家小计相加为190，与自记总数略异，系传本残损所致）。兹先列最具影响的三十家，再录189家全目，以为史料。</p>
+<h4 class="chap-h3">（二）先秦诸子 Top 30 清单</h4>
+<p class="chap-h3-cn">三十家简目</p>
+<ul>
+    <li><strong>儒家</strong> - 孔子、孟子、荀子（约前313-238，著"性恶论"）。重礼、重德、重仁、重秩序。</li>
+    <li><strong>道家</strong> - 老子、庄子。主"道"、"无为"与"天人合一"；为儒道之"道"之一半。</li>
+    <li><strong>兵家</strong> - 孙武、孙膑。重庙算、权变、"不战而屈人之兵"。</li>
+    <li><strong>法家</strong> - 商鞅、韩非子。倡严刑峻法、中央集权。</li>
+    <li><strong>墨家</strong> - 墨子。倡兼爱、非攻、尚贤、节用。</li>
+    <li><strong>名家</strong> - 惠施、公孙龙。主名实之辨与悖论。</li>
+    <li><strong>阴阳家</strong> - 邹衍。以五行与宇宙循环立说。</li>
+    <li><strong>纵横家</strong> - 苏秦、张仪、鬼谷子。主合纵连横。</li>
+    <li><strong>农家</strong> - 许行。倡农本共耕、君臣并耕。</li>
+    <li><strong>杂家</strong> - 吕不韦，《吕氏春秋》，兼采诸家。</li>
+    <li>管仲（卒于前645）- 齐国改革家；"富国强兵"，儒商之思想远祖。</li>
+    <li><strong>杨朱学派</strong> - 杨朱。贵己为我，被孟子所攻。</li>
+    <li><strong>小说家</strong> - 传统第十家；稗官野史。</li>
+    <li><strong>后期墨家</strong> - 著《墨经》之辩者。</li>
+    <li><strong>医家</strong> - 扁鹊、《黄帝内经》。</li>
+    <li><strong>神仙家/方士</strong> - 求长生，为丹术先声。</li>
+    <li><strong>曾子·子思</strong> - 与《大学》《中庸》相关之道统守成者。</li>
+    <li><strong>告子</strong> - 与孟子辩人性（"性无善无不善"）。</li>
+    <li><strong>法家前贤</strong> - 李悝、申不害、慎到。</li>
+    <li><strong>齐鲁兵学</strong> - 吴起、司马穰苴、尉缭子。</li>
+    <li>范蠡（约前536-448）- 商圣陶朱公，及经济之师计然；逆周期致富、富而好德之范。</li>
+    <li>白圭（约前370-300）- "治生之祖"，"人弃我取"。</li>
+    <li>列子（约前450-375）- 道家《列子》。</li>
+    <li>文子（约前5-4世纪）- 道家《文子》，后衍为《淮南子》。</li>
+    <li>晏婴（卒于前500）- 齐相《晏子春秋》。</li>
+    <li>宋钘（约前370-291）- 宋尹学派的非攻者。</li>
+    <li><strong>禽滑厘</strong> - 墨子首席弟子，墨家之守成。</li>
+    <li>子夏（约前507-400）- 孔子弟子、经典传人。</li>
+    <li>甘德·石申（公元前4世纪）- 《甘石星经》之天文家。</li>
+    <li>尸子（尸佼）（约前390-330）- 杂家《尸子》，为诸家之桥。</li>
+</ul>
+<h3 class="chap-h2">《汉书·艺文志·诸子略》189家全目</h3>
+<p class="chap-h2-cn">按其十家分列，此为史料附录</p>
+<p>《汉书·艺文志·诸子略》189家短目，按其十家分列如下，此为史料附录。</p>
+<h4 class="chap-h3">（三）儒家（53家）</h4>
+<p class="fam-list">晏子 · 子思 · 曾子 · 漆雕子 · 宓子 · 景子 · 世子 · 魏文侯 · 李克 · 公孙尼子 · 孟子 · 孙卿子（荀子） · 芈子 · 内业 · 周史六弢 · 周政 · 周法 · 河间周制 · 谰言 · 功议 · 宁越 · 王孙子 · 公孙固 · 李氏春秋 · 羊子 · 董子 · 侯子 · 徐子 · 鲁仲连子 · 平原君 · 虞氏春秋 · 高祖传 · 陆贾 · 刘敬 · 孝文传 · 贾山 · 太常蓼侯孔臧 · 贾谊 · 河间献王对 · 雍宫 · 董仲舒 · 儿宽 · 公孙弘 · 终军 · 吾丘寿王 · 虞丘说 · 庄助 · 臣彭 · 钩盾冗从李步昌 · 儒家言 · 桓宽盐铁论 · 刘向所序 · 扬雄所序</p>
+<h4 class="chap-h3">（四）道家（37家）</h4>
+<p class="fam-list">伊尹 · 太公（谋/言/兵） · 辛甲 · 鬻子 · 管子 · 老子邻氏经传 · 老子傅氏经说 · 老子徐氏经说 · 刘向说老子 · 文子 · 蜎子 · 关尹子 · 庄子 · 列子 · 老成子 · 长卢子 · 王狄子 · 公子牟 · 田子 · 老莱子 · 黔娄子 · 宫孙子 · 鹖冠子 · 周训 · 黄帝四经 · 黄帝铭 · 黄帝君臣 · 杂黄帝 · 力牧 · 孙子 · 捷子 · 曹羽 · 郎中婴齐 · 臣君子 · 郑长者 · 楚子 · 道家言</p>
+<h4 class="chap-h3">（五）阴阳家（21家）</h4>
+<p class="fam-list">宋司星子韦 · 公梼生 · 公孙发 · 邹子 · 邹子终始 · 乘丘子 · 社文公 · 黄帝泰素 · 南公 · 容成子 · 张苍 · 邹奭子 · 闾丘子 · 冯促 · 将钜子 · 五曹官制 · 周伯 · 卫侯官 · 于长天下忠臣 · 公孙浑邪 · 杂阴阳</p>
+<h4 class="chap-h3">（六）法家（10家）</h4>
+<p class="fam-list">李子 · 商君 · 申子 · 处子 · 慎子 · 韩子 · 游棣子 · 鼌错 · 燕十事 · 法家言</p>
+<h4 class="chap-h3">（七）名家（7家）</h4>
+<p class="fam-list">邓析 · 尹文子 · 公孙龙子 · 成公生 · 惠子 · 黄公 · 毛公</p>
+<h4 class="chap-h3">（八）墨家（6家）</h4>
+<p class="fam-list">尹佚 · 田俅子 · 我子 · 随巢子 · 胡非子 · 墨子</p>
+<h4 class="chap-h3">（九）纵横家（12家）</h4>
+<p class="fam-list">苏子 · 张子 · 庞煖 · 阙子 · 国筮子 · 秦零陵令信 · 蒯子 · 邹阳 · 主父偃 · 徐乐 · 庄安 · 待诏金马聊苍</p>
+<h4 class="chap-h3">（十）杂家（20家）</h4>
+<p class="fam-list">孔甲盘盂 · 大命 · 伍子胥 · 子晚子 · 由余 · 尉缭 · 尸子 · 吕氏春秋 · 淮南内 · 淮南外 · 东方朔 · 伯象先生 · 荆轲论 · 吴子 · 公孙尼 · 博士臣贤对 · 臣说 · 解子簿书 · 推杂书 · 杂家言</p>
+<h4 class="chap-h3">（十一）农家（9家）</h4>
+<p class="fam-list">神农 · 野老 · 宰氏 · 董安国 · 尹都尉 · 赵氏 · 汜胜之 · 王氏 · 蔡癸</p>
+<h4 class="chap-h3">（十二）小说家（15家）</h4>
+<p class="fam-list">伊尹说 · 鬻子说 · 周考 · 青史子 · 师旷 · 务成子 · 宋子 · 天乙 · 黄帝说 · 封禅方说 · 待诏臣饶心术 · 待诏臣安成未央术 · 臣寿周纪 · 虞初周说 · 百家</p>
+<p><strong>小计：</strong>53+37+21+10+7+6+12+20+9+15=190家；《汉书·艺文志》自记总数为189家、4324篇，二者略异，系传本残损所致。</p>
+<blockquote class="quote-block">
+<p class="quote">"凡诸子百八十九家，四千三百二十四篇。诸子十家，其可观者九家而已。"</p>
+<p class="quote-cn">皆起于王道既微，诸侯力政，时君世主，好恶殊方，是以九家之术蜂出并作，各引一端，崇其所善，以此驰说，取合诸侯。其言虽殊，辟犹水火，相灭亦相生也。仁之与义，敬之与和，相反而皆相成也。《易》曰：天下同归而殊涂，一致而百虑。今异家者各推所长，穷知究虑，以明其指，虽有蔽短，合其要归，亦六经之支与流裔。若能修六艺之术，而观此九家之言，舍短取长，则可以通万方之略矣。</p>
+<p class="quote-attr">- 《汉书·艺文志·诸子略》卷末原文</p>
+</blockquote>
+            </div>
+        </div>
+    </section>
+    <section class="section preface chap-sec" id="ch21">
+        <div class="chapter-band" aria-hidden="true"></div>
+        <div class="container preface-container">
+            <div class="section-head preface-head">
+                <span class="section-num">Chapter 2.2</span>
+                <h2 class="section-title">Confucius 551BCE Ru-School<a class="section-anchor" href="#ch21" aria-label="Copy link to this chapter">#</a></h2><p class="section-title-cn">孔子 儒家 - 551BCE 儒门宗师</p>
             </div>
             <div class="preface-divider" aria-hidden="true"><span>孔</span></div>
             <div class="preface-body">
@@ -1748,7 +1885,7 @@
         <div class="chapter-band" aria-hidden="true"></div>
         <div class="container preface-container">
             <div class="section-head preface-head">
-                <span class="section-num">Chapter 2.2</span>
+                <span class="section-num">Chapter 2.3</span>
                 <h2 class="section-title">The Five Constants as the Ethical Code of Enterprise<a class="section-anchor" href="#ch24" aria-label="Copy link to this chapter">#</a></h2><p class="section-title-cn">五常 - 仁义礼智信</p>
             </div>
             <div class="preface-divider" aria-hidden="true"><span>常</span></div>
@@ -1865,7 +2002,7 @@
         <div class="chapter-band" aria-hidden="true"></div>
         <div class="container preface-container">
             <div class="section-head preface-head">
-                <span class="section-num">Chapter 2.3</span>
+                <span class="section-num">Chapter 2.4</span>
                 <h2 class="section-title">The Eight Virtues of the RuShang<a class="section-anchor" href="#ch22" aria-label="Copy link to this chapter">#</a></h2><p class="section-title-cn">儒商八德 - 仁义礼智信忠孝恕</p>
             </div>
             <div class="preface-divider" aria-hidden="true"><span>德</span></div>
@@ -2010,15 +2147,16 @@
         <div class="container preface-container">
             <div class="section-head preface-head">
                 <span class="section-num">Chapter 3.1</span>
-                <h2 class="section-title">Inner Sage, Outer King<a class="section-anchor" href="#ch31" aria-label="Copy link to this chapter">#</a></h2>
-                <p class="section-title-cn">内圣外王 - 修身 齐家 治国 平天下</p>
+                <h2 class="section-title">Daoism by LaoZi 571BCE<a class="section-anchor" href="#ch31" aria-label="Copy link to this chapter">#</a></h2>
+                <p class="section-title-cn">老子 道家 - 内圣外王 修身 齐家 治国 平天下</p>
                 <p class="section-subtitle">From Zhuangzi to the Boardroom</p>
                 <p class="section-subtitle-cn">从修身到治企:内圣外王的现代领导之道</p>
             </div>
             <div class="preface-divider" aria-hidden="true"><span>王</span></div>
             <div class="preface-body">
-<h3 class="chap-h2">Daoism origin by Zhuangzi</h3>
-<p class="chap-h2-cn">从修身到治企:内圣外王的现代领导之道</p>
+<h3 class="chap-h2">Daoism origin by LaoZi &amp; Zhuangzi</h3>
+<p class="chap-h2-cn">老子与庄子:道家的源头</p>
+<p>The origins of Daoism trace back to LaoZi (老子, c. 571-470 BCE) and ZhuangZi (庄子, c369-286 BCE). LaoZi introduced the Dao De Jing (Tao Te Ching 道德经), laying out the philosophy of Wu Wei (governing through natural alignment) and harmonious equilibrium (Tian Ren He Yi). ZhuangZi enriched this doctrine by championing mental agility and perspective. In modern business and co-opetition, their combined wisdom offers a vital counterbalance to aggressive expansion, teaching leaders to navigate market changes with fluidity, restraint, and long-term resilience.</p>
 <p>Chinese philosophy offers a four-character phrase that captures the entire architecture of leadership: 内圣外王 (nèi shèng wài wáng) - Inner Sage, Outer King.</p>
 <p>It means this: before you can govern others, you must govern yourself. Before you can lead an enterprise, you must lead your own heart. The inner cultivation of character is the root; the outer achievement of leadership is the fruit.</p>
 <p>This chapter traces where the phrase came from, how the Great Learning ("大学") turned it into a practical ladder, and how it applies to the modern boardroom.</p>
@@ -2412,7 +2550,7 @@
         <div class="container preface-container">
             <div class="section-head preface-head">
                 <span class="section-num">Chapter 4.1</span>
-                <h2 class="section-title">From 'Warfare is Deception' to 'Merchants Abide by Trust'<a class="section-anchor" href="#ch41" aria-label="Copy link to this chapter">#</a></h2><p class="section-title-cn">"兵者诡道也" vs "商者信道": 为什么商业需要儒道范式</p>
+                <h2 class="section-title">Art of War - SunTzu 544BCE<a class="section-anchor" href="#ch41" aria-label="Copy link to this chapter">#</a></h2><p class="section-title-cn">孙子 - "兵者诡道也" vs "商者信道"</p>
                 <p class="section-subtitle">Why Business Needs the RuDao Paradigm</p>
             </div>
             <div class="preface-divider" aria-hidden="true"><span>道</span></div>
