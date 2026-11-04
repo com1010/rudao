@@ -5183,3 +5183,78 @@ ol.ai-phases > li:last-child::before {
     margin-bottom: 0.5rem;
 }
 .takeaway-table td p:last-child { margin-bottom: 0; }
+
+/* ========== Bridge-to-next-chapter frame (top of each major chapter) ========== */
+.bridge-frame {
+    margin: 0 0 2.2rem;
+    padding: 1.1rem 1.4rem;
+    border: 1px solid var(--vermillion);
+    border-left: 5px solid var(--vermillion);
+    background: rgba(178, 34, 34, 0.04);
+    border-radius: 8px;
+}
+.bridge-label {
+    font-family: var(--font-serif-en), serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--vermillion);
+    margin: 0 0 0.4rem;
+}
+.bridge-text {
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: var(--ink-mid);
+}
+
+/* ========== Dedication plain paragraphs (tight spacing) ========== */
+.dedication-plain {
+    line-height: 1.35;
+    margin: 0 0 0.8rem;
+}
+
+/* ========== Appendix 7.1-7.3 compact readable type (10pt) ========== */
+#appendix-a p, #appendix-a li, #appendix-a td, #appendix-a th,
+#glossary p, #glossary li, #glossary td, #glossary th,
+#references p, #references li, #references td, #references th {
+    font-size: 10pt;
+    line-height: 1.5;
+}
+
+/* ========== Endorsement collapse (max 5 lines, click to expand) ========== */
+.endorse-body.is-collapsed {
+    overflow: hidden;
+    position: relative;
+}
+.endorse-body.is-collapsed::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 4em;
+    background: linear-gradient(rgba(250, 246, 238, 0), var(--paper-warm, #faf6ee));
+    pointer-events: none;
+}
+.endorse-card-letter .endorse-body.is-collapsed {
+    columns: 1;
+}
+.endorse-toggle {
+    margin: 6px 0 0;
+    padding: 6px 14px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--vermillion);
+    background: transparent;
+    border: 1px solid rgba(169, 50, 38, 0.45);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+    align-self: flex-start;
+}
+.endorse-toggle:hover {
+    background: var(--vermillion);
+    color: #fff;
+}
