@@ -3704,6 +3704,41 @@ a.title-by:hover::after { opacity: 1; }
     font-family: var(--font-cn-body);
     font-style: normal;
 }
+/* ============================================
+   7.5 Ending Remark — author's closing
+   ============================================ */
+.ending-remark {
+    margin-top: clamp(2.6rem, 5vw, 3.6rem);
+    padding-top: clamp(1.8rem, 3vw, 2.4rem);
+    border-top: 1px dashed rgba(169, 50, 38, 0.35);
+}
+.ending-title {
+    font-family: var(--font-serif-en);
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--ink-black);
+    letter-spacing: -0.01em;
+    margin: 0 0 1.6rem;
+}
+.ending-title-cn {
+    font-family: var(--font-cn-body);
+    font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--ink-black);
+    letter-spacing: 0.06em;
+    margin: 0 0 1.6rem;
+}
+.ending-stanza {
+    font-family: var(--font-serif-en);
+    font-style: italic;
+    font-size: clamp(1.08rem, 1.8vw, 1.28rem);
+    line-height: 1.9;
+    margin: clamp(1.6rem, 3vw, 2.2rem) 0;
+    padding-left: 1.2rem;
+    border-left: 3px solid rgba(169, 50, 38, 0.45);
+}
 .preface-cn-quote {
     text-align: center;
     margin-bottom: clamp(1.8rem, 3.5vw, 2.6rem);
