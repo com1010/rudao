@@ -5142,3 +5142,44 @@ ol.ai-phases > li:last-child::before {
 .frame-tight p:last-child {
     margin-bottom: 0;
 }
+
+/* ========== Chapter takeaway & bridge tables ========== */
+.takeaway-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2.5rem 0 0.5rem;
+    background: var(--paper);
+    border: 1px solid var(--vermillion);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px -12px rgba(10, 10, 10, 0.12);
+}
+.takeaway-table th {
+    width: 190px;
+    padding: 1rem 1.2rem;
+    text-align: left;
+    vertical-align: top;
+    font-family: var(--font-serif-en);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--vermillion);
+    background: rgba(178, 34, 34, 0.05);
+    border-bottom: 1px solid var(--vermillion);
+}
+.takeaway-table td {
+    padding: 1rem 1.4rem;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    vertical-align: top;
+    color: var(--ink-mid);
+}
+.takeaway-table tr + tr th,
+.takeaway-table tr + tr td {
+    border-bottom: none;
+}
+.takeaway-table .takeaway-lede {
+    font-weight: 700;
+    color: var(--ink-black);
+    margin-bottom: 0.5rem;
+}
+.takeaway-table td p:last-child { margin-bottom: 0; }
