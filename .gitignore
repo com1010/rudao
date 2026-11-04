@@ -23,3 +23,5 @@ node_modules/
 .workbuddy-ai/
 _src_*.jpg
 _src_crop_*.png
+index.html.bak-*
+*.bak*
