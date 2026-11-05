@@ -5473,3 +5473,33 @@ p.coeditor-note {
 }
 .toc-table .toc-sec-en { display: block; font-size: 0.95rem !important; margin-bottom: 0.3rem; }
 .toc-table .toc-sec-zh { font-size: 1rem !important; line-height: 1.4 !important; }
+
+/* ===== Dedication: To Michael Gaard - normal text, 8pt bio note ===== */
+.gaard-frame p {
+    font-size: clamp(0.98rem, 1.15vw, 1.05rem);
+    line-height: 1.85;
+    color: var(--ink-mid);
+    margin: 0 0 1rem;
+    text-align: left;
+}
+.gaard-frame .gaard-title {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 1.3vw, 1.12rem);
+    font-weight: 700;
+    color: var(--vermillion);
+    letter-spacing: 0;
+    line-height: 1.45;
+    margin: 0 0 0.9rem;
+}
+.gaard-frame .gaard-lead { color: var(--ink-black); }
+.gaard-frame .gaard-bio {
+    font-family: var(--font-body);
+    font-size: 8pt;
+    line-height: 1.45;
+    color: var(--gray);
+    margin: 1.1rem 0 0;
+    padding-top: 0.8rem;
+    border-top: 1px dashed rgba(169, 50, 38, 0.35);
+    text-align: left;
+}
+.gaard-frame p:last-child { margin-bottom: 0; }
