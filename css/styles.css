@@ -21,13 +21,13 @@
     --gray-light: #a8a8a8;
 
     /* Typography */
-    --font-serif-en: 'Fondamento', 'Cormorant Garamond', Georgia, serif;
+    --font-serif-en: 'Almendra', 'Cormorant Garamond', Georgia, serif;
     --font-serif-en-body: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-body: 'Merriweather', 'Noto Serif TC', 'Noto Serif SC', Georgia, 'Times New Roman', serif;
     --font-cn: 'Ma Shan Zheng', 'Noto Serif SC', serif;
     --font-cn-body: 'Noto Serif TC', 'Noto Serif SC', serif;
-    --font-brush: 'Ma Shan Zheng', 'Fondamento', cursive;
+    --font-brush: 'Ma Shan Zheng', 'Almendra', cursive;
 
     /* Layout */
     --container: 1240px;
@@ -416,7 +416,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     gap: 0.6rem;
 }
 .brand-en {
-    font-family: 'Fondamento', cursive;
+    font-family: 'Almendra', cursive;
     font-size: 1.7rem;
     color: var(--ink-black);
     letter-spacing: -0.02em;
@@ -731,7 +731,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     margin-bottom: 1.6rem;
 }
 .title-en {
-    font-family: 'Fondamento', var(--font-brush);
+    font-family: 'Almendra', var(--font-brush);
     font-size: clamp(5rem, 14vw, 11rem);
     line-height: 0.95;
     color: var(--ink-black);
@@ -3009,7 +3009,7 @@ a.title-by:hover::after { opacity: 1; }
    highly-readable Joan serif. Display items
    (brand wordmark, hero title, section titles,
    card headings, decorative quote marks, drop
-   cap) intentionally remain in Fondamento.
+   cap) intentionally remain in Almendra.
    ============================================ */
 .brand-by,
 .title-by,
@@ -4505,7 +4505,7 @@ a.title-by:hover::after { opacity: 1; }
    Every anchor that displays a raw URL / domain as its visible
    text carries class="urltext" (plus the table + copyright
    selectors below as a safety net). Rules:
-     - plain system sans face (never the decorative Fondamento
+     - plain system sans face (never the decorative Almendra
        serif and never the body serif)
      - font-style normal -> kills the italic inherited from
        .coeditor-sig and similar italic paragraphs
@@ -5604,8 +5604,8 @@ p.coeditor-note {
 
 /* ============================================================
    FONDAMENTO: NEVER ITALIC (user rule 2026-11-06)
-   Fondamento is the decorative display font (big titles / brand).
-   Wherever Fondamento is used via var(--font-serif-en), italic is
+   Almendra is the decorative display font (big titles / brand).
+   Wherever Almendra is used via var(--font-serif-en), italic is
    FORCED OFF. Readable body serif (Cormorant Garamond) is unaffected.
    ============================================================ */
 .section-num, .section-subtitle, .quote, .book-lead, .book-quote-en,
