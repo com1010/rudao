@@ -5338,3 +5338,27 @@ p.coeditor-note {
     font-size: 9pt;
     line-height: 1.45;
 }
+
+/* ========== Acknowledgment frame ========== */
+.ack-frame {
+    margin: 2rem 0 0;
+    padding: 1.1rem 1.3rem 1.2rem;
+    border: 1px solid var(--vermillion);
+    border-left: 5px solid var(--vermillion);
+    background: rgba(178, 34, 34, 0.04);
+    border-radius: 8px;
+}
+.ack-frame-title {
+    margin: 0 0 .55rem;
+    font-family: var(--font-serif-en), Georgia, serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--vermillion);
+}
+.ack-frame p {
+    margin: 0;
+    font-size: 0.96rem;
+    line-height: 1.6;
+    color: var(--ink-mid);
+}
