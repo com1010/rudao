@@ -3557,6 +3557,10 @@ a.title-by:hover::after { opacity: 1; }
     letter-spacing: 0;
     margin-right: 0.3rem;
 }
+#references .ref-list li.ref-item-s,
+#references .ref-list li.ref-item-s * {
+    font-style: normal !important;
+}
 #references .ref-list li.ref-item-s::before {
     top: 0.95rem;
     width: 5px;
