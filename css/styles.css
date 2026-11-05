@@ -5645,5 +5645,7 @@ p.coeditor-note {
    CJK text run in <span class="zh"> automatically. (Proportional
    scaling beats a fixed 2pt: bold CJK glyphs + Cormorant's small
    x-height otherwise make Chinese LOOK as big as the English.)
+   Chinese is NEVER bold (user 2026-11-06): always weight 400,
+   so it looks smaller and thinner than the adjacent English.
    ============================================================ */
-.zh { font-size: 0.8em; }
+.zh { font-size: 0.8em; font-weight: 400 !important; }
