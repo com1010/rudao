@@ -5445,3 +5445,31 @@ p.coeditor-note {
 .huaxue-maxim .quote-block { margin: 0 0 .55rem; padding: .25rem .4rem; }
 .huaxue-maxim .quote { margin-bottom: .1rem; }
 .huaxue-maxim p { margin: .15rem 0; }
+
+/* ========== ALL TABLE HEADINGS: body font, body size, upright, no decoration ==========
+   Covers every table header cell (comparison tables, compact matrices, glossary)
+   plus the Table-of-Contents section heading rows. One plain face, no italic,
+   no uppercase tracking, size matched to normal table text. */
+.compare-table th,
+.compare-table th *,
+.glossary-table th,
+.glossary-table th *,
+.toc-table .toc-sec-en,
+.toc-table .toc-sec-zh {
+    font-family: var(--font-body) !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+}
+.compare-table th { font-size: 0.95rem !important; line-height: 1.5 !important; }
+.compare-table.compact th { font-size: 0.85rem !important; line-height: 1.4 !important; }
+.glossary-table th { font-size: 0.95rem !important; line-height: 1.5 !important; }
+.compare-table th .compare-col-cn {
+    display: block;
+    font-size: 0.9rem !important;
+    margin-top: 0.15rem;
+    opacity: 0.78;
+}
+.toc-table .toc-sec-en { display: block; font-size: 0.95rem !important; margin-bottom: 0.3rem; }
+.toc-table .toc-sec-zh { font-size: 1rem !important; line-height: 1.4 !important; }
