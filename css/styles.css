@@ -3541,6 +3541,27 @@ a.title-by:hover::after { opacity: 1; }
 .references .ref-src{margin-right:.45rem;color:var(--vermillion);font-family:var(--font-body);font-size:.88rem;font-weight:700;letter-spacing:.02em}
 .references .ref-zh{font-family:var(--font-cn-body);color:var(--ink-black)}
 .references .ref-en{font-style:italic}
+
+/* Single compact reference entry (8pt, regular weight/style) */
+#references .ref-list li.ref-item-s,
+#references .ref-list li.ref-item-s .ref-src,
+#references .ref-list li.ref-item-s .ref-en,
+#references .ref-list li.ref-item-s .ref-zh {
+    font-size: 8pt;
+    line-height: 1.5;
+    font-weight: 400;
+    font-style: normal;
+}
+#references .ref-list li.ref-item-s .ref-src {
+    color: var(--ink-black);
+    letter-spacing: 0;
+    margin-right: 0.3rem;
+}
+#references .ref-list li.ref-item-s::before {
+    top: 0.95rem;
+    width: 5px;
+    height: 5px;
+}
 .book-xlink{color:inherit;text-decoration:none;border-bottom:1px solid currentColor;transition:opacity .15s ease}
 .book-xlink:hover{opacity:.72}
 
