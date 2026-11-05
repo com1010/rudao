@@ -5533,10 +5533,14 @@ p.coeditor-note {
     font-size: clamp(0.95rem, 1.15vw, 1.02rem);
     font-weight: 400;
     font-style: normal;
-    line-height: 1.8;
+    line-height: 1.35;
     color: var(--ink-mid);
-    margin: 0 0 0.85rem;
+    margin: 0 0 0.5rem;
     text-align: left;
+}
+.tg-frame .tg-c {
+    text-align: center;
+    text-justify: auto;
 }
 .tg-frame .tg-head {
     font-family: var(--font-serif-en);
@@ -5568,21 +5572,22 @@ p.coeditor-note {
     }
 }
 .tg-frame .tg-book { color: var(--ink-black); }
-.tg-frame .tg-order { margin: 1.1rem 0 0.6rem; }
+.tg-frame .tg-order { margin: 0.85rem 0 0.5rem; }
 .tg-frame .tg-url {
     font-size: 0.86rem;
-    line-height: 1.6;
+    line-height: 1.35;
     color: var(--gray);
     word-break: break-all;
-    margin-bottom: 1rem;
+    margin-bottom: 0.6rem;
 }
 .tg-frame .tg-url a { color: var(--vermillion-deep); text-decoration: none; border-bottom: 1px dotted rgba(169, 50, 38, 0.5); }
 .tg-frame .tg-url a:hover { border-bottom-style: solid; }
 .tg-frame .tg-quote {
     color: var(--ink-black);
+    line-height: 1.4;
     border-left: 2px solid rgba(169, 50, 38, 0.45);
     padding-left: 0.9rem;
-    margin: 1.1rem 0 0.9rem;
+    margin: 0.8rem 0 0.6rem;
 }
 .tg-frame .tg-sign {
     text-align: right;
