@@ -5219,8 +5219,8 @@ ol.ai-phases > li:last-child::before {
 #appendix-a p, #appendix-a li, #appendix-a td, #appendix-a th,
 #glossary p, #glossary li, #glossary td, #glossary th,
 #references p, #references li, #references td, #references th {
-    font-size: 10pt;
-    line-height: 1.5;
+    font-size: 8pt;
+    line-height: 1.45;
 }
 
 /* ========== Endorsement collapse (max 5 lines, click to expand) ========== */
@@ -5257,4 +5257,39 @@ ol.ai-phases > li:last-child::before {
 .endorse-toggle:hover {
     background: var(--vermillion);
     color: #fff;
+}
+
+
+/* ========== Reader's ToDo Check List frames (chapter-end action lists) ========== */
+.todo-frame {
+    margin: 1.4rem 0 2rem;
+    padding: .95rem 1.1rem 1rem;
+    border: 1px solid rgba(169, 50, 38, .32);
+    border-left: 4px solid var(--vermillion, #a93226);
+    border-radius: 8px;
+    background: rgba(169, 50, 38, .035);
+}
+.todo-frame-title {
+    margin: 0 0 .55rem;
+    font-family: var(--font-serif-en), Georgia, serif;
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: var(--vermillion, #a93226);
+}
+.ch22-checklist.todo-list {
+    gap: .25rem;
+    margin: 0;
+}
+.ch22-checklist.todo-list li {
+    font-size: 9pt;
+    line-height: 1.15;
+    padding: .3rem .65rem .3rem 1.75rem;
+    border-radius: 6px;
+}
+.ch22-checklist.todo-list li::before {
+    left: .55rem;
+    font-size: 9pt;
+    line-height: 1.15;
 }
