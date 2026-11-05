@@ -5636,3 +5636,12 @@ p.coeditor-note {
     letter-spacing: .01em !important;
     text-transform: none !important;
 }
+
+/* ============================================================
+   CJK SIZE RULE (user rule 2026-11-06)
+   This is mostly an English book: ALL Chinese text renders
+   2 pt (2.667px) SMALLER than the adjacent English font size,
+   across the ENTIRE website. A script in index.html wraps every
+   CJK text run in <span class="zh"> automatically.
+   ============================================================ */
+.zh { font-size: calc(1em - 2.667px); }

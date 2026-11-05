@@ -74,7 +74,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Joan&family=Quintessential&family=Merriweather:wght@300;400;700&family=Noto+Serif+TC:wght@400;500;600;700&family=ZCOOL+XiaoWei&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/styles.css?v=20261106f" />
+    <link rel="stylesheet" href="css/styles.css?v=20261106g" />
 
     <!-- Self-hosted Traditional Chinese brush calligraphy font -->
     <style>
@@ -7312,5 +7312,49 @@
     </script>
     <script src="js/script.js?v=20261023b"></script>
     <script src="js/blog.js"></script>
+    <script>
+    /* CJK smaller-than-English rule (user 2026-11-06): wrap every CJK
+       text run in <span class="zh">; CSS renders it 2pt (2.667px)
+       smaller than the surrounding English font size. */
+    (function () {
+        var CJK = /([\u2E80-\u2EFF\u3000-\u30FF\u3130-\u318F\u31C0-\u31EF\u3200-\u32FF\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF\uFE30-\uFE4F\uFF00-\uFF60]+)/g;
+        var SKIP = { SCRIPT: 1, STYLE: 1, CODE: 1, PRE: 1, TEXTAREA: 1, NOSCRIPT: 1 };
+        function wrapText(node) {
+            var text = node.nodeValue;
+            CJK.lastIndex = 0;
+            if (!text || !CJK.test(text)) return;
+            CJK.lastIndex = 0;
+            var frag = document.createDocumentFragment();
+            var last = 0, m;
+            while ((m = CJK.exec(text))) {
+                if (m.index > last) frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+                var span = document.createElement('span');
+                span.className = 'zh';
+                span.textContent = m[0];
+                frag.appendChild(span);
+                last = m.index + m[0].length;
+            }
+            if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+            node.parentNode.replaceChild(frag, node);
+        }
+        function walk(root) {
+            var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+                acceptNode: function (n) {
+                    if (!n.nodeValue || !n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+                    var p = n.parentNode;
+                    if (!p || SKIP[p.nodeName] || (p.closest && p.closest('.zh'))) return NodeFilter.FILTER_REJECT;
+                    return NodeFilter.FILTER_ACCEPT;
+                }
+            });
+            var nodes = [];
+            while (walker.nextNode()) nodes.push(walker.currentNode);
+            for (var i = 0; i < nodes.length; i++) wrapText(nodes[i]);
+        }
+        function run() { walk(document.body); }
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
+        else run();
+    })();
+    </script>
+
 </body>
 </html>
