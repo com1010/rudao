@@ -153,6 +153,11 @@
       .class-insights-frame::before { content: ""; position: absolute; inset: 6px; border: 1px dashed rgba(169,50,38,.22); border-radius: 10px; pointer-events: none; }
       .class-insights-frame > .chap-h2:first-child { margin-top: .2rem; }
       @media (max-width: 640px) { .class-insights-frame { padding: 1.3rem 1.1rem .8rem; } }
+      /* 7.4 - Class Insights: English reflection typography */
+      .preface-body h3.ci-en-title { font-family: var(--font-body); font-size: clamp(1.12rem, 1.75vw, 1.36rem); font-weight: 600; line-height: 1.5; letter-spacing: 0; color: var(--ink-black); text-align: center; margin: 0 0 .45rem; }
+      .preface-body p.ci-en-sub { font-family: var(--font-cn-body); font-size: .95rem; color: var(--ink-mid); text-align: center; line-height: 1.6; margin: 0 0 1.3rem; }
+      .preface-body p.ci-en-meta { font-size: .95rem; line-height: 1.7; color: var(--ink-mid); text-align: left; margin: 0 0 1.6rem; }
+      .preface-body p.ci-en-sign { font-size: .95rem; line-height: 1.7; color: var(--ink-mid); text-align: right; margin: 1.6rem 0 0; }
       /* 7.4 - Classic of WeiQi/Go (Qi Jing 棋经十三篇) source note */
       .qijing-frame { position: relative; margin: 3rem 0 1rem; padding: 2rem 2.1rem 1.5rem; border: 1px solid rgba(169,50,38,.38); border-radius: 14px; background: rgba(169,50,38,.028); }
       .qijing-frame::before { content: ""; position: absolute; inset: 6px; border: 1px dashed rgba(169,50,38,.20); border-radius: 10px; pointer-events: none; }
@@ -5085,12 +5090,47 @@
             <div class="class-insights-frame">
                 <h3 class="chap-h2">HuaXue-EnXue 华学恩学 - Class Insights 诗情画意 课程心得</h3>
                 <div class="preface-body" lang="en">
-                    <h3 class="preface-cn-title">HuaXue-EnXue 华学恩学 - Class Insights 诗情画意 课程心得</h3>
-                    <p><strong>Chinese Key Words:</strong> 诗情画意,琴棋书画,涵养心性,礼乐文脉润人生<br />
-                    <strong>Author:</strong> HKBA Tony Tong (唐仪), Student of HuaXue-357 Class<br />
-                    <strong>Date &amp; Location:</strong> May 1-6, 2026, Shenzhen, China</p>
-                    <p>My teacher, Master Xiao XianHua (肖先华 / 萧先华), is the 74th-generation descendant of Xiao He (萧何), the famous Prime Minister (相国) of the Han Dynasty (汉朝) under the founding Emperor Liu Bang (刘邦).</p>
-                    <p>I was fortunate to attend a HuaXue lecture delivered by Master Teacher Xiao XianHua 肖先华, an enlightening session that brought me thorough clarity and profound insights. Master Xiao earnestly taught that one should live with poetic and pictorial grace (诗情画意) and abide by the principles of ritual and music (礼乐).</p>
+                    <h3 class="ci-en-title">Reflection on HuaXue Studies: Poetic Grace, Refined Arts, and Cultivating Character Through Ritual and Music</h3>
+                    <p class="ci-en-sub" lang="zh-Hans">(华学上课心得:诗情画意 琴棋书画 涵养心性 礼乐文脉润人生)</p>
+                    <p class="ci-en-meta"><strong>Author:</strong> Tony Tong (唐仪, RuDao.org / TonyTong.cc)<br />
+                    <strong>Program:</strong> HuaXue-EnXue Cohort 357 (华学357期)<br />
+                    <strong>Date:</strong> May 1-6, 2026 | Shenzhen (深圳)</p>
+
+                    <h4 class="chap-h3">1. Awakening to Ritual and Music (礼乐教化)</h4>
+                    <p>Attending Master Xiao Xianhua's (肖先华老师) lecture in Shenzhen was a transformative experience. He emphasized that true character requires both poetic sensibility and adherence to ritual and music (Li-Yue, 礼乐). Master Xiao highlighted how historical sages used the guqin (古琴) to cultivate inner peace, reshaping my understanding of China's four traditional arts: guqin, WeiQi, calligraphy, and painting (琴棋书画). As an amateur player of the piano, violin, and flute, I gained a deeper appreciation for how music and ritual interlock to form the bedrock of Chinese civilization.</p>
+
+                    <h4 class="chap-h3">2. The Core of Chinese Civilization (中华文明之本)</h4>
+                    <p>For five millennia, ritual (Li, 礼) has defined social order and conduct, while music (Yue, 乐) has nourished the soul. The guqin, as the pinnacle of ancient instruments, was an essential tool for self-cultivation among scholars and leaders. Master Xiao reminded us that historical accounts of sages mastering the zither are documented facts, reflecting the enduring tradition of using music to embody the Dao (Yi Qin Xiu Xin, Yi Yue Zai Dao, 以琴修心,以乐载道).</p>
+
+                    <h4 class="chap-h3">3. Three Historical Exemplars (三位圣贤典范)</h4>
+                    <ul class="zhu-list">
+                        <li><strong>Confucius (孔子):</strong> The founder of ritual-music culture studied under Music Master Xiang (师襄子). He refused to stop practicing until he grasped the moral character of King Wen (文王) embedded in the music. Even while facing starvation in Chen and Cai (陈蔡绝粮), he continued singing and playing the zither, demonstrating that music was a primary vehicle for cultivating virtue (Ren, 仁).</li>
+                        <li><strong>Zhuge Liang (诸葛亮 / 孔明):</strong> The prime minister of Shu Han (蜀汉名相) played the guqin to express his ambitions while farming in Longzhong (隆中). Records show he authored the Qin Jing (琴经, Zither Classic), detailing its theory and mechanics. His composure during crises stemmed directly from years of inner refinement through music.</li>
+                        <li><strong>Zhou Yu (周瑜 / 周郎):</strong> The legendary commander of Eastern Wu (东吴儒将) possessed absolute mastery of music (Qu You Wu, Zhou Lang Gu, 曲有误,周郎顾). Historical texts record that even after drinking, if a musician struck a wrong note, Zhou Yu would instantly notice and look up. He balanced military decisiveness with cultural refinement, embodying the ideal Confucian general (RuJiang, 儒将).</li>
+                    </ul>
+
+                    <h4 class="chap-h3">4. The Four Arts as Tools for Character Refinement (四艺修心)</h4>
+                    <p>Each of the four arts serves a specific purpose in character development:</p>
+                    <ul class="zhu-list">
+                        <li><strong>Guqin (琴):</strong> Purifies the mind and calms impulse.</li>
+                        <li><strong>WeiQi/Go (棋):</strong> Expands strategic vision, foresight, and big-picture thinking.</li>
+                        <li><strong>Calligraphy (书):</strong> Disciplines posture and personal integrity.</li>
+                        <li><strong>Painting (画):</strong> Connects the spirit with nature and poetic vision.</li>
+                    </ul>
+                    <p>Mastering instruments goes beyond technical skill; it is a discipline for preserving inner stability amid today's fast-paced world.</p>
+
+                    <h4 class="chap-h3">5. Commitment to Practice (知行合一)</h4>
+                    <p>Moving forward, I will follow Master Xiao's guidance and the example of ancient sages. I commit to practicing these traditional arts to refine my character, advance my musical skills, and embody the principles of ritual and music in daily governance and life.</p>
+
+                    <h4 class="chap-h3">Acknowledgments (致谢)</h4>
+                    <ul class="zhu-list">
+                        <li><strong>Master Xiao Xianhua (肖先华老师):</strong> My gratitude to Master Xiao for his teachings on ritual, music, and the zither, which inspired core concepts within the RuDao (儒道) framework.</li>
+                        <li><strong>Principal Zhang Haibiao (张海标校长):</strong> My sincere thanks to Principal Zhang for his profound insights into Confucian philosophy, the Confucian Entrepreneur (RuShang, 儒商), and the integration of ethics and profit (Yi-Li He-Yi, 义利合一) through co-opetition (竞合模式).</li>
+                    </ul>
+
+                    <p class="ci-en-sign"><strong>Tony Tong (唐仪)</strong><br />
+                    HuaXue Cohort 357 (华学357期) | May 1-6, 2026 | Shenzhen (深圳)<br />
+                    TonyTong.cc | RuDao.org</p>
                 </div>
                 <div class="preface-cn" lang="zh-Hans">
                     <h3 class="preface-cn-title">华学上课心得:诗情画意 琴棋书画 涵养心性 礼乐文脉润人生</h3>
