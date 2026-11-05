@@ -5503,3 +5503,59 @@ p.coeditor-note {
     text-align: left;
 }
 .gaard-frame p:last-child { margin-bottom: 0; }
+
+/* ===== Thanksgiving 2026 note (home hero + Chapter 0 Preface) ===== */
+.tg-frame {
+    max-width: 760px;
+    margin: clamp(1.6rem, 3vw, 2.4rem) auto;
+    padding: clamp(1.3rem, 2.4vw, 1.9rem) clamp(1.2rem, 2.4vw, 1.8rem);
+    border: 1px solid rgba(169, 50, 38, 0.28);
+    border-radius: 12px;
+    background: rgba(184, 146, 58, 0.07);
+    text-align: left;
+}
+.tg-frame p {
+    font-family: var(--font-body);
+    font-size: clamp(0.95rem, 1.15vw, 1.02rem);
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.8;
+    color: var(--ink-mid);
+    margin: 0 0 0.85rem;
+    text-align: left;
+}
+.tg-frame .tg-head {
+    font-size: clamp(1.15rem, 1.9vw, 1.45rem);
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--vermillion);
+    margin: 0 0 0.9rem;
+}
+.tg-frame .tg-book { color: var(--ink-black); }
+.tg-frame .tg-order { margin: 1.1rem 0 0.6rem; }
+.tg-frame .tg-url {
+    font-size: 0.86rem;
+    line-height: 1.6;
+    color: var(--gray);
+    word-break: break-all;
+    margin-bottom: 1rem;
+}
+.tg-frame .tg-url a { color: var(--vermillion-deep); text-decoration: none; border-bottom: 1px dotted rgba(169, 50, 38, 0.5); }
+.tg-frame .tg-url a:hover { border-bottom-style: solid; }
+.tg-frame .tg-quote {
+    color: var(--ink-black);
+    border-left: 2px solid rgba(169, 50, 38, 0.45);
+    padding-left: 0.9rem;
+    margin: 1.1rem 0 0.9rem;
+}
+.tg-frame .tg-sign {
+    text-align: right;
+    font-size: 0.9rem;
+    color: var(--ink-mid);
+    margin-bottom: 0;
+}
+.hero-tg { max-width: 700px; margin-top: clamp(1.6rem, 3vw, 2.2rem); }
+@media (max-width: 640px) {
+    .tg-frame { padding: 1.1rem 1rem 0.9rem; }
+    .tg-frame .tg-quote { padding-left: 0.7rem; }
+}
