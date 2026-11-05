@@ -5293,3 +5293,41 @@ ol.ai-phases > li:last-child::before {
     font-size: 9pt;
     line-height: 1.15;
 }
+
+/* ========== Chapter-end frame: Chapter Review + thick rule + Bridge ========== */
+.chapter-end-frame {
+    margin: 2.6rem 0 0.5rem;
+    padding: 1.15rem 1.4rem 1.2rem;
+    border: 1px solid var(--vermillion);
+    border-left: 5px solid var(--vermillion);
+    background: rgba(178, 34, 34, 0.04);
+    border-radius: 8px;
+}
+.chapter-end-frame .frame-label {
+    margin: 0 0 .35rem;
+    font-family: var(--font-serif-en), Georgia, serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--vermillion);
+}
+.chapter-end-frame .frame-lede {
+    margin: 0 0 .45rem;
+    font-size: 0.98rem;
+    font-weight: 700;
+    line-height: 1.55;
+    color: var(--ink-black);
+}
+.chapter-end-frame .frame-text {
+    margin: 0;
+    font-size: 0.96rem;
+    line-height: 1.6;
+    color: var(--ink-mid);
+}
+.chapter-end-frame .frame-rule {
+    border: 0;
+    border-top: 3px solid var(--vermillion);
+    opacity: .5;
+    margin: 1.15rem 0 1rem;
+}
