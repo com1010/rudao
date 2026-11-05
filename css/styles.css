@@ -5331,3 +5331,10 @@ ol.ai-phases > li:last-child::before {
     opacity: .5;
     margin: 1.15rem 0 1rem;
 }
+
+/* ========== Co-editor source note: compact 9pt ========== */
+.coeditor-note p,
+p.coeditor-note {
+    font-size: 9pt;
+    line-height: 1.45;
+}
