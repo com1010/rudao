@@ -5506,13 +5506,27 @@ p.coeditor-note {
 
 /* ===== Thanksgiving 2026 note (home hero + Chapter 0 Preface) ===== */
 .tg-frame {
+    position: relative;
     max-width: 760px;
     margin: clamp(1.6rem, 3vw, 2.4rem) auto;
     padding: clamp(1.3rem, 2.4vw, 1.9rem) clamp(1.2rem, 2.4vw, 1.8rem);
-    border: 1px solid rgba(169, 50, 38, 0.28);
+    border: 1px solid rgba(169, 50, 38, 0.30);
     border-radius: 12px;
-    background: rgba(184, 146, 58, 0.07);
+    background:
+        radial-gradient(ellipse 70% 120% at 12% 0%, rgba(217, 131, 36, 0.14), transparent 62%),
+        radial-gradient(ellipse 70% 120% at 92% 6%, rgba(169, 50, 38, 0.12), transparent 60%),
+        linear-gradient(180deg, rgba(201, 153, 45, 0.10), rgba(250, 247, 240, 0.55) 55%, rgba(184, 146, 58, 0.10));
     text-align: left;
+}
+.tg-frame::before {
+    content: "";
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    top: 0;
+    height: 4px;
+    border-radius: 0 0 4px 4px;
+    background: linear-gradient(90deg, #b3261e 0%, #d98324 38%, #c9992d 70%, #a93226 100%);
 }
 .tg-frame p {
     font-family: var(--font-body);
@@ -5525,11 +5539,33 @@ p.coeditor-note {
     text-align: left;
 }
 .tg-frame .tg-head {
-    font-size: clamp(1.15rem, 1.9vw, 1.45rem);
+    font-family: var(--font-serif-en);
+    font-size: clamp(1.9rem, 4.4vw, 3rem);
     font-weight: 700;
-    line-height: 1.35;
+    font-style: normal;
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+    text-align: center;
     color: var(--vermillion);
-    margin: 0 0 0.9rem;
+    margin: 0 0 0.55rem;
+}
+.tg-frame .tg-head::after {
+    content: "";
+    display: block;
+    width: 88px;
+    height: 3px;
+    margin: 0.6rem auto 0;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #b3261e 0%, #d98324 50%, #c9992d 100%);
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .tg-frame .tg-head {
+        background-image: linear-gradient(96deg, #b3261e 0%, #d2601a 32%, #c9992d 58%, #a93226 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+    }
 }
 .tg-frame .tg-book { color: var(--ink-black); }
 .tg-frame .tg-order { margin: 1.1rem 0 0.6rem; }
