@@ -5387,3 +5387,61 @@ p.coeditor-note {
     line-height: 1.6;
     color: var(--ink-mid);
 }
+
+/* ========== Tables: one simple upright face, no italics ========== */
+.compare-table th,
+.compare-table td,
+.glossary-table th,
+.glossary-table td {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-style: normal;
+}
+.compare-table th strong,
+.compare-table td strong,
+.glossary-table th strong,
+.glossary-table td strong {
+    font-weight: 600;
+}
+.compare-table th em, .compare-table td em,
+.compare-table th i, .compare-table td i,
+.glossary-table th em, .glossary-table td em,
+.glossary-table th i, .glossary-table td i,
+.glossary-table .glossary-py,
+.compare-table .glossary-py {
+    font-style: normal !important;
+}
+
+/* ========== Qi Jing source block: one simple font, no decoration ========== */
+.qijing-frame.qijing-frame,
+.qijing-frame.qijing-frame .qj-title,
+.qijing-frame.qijing-frame .qj-h,
+.qijing-frame.qijing-frame .qj-meta,
+.qijing-frame.qijing-frame p,
+.qijing-frame.qijing-frame .quote,
+.qijing-frame.qijing-frame .quote-cn,
+.qijing-frame.qijing-frame .qj-verse,
+.qijing-frame.qijing-frame .qj-verse-label,
+.qijing-frame.qijing-frame .qj-notes li,
+.qijing-frame.qijing-frame .quote-attr {
+    font-family: var(--font-body);
+    font-style: normal;
+}
+.qijing-frame .qj-title { font-weight: 700; }
+.qijing-frame .qj-h { font-weight: 600; }
+.qijing-frame .qj-notes strong { font-weight: 600; color: inherit; }
+
+/* ========== HuaXue's classical maxim: body 9pt, regular, tight ========== */
+.huaxue-maxim p,
+.huaxue-maxim .quote,
+.huaxue-maxim .quote-cn,
+.huaxue-maxim .quote-attr {
+    font-family: var(--font-body);
+    font-size: 9pt;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.28;
+}
+.huaxue-maxim .quote-block { margin: 0 0 .55rem; padding: .25rem .4rem; }
+.huaxue-maxim .quote { margin-bottom: .1rem; }
+.huaxue-maxim p { margin: .15rem 0; }
