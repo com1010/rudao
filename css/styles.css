@@ -5652,3 +5652,29 @@ p.coeditor-note {
    adjacent English.
    ============================================================ */
 .zh { font-size: calc(1em - 4px); font-weight: 400 !important; font-style: normal !important; }
+
+/* ============================================================
+   TABLE TEXT + URL LINK SIZES (user rule 2026-11-06)
+   ALL text inside the content HTML tables (compare-table,
+   ch22-table, compact, glossary-table) renders at 7pt.
+   The TOC table is excluded - it has its own uniform rule.
+   Chinese spans (.zh) keep their own 3pt-smaller sizing.
+   External URL weblink text (marked .urllink by the inline
+   script in index.html) renders at 6pt.
+   ============================================================ */
+.compare-table td,
+.compare-table th,
+.compare-table td *:not(.zh),
+.compare-table th *:not(.zh),
+.glossary-table td,
+.glossary-table th,
+.glossary-table td *:not(.zh),
+.glossary-table th *:not(.zh) {
+    font-size: 7pt !important;
+    line-height: 1.4 !important;
+}
+a[href^="http"].urllink {
+    font-size: 6pt !important;
+    line-height: 1.35 !important;
+    word-break: break-word;
+}
