@@ -5638,14 +5638,15 @@ p.coeditor-note {
 }
 
 /* ============================================================
-   CJK SIZE RULE (user rule 2026-11-06)
-   This is mostly an English book: ALL Chinese text renders
-   20% SMALLER (0.8em) than the adjacent English font size,
-   across the ENTIRE website. A script in index.html wraps every
-   CJK text run in <span class="zh"> automatically. (Proportional
-   scaling beats a fixed 2pt: bold CJK glyphs + Cormorant's small
-   x-height otherwise make Chinese LOOK as big as the English.)
-   Chinese is NEVER bold (user 2026-11-06): always weight 400,
-   so it looks smaller and thinner than the adjacent English.
+   CJK SIZE RULE (user rule 2026-11-06, updated same day)
+   This is mostly an English book: ALL Chinese text - AND the
+   punctuation marks immediately before and after the Chinese -
+   renders exactly 3pt (4px) SMALLER than the adjacent English
+   font size, across the ENTIRE website. A script in index.html
+   wraps every CJK text run (plus its neighboring punctuation)
+   in <span class="zh"> automatically.
+   Chinese is NEVER bold (user 2026-11-06): always weight 400
+   (normal weight), so it looks smaller and thinner than the
+   adjacent English.
    ============================================================ */
-.zh { font-size: 0.8em; font-weight: 400 !important; }
+.zh { font-size: calc(1em - 4px); font-weight: 400 !important; }
