@@ -16,6 +16,7 @@ on:
     paths:
       - '**/*.html'
       - 'sitemap.xml'
+      - '.github/workflows/indexnow.yml'
   workflow_dispatch:
 
 permissions:
