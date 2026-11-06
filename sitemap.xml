@@ -63,4 +63,10 @@
             <image:title>RuDao 儒道 vermillion ink-brush calligraphy poster</image:title>
         </image:image>
     </url>
+    <url>
+        <loc>https://rudao.us/guide.html</loc>
+        <lastmod>2026-11-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
 </urlset>
