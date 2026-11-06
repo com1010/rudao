@@ -5695,3 +5695,14 @@ a[href^="http"].urllink {
     display: inline;
     white-space: normal;
 }
+
+/* ============================================================
+   CHAPTER HEADLINE YEAR TOKENS (user rule 2026-11-06)
+   Every "numberBCE" in a chapter headline is written "numberBC"
+   and the year token itself renders at 10pt inside the headline.
+   ============================================================ */
+.bc-year {
+    font-size: 10pt !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+}
