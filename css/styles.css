@@ -5678,3 +5678,20 @@ a[href^="http"].urllink {
     line-height: 1.35 !important;
     word-break: break-word;
 }
+
+/* ============================================================
+   MERGED QUOTE LINES (user rule 2026-11-06)
+   Every quote-block is now ONE line: English + Chinese + inline
+   gray attribution. Chinese inside a merged quote keeps the SimSun
+   face (the .quote parent is a Latin decorative serif), stays
+   upright, 3pt smaller and normal weight via the global .zh rule.
+   ============================================================ */
+.quote .zh,
+.quote-block .zh {
+    font-family: var(--font-cn), 'SimSun', 'Songti SC', serif !important;
+    letter-spacing: .02em;
+}
+.quote .quote-attr {
+    display: inline;
+    white-space: normal;
+}
