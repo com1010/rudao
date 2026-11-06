@@ -5651,4 +5651,4 @@ p.coeditor-note {
    (normal weight), so it looks smaller and thinner than the
    adjacent English.
    ============================================================ */
-.zh { font-size: calc(1em - 4px); font-weight: 400 !important; }
+.zh { font-size: calc(1em - 4px); font-weight: 400 !important; font-style: normal !important; }
