@@ -1,0 +1,96 @@
+name: IndexNow - notify search engines on push
+
+# What this does
+# -------------
+# On every push to main, this workflow tells Bing / Yandex / Seznam / Naver
+# that RuDao pages changed, so they re-crawl within hours instead of weeks.
+# Google does not participate in IndexNow; Google discovery relies on the
+# sitemap plus Cloudflare Crawler Hints (dashboard toggle, see notes below).
+#
+# The key is public by design: IndexNow verifies ownership by fetching
+# https://rudao.us/<key>.txt and comparing it with the key in the request.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.html'
+      - 'sitemap.xml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Wait for the key file to be live, then submit URLs
+        env:
+          INDEXNOW_KEY: 10d80a769f3a77b4ebe184048bbdc70a
+        run: |
+          python3 - <<'PY'
+          import json, os, re, time, urllib.request, urllib.error
+
+          key = os.environ["INDEXNOW_KEY"]
+          host = "rudao.us"
+          key_url = f"https://{host}/{key}.txt"
+
+          # Cloudflare Pages needs a moment to publish the new build.
+          # Poll the key file so the first IndexNow call does not fail with 403.
+          for attempt in range(1, 13):
+              try:
+                  with urllib.request.urlopen(key_url, timeout=15) as r:
+                      served = r.read().decode("utf-8", "ignore").strip()
+                  if served == key:
+                      print(f"key file live after {attempt} attempt(s)")
+                      break
+                  print(f"attempt {attempt}: key mismatch, retrying")
+              except Exception as exc:
+                  print(f"attempt {attempt}: {exc}")
+              time.sleep(10)
+          else:
+              raise SystemExit("key file never became reachable; aborting")
+
+          xml = open("sitemap.xml", encoding="utf-8").read()
+          urls = [u.strip() for u in re.findall(r"<loc>\s*(.*?)\s*</loc>", xml)]
+          urls = [
+              u for u in urls
+              if u.startswith(f"https://{host}")
+              and not re.search(r"\.(jpg|jpeg|png|webp|svg|gif)$", u, re.I)
+          ]
+          if not urls:
+              raise SystemExit("no page URLs found in sitemap.xml")
+
+          print(f"submitting {len(urls)} URL(s):")
+          for u in urls:
+              print("  -", u)
+
+          body = json.dumps({
+              "host": host,
+              "key": key,
+              "keyLocation": key_url,
+              "urlList": urls,
+          }).encode()
+
+          req = urllib.request.Request(
+              "https://api.indexnow.org/indexnow",
+              data=body,
+              headers={"Content-Type": "application/json; charset=utf-8"},
+              method="POST",
+          )
+          try:
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  print("IndexNow response:", r.status, r.reason)
+          except urllib.error.HTTPError as exc:
+              detail = exc.read().decode("utf-8", "ignore")[:500]
+              print("IndexNow HTTP error:", exc.code, exc.reason, detail)
+              # 422 = key not valid for host; 403 = key file not found.
+              # Both are worth failing loudly so the badge goes red.
+              raise
+          PY
+
+      - name: Summary
+        run: echo "IndexNow notified for https://rudao.us - Bing/Yandex/Naver/Seznam will re-crawl shortly." >> "$GITHUB_STEP_SUMMARY"
