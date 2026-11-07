@@ -165,7 +165,14 @@
     <h2 class="cs-h2">Booking form</h2>
     <p class="cs-small">Slots are usually available 10:00&ndash;21:00 (GMT+8, Beijing time). Pick a time that works for you &mdash; if it is taken, I will offer the nearest alternative by email.</p>
 
-    <form class="cs-form" id="bookForm" novalidate>
+    <form class="cs-form" id="bookForm" action="https://formsubmit.co/tony@rudao.org" method="POST">
+        <input type="hidden" name="_subject" value="RuDao consultation booking / 儒道咨询预约" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value="https://rudao.us/consult?sent=1" />
+        <input type="hidden" name="_autoresponse" value="Thank you for your booking request. Tony will verify your proof of purchase / USDC transaction and reply within 12 hours with the meeting link. 感谢预约，作者将在12小时内回复确认与会议链接。" />
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
         <fieldset class="cs-radio">
             <legend class="cs-label">Booking type <span class="zh">预约类型</span></legend>
             <label><input type="radio" name="booking" value="FREE - book owner, proof required" checked /> Free call - I own the RuDao book <span class="zh">书主免费</span></label>
@@ -232,12 +239,17 @@
         </div>
 
         <div class="cs-actions">
-            <button class="cs-btn" type="submit">Generate booking request</button>
-            <button class="cs-btn cs-btn-ghost" type="button" id="copyBtn">Copy <span class="zh">复制</span></button>
+            <button class="cs-btn" type="submit">Send booking request <span class="zh">发送预约</span></button>
         </div>
 
-        <div class="cs-out" id="out"></div>
-        <p class="cs-small" id="hint" style="margin-top:14px;">Nothing is sent automatically: press <em>Generate booking request</em>, then send it by email or paste it into WeChat <span class="zh">微信</span>.</p>
+        <div class="cs-out" id="sentBanner" style="border-left-color:#2e7d32;">
+Your booking request has been sent. 谢谢，预约请求已发送。
+
+You will receive an automatic acknowledgement immediately, and Tony (or WorkBuddy on his behalf) will reply within 12 hours with the meeting link after verifying your proof of purchase / USDC transaction.
+
+If you do not see a reply within 12 hours, check your spam folder or email tony@rudao.org directly.
+        </div>
+        <p class="cs-small" style="margin-top:14px;">Press <em>Send booking request</em> and the form emails Tony directly - no mail client needed. 如果点击发送后没有跳转，请检查网络后重试，或直接发邮件到 tony@rudao.org。</p>
     </form>
 
     <h2 class="cs-h2">Terms, briefly</h2>
@@ -258,8 +270,6 @@
 
 <script>
 (function () {
-    var BOOKING_EMAIL = "tony@rudao.org";
-
     // Populate 15-minute start times, 10:00-20:45 Beijing time
     var timeSel = document.getElementById("time");
     for (var h = 10; h <= 20; h++) {
@@ -283,32 +293,12 @@
     dateInput.min = new Date().toISOString().slice(0, 10);
 
     var form = document.getElementById("bookForm");
-    var out = document.getElementById("out");
-    var hint = document.getElementById("hint");
+    var banner = document.getElementById("sentBanner");
 
-    function buildText() {
-        var platform = form.querySelector('input[name="platform"]:checked');
-        var booking = form.querySelector('input[name="booking"]:checked');
-        var bookingVal = booking ? booking.value : "";
-        var isFree = bookingVal.indexOf("FREE") === 0;
-        var lines = [
-            "RuDao consultation booking / 儒道咨询预约",
-            "",
-            "Booking type: " + bookingVal,
-            "Name: " + document.getElementById("name").value.trim(),
-            "Email: " + document.getElementById("email").value.trim(),
-            "Preferred date: " + document.getElementById("date").value,
-            "Start time: " + document.getElementById("time").value,
-            "Timezone: " + document.getElementById("tz").value,
-            "Platform: " + (platform ? platform.value : ""),
-            "Proof of purchase: " + (document.getElementById("proof").value.trim() || "(none provided)"),
-            "USDC tx hash: " + (document.getElementById("tx").value.trim() || "(not paid yet)"),
-            "Amount: " + (isFree ? "FREE - first call for verified book owner" : "9.99 USDC (ERC20)"),
-            "",
-            "Question:",
-            document.getElementById("topic").value.trim()
-        ];
-        return lines.join("\n");
+    // Show success banner after FormSubmit redirect (?sent=1)
+    if (window.location.search.indexOf("sent=1") !== -1) {
+        banner.style.display = "block";
+        banner.scrollIntoView({ behavior: "smooth", block: "center" });
     }
 
     function validate() {
@@ -324,44 +314,27 @@
         return true;
     }
 
+    // Block submit only when invalid; valid submissions go straight to formsubmit.co
     form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        if (!validate()) return;
-        var text = buildText();
-        out.textContent = text;
-        out.style.display = "block";
-        hint.innerHTML = 'Request ready. <a href="mailto:' + BOOKING_EMAIL +
-            '?subject=' + encodeURIComponent("RuDao consultation booking - " + document.getElementById("name").value.trim()) +
-            '&body=' + encodeURIComponent(text) + '">Open email and send</a>, or use Copy and paste it into WeChat <span class="zh">微信</span>.';
-        out.scrollIntoView({ behavior: "smooth", block: "center" });
+        if (!validate()) e.preventDefault();
     });
 
-    document.getElementById("copyBtn").addEventListener("click", function () {
-        if (!validate()) return;
-        var text = buildText();
-        out.textContent = text;
-        out.style.display = "block";
-        copyText(text, this);
-    });
-
+    // Wallet address copy button
     document.querySelectorAll("[data-copy]").forEach(function (btn) {
         btn.addEventListener("click", function () {
-            copyText(btn.getAttribute("data-copy"), btn);
+            var text = btn.getAttribute("data-copy");
+            var done = function () {
+                var old = btn.innerHTML;
+                btn.textContent = "Copied";
+                setTimeout(function () { btn.innerHTML = old; }, 1600);
+            };
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+            } else {
+                fallback(text, done);
+            }
         });
     });
-
-    function copyText(text, btn) {
-        var done = function () {
-            var old = btn.textContent;
-            btn.textContent = "Copied";
-            setTimeout(function () { btn.innerHTML = old; }, 1600);
-        };
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
-        } else {
-            fallback(text, done);
-        }
-    }
 
     function fallback(text, done) {
         var ta = document.createElement("textarea");
