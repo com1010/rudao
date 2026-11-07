@@ -64,6 +64,7 @@
     .cs-foot { max-width: 860px; margin: 0 auto; padding: 0 24px 64px; font-family: var(--font-sans); font-size: .78rem; line-height: 1.7; color: #6b6b6b; }
     .cs-foot a { color: #6b6b6b; }
     .zh { font-family: var(--font-cn); }
+    .cs-cal { margin: 6px 0 10px; }
     @media (max-width: 640px) {
         .cs-row2, .cs-row3 { grid-template-columns: 1fr; }
         .cs-wrap { padding-top: 36px; }
@@ -162,7 +163,17 @@
         <p class="cs-small" style="margin:12px 0 0;">Send only USDC on Ethereum ERC20. Tokens sent on another network (TRC20, BEP20, Solana) or another asset cannot be recovered and will not be counted as payment.</p>
     </div>
 
-    <h2 class="cs-h2">Booking form</h2>
+    <h2 class="cs-h2">Pick a time instantly on Calendly</h2>
+    <p class="cs-p">Choose a slot below and Calendly confirms it automatically - no waiting. Book owners: reply to the Calendly confirmation email with your proof of purchase (order number, purchase email and date), or send it to <a href="mailto:tony@rudao.org" style="color:#a93226;">tony@rudao.org</a> so the free call can be verified. <span class="zh">书主预约后请把购书凭证回复给确认邮件即可。</span></p>
+    <div class="cs-cal">
+        <!-- Calendly inline widget begin -->
+        <div class="calendly-inline-widget" data-url="https://calendly.com/rudao" style="min-width:320px;height:700px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        <!-- Calendly inline widget end -->
+    </div>
+    <p class="cs-small">Prefer not to use Calendly? The manual form below works exactly the same - a human replies within 12 hours.</p>
+
+    <h2 class="cs-h2">Booking form <span class="zh">手动预约表单</span></h2>
     <p class="cs-small">Slots are usually available 10:00&ndash;21:00 (GMT+8, Beijing time). Pick a time that works for you &mdash; if it is taken, I will offer the nearest alternative by email.</p>
 
     <form class="cs-form" id="bookForm" action="https://formsubmit.co/tony@rudao.org" method="POST">
