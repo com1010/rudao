@@ -69,6 +69,7 @@ function providerInfo(env) {
         info.model = env.FISH_MODEL || "s2.1-pro-free";
         info.voice = env.FISH_VOICE_ID ? "custom" : "default";
     }
+    info.standby = (p !== "fish" && env.FISH_API_KEY) ? "fish-audio" : "none";
     return info;
 }
 
