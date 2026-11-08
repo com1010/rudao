@@ -69,7 +69,9 @@ function providerInfo(env) {
         info.model = env.FISH_MODEL || "s2.1-pro-free";
         info.voice = env.FISH_VOICE_ID ? "custom" : "default";
     }
-    info.standby = (p !== "fish" && env.FISH_API_KEY) ? "fish-audio" : "none";
+    info.standby = (p !== "fish" && env.FISH_API_KEY) ? "fish-audio"
+        : (p !== "elevenlabs" && env.ELEVENLABS_API_KEY) ? "elevenlabs"
+        : "none";
     return info;
 }
 
@@ -200,17 +202,24 @@ export async function onRequestPost({ request, env }) {
         return json({ ok: false, error: "not_configured", fallback: "browser" });
     }
 
-    try {
-        let res = await (provider === "elevenlabs"
-            ? speakElevenLabs(text, env)
-            : speakFish(text, env));
+    /* The other provider acts as standby: whenever the primary answers with
+       an error (quota exhausted, outage) or dies at the network level, the
+       same text is retried there before the browser-speech fallback. */
+    const standby = provider === "fish" ? "elevenlabs" : "fish";
+    const standbyReady = standby === "fish"
+        ? Boolean(env.FISH_API_KEY)
+        : Boolean(env.ELEVENLABS_API_KEY);
 
-        /* The standby provider kicks in whenever the primary one answers
-           with an error instead of audio - quota exhausted, outage, etc. */
+    function speak(p, t) {
+        return p === "fish" ? speakFish(t, env) : speakElevenLabs(t, env);
+    }
+
+    try {
+        let res = await speak(provider, text);
         const ct = res.headers.get("Content-Type") || "";
-        if (!ct.startsWith("audio") && provider !== "fish" && env.FISH_API_KEY) {
+        if (!ct.startsWith("audio") && standbyReady) {
             try {
-                const res2 = await speakFish(text, env);
+                const res2 = await speak(standby, text);
                 if ((res2.headers.get("Content-Type") || "").startsWith("audio")) {
                     return res2;
                 }
@@ -219,9 +228,9 @@ export async function onRequestPost({ request, env }) {
         return res;
     } catch (e) {
         /* network-level failure on the primary: try the standby directly */
-        if (provider !== "fish" && env.FISH_API_KEY) {
+        if (standbyReady) {
             try {
-                return await speakFish(text, env);
+                return await speak(standby, text);
             } catch (e2) { /* report below */ }
         }
         return json({ ok: false, error: "network", message: String(e && e.message || e), fallback: "browser" });
