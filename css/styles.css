@@ -750,24 +750,23 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 /* The "Chat 问书" call to action, sitting on the 儒道 line.
    Kept optically quiet: paper fill, hairline vermillion edge, and it
    only fills in on hover so it never competes with the title. */
-.title-cn-row {
+/* Chat 问书 entry point - sits on its own line, under the author link */
+.hero-chat-row {
     display: flex;
-    align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: clamp(0.7rem, 2vw, 1.5rem);
+    margin: 0.1rem 0 0;
 }
 .hero-chat-btn {
     display: inline-flex;
     align-items: center;
     gap: 9px;
-    padding: 10px 19px 10px 15px;
+    padding: 12px 22px 12px 17px;
     border: 1px solid rgba(169, 50, 38, 0.42);
     border-radius: 999px;
     background: rgba(253, 251, 246, 0.78);
     color: var(--vermillion);
     font-family: var(--font-sans);
-    font-size: 0.82rem;
+    font-size: 0.88rem;
     font-weight: 500;
     letter-spacing: 0.05em;
     line-height: 1;
@@ -5876,7 +5875,7 @@ a[href^="http"].urllink {
 .rp-panel .zh { font-family: var(--font-cn); }
 
 @media (max-width: 600px) {
-    .hero-chat-btn { font-size: 0.74rem; padding: 9px 15px 9px 12px; gap: 7px; }
+    .hero-chat-btn { font-size: 0.8rem; padding: 11px 18px 11px 14px; gap: 7px; }
     .hero-chat-btn svg { width: 15px; height: 15px; }
 }
 @media (max-width: 520px) {
