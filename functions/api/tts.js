@@ -4,11 +4,15 @@
  * Turns a chat answer into speech so readers can listen instead of read.
  *
  * Providers, tried in this order (TTS_PROVIDER can pin one explicitly):
- *   1. ElevenLabs - the author's own cloned voice ("TonyTong")
+ *   1. ElevenLabs - the author's own cloned voices ("TonyTong" US accent
+ *      for English, "TonyTong" Mandarin for Chinese)
  *        POST https://api.elevenlabs.io/v1/text-to-speech/<voice_id>
  *        headers: xi-api-key: <key>
  *        body: { text, model_id, voice_settings }   ->  raw mp3 bytes
- *   2. Fish Audio - fallback provider (s2.1-pro-free is USD 0)
+ *   2. Fish Audio - standby provider (s2.1-pro-free is USD 0). When both
+ *      keys are configured the reader never sees a silent chat: if the
+ *      ElevenLabs call fails or is out of credits, the same text is
+ *      retried on Fish Audio before the browser-speech fallback.
  *
  * Setup - the author's own voice (ElevenLabs):
  *   1. elevenlabs.io -> avatar -> Profile -> API Keys -> create a key
@@ -196,10 +200,29 @@ export async function onRequestPost({ request, env }) {
     }
 
     try {
-        return await (provider === "elevenlabs"
+        let res = await (provider === "elevenlabs"
             ? speakElevenLabs(text, env)
             : speakFish(text, env));
+
+        /* The standby provider kicks in whenever the primary one answers
+           with an error instead of audio - quota exhausted, outage, etc. */
+        const ct = res.headers.get("Content-Type") || "";
+        if (!ct.startsWith("audio") && provider !== "fish" && env.FISH_API_KEY) {
+            try {
+                const res2 = await speakFish(text, env);
+                if ((res2.headers.get("Content-Type") || "").startsWith("audio")) {
+                    return res2;
+                }
+            } catch (e) { /* fall through with the primary error */ }
+        }
+        return res;
     } catch (e) {
+        /* network-level failure on the primary: try the standby directly */
+        if (provider !== "fish" && env.FISH_API_KEY) {
+            try {
+                return await speakFish(text, env);
+            } catch (e2) { /* report below */ }
+        }
         return json({ ok: false, error: "network", message: String(e && e.message || e), fallback: "browser" });
     }
 }
