@@ -1,0 +1,55 @@
+# Cloudflare Pages redirect rules
+#
+# Canonical chapter URL is a single segment:  /ch/<num><slug>
+# e.g. /ch/51rushang   /ch/31daoism   /ch/74huaxue
+#
+# The two-segment spelling people tend to type or share also works:
+#     /ch/51/rushang     ->  /ch/51rushang
+#     /ch/533/luciotan   ->  /ch/533luciotan
+# and the historical misspelling of chapter 2.1 is kept alive.
+
+/ch/00/preface   /ch/00preface   301
+/ch/01/openingstory   /ch/01openingstory   301
+/ch/02/dedication   /ch/02dedication   301
+/ch/03/purpose   /ch/03purpose   301
+/ch/04/whoshouldread   /ch/04whoshouldread   301
+/ch/10/roots   /ch/10roots   301
+/ch/20/whatisrudao   /ch/20whatisrudao   301
+/ch/21/hundredschools   /ch/21hundredschools   301
+/ch/22/confucius   /ch/22confucius   301
+/ch/23/fiveconstants   /ch/23fiveconstants   301
+/ch/24/eightvirtues   /ch/24eightvirtues   301
+/ch/30/innersage   /ch/30innersage   301
+/ch/31/daoism   /ch/31daoism   301
+/ch/32/ruanddao   /ch/32ruanddao   301
+/ch/33/daoismstories   /ch/33daoismstories   301
+/ch/40/ruvsstrategists   /ch/40ruvsstrategists   301
+/ch/41/artofwar   /ch/41artofwar   301
+/ch/42/coopetition   /ch/42coopetition   301
+/ch/43/boardgame   /ch/43boardgame   301
+/ch/50/rushangmerchant   /ch/50rushangmerchant   301
+/ch/51/rushang   /ch/51rushang   301
+/ch/52/japan   /ch/52japan   301
+/ch/531/likashing   /ch/531likashing   301
+/ch/532/robertkuok   /ch/532robertkuok   301
+/ch/533/luciotan   /ch/533luciotan   301
+/ch/534/chenfamily   /ch/534chenfamily   301
+/ch/60/aidigitalage   /ch/60aidigitalage   301
+/ch/61/ai5threvolution   /ch/61ai5threvolution   301
+/ch/62/dialogueofcivilizations   /ch/62dialogueofcivilizations   301
+/ch/63/bizcases   /ch/63bizcases   301
+/ch/64/internetfrontier   /ch/64internetfrontier   301
+/ch/70/continuingjourney   /ch/70continuingjourney   301
+/ch/71/quotes   /ch/71quotes   301
+/ch/72/glossary   /ch/72glossary   301
+/ch/73/references   /ch/73references   301
+/ch/74/huaxue   /ch/74huaxue   301
+/ch/75/legacyoftong   /ch/75legacyoftong   301
+/ch/76/endingremark   /ch/76endingremark   301
+
+# spelled with the double-l that was used in an early draft
+/ch/21/hundredshools   /ch/21hundredschools   301
+/ch/21hundredshools    /ch/21hundredschools   301
+
+# trailing slash on a chapter URL
+/ch/:slug/   /ch/:slug   301

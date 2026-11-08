@@ -119,10 +119,13 @@ def top_level_sections(s):
 
 
 def plain(fragment):
-    txt = re.sub(r"<[^>]+>", " ", fragment)
+    txt = re.sub(r"<[^>]+>", "", fragment)
     txt = htmlmod.unescape(txt)
-    txt = re.sub(r"\s+", " ", txt).strip()
-    return txt
+    txt = re.sub(r"\s+", " ", txt)
+    txt = re.sub(r"\(\s+", "(", txt)
+    txt = re.sub(r"\s+\)", ")", txt)
+    txt = re.sub(r"\s+([,.;:!?])", r"\1", txt)
+    return txt.strip()
 
 
 def strip_hash(txt):
@@ -204,7 +207,7 @@ def build_head(page):
     h = re.sub(r'\n\s*<script type="application/ld\+json">.*?</script>', "", h, flags=re.S)
 
     url = "%s/ch/%s" % (BASE, page["slug"])
-    title = "%s %s | RuDao 儒道 - Beyond The Art of War" % (page["num"], page["title_plain"])
+    title = "%s %s | RuDao 儒道" % (page["num"], page["nav"])
 
     h = re.sub(r"<title>.*?</title>", "<title>%s</title>" % title, h, flags=re.S)
 
@@ -348,9 +351,14 @@ for i, page in enumerate(CHAPTERS):
     page["num_label"] = plain(num_span.group(1)) if num_span else page["num"]
     page["title_plain"] = strip_hash(plain(title_h2.group(1))) if title_h2 else page["nav"]
     desc = strip_hash(plain(sub.group(1))) if sub else ""
-    if len(desc) < 40:
-        first_p = re.search(r"<p[^>]*>(.*?)</p>", blk, re.S)
-        desc = plain(first_p.group(1)) if first_p else desc
+    if len(desc) < 60:
+        body_part = re.search(r'<div class="preface-body">(.*?)</div>', blk, re.S)
+        scope = body_part.group(1) if body_part else blk
+        for p in re.finditer(r"<p[^>]*>(.*?)</p>", scope, re.S):
+            cand = plain(p.group(1))
+            if len(cand) > 60:
+                desc = cand
+                break
     if len(desc) > 158:
         desc = desc[:155].rsplit(" ", 1)[0].rstrip(",;:") + "..."
     page["desc"] = desc.replace('"', "&quot;")
@@ -370,38 +378,25 @@ start = sections[CHAPTERS[0]["id"]][0]
 end = sections[CHAPTERS[-1]["id"]][1]
 
 stub = ('    <!-- ===========================================================\n'
-        '         The 38 chapters now live on their own pages: /ch/<num><slug>\n'
-        '         (see tools/build_chapters.py for the full map). The table of\n'
-        '         contents above links straight to them.\n'
-        '         =========================================================== -->\n'
-        '    <section class="section chapter-portal" id="chapter-portal">\n'
-        '        <div class="container">\n'
-        '            <div class="section-head">\n'
-        '                <span class="section-num">IV.</span>\n'
-        '                <h2 class="section-title">Read the Book 开始阅读</h2>\n'
-        '                <p class="section-subtitle">Every chapter opens on its own page - 38 chapters, 38 URLs.</p>\n'
-        '            </div>\n'
-        '            <div class="portal-grid">\n')
-
-first_five = CHAPTERS[:5]
-for c in CHAPTERS:
-    stub += ('                <a class="portal-card" href="/ch/%s">'
-             '<span class="portal-num">%s</span>'
-             '<span class="portal-label">%s</span></a>\n'
-             % (c["slug"], c["num"], c["nav"]))
-
-stub += ('            </div>\n'
-         '        </div>\n'
-         '    </section>\n')
+        '         The 38 chapters live on their own pages now: /ch/<num><slug>\n'
+        '         (full map: tools/build_chapters.py). The table of contents\n'
+        '         above and the nav dropdown link straight to them.\n'
+        '         =========================================================== -->\n')
 
 new_src = src[:start] + stub + src[end:]
+
+# a one-line note under the table of contents
+toc_note = ('            <p class="toc-note">Every chapter now has its own page - '
+            'click any row above to open it. 每一章都有独立页面,点击目录即可阅读。</p>\n')
+anchor = '                </tbody>\n            </table>\n'
+if anchor in new_src:
+    new_src = new_src.replace(anchor, anchor + toc_note, 1)
 
 # every reference to a chapter anchor now points at the chapter page
 def repl_idx(m):
     target = m.group(1)
     if target in ID2SLUG:
-        slug = ID2SLUG[target]
-        return 'href="/ch/%s"%s' % (slug, '#%s' % target if target != slug else "")
+        return 'href="/ch/%s"' % ID2SLUG[target]
     return m.group(0)
 
 new_src = re.sub(r'href="#([^"#]+)"', repl_idx, new_src)

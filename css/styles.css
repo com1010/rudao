@@ -5930,3 +5930,176 @@ a[href^="http"].urllink {
     .h5-actions { flex-direction: column; }
     .h5-actions .btn { width: 100%; flex-basis: auto; }
 }
+
+/* ============================================
+   CHAPTER PAGES  (/ch/<num><slug>)
+   38 standalone chapter pages share this chrome:
+   a breadcrumb under the fixed nav and a prev/next pager
+   at the foot of every chapter.
+   ============================================ */
+body.ch-body {
+    background: var(--paper);
+}
+
+.ch-main {
+    display: block;
+}
+
+/* the fixed nav (plus the blog alert strip) floats above the page,
+   so the breadcrumb carries the offset instead of the section padding */
+.ch-crumb {
+    padding: 6.6rem 0 0.9rem;
+    background: var(--paper);
+}
+
+.ch-crumb-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 4vw, 3rem);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    font-size: 0.73rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+}
+
+.ch-crumb-inner a {
+    color: var(--vermillion);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+}
+
+.ch-crumb-inner a:hover,
+.ch-crumb-inner a:focus-visible {
+    border-bottom-color: currentColor;
+}
+
+.ch-crumb-inner .sep {
+    color: rgba(169, 50, 38, 0.45);
+}
+
+.ch-crumb-inner .here {
+    text-transform: none;
+    letter-spacing: 0.02em;
+    color: var(--ink-mid);
+}
+
+/* the chapter section no longer needs the full band of top padding */
+body.ch-body .section {
+    padding-top: 0.4rem;
+}
+
+body.ch-body .section + .section {
+    padding-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* .chapter-band normally cancels the section's top padding to form the
+   divider between chapters; on a standalone page it opens the chapter
+   right under the breadcrumb instead */
+body.ch-body .chapter-band {
+    margin-top: 0;
+    margin-bottom: clamp(2rem, 4.5vw, 3.2rem);
+}
+
+/* ---- prev / next ---- */
+.ch-pager {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 4vw, 3rem) clamp(4rem, 8vw, 6.5rem);
+}
+
+.ch-pager-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding-top: 2.2rem;
+    border-top: 1px solid rgba(10, 10, 10, 0.1);
+}
+
+.ch-pager-link {
+    display: block;
+    padding: 1rem 1.2rem;
+    border: 1px solid rgba(169, 50, 38, 0.26);
+    border-radius: 10px;
+    background: rgba(169, 50, 38, 0.022);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+
+.ch-pager-link:hover,
+.ch-pager-link:focus-visible {
+    border-color: var(--vermillion);
+    background: rgba(169, 50, 38, 0.06);
+    transform: translateY(-1px);
+}
+
+.ch-pager-link.is-empty {
+    border: 0;
+    background: none;
+    padding: 0;
+}
+
+.ch-pager-link .dir {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--vermillion);
+    margin-bottom: 0.4rem;
+}
+
+.ch-pager-link .ttl {
+    display: block;
+    font-family: var(--font-serif-en-body);
+    font-size: 1.02rem;
+    line-height: 1.45;
+    color: var(--ink-black);
+}
+
+.ch-pager-link.next {
+    text-align: right;
+}
+
+.ch-pager-toc {
+    grid-column: 1 / -1;
+    justify-self: center;
+    margin-top: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.74rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(169, 50, 38, 0.35);
+    padding-bottom: 0.15rem;
+}
+
+.ch-pager-toc:hover,
+.ch-pager-toc:focus-visible {
+    color: var(--vermillion);
+    border-bottom-color: var(--vermillion);
+}
+
+@media (max-width: 720px) {
+    .ch-crumb { padding-top: 5.6rem; }
+    .ch-pager-grid { grid-template-columns: 1fr; }
+    .ch-pager-link.next { text-align: left; }
+    .ch-pager-link.is-empty { display: none; }
+}
+
+/* ---- one-line note under the table of contents ---- */
+.toc-note {
+    max-width: 720px;
+    margin: 1.4rem auto 0;
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: 0.84rem;
+    line-height: 1.85;
+    color: var(--ink-mid);
+}

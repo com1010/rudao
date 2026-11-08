@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="I first encountered HuaXue-EnXue (华学恩学) while searching for a practical way to connect classical Confucian wisdom with modern business, leadership, and..." />
+    <meta name="keywords" content="RuDao, 儒道, 儒将, RuJiang, 唐仪, Tony Tong, Beyond The Art of War, Confucian Co-opetition, 儒商, 天人合一, 道家, Balanced Profit, Enduring Partnerships, co-opetition, 竞合, 竞合之道, 儒家商业, 商业伦理, HKBA, Hong Kong Blockchain Association, TonyTong.cc, US Patent 6012066, 内圣外王, 超越孙子兵法, 儒将竞合, 竞合战略, 跨境经营, 商业共赢" />
+    <meta name="author" content="Tony Tong (唐仪) - www.TonyTong.cc" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large" />
+    <meta name="baiduspider" content="index, follow" />
+    <meta name="bingbot" content="index, follow" />
+    <meta name="language" content="English, Chinese" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="rating" content="general" />
+    <meta name="distribution" content="global" />
+
+    <!-- Canonical URL
+         This is a single bilingual page served from ONE URL, so every language
+         signal must point back to itself. Do NOT add hreflang pointing at the
+         pages.dev or github.io mirrors: that tells Google those mirrors are the
+         real versions and dilutes rudao.org. -->
+    <link rel="canonical" href="https://rudao.org/ch/74huaxue" />
+    <link rel="alternate" href="https://rudao.org/ch/74huaxue" hreflang="en" />
+    <link rel="alternate" href="https://rudao.org/ch/74huaxue" hreflang="zh-Hans" />
+    <link rel="alternate" href="https://rudao.org/ch/74huaxue" hreflang="x-default" />
+
+    <!-- Cross-reference links for SEO / AI SEO -->
+    <link rel="author" href="https://TonyTong.cc" />
+    <link rel="author" href="https://sites.google.com/view/tonytong/" />
+    <link rel="me" href="https://x.com/TonyTongHKBA" />
+    <link rel="me" href="https://facebook.com/ttpact" />
+    <link rel="me" href="https://www.linkedin.com/in/ttpact/" />
+    <link rel="me" href="https://www.crunchbase.com/person/tony-tong" />
+    <link rel="me" href="https://www.youtube.com/@HongKongBlockchain" />
+    <link rel="me" href="https://link1.in/tonytong" />
+    <link rel="me" href="https://linktr.ee/TonyTong" />
+    <link rel="publisher" href="https://TonyTong.cc" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="7.4 HuaXue 华学恩学 | RuDao 儒道" />
+    <meta property="og:description" content="I first encountered HuaXue-EnXue (华学恩学) while searching for a practical way to connect classical Confucian wisdom with modern business, leadership, and..." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://rudao.org/ch/74huaxue" />
+    <meta property="og:image" content="https://rudao.org/assets/rudao-cover-primary.jpg" />
+    <meta property="og:image:width" content="746" />
+    <meta property="og:image:height" content="1100" />
+    <meta property="og:image:alt" content="RuDao 儒道 - primary book cover, Beyond The Art of War by Tony Tong" />
+    <meta property="og:image" content="https://rudao.org/assets/tony-tong-portrait.jpg" />
+    <meta property="og:image:secure_url" content="https://rudao.org/assets/tony-tong-portrait.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1276" />
+    <meta property="og:image:height" content="1920" />
+    <meta property="og:image:alt" content="Tony Tong (唐仪) - Author of RuDao" />
+    <meta property="og:image" content="https://rudao.org/assets/gallery/rudao-book-launch-event-keynote.jpg" />
+    <meta property="og:image:alt" content="RuDao 儒道 book launch keynote - Beyond The Art of War by Tony Tong" />
+    <meta property="og:site_name" content="RuDao - Beyond The Art of War" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="zh_CN" />
+    <meta property="book:author" content="Tony Tong (唐仪)" />
+    <meta property="book:isbn" content="forthcoming" />
+    <meta property="book:release_date" content="2026" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@TonyTongHKBA" />
+    <meta name="twitter:creator" content="@TonyTongHKBA" />
+    <meta name="twitter:title" content="7.4 HuaXue 华学恩学 | RuDao 儒道" />
+    <meta name="twitter:description" content="I first encountered HuaXue-EnXue (华学恩学) while searching for a practical way to connect classical Confucian wisdom with modern business, leadership, and..." />
+    <meta name="twitter:image" content="https://rudao.org/assets/tony-tong-portrait.jpg" />
+    <meta name="twitter:image:alt" content="Tony Tong (唐仪) - Author of RuDao" />
+
+    <title>7.4 HuaXue 华学恩学 | RuDao 儒道</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Joan&family=Quintessential&family=Merriweather:wght@300;400;700&family=Noto+Serif+TC:wght@400;500;600;700&family=ZCOOL+XiaoWei&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/styles.css?v=20261108h" />
+
+    <!-- Self-hosted Traditional Chinese brush calligraphy font -->
+    <style>
+      @font-face {
+        font-family: 'cwTeXQKai';
+        src: url('/fonts/cwTeXQKai-Medium.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+      /* Ch 2.1 - Hundred Schools 诸子百家-先秦 */
+      #ch20 .preface-body ul { margin: 0 0 1.5rem; padding-left: 1.35rem; list-style: disc; }
+      #ch20 .preface-body ul li { line-height: 1.92; margin-bottom: .5rem; text-align: justify; }
+      #ch20 .preface-body ul li::marker { color: var(--vermillion, #a93226); }
+      #ch20 .preface-body ol.num-list { margin: 0 0 1.5rem; padding-left: 2.4rem; list-style: decimal; }
+      #ch20 .preface-body ol.num-list li { line-height: 1.92; margin-bottom: .5rem; text-align: justify; padding-left: .25rem; }
+      #ch20 .preface-body ol.num-list li::marker { color: var(--vermillion, #a93226); font-weight: 700; font-variant-numeric: tabular-nums; }
+      #ch20 .rank-note { margin: 0 0 1.6rem; padding: 1rem 1.15rem; border-left: 3px solid var(--vermillion, #a93226); background: rgba(169, 50, 38, .045); border-radius: 0 6px 6px 0; }
+      #ch20 .rank-note p { margin: 0 0 .75rem; font-size: .97rem; line-height: 1.9; color: var(--ink-mid, #444); text-align: justify; }
+      #ch20 .rank-note p:last-child { margin-bottom: 0; }
+      #ch20 .fam-list { font-family: 'Noto Serif SC', 'cwTeXQKai', serif; font-size: .97rem; line-height: 2; color: var(--ink-mid, #555); text-align: justify; margin: 0 0 1.3rem; }
+      #ch20 .quote-cn { font-family: 'Noto Serif SC', 'cwTeXQKai', serif; font-size: 1rem; color: var(--ink-mid, #555); line-height: 1.95; }
+      /* Ch 2.4 - Eight Virtues 儒商八德 */
+      #ch22 .quote-cn { font-family: 'Noto Serif SC', 'cwTeXQKai', serif; font-size: 1.02rem; color: var(--vermillion, #a93226); margin: .5rem 0 .2rem; }
+      #ch22 .quote-block { margin: 1.4rem 0; }
+      #ch22 h3 { margin-top: 2.2rem; }
+      /* Ch 2.2 - Confucius <span class="bc-year">551BC</span> Ru-School 孔子 儒家 */
+      #ch21 .preface-cn ul.zhu-list { margin: 0 0 1.4rem; padding-left: 1.2rem; list-style: disc; }
+      #ch21 .preface-cn ul.zhu-list li { font-family: 'Noto Serif SC', 'cwTeXQKai', serif; font-size: clamp(1rem,1.2vw,1.08rem); line-height: 1.95; color: var(--ink-mid, #555); margin-bottom: .5rem; text-align: justify; }
+      #ch21 .preface-cn ul.zhu-list li::marker { color: var(--vermillion, #a93226); }
+      #ch21 .preface-cn h4.chap-h3 { font-family: 'Noto Serif SC', 'cwTeXQKai', serif; }
+      #ch21 .preface-cn p strong { font-family: 'Noto Serif SC', 'cwTeXQKai', serif; }
+      /* Ch 2.2 - Key Classic Sayings: tightened vertical rhythm */
+      #ch21 .sayings-tight h4.chap-h3 { margin: 1.1rem 0 .25rem; font-size: 1.06rem; }
+      #ch21 .sayings-tight h4.chap-h3:first-child { margin-top: .1rem; }
+      #ch21 .sayings-tight .quote-block { margin: .3rem 0 .35rem; padding: .15rem .6rem .1rem; }
+      #ch21 .sayings-tight .quote { font-size: clamp(1.05rem, 1.5vw, 1.2rem); line-height: 1.45; margin-bottom: .2rem; }
+      #ch21 .sayings-tight .quote-cn { margin: .1rem 0 .05rem; font-size: .97rem; line-height: 1.75; }
+      #ch21 .sayings-tight .quote-attr { font-size: .84rem; line-height: 1.4; }
+      #ch21 .sayings-tight p { margin: .3rem 0 .2rem; line-height: 1.78; }
+      /* Ch 2.3 - Chinese block for the Origins section */
+      #ch24 .preface-cn.origins-cn { max-width: none; margin: 1.4rem 0 1.8rem; padding-top: 1.2rem; }
+      #ch24 .preface-cn.origins-cn h4.chap-h3 { font-family: 'Noto Serif SC', 'cwTeXQKai', serif; margin: .1rem 0 1rem; text-align: left; }
+      #ch24 .preface-cn.origins-cn p { font-family: 'Noto Serif SC', 'cwTeXQKai', serif; font-size: clamp(1rem,1.2vw,1.06rem); line-height: 1.95; color: var(--ink-mid, #555); margin: 0 0 1.1rem; text-align: justify; }
+      /* Ch 2.4 - Education Values: Zhu Xi eight virtues school motto frame */
+      #ch22 .edu-frame .edu-frame-title { margin: 0 0 .9rem; padding: 0 .5rem; font-size: clamp(1.08rem,1.7vw,1.24rem); line-height: 1.6; color: var(--ink-black, #0a0a0a); }
+      #ch22 .edu-frame p { padding: 0 .5rem; margin: .7rem 0; }
+      #ch22 .edu-frame .edu-lead { font-size: clamp(.98rem,1.2vw,1.05rem); line-height: 1.9; }
+      #ch22 .edu-frame .edu-lead-cn { font-family: 'Noto Serif SC', 'cwTeXQKai', serif; font-size: clamp(.98rem,1.2vw,1.05rem); line-height: 1.95; color: var(--ink-mid, #555); }
+      #ch22 .edu-frame .edu-source { font-size: .86rem; line-height: 1.85; color: var(--ink-mid, #555); }
+      #ch22 .edu-frame .edu-source a { color: var(--vermillion, #a93226); text-decoration: none; word-break: break-all; }
+      #ch22 .edu-frame .edu-source a:hover { text-decoration: underline; }
+      #ch22 .edu-frame h3.edu-h3 { margin: 1.5rem 0 .5rem; padding: 0 .5rem; font-size: 1.06rem; color: var(--vermillion, #a93226); }
+      #ch22 .edu-eight { margin: .4rem 0 .9rem; padding: 0 1.6rem 0 2.2rem; }
+      #ch22 .edu-eight li { margin-bottom: .55rem; line-height: 1.85; font-size: clamp(.95rem,1.15vw,1rem); color: var(--ink-mid, #444); }
+      #ch22 .edu-eight li strong { color: var(--ink-black, #0a0a0a); }
+      .ch22-table-wrap { overflow-x: auto; margin: 1.4rem 0 1.8rem; }
+      .ch22-table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+      .ch22-table th, .ch22-table td { border: 1px solid rgba(0,0,0,.14); padding: .55rem .8rem; text-align: left; vertical-align: top; }
+      .ch22-table thead th { background: rgba(169,50,38,.08); font-weight: 600; }
+      .ch22-table tbody tr:nth-child(even) { background: rgba(0,0,0,.025); }
+      .ch22-table .ch22-glyph { font-family: 'Noto Serif SC', 'cwTeXQKai', serif; font-size: 1.3rem; color: var(--vermillion, #a93226); text-align: center; font-weight: 700; }
+      .ch22-quote-wall { display: grid; gap: .7rem; margin: 1.2rem 0 2rem; padding: 1.1rem 1.4rem; background: rgba(169,50,38,.045); border-left: 3px solid var(--vermillion, #a93226); border-radius: 6px; }
+      .ch22-quote-wall p { margin: 0; font-size: .96rem; }
+      .ch22-quote-wall span { color: var(--ink-mid, #555); }
+      .ch22-checklist { list-style: none; padding: 0; margin: 0 0 1.8rem; display: grid; gap: .6rem; }
+      .ch22-checklist li { position: relative; padding: .65rem .9rem .65rem 2.4rem; background: rgba(0,0,0,.03); border: 1px solid rgba(0,0,0,.08); border-radius: 8px; }
+      .ch22-checklist li::before { content: "✓"; position: absolute; left: .9rem; color: var(--vermillion, #a93226); font-weight: 700; }
+      .chap-sec .quote-cn { font-family: 'Noto Serif SC', 'cwTeXQKai', serif; font-size: 1.02rem; color: var(--vermillion, #a93226); margin: .5rem 0 .2rem; }
+      .chap-sec .quote-block { margin: 1.4rem 0; }
+      .chap-sec .quote-attr { color: var(--ink-mid, #555); font-size: .92rem; }
+      .chap-sec h3.chap-h2 { margin: 2.4rem 0 .9rem; font-size: 1.35rem; color: var(--ink, #1c1c1c); border-bottom: 1px solid rgba(0,0,0,.12); padding-bottom: .45rem; }
+      .chap-sec h4.chap-h3 { margin: 1.9rem 0 .7rem; font-size: 1.12rem; color: var(--vermillion, #a93226); }
+      .chap-sec p { margin: .8rem 0; line-height: 1.85; }
+      .class-insights-frame { position: relative; margin: 2.8rem 0 1rem; padding: 2rem 2rem 1.2rem; border: 1px solid rgba(169,50,38,.38); border-radius: 14px; background: rgba(169,50,38,.028); }
+      .class-insights-frame::before { content: ""; position: absolute; inset: 6px; border: 1px dashed rgba(169,50,38,.22); border-radius: 10px; pointer-events: none; }
+      .class-insights-frame > .chap-h2:first-child { margin-top: .2rem; }
+      @media (max-width: 640px) { .class-insights-frame { padding: 1.3rem 1.1rem .8rem; } }
+      /* 7.4 - Class Insights: English reflection typography */
+      .preface-body h3.ci-en-title { font-family: var(--font-body); font-size: clamp(1.12rem, 1.75vw, 1.36rem); font-weight: 600; line-height: 1.5; letter-spacing: 0; color: var(--ink-black); text-align: center; margin: 0 0 .45rem; }
+      .preface-body p.ci-en-sub { font-family: var(--font-cn-body); font-size: .95rem; color: var(--ink-mid); text-align: center; line-height: 1.6; margin: 0 0 1.3rem; }
+      .preface-body p.ci-en-meta { font-size: .95rem; line-height: 1.7; color: var(--ink-mid); text-align: left; margin: 0 0 1.6rem; }
+      .preface-body p.ci-en-sign { font-size: .95rem; line-height: 1.7; color: var(--ink-mid); text-align: right; margin: 1.6rem 0 0; }
+      /* 7.4 - Classic of WeiQi/Go (Qi Jing 棋经十三篇) source note */
+      .qijing-frame { position: relative; margin: 3rem 0 1rem; padding: 2rem 2.1rem 1.5rem; border: 1px solid rgba(169,50,38,.38); border-radius: 14px; background: rgba(169,50,38,.028); }
+      .qijing-frame::before { content: ""; position: absolute; inset: 6px; border: 1px dashed rgba(169,50,38,.20); border-radius: 10px; pointer-events: none; }
+      .qijing-frame .qj-title { margin: 0 0 .35rem; font-family: 'Noto Serif SC', 'cwTeXQKai', Georgia, serif; font-size: clamp(1.1rem, 1.7vw, 1.32rem); font-weight: 700; line-height: 1.55; color: var(--ink-black, #0a0a0a); }
+      .qijing-frame .qj-sub { margin: 0 0 .3rem; font-family: 'Noto Serif SC', serif; font-size: .98rem; color: var(--vermillion, #a93226); letter-spacing: .01em; }
+      .qijing-frame .qj-sub .qj-en { font-family: Georgia, serif; font-style: italic; color: var(--ink-mid, #3a3a3a); }
+      .qijing-frame .qj-meta { margin: 0 0 1.1rem; font-size: .88rem; line-height: 1.7; color: var(--ink-mid, #555); }
+      .qijing-frame .qj-h { margin: 1.8rem 0 .6rem; padding-left: .7rem; border-left: 3px solid var(--vermillion, #a93226); font-family: 'Noto Serif SC', 'cwTeXQKai', serif; font-size: 1.08rem; font-weight: 700; line-height: 1.65; color: var(--ink-black, #0a0a0a); }
+      .qijing-frame p { margin: .8rem 0; line-height: 1.88; }
+      .qijing-frame .quote-block { margin: 0 0 .3rem; padding: 1.1rem 0 .3rem; max-width: 100%; }
+      .qijing-frame .quote-block::before { display: none; }
+      .qijing-frame .qj-label { margin: .15rem 0 .45rem; font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--vermillion, #a93226); }
+      .qijing-frame .quote { font-size: clamp(1.02rem, 1.6vw, 1.18rem); margin-bottom: .6rem; }
+      .qijing-frame .quote-cn { font-size: 1rem; line-height: 1.95; margin: 0; color: var(--ink-soft, #1a1a1a); }
+      .qijing-frame .qj-verse-label { margin: 1.1rem 0 .4rem; font-size: .95rem; color: var(--ink-mid, #555); }
+      .qijing-frame .qj-verse { margin: 0 0 1.1rem; padding: 1rem 1.3rem; background: rgba(169,50,38,.05); border-left: 3px solid rgba(169,50,38,.55); border-radius: 6px; font-family: 'Noto Serif SC', 'cwTeXQKai', serif; font-size: 1.01rem; line-height: 1.95; color: var(--ink-black, #0a0a0a); }
+      .qijing-frame .qj-notes { list-style: none; padding: 0; margin: .4rem 0 0; display: grid; gap: .8rem; }
+      .qijing-frame .qj-notes li { position: relative; padding-left: 1.35rem; line-height: 1.88; }
+      .qijing-frame .qj-notes li::before { content: "\25C6"; position: absolute; left: 0; top: .42rem; font-size: .62rem; color: var(--vermillion, #a93226); }
+      .qijing-frame .qj-notes strong { color: var(--vermillion, #a93226); }
+      /* Qi Jing block - all body copy: 9pt, regular, tight single spacing */
+      .qijing-frame .qj-meta,
+      .qijing-frame p,
+      .qijing-frame .quote,
+      .qijing-frame .quote-cn,
+      .qijing-frame .qj-verse-label,
+      .qijing-frame .qj-verse,
+      .qijing-frame .qj-notes li {
+        font-size: 9pt;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 1.28;
+      }
+      .qijing-frame p { margin: .42rem 0; }
+      .qijing-frame .qj-meta { margin: 0 0 .5rem; }
+      .qijing-frame .qj-title { line-height: 1.3; margin-bottom: .3rem; }
+      .qijing-frame .qj-h { line-height: 1.35; margin: 1.05rem 0 .4rem; font-size: 1rem; }
+      .qijing-frame .quote-block { padding: .5rem 0 .05rem; }
+      .qijing-frame .quote { margin-bottom: .3rem; }
+      .qijing-frame .qj-verse-label { margin: .55rem 0 .25rem; }
+      .qijing-frame .qj-verse { margin: 0 0 .75rem; padding: .7rem 1rem; }
+      .qijing-frame .qj-notes { gap: .45rem; margin: .3rem 0 0; }
+      .qijing-frame .qj-notes li { padding-left: 1.1rem; }
+      @media (max-width: 640px) { .qijing-frame { padding: 1.3rem 1.1rem 1rem; } .qijing-frame .qj-title { font-size: 1.04rem; } }
+    </style>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/image2.png" />
+    <link rel="apple-touch-icon" href="/assets/image2.png" />
+
+    <!-- Structured Data: Book (JSON-LD) for Google Rich Results -->
+
+    <!-- Structured Data: Person (Author) for Google Knowledge Panel -->
+
+    <!-- Structured Data: FAQPage for Google FAQ Rich Results -->
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "RuDao 儒道",
+          "item": "https://rudao.org/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Table of Contents 目录",
+          "item": "https://rudao.org/#contents"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "7.4 HuaXue 华学恩学",
+          "item": "https://rudao.org/ch/74huaxue"
+        }
+      ]
+    },
+    {
+      "@type": "Chapter",
+      "name": "HuaXue-EnXue -- Modern RuShang Academy",
+      "headline": "7.4 HuaXue-EnXue -- Modern RuShang Academy",
+      "url": "https://rudao.org/ch/74huaxue",
+      "position": 36,
+      "inLanguage": [
+        "en",
+        "zh-Hans"
+      ],
+      "isPartOf": {
+        "@type": "Book",
+        "name": "RuDao 儒道 - Beyond The Art of War",
+        "url": "https://rudao.org/",
+        "author": {
+          "@type": "Person",
+          "name": "Tony Tong (唐仪)",
+          "url": "https://TonyTong.cc"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Tony Tong (唐仪)",
+        "url": "https://TonyTong.cc"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "RuDao.org",
+        "url": "https://rudao.org/"
+      }
+    }
+  ]
+}
+    </script>
+</head>
+<body class="ch-body">
+
+    <header class="nav" id="nav">
+            <div class="nav-inner">
+                <a href="https://rudao.org" class="nav-brand" title="RuDao.org">
+                    <span class="brand-en">RuDao</span>
+                    <span class="brand-cn">儒道</span>
+                </a>
+                <nav class="nav-links">
+                    <div class="nav-dropdown" id="tocDropdown">
+                        <button type="button" class="nav-dropbtn" id="tocDropBtn" aria-haspopup="true" aria-expanded="false" aria-controls="tocDropMenu">
+                            TOC 目录 <span class="nav-caret" aria-hidden="true">&#9662;</span>
+                        </button>
+                        <div class="nav-dropmenu" id="tocDropMenu" role="menu" aria-label="Table of contents">
+                            <a class="nav-dropfull" href="/#contents" role="menuitem">Full Table of Contents 完整目录</a>
+                            <a class="nav-dropgroup" href="/ch/00preface" role="menuitem"><span class="nav-dropnum">0.0</span><span class="nav-droplabel">Front Matter - Preface 前文</span></a>
+                            <a class="nav-dropitem" href="/ch/01openingstory" role="menuitem"><span class="nav-dropnum">0.1</span><span class="nav-droplabel">Opening - My Journey to RuDao 序章</span></a>
+                            <a class="nav-dropitem" href="/ch/02dedication" role="menuitem"><span class="nav-dropnum">0.2</span><span class="nav-droplabel">Dedication &amp; Co-Editors 献言</span></a>
+                            <a class="nav-dropitem" href="/ch/03purpose" role="menuitem"><span class="nav-dropnum">0.3</span><span class="nav-droplabel">Purpose of This Book 本书宗旨</span></a>
+                            <a class="nav-dropitem" href="/ch/04whoshouldread" role="menuitem"><span class="nav-dropnum">0.4</span><span class="nav-droplabel">Who Should Read 读者对象</span></a>
+                            <a class="nav-dropgroup" href="/ch/10roots" role="menuitem"><span class="nav-dropnum">1.0</span><span class="nav-droplabel">Roots of Profit 源 趋利</span></a>
+                            <a class="nav-dropitem" href="/ch/10roots" role="menuitem"><span class="nav-dropnum">1.1</span><span class="nav-droplabel">Shang 1600BC Business Begins 商朝</span></a>
+                            <a class="nav-dropgroup" href="/ch/20whatisrudao" role="menuitem"><span class="nav-dropnum">2.0</span><span class="nav-droplabel">RuDao: Philosophy Ethics 哲学伦理</span></a>
+                            <a class="nav-dropitem" href="/ch/21hundredschools" role="menuitem"><span class="nav-dropnum">2.1</span><span class="nav-droplabel">Hundred Schools 770-221BC 诸子百家</span></a>
+                            <a class="nav-dropitem" href="/ch/22confucius" role="menuitem"><span class="nav-dropnum">2.2</span><span class="nav-droplabel">Confucius 551BC Ru-School 孔子 儒家</span></a>
+                            <a class="nav-dropitem" href="/ch/23fiveconstants" role="menuitem"><span class="nav-dropnum">2.3</span><span class="nav-droplabel">Five Constants 五常 - 仁义礼智信</span></a>
+                            <a class="nav-dropitem" href="/ch/24eightvirtues" role="menuitem"><span class="nav-dropnum">2.4</span><span class="nav-droplabel">Eight Virtues 儒商八德</span></a>
+                            <a class="nav-dropgroup" href="/ch/30innersage" role="menuitem"><span class="nav-dropnum">3.0</span><span class="nav-droplabel">Inner Sage, Outer King 内圣外王</span></a>
+                            <a class="nav-dropitem" href="/ch/31daoism" role="menuitem"><span class="nav-dropnum">3.1</span><span class="nav-droplabel">Daoism by LaoZi 571BC 老子 道家</span></a>
+                            <a class="nav-dropitem" href="/ch/32ruanddao" role="menuitem"><span class="nav-dropnum">3.2</span><span class="nav-droplabel">Ru &amp; Dao 儒与道</span></a>
+                            <a class="nav-dropitem" href="/ch/33daoismstories" role="menuitem"><span class="nav-dropnum">3.3</span><span class="nav-droplabel">Daoism Stories 儒道四训</span></a>
+                            <a class="nav-dropgroup" href="/ch/40ruvsstrategists" role="menuitem"><span class="nav-dropnum">4.0</span><span class="nav-droplabel">Ru vs Strategists 儒家-兵家-竞合之道</span></a>
+                            <a class="nav-dropitem" href="/ch/41artofwar" role="menuitem"><span class="nav-dropnum">4.1</span><span class="nav-droplabel">Art of War - SunTzu 544BC 孙子兵家</span></a>
+                            <a class="nav-dropitem" href="/ch/42coopetition" role="menuitem"><span class="nav-dropnum">4.2</span><span class="nav-droplabel">Art of War vs Co-opetition 竞合</span></a>
+                            <a class="nav-dropitem" href="/ch/42coopetition" role="menuitem"><span class="nav-dropnum">4.3</span><span class="nav-droplabel">Art of War vs Co-opetition 竞合</span></a>
+                            <a class="nav-dropitem" href="/ch/43boardgame" role="menuitem"><span class="nav-dropnum">4.3</span><span class="nav-droplabel">Board Game - Boardroom 棋品见人品</span></a>
+                            <a class="nav-dropgroup" href="/ch/50rushangmerchant" role="menuitem"><span class="nav-dropnum">5.0</span><span class="nav-droplabel">RuShang Confucian Merchant 儒商典范</span></a>
+                            <a class="nav-dropitem" href="/ch/51rushang" role="menuitem"><span class="nav-dropnum">5.1</span><span class="nav-droplabel">RuShang Patriarchs FanLi ZiGong 儒商鼻祖</span></a>
+                            <a class="nav-dropitem" href="/ch/52japan" role="menuitem"><span class="nav-dropnum">5.2</span><span class="nav-droplabel">Japan - Analects &amp; Abacus 日本儒商</span></a>
+                            <a class="nav-dropitem" href="/ch/531likashing" role="menuitem"><span class="nav-dropnum">5.3</span><span class="nav-droplabel">Asian RuShang 亚洲儒商典范</span></a>
+                            <a class="nav-dropitem" href="/ch/531likashing" role="menuitem"><span class="nav-dropnum">5.3.1</span><span class="nav-droplabel">Li KaShing 李嘉诚 - 生意来求你</span></a>
+                            <a class="nav-dropitem" href="/ch/532robertkuok" role="menuitem"><span class="nav-dropnum">5.3.2</span><span class="nav-droplabel">Robert Kuok 郭鹤年 儒商亚洲糖王</span></a>
+                            <a class="nav-dropitem" href="/ch/533luciotan" role="menuitem"><span class="nav-dropnum">5.3.3</span><span class="nav-droplabel">Lucio Tan 陈永栽 菲律宾儒商典范</span></a>
+                            <a class="nav-dropitem" href="/ch/534chenfamily" role="menuitem"><span class="nav-dropnum">5.3.4</span><span class="nav-droplabel">Chen Family 陈济棠三代儒将儒商</span></a>
+                            <a class="nav-dropgroup" href="/ch/60aidigitalage" role="menuitem"><span class="nav-dropnum">6.0</span><span class="nav-droplabel">RuDao in AI Digital Age 数字时代</span></a>
+                            <a class="nav-dropitem" href="/ch/61ai5threvolution" role="menuitem"><span class="nav-dropnum">6.1</span><span class="nav-droplabel">AI 5th Ind Revolution 第五次工业革命</span></a>
+                            <a class="nav-dropitem" href="/ch/62dialogueofcivilizations" role="menuitem"><span class="nav-dropnum">6.2</span><span class="nav-droplabel">Dialogue of Civilizations 文明对话</span></a>
+                            <a class="nav-dropitem" href="/ch/63bizcases" role="menuitem"><span class="nav-dropnum">6.3</span><span class="nav-droplabel">Biz Cases 商业案例</span></a>
+                            <a class="nav-dropitem" href="/ch/64internetfrontier" role="menuitem"><span class="nav-dropnum">6.4</span><span class="nav-droplabel">30 Years at the Internet Frontier</span></a>
+                            <a class="nav-dropgroup" href="/ch/70continuingjourney" role="menuitem"><span class="nav-dropnum">7.0</span><span class="nav-droplabel">Continuing the Journey 知行合一的旅程</span></a>
+                            <a class="nav-dropitem" href="/ch/71quotes" role="menuitem"><span class="nav-dropnum">7.1</span><span class="nav-droplabel">Appendix A - Quotes 名句集</span></a>
+                            <a class="nav-dropitem" href="/ch/72glossary" role="menuitem"><span class="nav-dropnum">7.2</span><span class="nav-droplabel">Appendix B - Glossary 术语表</span></a>
+                            <a class="nav-dropitem" href="/ch/73references" role="menuitem"><span class="nav-dropnum">7.3</span><span class="nav-droplabel">Sources & References 参考文献</span></a>
+                            <a class="nav-dropitem" href="/ch/74huaxue" role="menuitem"><span class="nav-dropnum">7.4</span><span class="nav-droplabel">HuaXue 华学恩学</span></a>
+                            <a class="nav-dropitem" href="/ch/75legacyoftong" role="menuitem"><span class="nav-dropnum">7.5</span><span class="nav-droplabel">Legacy of Tong Clan 唐氏传奇后记</span></a>
+                            <a class="nav-dropitem" href="/ch/76endingremark" role="menuitem"><span class="nav-dropnum">7.6</span><span class="nav-droplabel">Ending Remark 结语</span></a>
+                    
+                        </div>
+                    </div>
+                    <a href="/#author">Author</a>
+                    <a href="/#endorsements">Reviews 读者评语</a>
+                    <a href="/#h5app">H5 App 离线版</a>
+                </nav>
+            </div>
+
+            <!-- ========== BLOG ALERT BANNER ========== -->
+            <div class="blog-alert" id="blogAlert">
+                <a href="/#readers-blog" class="blog-alert-link">
+                    <span class="blog-alert-icon">&#9998;</span>
+                    <span class="blog-alert-text">
+                        <strong>Reader's Blog</strong> - click to leave your messages : Readers' Reviews &amp; Messages 读者评语留言
+                    </span>
+                </a>
+                <button class="blog-alert-close" id="blogAlertClose" aria-label="Close alert">&times;</button>
+            </div>
+        </header>
+
+    <main class="ch-main">
+        <nav class="ch-crumb" aria-label="Breadcrumb">
+            <div class="ch-crumb-inner">
+                <a href="/">RuDao 儒道</a>
+                <span class="sep">&rsaquo;</span>
+                <a href="/#contents">Contents 目录</a>
+                <span class="sep">&rsaquo;</span>
+                <span class="here">7.4 &middot; HuaXue 华学恩学</span>
+            </div>
+        </nav>
+
+        <section class="section preface huaxue chap-sec" id="huaxue">
+                <div class="chapter-band" aria-hidden="true"></div>
+                <div class="container preface-container">
+                    <div class="section-head preface-head">
+                        <span class="section-num">7.4</span>
+                        <h2 class="section-title">HuaXue-EnXue -- Modern RuShang Academy</h2>
+                        <p class="section-subtitle">华学恩学 -- 现代儒商教育体系</p>
+                    </div>
+                    <div class="preface-body">
+        <p>I first encountered HuaXue-EnXue (华学恩学) while searching for a practical way to connect classical Confucian wisdom with modern business, leadership, and daily life. What I found was not merely a course of study, but a living system of self-cultivation rooted in the traditions of Confucianism, Daoism, and Buddhism.</p>
+        <p>From 2024 to 2026, I had the privilege of attending several lectures by Master Xiao XianHua (肖先华), founder of HuaXue-EnXue. During the session, he shared a simple yet profound principle:</p>
+        <p>Live with poetic grace (诗情画意) and conduct oneself according to the spirit of ritual and harmony (礼乐).</p>
+        <p>What struck me most was that he was not speaking about philosophy as an abstract subject. He was speaking about how to live, how to lead, how to build families, organizations, and communities with greater character, balance, and meaning.</p>
+        <p>Master Xiao XianHua, a descendant of the distinguished Xiao family lineage associated with Xiao He (萧何), the renowned Han Dynasty statesman, has developed HuaXue-EnXue into a modern educational system that translates classical Chinese wisdom into practical guidance for contemporary life.</p>
+        <p>At its core, HuaXue-EnXue seeks to answer a question that also lies at the heart of RuDao:</p>
+        <p>How can ancient wisdom remain relevant in a rapidly changing modern world?</p>
+        <p>Its teaching framework -- "One Dao, Two Roots, Three Hearts, Four Refrainings, Five Questions, Six Harmonies, Seven Essentials, Eight Discernments, Nine Emptinesses, Ten Virtues, and Twenty Methods" -- provides a structured path for personal cultivation, family harmony, leadership development, and ethical entrepreneurship.</p>
+        <p>As I studied this framework, I was struck by how naturally it resonated with the principles of RuDao (儒道). Both emphasize character before success, virtue before power, and self-cultivation before leadership. Both seek to transform Confucian wisdom from a subject of study into a way of life.</p>
+        <p>In many respects, HuaXue-EnXue provides a practical cultivation system, while RuDao extends those principles into entrepreneurship, leadership, co-opetition, and Digital Civilization.</p>
+        <p>Together, they illustrate a timeless idea:</p>
+        <p>Education is not merely about acquiring knowledge.<br />It is about cultivating character, wisdom, and the ability to live with purpose.</p>
+        <p>Key mottos, principles, and concepts HuaXue by Professor Xiao XianHua within his lectures and volunteer training guidelines include:</p>
+        <p>1. The Core Pillar Core Values: three central attitudes:</p>
+        <p>"With a heart of gratitude, a heart of respect, and a heart for the public good. " "以感恩心,以恭敬心,以天下为公心"</p>
+        <p>Prof Xiao instills an active attitude of selflessness and humility:</p>
+        <p>"Only show gratitude, never complain; only show respect, never be arrogant, and let go of the ego. "</p>
+        <p>"只感恩,不抱怨;只恭敬,不傲慢,不我执。"</p>
+        <p>"Treat people well, only give gratitude, and do not hold grievances. "</p>
+        <p>"对人好,只感恩不抱怨。"</p>
+        <p>"Stand high upon the mountain peak, but walk deeply along the ocean floor - meaning to maintain noble aspirations while executing with absolute humility. "</p>
+        <p>"高高山顶立,低低海底行。"</p>
+        <p>"Only when your heart is dedicated to the public good can true success be achieved. "</p>
+        <p>"天下为公,才能成功。"</p>
+        <p>Dr. Tong Yan Kai ( Tang EnJia湯恩佳博士 香港孔教学院院长 世界儒商联合会会长), former industrialist and President of the Confucian Academy ( ConfucianAcademy.com ) in Hong Kong, is one of the most important modern advocates for RuShang ethics. His famous definition distinguishes the RuShang from ordinary merchants: "The greatest difference between a RuShang and an ordinary merchant is that the RuShang attaches great importance to business morality and refuses wealth obtained through unrighteous means."</p>
+        <p>Dr. Tong advocates the Confucian Ten Virtues (十德): rén 仁,yì 义,lǐ 礼,zhì 智,xìn 信,xiào 孝,tì 悌,zhōng 忠,lián 廉,chǐ 耻. This ten-virtue framework forms the direct foundation for the modern Eight Virtues of the RuShang (儒商八德). Dr. Tong stresses that wealth is not an end in itself. He holds the principle of shēng cái yǒu dào 生财有道 (create wealth in the proper way), and adopts Confucius's maxim "Wealth and honour obtained unrighteously are to me like floating clouds" as his personal motto.</p>
+        <p>For Dr. Tong, the RuShang pursues profit, but profit must serve benevolent purposes. This idea of yǐ cái fā shēn 以财发身 - using wealth to cultivate moral character aligns perfectly with the RuDao thesis: Confucian virtue forms the unchanging substance (体,tǐ) of enterprise, while adaptive business strategy constitutes the function (用,yòng). Dr. Tong describes this model as "The Analects plus the abacus", combining Confucian moral cultivation with practical commercial operation.</p>
+        <p>Dr. Tong said: "To be a RuShang is to uphold commercial morality and reject ill-gotten gains. Wealth acquired rightly is a means to carry out benevolent works. Wealth exists to cultivate one's moral character: we use wealth to develop benevolence."</p>
+        <p>"儒商就是要重视商业道德,不取不义之财,生财要取之有道,仁者生财是用来发展仁的事业,仁是儒家思想的核心,财是实现仁的事业的手段,故曰 以财发身"。</p>
+        <p class="quote-attr">Source: Dr. Tong's Lecture at Sichuan University 四川大学 2005</p>
+        <p>Keywords of Dr. Tong: yǐ cái fā shēn 以财发身,righteous wealth, benevolence as purpose, wealth as instrument.</p>
+        <h4 class="chap-h3">The Core Thought System of HuaXue-EnXue</h4>
+        <p>HuaXue-EnXue carries on the orthodox current of Chinese culture, summarizing and developing Confucianism, Daoism, and Buddhism. Its core mission:</p>
+        <p>"To build, for the Chinese nation and indeed for all humanity, a system of thought and value by which to stand and live between heaven and earth. HuaXue-EnXue is the distillation of the finest elements of the world's cultures and religions - the village Way, village learning, and village rules of the global village; the family Way, family learning, and family rules of humanity's common earthly home."</p>
+        <p>The core system and its correspondence to this book:</p>
+        <div class="compare-table-wrap ch22-table-wrap"><table class="compare-table ch22-table">
+        <thead><tr><th>System</th><th>Content</th><th>RuShang-RuJiang Correspondence</th></tr></thead><tbody>
+        <tr><td>One Dao 一道</td><td>The great Way of the universe and human life</td><td>The Way of the RuShang - unity of righteousness and profit</td></tr>
+        <tr><td>Two Roots 二根</td><td>Loyalty and filial piety fulfilled together</td><td>The RuShang root - nation-and-society accountability</td></tr>
+        <tr><td>Three Hearts 三心</td><td>Gratitude, reverence, responsibility</td><td>The RuJiang's three virtues - gratitude, humility, ownership</td></tr>
+        <tr><td>Four Refrainings 四戒</td><td>No arrogance, no complaining, no greed, no slackness</td><td>The RuShang's four refrainings - the base of self-cultivation</td></tr>
+        <tr><td>Five Questions 五问</td><td>Daily self-examination in five questions</td><td>The RuJiang's five questions - pre-decision self-check</td></tr>
+        <tr><td>Six Harmonies 六和</td><td>Body-mind, family, enterprise, society, the world, heaven-and-earth</td><td>Co-opetition's six harmonies - symbiotic win-win</td></tr>
+        <tr><td>Seven Essentials 七要</td><td>Seven core essentials</td><td>The RuJiang's seven essentials - strategic capability</td></tr>
+        <tr><td>Eight Discernments 八辨</td><td>Eight criteria for judging right and wrong</td><td>The Eight Virtues - the ethical floor</td></tr>
+        <tr><td>Nine Emptinesses 九无</td><td>Nine states beyond attachment</td><td>The Inner Sage's nine emptinesses - the selfless realm</td></tr>
+        <tr><td>Ten Virtues 十德</td><td>Ten core virtues</td><td>The RuShang's ten virtues - the complete personality</td></tr>
+        <tr><td>Twenty Methods 二十法</td><td>Twenty practices</td><td>The RuJiang's twenty methods - the action guide</td></tr>
+        </tbody></table></div>
+        <h4 class="chap-h3">The Core Ideas Explained</h4>
+        <p>(1) Awaken to the Dao; root yourself; connect to the root.</p>
+        <p>"Devoutly awaken to the Dao; go deep in one discipline and take root - root in loyalty and filial piety fulfilled together; find the root of Chinese culture, the root of one's life and career. Solve the relation of Dao and technique from the root upward. Much past training only studied technique; now strive for the Dao. Only by learning, awakening, clarifying, and walking the Dao can technique finally be handled rightly, and can life and work return to their proper orbit."</p>
+        <p>RuShang reading: the inner-sage foundation - awaken to the Dao first, study technique second; cultivate the self first, manage the enterprise second.</p>
+        <p>(2) Before doing, learn to be human.</p>
+        <p>Professor Xiao stresses: "Before doing, learn to be human. Face life with a healthy mindset; find the root of Chinese culture and of one's life and career... Learn and carry forward the finest of Chinese culture; revive national education and national culture."</p>
+        <p>RuShang reading: the RuShang's core logic - self-cultivation as the root, enterprise management as the branch.</p>
+        <p>(3) Only reverence; no arrogance; no ego-attachment.</p>
+        <p>"Only reverence - no arrogance, no ego-attachment. Serve others; do not cling; do not overstep your station; do not promise lightly; do not take advantage; do not covet others' money or goods; feel neither aggrieved nor wounded."</p>
+        <p>RuShang reading: the RuShang's stance toward partners - humble, sincere, never overstepping, never grasping.</p>
+        <p>(4) Filial piety first among a hundred virtues.</p>
+        <p>"Filial piety is foremost of the hundred virtues. Be grateful to parents; seek their grace at the wellspring of life; teaching filial piety is the golden key that solves all problems. One must first achieve filial piety... Be grateful to every person who appears in your life; be good to people; only gratitude, no complaining; only reverence."</p>
+        <p>RuShang reading: the starting point of nation-and-society feeling - filial piety is the wellspring of gratitude, and gratitude the starting point of trust.</p>
+        <p>(5) Return to the scholar-merchant's devotion to family and nation.</p>
+        <p>"HuaXue-EnXue is devoted to carrying forward the finest of Chinese culture, bridging Chinese and Western management wisdom, transmitting the mission of enduring foundations, and returning to the scholar-merchant's devotion to family and nation - reconnecting to the living source of five thousand years of Huaxia culture... cultivating people of resolve who can love and serve the country and give their strength to the nation's rejuvenation and the sustained, healthy development of its economy."</p>
+        <p>RuShang reading: the ultimate mission - scholar and merchant as one; accountability to family and nation.</p>
+        <h4 class="chap-h3">Principal Zhang Haibiao's Scholar-Merchant Theory 士商理论</h4>
+        <p>At the ninth anniversary celebration of International HuaXue-EnXue (2020), themed "Cultivate deeply for nine years with goodwill; sprint for ten years to gain enlightenment," HuaXue family members from Italy, Spain, the United States, France, Australia, China, and beyond joined - nearly a thousand participants. Zhang Haibiao (Bill Zhang), head of the International HuaXue-EnXue Business School, has dedicated himself to bringing HuaXue-EnXue into business education.</p>
+        <p>The Business School's Scholar-Merchant Theory (ShiShangLiLun 士商理论) is precisely the modern expression of "RuShang and RuJiang": scholar-spirit, merchant-competence (ShiHunShangCai 士魂商才); Inner Sage, Outer King. It fuses the moral cultivation of the Confucian scholar with the commercial competence of the modern merchant - in full accord with this book's framework of "RuShang as Inner Sage, RuJiang as Outer King."</p>
+        <div class="ru-frame huaxue-maxim">
+        <h3 class="chap-h2">HuaXue's classical maxim</h3>
+        <blockquote class="quote-block">
+        <p class="quote">"Success is: each keeps to their proper role and fulfills their duty." 成功就是: 各守本分,完成本职。<span class="quote-attr"> - Professor Xiao XianHua</span></p>
+        </blockquote>
+        <blockquote class="quote-block">
+        <p class="quote">"Cultivate deeply for nine years with goodwill; sprint for ten years to gain enlightenment." 深耕九载对你好,冲刺十年大开窍。<span class="quote-attr"> - Principal Zhang Haibiao</span></p>
+        </blockquote>
+        <blockquote class="quote-block">
+        <p class="quote">"Filial piety is the foremost of all virtues." 百善孝为先。<span class="quote-attr"> - Chinese classical maxim</span></p>
+        </blockquote>
+        </div>
+        <h4 class="chap-h3">How HuaXue-EnXue Connects to This Book</h4>
+        <div class="compare-table-wrap ch22-table-wrap"><table class="compare-table ch22-table">
+        <thead><tr><th>HuaXue-EnXue Idea</th><th>RuShang-RuJiang Correspondence</th></tr></thead><tbody>
+        <tr><td>Awaken to the Dao and root yourself</td><td>RuShang inner sage - cultivation and virtue</td></tr>
+        <tr><td>Be human before doing</td><td>RuShang foundation - self-cultivation as the root</td></tr>
+        <tr><td>Scholar-merchant theory</td><td>RuJiang outer king - scholar-spirit, merchant-competence</td></tr>
+        <tr><td>Return to scholar-merchant devotion to nation</td><td>Nation-and-society accountability - benefiting the world</td></tr>
+        <tr><td>Only reverence, no arrogance</td><td>The RuJiang's humility - propriety and checks</td></tr>
+        <tr><td>Filial piety first</td><td>The Eight Virtues - Xiao as root</td></tr>
+        <tr><td>One family of Chinese worldwide</td><td>"Within the four seas, all men are brothers"</td></tr>
+        </tbody></table></div>
+        <div class="todo-frame">
+        <p class="todo-frame-title">Reader's Action Checklist:</p>
+        <ul class="ch22-checklist todo-list">
+        <li>Introduce the "Three Hearts" into corporate culture - gratitude, reverence, responsibility.</li>
+        <li>Institute a "daily five questions" self-examination to guide reflection and growth.</li>
+        <li>Build a "Four Refrainings" reminder mechanism: no arrogance, no complaining, no greed, no slackness.</li>
+        <li>Bring the Scholar-Merchant Theory into management training - landing "scholar-spirit, merchant-competence."</li>
+        </ul>
+        </div>
+                    </div>
+                    <div class="class-insights-frame">
+                        <h3 class="chap-h2">HuaXue-EnXue 华学恩学 - Class Insights 诗情画意 课程心得</h3>
+                        <div class="preface-body" lang="en">
+                            <h3 class="ci-en-title">Reflection on HuaXue Studies: Poetic Grace, Refined Arts, and Cultivating Character Through Ritual and Music</h3>
+                            <p class="ci-en-sub" lang="zh-Hans">(华学上课心得:诗情画意 琴棋书画 涵养心性 礼乐文脉润人生)</p>
+                            <p class="ci-en-meta"><strong>Author:</strong> Tony Tong (唐仪, RuDao.org / TonyTong.cc)<br />
+                            <strong>Program:</strong> HuaXue-EnXue Cohort 357 (华学357期)<br />
+                            <strong>Date:</strong> May 1-6, 2026 | Shenzhen (深圳)</p>
+
+                            <h4 class="chap-h3">1. Awakening to Ritual and Music (礼乐教化)</h4>
+                            <p>Attending Master Xiao Xianhua's (肖先华老师) lecture in Shenzhen was a transformative experience. He emphasized that true character requires both poetic sensibility and adherence to ritual and music (Li-Yue, 礼乐). Master Xiao highlighted how historical sages used the guqin (古琴) to cultivate inner peace, reshaping my understanding of China's four traditional arts: guqin, WeiQi, calligraphy, and painting (琴棋书画). As an amateur player of the piano, violin, and flute, I gained a deeper appreciation for how music and ritual interlock to form the bedrock of Chinese civilization.</p>
+
+                            <h4 class="chap-h3">2. The Core of Chinese Civilization (中华文明之本)</h4>
+                            <p>For five millennia, ritual (Li, 礼) has defined social order and conduct, while music (Yue, 乐) has nourished the soul. The guqin, as the pinnacle of ancient instruments, was an essential tool for self-cultivation among scholars and leaders. Master Xiao reminded us that historical accounts of sages mastering the zither are documented facts, reflecting the enduring tradition of using music to embody the Dao (Yi Qin Xiu Xin, Yi Yue Zai Dao, 以琴修心,以乐载道).</p>
+
+                            <h4 class="chap-h3">3. Three Historical Exemplars (三位圣贤典范)</h4>
+                            <ul class="zhu-list">
+                                <li><strong>Confucius (孔子):</strong> The founder of ritual-music culture studied under Music Master Xiang (师襄子). He refused to stop practicing until he grasped the moral character of King Wen (文王) embedded in the music. Even while facing starvation in Chen and Cai (陈蔡绝粮), he continued singing and playing the zither, demonstrating that music was a primary vehicle for cultivating virtue (Ren, 仁).</li>
+                                <li><strong>Zhuge Liang (诸葛亮 / 孔明):</strong> The prime minister of Shu Han (蜀汉名相) played the guqin to express his ambitions while farming in Longzhong (隆中). Records show he authored the Qin Jing (琴经, Zither Classic), detailing its theory and mechanics. His composure during crises stemmed directly from years of inner refinement through music.</li>
+                                <li><strong>Zhou Yu (周瑜 / 周郎):</strong> The legendary commander of Eastern Wu (东吴儒将) possessed absolute mastery of music (Qu You Wu, Zhou Lang Gu, 曲有误,周郎顾). Historical texts record that even after drinking, if a musician struck a wrong note, Zhou Yu would instantly notice and look up. He balanced military decisiveness with cultural refinement, embodying the ideal Confucian general (RuJiang, 儒将).</li>
+                            </ul>
+
+                            <h4 class="chap-h3">4. The Four Arts as Tools for Character Refinement (四艺修心)</h4>
+                            <p>Each of the four arts serves a specific purpose in character development:</p>
+                            <ul class="zhu-list">
+                                <li><strong>Guqin (琴):</strong> Purifies the mind and calms impulse.</li>
+                                <li><strong>WeiQi/Go (棋):</strong> Expands strategic vision, foresight, and big-picture thinking.</li>
+                                <li><strong>Calligraphy (书):</strong> Disciplines posture and personal integrity.</li>
+                                <li><strong>Painting (画):</strong> Connects the spirit with nature and poetic vision.</li>
+                            </ul>
+                            <p>Mastering instruments goes beyond technical skill; it is a discipline for preserving inner stability amid today's fast-paced world.</p>
+
+                            <h4 class="chap-h3">5. Commitment to Practice (知行合一)</h4>
+                            <p>Moving forward, I will follow Master Xiao's guidance and the example of ancient sages. I commit to practicing these traditional arts to refine my character, advance my musical skills, and embody the principles of ritual and music in daily governance and life.</p>
+
+                            <h4 class="chap-h3">Acknowledgments (致谢)</h4>
+                            <ul class="zhu-list">
+                                <li><strong>Master Xiao Xianhua (肖先华老师):</strong> My gratitude to Master Xiao for his teachings on ritual, music, and the zither, which inspired core concepts within the RuDao (儒道) framework.</li>
+                                <li><strong>Principal Zhang Haibiao (张海标校长):</strong> My sincere thanks to Principal Zhang for his profound insights into Confucian philosophy, the Confucian Entrepreneur (RuShang, 儒商), and the integration of ethics and profit (Yi-Li He-Yi, 义利合一) through co-opetition (竞合模式).</li>
+                            </ul>
+
+                            <p class="ci-en-sign"><strong>Tony Tong (唐仪)</strong><br />
+                            HuaXue Cohort 357 (华学357期) | May 1-6, 2026 | Shenzhen (深圳)<br />
+                            TonyTong.cc | RuDao.org</p>
+                        </div>
+                        <div class="preface-cn" lang="zh-Hans">
+                            <h3 class="preface-cn-title">华学上课心得:诗情画意 琴棋书画 涵养心性 礼乐文脉润人生</h3>
+                            <div class="preface-body chapter-ack">
+                                <p>作者:唐仪 TonyTong.cc - RuDao.org<br />HuaXue-EnXue 华学357期学员<br />2026年5月1-6日 于深圳</p>
+                                <p>今日有幸在华学课堂聆听肖先华老师传道授业,心中豁然开朗,收获满满。老师谆谆教诲,为人处世当心怀诗情画意,更要恪守礼乐之道,懂乐明礼,修身养性,方能成就君子品格。课堂上,老师细数中华历代圣人先贤,谈及孔子,诸葛亮,周瑜皆为抚琴高手,以琴修心,以乐立身的史实,更让我对琴棋书画,礼乐文脉有了前所未有的深刻感悟。作为一名学习钢琴,小提琴,笛子多种乐器的爱好者,我更能体会到乐礼相融的文化底蕴,读懂中华传统文化的深厚魅力。</p>
+                                <p>中华五千年文明绵延不绝,礼与乐始终是文化核心,立身之本。礼定秩序,规言行,让我们为人处世有尺有度;乐润心灵,养性情,让我们内心平和澄澈。而琴,自古便是乐之精髓,是文人圣贤,仁人君子不可或缺的修行载体,琴棋书画合称"文人四艺",更是刻在中国人血脉里的修身法门。肖老师课堂上提及的古圣先贤精通琴艺,并非文学演绎,而是有正史典籍明确记载的史实,每一段故事都印证着"以琴修心,以乐载道"的文化传统。</p>
+                                <p>至圣先师孔子,是中华礼乐文化的奠基者,更是将琴艺与修身融为一体的圣人。据"史记-孔子世家""孔子家语"等正史记载,孔子曾拜鲁国乐官师襄子学琴,研习"文王操"时,他不满足于熟练弹奏曲调,掌握技法,而是潜心体悟琴中志向,直至在琴音中感知文王的圣贤人格,领悟仁德精髓才肯作罢。周游列国期间,孔子身陷陈蔡绝粮的困境,却依旧讲诵弦歌不衰,以琴乐安定弟子心神,坚守心中道义与理想。他提出"兴于诗,立于礼,成于乐",将琴乐纳入"六艺"教育体系,在孔子心中,弹琴从来不是单纯的技艺消遣,而是教化世人,涵养仁德,修身立德的根本途径。</p>
+                                <p>三国名相诸葛亮,字孔明,亦是精通琴道,以琴明志的先贤典范。正史"三国志-诸葛亮传"明确记载,诸葛亮躬耕隆中时,好为"梁父吟",常抚琴吟唱,琴声中寄托着心系天下,济世安民的远大抱负;"襄阳耆旧记"亦有言,孔明常登高鼓瑟抚琴,寄情于乐;"中兴书目"更记载其著"琴经"一卷,详述制琴渊源与七弦乐理,是名副其实的音律大家。而"三国演义"中空城计焚香操琴的桥段,虽为文学演绎,却将诸葛亮以琴静心,临危不乱的气度刻画得淋漓尽致,这份从容智慧,正是常年抚琴修身,沉淀心性的成果。</p>
+                                <p>东吴儒将周瑜,其琴艺造诣更是有正史铁证。"三国志-吴书-周瑜传"原文记载:"瑜少精意于音乐,虽三爵之后,其有阙误,瑜必知之,知之必顾。故时人谣曰:'曲有误,周郎顾。'"即便饮酒微醉,旁人弹琴稍有音误,他都能立刻察觉,足见其对音律,琴艺的精通程度。身为沙场将帅,周瑜以琴艺涵养儒雅风骨,兼具武将的果敢与文人的雅致,完美诠释了古人文武兼备,礼乐修身的君子风范。</p>
+                                <p>三位先贤抚琴修身的史实,让我深刻明白:琴棋书画,艺艺皆修心。琴为心声,可涤荡浮躁,沉静内心;棋为智慧,可锤炼格局,思虑周全;书为心画,可端正品行,沉稳心性;画为意境,可感知天地,涵养诗情。而礼乐相伴,更是让这份修行有了根基,懂礼则言行方正,知乐则心境平和,这正是中华传统文化教给我们的做人之道。</p>
+                                <p>平日里,我坚持学习钢琴,小提琴,笛子,在器乐演奏中感受音律之美,却未曾深入探寻背后的礼乐文脉与修身真谛。此次华学课堂,经肖老师点拨,才真正懂得,乐器演奏不只是技法的锤炼,更是传承礼乐文化,涵养自身心性的过程。当下社会节奏飞快,人心易浮躁,而琴棋书画与礼乐文化,正是让我们沉淀内心,回归本真的良方。</p>
+                                <p>今后,我将牢记肖先华老师的教诲,以古圣先贤为榜样,深耕中华优秀传统文化,在琴棋书画中涵养心性,在礼乐文脉中砥砺品行。心怀诗情画意,恪守有礼有乐,既要精进乐器技艺,更要传承文化精髓,做礼乐文脉的践行者,华学精神的传承者,在传统文化的滋养中,修身立德,行稳致远。</p>
+                                <p>感谢华学-恩学的肖先华老师,承蒙老师讲授华学,令我体悟礼乐与琴道的修身法门,启发本书儒道一体的核心思考。</p>
+                                <p>同时感恩张海标校长,在儒家思想,儒商精神与中华传统文化层面,给予我关于"义利合一,竞合模式"的深刻启发。</p>
+                            </div>
+                            <p class="dedication-sign">唐仪 华学357期学员 - 2026年5月1-6日 于深圳 - TonyTong.cc - RuDao.org</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <nav class="ch-pager" aria-label="Chapter navigation">
+                <div class="ch-pager-grid">
+                    <a class="ch-pager-link prev" href="/ch/73references"><span class="dir">&larr; Previous 上一章</span><span class="ttl">7.3 Sources & References 参考文献</span></a>
+                    <a class="ch-pager-link next" href="/ch/75legacyoftong"><span class="dir">Next 下一章 &rarr;</span><span class="ttl">7.5 Legacy of Tong Clan 唐氏传奇后记</span></a>
+                    <a class="ch-pager-toc" href="/#contents">Full Table of Contents 完整目录</a>
+                </div>
+            </nav>
+    </main>
+
+    <footer class="footer">
+            <div class="container footer-inner">
+                <div class="footer-brand">
+                    <span class="brand-en">RuDao</span>
+                    <span class="brand-cn">儒道</span>
+                    <span class="brand-by">by TonyTong.cc</span>
+                    <p>Beyond The Art of War</p>
+                </div>
+                <div class="footer-links">
+                    <a href="/#concept">Concept</a>
+                    <a href="/#book">The Book</a>
+                    <a href="/ch/00preface">Preface</a>
+                    <a href="/#contents">Contents</a>
+                    <a href="/ch/02dedication">Co-Editors - 编者</a>
+                    <a href="/ch/02dedication">Dedication</a>
+                    <a href="/#editions">Editions</a>
+                    <a href="/#gallery">Gallery - 书影</a>
+                    <a href="/#pillars">Pillars</a>
+                    <a href="/#principles">Principles</a>
+                    <a href="/#compare">vs Art of War</a>
+                    <a href="/guide">Study Guide - 导读</a>
+                    <a href="/faq">FAQ - 问答</a>
+                    <a href="/consult">Consultation - 咨询</a>
+                    <a href="/#lineage">Lineage</a>
+                    <a href="/#author">Author</a>
+                    <a href="/#endorsements">Endorsements - 推荐语</a>
+                    <a href="/#readers-blog">Readers' Blog - 读者博客</a>
+                    <a href="/#contact">Contact</a>
+                </div>
+                <div class="footer-meta">
+                    <div class="footer-social">
+                        <a href="https://x.com/TonyTongHKBA" target="_blank" rel="noopener" aria-label="X / Twitter" title="X / Twitter">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.03l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                        <a href="https://facebook.com/ttpact" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.386 8.386 0 0 0-.909-.097 8.754 8.754 0 0 0-.93-.046c-1.585 0-2.226.552-2.226 1.948v1.55h3.05l-.484 3.667h-2.566v7.98A10.094 10.094 0 0 0 12 23.691z"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/ttpact/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.063 2.063 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.451zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                        <a href="https://sites.google.com/view/tonytong/" target="_blank" rel="noopener" aria-label="Google Sites" title="Google Sites">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm-1-13h2v6h-2zm-3 3h2v6H8zm6-1h2v8h-2z"/></svg>
+                        </a>
+                        <a href="https://www.crunchbase.com/person/tony-tong" target="_blank" rel="noopener" aria-label="Crunchbase" title="Crunchbase">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M3 21V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v16h-2V5H5v16H3zm4-2v-7h2v7H7zm4 0v-7h2v7h-2zm4 0v-7h2v7h-2zM7 10V7h2v3H7zm4 0V7h2v3h-2zm4 0V7h2v3h-2z"/></svg>
+                        </a>
+                    </div>
+                    <p class="footer-copyright">Copyright © 2026 Tony Tong. All Rights Reserved. All content, text, imagery, and strategic frameworks on RuDao.org and RuDao.us are protected under U.S. and International Copyright laws. Unauthorized reproduction or verbatim scraping is strictly prohibited and subject to statutory damages up to $150,000 USD per violation.</p>
+                    <p class="footer-copyright">The literary and textual content of this work is published bilingually across physical print formats, digital eBook editions, and officially hosted online at www.RuDao.org / www.RuDao.us / www.TonyTong.cc.</p>
+                    <p class="footer-tagline">儒商 - 儒将 - 天人合一 - 匠心 - 共赢</p>
+                </div>
+            </div>
+
+            <!-- Cross-Reference Link Grid (SEO + AI SEO) -->
+            <div class="footer-xref">
+                <div class="container">
+                    <p class="xref-title">Official Links - 官方链接</p>
+                    <div class="xref-grid">
+                        <a href="https://rudao.org/" target="_blank" rel="noopener" class="xref-link">
+                            <span class="xref-icon">🌐</span>
+                            <span class="xref-url">RuDao.org</span>
+                            <span class="xref-desc">Official Book Website</span>
+                        </a>
+                        <a href="https://TonyTong.cc" target="_blank" rel="noopener" class="xref-link">
+                            <span class="xref-icon">👤</span>
+                            <span class="xref-url">TonyTong.cc</span>
+                            <span class="xref-desc">Author Official Site</span>
+                        </a>
+                        <a href="https://github.com/com1010/" target="_blank" rel="noopener" class="xref-link">
+                            <span class="xref-icon">GH</span>
+                            <span class="xref-url">github.com/com1010</span>
+                            <span class="xref-desc">GitHub Repositories</span>
+                        </a>
+                        <a href="https://rudao-tonytong.pages.dev" target="_blank" rel="noopener" class="xref-link">
+                            <span class="xref-icon">☁️</span>
+                            <span class="xref-url">rudao-tonytong.pages.dev</span>
+                            <span class="xref-desc">Cloudflare Pages Mirror</span>
+                        </a>
+                        <a href="https://x.com/TonyTongHKBA" target="_blank" rel="noopener" class="xref-link">
+                            <span class="xref-icon">𝕏</span>
+                            <span class="xref-url">@TonyTongHKBA</span>
+                            <span class="xref-desc">X / Twitter</span>
+                        </a>
+                        <a href="https://facebook.com/ttpact" target="_blank" rel="noopener" class="xref-link">
+                            <span class="xref-icon">f</span>
+                            <span class="xref-url">facebook.com/ttpact</span>
+                            <span class="xref-desc">Facebook</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/ttpact/" target="_blank" rel="noopener" class="xref-link">
+                            <span class="xref-icon">in</span>
+                            <span class="xref-url">linkedin.com/in/ttpact</span>
+                            <span class="xref-desc">LinkedIn</span>
+                        </a>
+                        <a href="https://sites.google.com/view/tonytong/" target="_blank" rel="noopener" class="xref-link">
+                            <span class="xref-icon">G</span>
+                            <span class="xref-url">sites.google.com/view/tonytong</span>
+                            <span class="xref-desc">Google Sites</span>
+                        </a>
+                        <a href="https://www.crunchbase.com/person/tony-tong" target="_blank" rel="noopener" class="xref-link">
+                            <span class="xref-icon">CB</span>
+                            <span class="xref-url">crunchbase.com/person/tony-tong</span>
+                            <span class="xref-desc">Crunchbase Profile</span>
+                        </a>
+                    </div>
+                    <p class="xref-built" style="font-size:8px;line-height:1.8;letter-spacing:0;">Copyright &copy; 2026 by <a href="https://tonytong.cc" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">TonyTong.cc</a> 唐仪  RuDao.org - Beyond the Art of War.  All rights reserved. Unauthorized reproduction or use of any portion of this book is prohibited. (U.S. Copyright Office Registration Pending, Case # 1-15278120731, Copyright Filed on 2026-10-8 https://www.copyright.gov/registration/ )</p>
+                </div>
+            </div>
+        </footer>
+
+<script>
+    (function() {
+        var alert = document.getElementById('blogAlert');
+        var close = document.getElementById('blogAlertClose');
+        if (!alert || !close) return;
+        close.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert.classList.add('dismissed');
+            try { localStorage.setItem('rudaoBlogAlertDismissed', '1'); } catch(_) {}
+        });
+        if (localStorage.getItem('rudaoBlogAlertDismissed') === '1') {
+            alert.classList.add('dismissed');
+        }
+    })();
+    </script>
+    <script>
+    (function() {
+        var dd = document.getElementById('tocDropdown');
+        var btn = document.getElementById('tocDropBtn');
+        if (!dd || !btn) return;
+        function closeMenu() {
+            dd.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+        }
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var isOpen = dd.classList.toggle('open');
+            btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        document.addEventListener('click', function(e) {
+            if (!dd.contains(e.target)) closeMenu();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' || e.keyCode === 27) closeMenu();
+        });
+        var links = dd.querySelectorAll('.nav-dropmenu a');
+        for (var i = 0; i < links.length; i++) {
+            links[i].addEventListener('click', closeMenu);
+        }
+    })();
+    </script>
+<script>
+    /* Endorsement collapse: >5 lines collapsed, click to expand */
+    (function() {
+        var bodies = document.querySelectorAll('.endorse-body');
+        for (var i = 0; i < bodies.length; i++) {
+            (function(body) {
+                var cs = getComputedStyle(body);
+                var fs = parseFloat(cs.fontSize) || 14;
+                var lh = parseFloat(cs.lineHeight);
+                if (!lh || isNaN(lh)) lh = fs * 1.75;
+                var probe = document.createElement('div');
+                probe.style.cssText = 'position:absolute;visibility:hidden;height:auto;left:-9999px;';
+                probe.className = body.className;
+                probe.innerHTML = body.innerHTML;
+                body.parentNode.insertBefore(probe, body);
+                var full = probe.offsetHeight;
+                body.parentNode.removeChild(probe);
+                var max = Math.round(lh * 5);
+                if (full > max + lh) {
+                    body.classList.add('is-collapsed');
+                    body.style.maxHeight = max + 'px';
+                    var btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'endorse-toggle';
+                    btn.setAttribute('aria-expanded', 'false');
+                    btn.textContent = 'Read more - 展开全文 ▾';
+                    btn.addEventListener('click', function() {
+                        var collapsed = body.classList.toggle('is-collapsed');
+                        body.style.maxHeight = collapsed ? max + 'px' : '';
+                        btn.textContent = collapsed ? 'Read more - 展开全文 ▾' : 'Show less - 收起 ▴';
+                        btn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+                    });
+                    body.parentNode.insertBefore(btn, body.nextSibling);
+                }
+            })(bodies[i]);
+        }
+    })();
+    </script>
+    <script src="/js/script.js?v=20261023b"></script>
+    <script src="/js/blog.js"></script>
+    <script>
+    /* CJK smaller-than-English rule (user 2026-11-06, updated same day):
+       wrap every CJK text run - PLUS the punctuation marks immediately
+       before and after the Chinese - in <span class="zh">; CSS renders
+       it exactly 3pt (4px) smaller than the surrounding English font
+       size, at normal weight (never bold). */
+    (function () {
+        var CJK = '[\\u2E80-\\u2EFF\\u3040-\\u30FF\\u3130-\\u318F\\u31C0-\\u31EF\\u3200-\\u32FF\\u3400-\\u4DBF\\u4E00-\\u9FFF\\uF900-\\uFAFF]';
+        var PUNC = '[\\u2013-\\u201D\\u3000-\\u303F\\uFE30-\\uFE4F\\uFF01-\\uFF60!-/:-@\\[-`\\{-~]';
+        var RE = new RegExp('(?:' + PUNC + '*' + CJK + '+)+' + PUNC + '*', 'g');
+        var SKIP = { SCRIPT: 1, STYLE: 1, CODE: 1, PRE: 1, TEXTAREA: 1, NOSCRIPT: 1 };
+        function wrapText(node) {
+            var text = node.nodeValue;
+            RE.lastIndex = 0;
+            if (!text || !RE.test(text)) return;
+            RE.lastIndex = 0;
+            var frag = document.createDocumentFragment();
+            var last = 0, m;
+            while ((m = RE.exec(text))) {
+                if (m.index > last) frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+                var span = document.createElement('span');
+                span.className = 'zh';
+                span.textContent = m[0];
+                frag.appendChild(span);
+                last = m.index + m[0].length;
+            }
+            if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+            node.parentNode.replaceChild(frag, node);
+        }
+        function walk(root) {
+            var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+                acceptNode: function (n) {
+                    if (!n.nodeValue || !n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+                    var p = n.parentNode;
+                    if (!p || SKIP[p.nodeName] || (p.closest && p.closest('.zh'))) return NodeFilter.FILTER_REJECT;
+                    return NodeFilter.FILTER_ACCEPT;
+                }
+            });
+            var nodes = [];
+            while (walker.nextNode()) nodes.push(walker.currentNode);
+            for (var i = 0; i < nodes.length; i++) wrapText(nodes[i]);
+        }
+        function run() { walk(document.body); }
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
+        else run();
+
+        /* URL weblinks smaller (user 2026-11-06): any external link whose
+           visible text is itself a URL / domain gets class "urllink", which
+           CSS renders at 6pt (see styles.css). */
+        var URLTEXT = /(https?:\/\/|www\.)|[\w-]+\.(com|org|net|cc|io|ai|cn|hk|edu|gov|co|me|tv)(\b|\/)/i;
+        function markUrlLinks() {
+            var as = document.querySelectorAll('a[href^="http"]');
+            for (var i = 0; i < as.length; i++) {
+                var t = (as[i].textContent || '').trim();
+                if (t && URLTEXT.test(t)) as[i].classList.add('urllink');
+            }
+        }
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', markUrlLinks);
+        else markUrlLinks();
+    })();
+    </script>
+    <script src="/js/chat-widget.js?v=20261108h" defer></script>
+
+</body>
+</html>
