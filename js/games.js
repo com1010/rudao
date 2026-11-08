@@ -109,6 +109,14 @@
         else Sound.play(name);
     }
 
+    var Voice = window.RuDaoVoice || null;
+    function cue(name, ctx) { if (Voice) Voice.cue(name, ctx); }
+    function endVoice(game, result) {
+        var r = result || {};
+        var winner = r.winner ? (game === 'go' ? goSide(r.winner) : xqSide(r.winner)) : '';
+        cue('end', { game: game, result: r, winner: winner });
+    }
+
     var GO_LETTERS = 'ABCDEFGHJKLMNOPQRST';
     function goCoord(x, y, size) { return GO_LETTERS.charAt(x) + (size - y); }
     function goSide(c) { return c === 1 ? 'Black' : 'White'; }
@@ -154,6 +162,7 @@
                 clearLog('go-log');
                 say('start');
                 snd('start');
+                cue('start', { game: 'go' });
                 goStatus();
                 break;
             case 'thinking':
@@ -165,12 +174,14 @@
                     ' ' + goCoord(e.x, e.y, s.size) + (e.captured ? ' +' + e.captured : ''), e.by === 'ai');
                 say(e.captured ? 'capture' : 'move');
                 snd(e.captured ? 'go-capture' : 'go');
+                cue(e.captured ? 'capture' : 'move', { game: 'go' });
                 goStatus();
                 break;
             case 'pass':
                 addLog('go-log', (e.by === 'ai' ? 'Tony' : 'You') + ' passed', e.by === 'ai');
                 say('pass');
                 snd('pass');
+                cue('pass', { game: 'go' });
                 if (e.ended) setStatus('go-status', goResult(go.getState().result), 'over');
                 else goStatus();
                 break;
@@ -178,16 +189,19 @@
                 setStatus('go-status', esc(e.reason), 'alert');
                 say('invalid');
                 snd('invalid');
+                cue('invalid', { game: 'go' });
                 break;
             case 'undo':
                 say('undo');
                 snd('undo');
+                cue('undo', { game: 'go' });
                 goStatus();
                 break;
             case 'end':
                 setStatus('go-status', goResult(e.result), 'over');
                 say('end');
                 snd('end', 170);
+                endVoice('go', e.result);
                 break;
         }
     }
@@ -224,6 +238,7 @@
                 clearLog('xq-log');
                 say('start');
                 snd('start');
+                cue('start', { game: 'xq' });
                 xqStatus();
                 break;
             case 'thinking':
@@ -233,13 +248,20 @@
                 var glyph = XQ_GLYPH ? zh(XQ_GLYPH[e.side][e.piece]) : '';
                 addLog('xq-log', (e.by === 'ai' ? 'Tony' : 'You') + ' ' + xqSide(e.side) + ' ' + glyph +
                     ' ' + esc(e.coord) + (e.capture ? ' x' : ''), e.by === 'ai');
-                say(e.capture ? 'capture' : (xq.getState().check ? 'check' : 'move'));
+                var st = xq.getState();
+                say(e.capture ? 'capture' : (st.check ? 'check' : 'move'));
                 snd(e.capture ? 'xq-capture' : 'xq');
+                /* Skip the ordinary move word when a check or the end is
+                   about to speak, so the two cues do not talk over each other. */
+                if (!e.over) {
+                    if (e.capture) cue('capture', { game: 'xq' });
+                    else if (!st.check) cue('move', { game: 'xq' });
+                }
                 xqStatus();
                 break;
             case 'check':
                 say('check');
-                if (!e.over) snd('check', 130);
+                if (!e.over) { snd('check', 130); cue('check', { game: 'xq' }); }
                 xqStatus();
                 break;
             case 'select':
@@ -249,16 +271,19 @@
                 setStatus('xq-status', esc(e.reason), 'alert');
                 say('invalid');
                 snd('invalid');
+                cue('invalid', { game: 'xq' });
                 break;
             case 'undo':
                 say('undo');
                 snd('undo');
+                cue('undo', { game: 'xq' });
                 xqStatus();
                 break;
             case 'end':
                 setStatus('xq-status', xqResult(e.result), 'over');
                 say('end');
                 snd('end', 200);
+                endVoice('xq', e.result);
                 break;
         }
     }
@@ -318,6 +343,54 @@
     }
 
     /* --------------------------------------------------------
+       Bilingual spoken cues - on/off, language and how often
+       -------------------------------------------------------- */
+    function wireVoice() {
+        var toggle = $('voice-toggle');
+        var state = $('voice-state');
+        var langSel = $('voice-lang');
+        var scopeSel = $('voice-scope');
+        var hint = $('voice-status');
+        if (!Voice || !toggle || !state || !langSel || !scopeSel || !hint) {
+            if (toggle) toggle.disabled = true;
+            if (hint) hint.textContent = 'Spoken cues are not available in this browser.';
+            return;
+        }
+        function paint() {
+            var on = Voice.isEnabled();
+            toggle.classList.toggle('is-on', on);
+            toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+            state.textContent = on ? 'On' : 'Off';
+            langSel.disabled = !on;
+            scopeSel.disabled = !on;
+            langSel.value = Voice.getLang();
+            scopeSel.value = Voice.getScope();
+        }
+        function paintStatus(s) {
+            if (!Voice.isEnabled()) { hint.textContent = 'Spoken cues are off. Sound effects still work.'; return; }
+            if (!s.supported) { hint.textContent = 'Speech is unavailable here. Sound effects still work.'; return; }
+            if (!s.total) { hint.textContent = 'Browser voices appear after your first click.'; return; }
+            if (s.en && s.zh) hint.textContent = 'English and Chinese voices found on this device.';
+            else if (s.en) hint.textContent = 'No Chinese voice installed here - English will be spoken.';
+            else if (s.zh) hint.textContent = 'No English voice installed here - Chinese will be spoken.';
+            else hint.textContent = 'No system voices listed - the browser default will be used.';
+        }
+        Voice.onStatus(paintStatus);
+        toggle.addEventListener('click', function () {
+            Voice.setEnabled(!Voice.isEnabled());
+            paint();
+            paintStatus(Voice.status());
+            if (Voice.isEnabled()) Voice.cue('ready');
+        });
+        langSel.addEventListener('change', function () {
+            Voice.setLang(langSel.value);
+            if (Voice.isEnabled()) Voice.cue('ready');
+        });
+        scopeSel.addEventListener('change', function () { Voice.setScope(scopeSel.value); });
+        paint();
+    }
+
+    /* --------------------------------------------------------
        Boot
        -------------------------------------------------------- */
     function boot() {
@@ -356,9 +429,21 @@
         $('xq-level').addEventListener('change', xqNewGame);
 
         wireSound();
+        wireVoice();
 
-        var h = (window.location.hash || '').toLowerCase();
-        if (/xiangqi|chinese-chess|panel-xq|chess/.test(h)) switchTab('xq');
+        function applyHash() {
+            var hh = (window.location.hash || '').toLowerCase();
+            if (/guide-go/.test(hh)) {
+                if ($('guide-go')) $('guide-go').open = true;
+                switchTab('go');
+            } else if (/guide-xq/.test(hh)) {
+                if ($('guide-xq')) $('guide-xq').open = true;
+                switchTab('xq');
+            } else if (/xiangqi|chinese-chess|panel-xq|chess/.test(hh)) switchTab('xq');
+            else if (/tab-go/.test(hh)) switchTab('go');
+        }
+        applyHash();
+        window.addEventListener('hashchange', applyHash);
 
         say('start');
         goStatus();

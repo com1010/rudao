@@ -4,8 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Board Games - WeiQi / Go and Chinese Chess | RuDao 儒道</title>
-<meta name="description" content="Play WeiQi (Go) and Chinese Chess (Xiangqi) on RuDao.org. Two playable boards, optional board sounds, a friendly AI table companion, and notes on LiYi 礼仪 from Chapter 4.3 of RuDao - Beyond The Art of War by Tony Tong 唐仪." />
-<meta name="keywords" content="WeiQi, Go board game, 围棋, Chinese Chess, Xiangqi, 象棋, board games, LiYi, 礼仪, RuDao, Tony Tong, 唐仪, play Go online, play Xiangqi online" />
+<meta name="description" content="Play WeiQi (Go) and Chinese Chess (Xiangqi) on RuDao.org. Two playable boards, bilingual Chinese-English spoken cues, a beginner rules guide, board sounds, and notes on LiYi 礼仪 from Chapter 4.3 of RuDao by Tony Tong 唐仪." />
+<meta name="keywords" content="WeiQi, Go board game, 围棋, Chinese Chess, Xiangqi, 象棋, board games, learn Go rules, learn Xiangqi rules, bilingual game guide, spoken Chinese game terms, LiYi, 礼仪, RuDao, Tony Tong, 唐仪, play Go online, play Xiangqi online" />
 <meta name="author" content="Tony Tong (唐仪) - https://TonyTong.cc" />
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
 <link rel="canonical" href="https://rudao.org/games" />
@@ -15,7 +15,7 @@
 <link rel="author" href="https://TonyTong.cc" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Board Games - WeiQi / Go and Chinese Chess | RuDao 儒道" />
-<meta property="og:description" content="Two playable boards from Chapter 4.3: WeiQi (Go) and Chinese Chess (Xiangqi), with a table companion drawn from RuDao." />
+<meta property="og:description" content="Two playable boards from Chapter 4.3: WeiQi (Go) and Chinese Chess (Xiangqi), with bilingual spoken cues, a beginner guide and a table companion drawn from RuDao." />
 <meta property="og:url" content="https://rudao.org/games" />
 <meta property="og:image" content="https://rudao.org/assets/rudao-cover-primary.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Quintessential&family=Merriweather:wght@300;400;700&family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/css/styles.css?v=20261109a" />
-<link rel="stylesheet" href="/css/games.css?v=20261109b" />
+<link rel="stylesheet" href="/css/games.css?v=20261109c" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -139,27 +139,56 @@
             <h1 class="gm-h1">Board Games <span class="zh">棋弈</span></h1>
             <p class="gm-lead">Tony Tong <span class="zh">唐仪</span> has played WeiQi and Chinese chess all his life. In <em>RuDao</em> he uses the board to make a simple point: how you behave under pressure is who you are. Here are the two boards from that chapter - playable, with a friendly table companion.</p>
             <p class="gm-lead-cn"><span class="zh">对局本是雅事,贵在守礼自持。棋枰之上,黑白之间,考校的是心智,磨炼的是心性。</span></p>
+            <p class="gm-guide-jump"><a href="#gm-guide">New to either board? Read the two-minute bilingual guide <span class="zh">双语入门</span> &rarr;</a></p>
             <p class="gm-by">From the book by <a href="https://TonyTong.cc" target="_blank" rel="noopener noreferrer" class="urltext">TonyTong.cc</a> &middot; <a href="/ch/43boardgame">Read Chapter 4.3 - Board Game Manners to Boardroom Success</a></p>
         </div>
     </section>
 
     <section class="gm-play" aria-label="Play a board game">
         <div class="container">
-            <div class="gm-soundbar">
-                <div class="gm-sound-label">
-                    <span class="gm-sound-icon" aria-hidden="true">&#9834;</span>
-                    <span>Board sounds <span class="zh">棋子音效</span></span>
+            <div class="gm-soundbar" role="group" aria-label="Board audio">
+                <div class="gm-audio-row">
+                    <div class="gm-sound-label">
+                        <span class="gm-sound-icon" aria-hidden="true">&#9834;</span>
+                        <span>Board sounds <span class="zh">棋子音效</span></span>
+                    </div>
+                    <div class="gm-sound-ctl">
+                        <button type="button" class="gm-sound-toggle is-on" id="sound-toggle" aria-pressed="true" aria-label="Toggle board sounds">
+                            <span class="gm-sound-dot" aria-hidden="true"></span>
+                            <span id="sound-state">On</span>
+                        </button>
+                        <label class="gm-volume">
+                            <span>Volume</span>
+                            <input type="range" id="sound-volume" min="10" max="100" step="5" value="70" aria-label="Board sound volume" />
+                        </label>
+                        <span class="gm-sound-hint">Synthesised in your browser - no files, no microphone.</span>
+                    </div>
                 </div>
-                <div class="gm-sound-ctl">
-                    <button type="button" class="gm-sound-toggle is-on" id="sound-toggle" aria-pressed="true" aria-label="Toggle board sounds">
-                        <span class="gm-sound-dot" aria-hidden="true"></span>
-                        <span id="sound-state">On</span>
-                    </button>
-                    <label class="gm-volume">
-                        <span>Volume</span>
-                        <input type="range" id="sound-volume" min="10" max="100" step="5" value="70" aria-label="Board sound volume" />
-                    </label>
-                    <span class="gm-sound-hint">Sounds are made in your browser - no files, no microphone.</span>
+                <div class="gm-audio-row gm-audio-row-voice">
+                    <div class="gm-sound-label">
+                        <span class="gm-sound-icon gm-sound-icon-abc" aria-hidden="true">Aa</span>
+                        <span>Spoken cues <span class="zh">双语语音</span></span>
+                    </div>
+                    <div class="gm-sound-ctl">
+                        <button type="button" class="gm-sound-toggle is-on" id="voice-toggle" aria-pressed="true" aria-label="Toggle bilingual spoken cues">
+                            <span class="gm-sound-dot" aria-hidden="true"></span>
+                            <span id="voice-state">On</span>
+                        </button>
+                        <label class="gm-mini"><span>Language</span>
+                            <select id="voice-lang" aria-label="Spoken language">
+                                <option value="both" selected>Chinese + English</option>
+                                <option value="zh">Chinese only</option>
+                                <option value="en">English only</option>
+                            </select>
+                        </label>
+                        <label class="gm-mini"><span>Speak</span>
+                            <select id="voice-scope" aria-label="How often to speak">
+                                <option value="all" selected>Every move</option>
+                                <option value="key">Key moments only</option>
+                            </select>
+                        </label>
+                        <span class="gm-sound-hint" id="voice-status">Voices come from your device. Speech starts after your first click.</span>
+                    </div>
                 </div>
             </div>
 
@@ -182,6 +211,7 @@
                         <div class="gm-panel-head">
                             <h2 class="gm-h2">WeiQi / Go <span class="zh">围棋</span></h2>
                             <p class="gm-panel-sub">Surround territory, keep your groups alive, and never slam the stones. Pass twice to end and count. White receives 6.5 komi.</p>
+                            <a class="gm-panel-guide" href="#guide-go">How to play <span class="zh">入门</span> &rarr;</a>
                         </div>
 
                         <div class="gm-board-shell" data-no-zh>
@@ -232,6 +262,7 @@
                         <div class="gm-panel-head">
                             <h2 class="gm-h2">Chinese Chess <span class="zh">象棋</span></h2>
                             <p class="gm-panel-sub">Red moves first. Select a piece, then tap a marked point. The horse has a leg, the elephant an eye, the cannon needs a screen.</p>
+                            <a class="gm-panel-guide" href="#guide-xq">How to play <span class="zh">入门</span> &rarr;</a>
                         </div>
 
                         <div class="gm-board-shell" data-no-zh>
@@ -306,6 +337,95 @@
                         <a class="gm-rules-link" href="/ch/43boardgame">Read the chapter &rarr;</a>
                     </div>
                 </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== BILINGUAL BEGINNER GUIDE ========== -->
+    <section class="gm-guide" id="gm-guide" aria-label="Bilingual beginner guide">
+        <div class="container">
+            <p class="gm-kicker">Start here &middot; <span class="zh">从零开始</span></p>
+            <h2 class="gm-about-h">A two-minute guide to both boards <span class="zh">双语入门</span></h2>
+            <p class="gm-guide-lead">Never played before? Read the short rules below, then go back up to the board. Every line is in English and Chinese, and the spoken cues say the same words out loud while you play. <span class="zh">先读规则,再回到棋盘;边下边听,中英对照。</span></p>
+
+            <div class="gm-guide-grid">
+                <details class="gm-guide-card" id="guide-go" open>
+                    <summary class="gm-guide-sum">
+                        <span class="gm-guide-num">01</span>
+                        <span class="gm-guide-title">WeiQi / Go <span class="zh">围棋</span></span>
+                        <span class="gm-guide-tag">Territory &middot; <span class="zh">围地</span></span>
+                    </summary>
+                    <div class="gm-guide-body">
+                        <p class="gm-guide-goal"><span class="gm-guide-label">Goal</span> Own more of the board than your opponent. Stones surround empty points; stones plus territory are counted at the end. Black plays first, so White receives 6.5 points (komi). <span class="zh">围地多者胜。黑先白后,白棋贴目 6.5。</span></p>
+                        <h3 class="gm-guide-h">The rules in five lines <span class="zh">五条规则</span></h3>
+                        <ol class="gm-guide-list">
+                            <li>Stones sit on the crossings of the lines, not inside the squares. <span class="zh">棋子下在交叉点上,不下在格子里。</span></li>
+                            <li>A stone or a connected group needs at least one empty neighbouring point, a liberty <span class="zh">气</span>, to stay on the board. <span class="zh">棋块至少要有一口气才能存活。</span></li>
+                            <li>When a group loses its last liberty it is removed: capture <span class="zh">提子</span>. <span class="zh">气尽则被提走。</span></li>
+                            <li>You may not play a point that leaves your own group with no liberties, and you may not immediately recapture a single stone, the ko <span class="zh">劫</span>. <span class="zh">不可自杀,劫不能立即回提。</span></li>
+                            <li>Both players pass in a row to finish. We count stones and surrounded empty points; White adds 6.5. <span class="zh">双方各停一手即终局,数目算子。</span></li>
+                        </ol>
+                        <h3 class="gm-guide-h">Play it here <span class="zh">这样开始</span></h3>
+                        <ol class="gm-guide-list gm-guide-steps">
+                            <li>Choose <em>9 x 9 - quick game</em> for your first game. <span class="zh">初学先选 9 路快棋。</span></li>
+                            <li>Click any crossing to place your stone. Tony replies a moment later. <span class="zh">点交叉点落子,对手随后应手。</span></li>
+                            <li>Use <em>Undo</em> to take a turn back, <em>Pass</em> to decline a move, and <em>Resign</em> to concede. <span class="zh">悔棋、停一手、认负都在棋盘下方。</span></li>
+                            <li>Pass twice and the final count appears in the status line. <span class="zh">双方各停一手后,状态栏显示数目结果。</span></li>
+                        </ol>
+                        <p class="gm-guide-tip"><span class="gm-guide-label">First tip</span> Begin near a corner, keep your stones connected, and watch any group that falls to one liberty. <span class="zh">先占角,棋子要连,留意只剩一气的棋块。</span></p>
+                    </div>
+                </details>
+
+                <details class="gm-guide-card" id="guide-xq" open>
+                    <summary class="gm-guide-sum">
+                        <span class="gm-guide-num">02</span>
+                        <span class="gm-guide-title">Chinese Chess <span class="zh">象棋</span></span>
+                        <span class="gm-guide-tag">The general &middot; <span class="zh">将帅</span></span>
+                    </summary>
+                    <div class="gm-guide-body">
+                        <p class="gm-guide-goal"><span class="gm-guide-label">Goal</span> Trap the enemy general <span class="zh">将 / 帅</span>. When the general is attacked with no legal escape, that is checkmate <span class="zh">将死</span>. Red moves first. <span class="zh">把对方将帅逼入绝境即胜。红先黑后。</span></p>
+                        <h3 class="gm-guide-h">The rules in seven lines <span class="zh">七条规则</span></h3>
+                        <ol class="gm-guide-list">
+                            <li>The board has 9 files and 10 ranks; the river <span class="zh">楚河漢界</span> divides the two sides, and the box with diagonals is the palace <span class="zh">九宫</span>. <span class="zh">棋盘九竖十横,河界分两边,斜线框为九宫。</span></li>
+                            <li>General <span class="zh">将 / 帅</span>: one step inside the palace. The two generals may never face each other on an open file, the flying general <span class="zh">飞将</span>. <span class="zh">将帅只在九宫走一步,两将不可照面。</span></li>
+                            <li>Advisor <span class="zh">士 / 仕</span>: one diagonal step inside the palace. Elephant <span class="zh">象 / 相</span>: two diagonal points, cannot cross the river, blocked by the elephant eye <span class="zh">塞象眼</span>. <span class="zh">士斜走一格,象斜走两格且不过河。</span></li>
+                            <li>Horse <span class="zh">马</span>: one orthogonal step then one diagonal; blocked if that first step is occupied, the horse leg <span class="zh">蹩马腿</span>. <span class="zh">马走日,蹩腿则不能走。</span></li>
+                            <li>Rook <span class="zh">车</span> moves any distance along a rank or file. Cannon <span class="zh">炮</span> moves the same way but captures only by jumping exactly one piece, the screen <span class="zh">炮架</span>. <span class="zh">车直走,炮须隔一子才能吃。</span></li>
+                            <li>Soldier <span class="zh">兵 / 卒</span>: one step forward; after crossing the river it may also step sideways, never backward. <span class="zh">兵卒只进不退,过河后可横走。</span></li>
+                            <li>A move that leaves your own general in check is illegal. Checkmate <span class="zh">将死</span> or stalemate <span class="zh">困毙</span> ends the game. <span class="zh">不可送将;将死或困毙即终局。</span></li>
+                        </ol>
+                        <h3 class="gm-guide-h">Play it here <span class="zh">这样开始</span></h3>
+                        <ol class="gm-guide-list gm-guide-steps">
+                            <li>Choose <em>Red - first move</em> and click one of your round pieces. <span class="zh">选红先,点自己的棋子。</span></li>
+                            <li>Small dots mark every legal destination; click a dot to move. <span class="zh">圆点标出可走位置,点圆点落子。</span></li>
+                            <li>Hear <em>Check</em> <span class="zh">将军</span> when a general is attacked, and <em>Checkmate</em> <span class="zh">将死</span> at the end. <span class="zh">将军、将死都有语音提示。</span></li>
+                            <li><em>Undo</em> takes back a whole turn; <em>Resign</em> concedes. <span class="zh">悔棋取回一回合,认负即结束。</span></li>
+                        </ol>
+                        <p class="gm-guide-tip"><span class="gm-guide-label">First tip</span> Bring out a horse and a rook early, keep the general sheltered, and watch which piece is acting as a cannon screen. <span class="zh">先出马与车,护住将帅,留意炮架。</span></p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="gm-glossary-card">
+                <h3 class="gm-guide-h">Words you will hear <span class="zh">棋语对照</span></h3>
+                <p class="gm-glossary-intro">These are the exact words spoken by the bilingual cues. Switch <em>Spoken cues</em> on above and listen while you play. <span class="zh">以下是语音提示会读到的词,边下边听,自然记住。</span></p>
+                <div class="gm-glossary" role="table" aria-label="Chinese and English game terms">
+                    <div class="gm-glossary-row is-head" role="row"><span role="columnheader">Chinese</span><span role="columnheader">English</span><span role="columnheader">When you hear it</span></div>
+                    <div class="gm-glossary-row" role="row"><span class="zh">落子</span><span>Place a stone / Move</span><span>A move is played</span></div>
+                    <div class="gm-glossary-row" role="row"><span class="zh">提子</span><span>Capture</span><span>Go stones are removed</span></div>
+                    <div class="gm-glossary-row" role="row"><span class="zh">吃子</span><span>Capture</span><span>A chess piece is taken</span></div>
+                    <div class="gm-glossary-row" role="row"><span class="zh">将军</span><span>Check</span><span>The general is attacked</span></div>
+                    <div class="gm-glossary-row" role="row"><span class="zh">将死</span><span>Checkmate</span><span>No escape, the game ends</span></div>
+                    <div class="gm-glossary-row" role="row"><span class="zh">终局</span><span>Game over</span><span>Counting or the final move</span></div>
+                    <div class="gm-glossary-row" role="row"><span class="zh">开局</span><span>New game</span><span>A fresh board is set</span></div>
+                    <div class="gm-glossary-row" role="row"><span class="zh">悔棋</span><span>Undo</span><span>A move is taken back</span></div>
+                    <div class="gm-glossary-row" role="row"><span class="zh">停一手</span><span>Pass</span><span>A player declines to move</span></div>
+                    <div class="gm-glossary-row" role="row"><span class="zh">气</span><span>Liberty</span><span>The empty point keeping a group alive</span></div>
+                    <div class="gm-glossary-row" role="row"><span class="zh">劫</span><span>Ko</span><span>Immediate recapture is forbidden</span></div>
+                    <div class="gm-glossary-row" role="row"><span class="zh">楚河漢界</span><span>The river</span><span>The line dividing the two armies</span></div>
+                </div>
+                <p class="gm-glossary-note">Voices are supplied by your own browser and device, so a Chinese voice depends on what is installed locally. If it is missing, the English half still speaks and every term remains visible here. Speech and sound effects can be switched off separately, and neither uses the microphone. <span class="zh">语音由本机浏览器提供;若无中文语音,仍可听英文并对照此表。</span></p>
+                <a class="gm-guide-back" href="#tab-go">Back to the boards &uarr;</a>
             </div>
         </div>
     </section>
@@ -482,7 +602,8 @@
 <script src="/js/go.js?v=20261109a"></script>
 <script src="/js/xiangqi.js?v=20261109b"></script>
 <script src="/js/game-sound.js?v=20261109b"></script>
-<script src="/js/games.js?v=20261109b"></script>
+<script src="/js/game-voice.js?v=20261109c"></script>
+<script src="/js/games.js?v=20261109c"></script>
 <script src="/js/zh-wrap.js?v=20261109a"></script>
 <script src="/js/chat-widget.js?v=20261108l" defer></script>
 </body>
