@@ -5839,3 +5839,46 @@ a[href^="http"].urllink {
 @media print { .rp-root { display: none !important; } }
 .contact-chat-invite { margin: 1.1rem 0 0; font-family: var(--font-sans); font-size: .78rem; line-height: 1.7; color: var(--gray); }
 .contact-chat-invite a { color: var(--vermillion); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ============================================
+   H5 OFFLINE APP - download section
+   ============================================ */
+.h5app { background: var(--paper-warm, #f3ede1); }
+.h5app .section-title { margin-bottom: 0.6rem; }
+
+.h5-cn {
+    font-family: 'SimSun', 'Songti SC', 'Noto Serif SC', serif;
+    font-size: calc(1em - 4px);
+    font-weight: 400 !important;
+    font-style: normal;
+    letter-spacing: 0.02em;
+}
+
+.h5-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.h5-actions .btn {
+    flex: 1 1 260px;
+    text-align: center;
+}
+
+.h5-hint {
+    margin: 1.6rem auto 0;
+    max-width: 640px;
+    text-align: center;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--gray, #6b6b6b);
+}
+
+@media (max-width: 520px) {
+    .h5-actions { flex-direction: column; }
+    .h5-actions .btn { width: 100%; flex-basis: auto; }
+}

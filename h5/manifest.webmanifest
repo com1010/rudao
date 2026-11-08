@@ -1,0 +1,36 @@
+{
+  "name": "RuDao 儒道 - Beyond The Art of War",
+  "short_name": "RuDao",
+  "description": "The complete bilingual RuDao book, readable offline. 儒道离线阅读版。",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#faf7f0",
+  "theme_color": "#faf7f0",
+  "lang": "en",
+  "categories": [
+    "books",
+    "education"
+  ],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
