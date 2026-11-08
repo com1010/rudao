@@ -195,6 +195,15 @@ The "Wall of Ru-Shang (儒商 Confucian Merchant) Aphorisms 儒商格言墙 - Ru
 
 De-duplication: 己所不欲勿施于人, 己欲立而立人己欲达而达人, 天时不如地利, 君子和而不同, 苟日新日日新, 义以生利 and Toynbee's 21st-century line each appear only once - merged into one entry carrying the full classical citation. Newly added voices include the Book of Songs 诗经, Wang Yangming 王阳明, Tu Weiming 杜维明, Zuo Zhuan 左传, Laozi 老子 (三章), Zhuangzi 庄子, the Book of Changes 易经, Tao Zhu Gong 陶朱公商训, Bruce Lee 李小龙 and Sun Tzu on water tactics 兵形象水.
 
+## Board Games (interactive)
+
+https://rudao.org/games - two free, playable boards that accompany Chapter 4.3:
+- WeiQi / Go 围棋: 9x9, 13x13 and 19x19 boards; liberties, group capture, no-suicide, ko, two-pass end, Chinese area scoring with 6.5 komi; undo, pass, resign; local AI opponent or two players on one screen.
+- Chinese Chess / Xiangqi 象棋: full 9x10 board with the river 楚河漢界, palaces, horse-leg, elephant-eye, cannon screen, flying general, check and checkmate; undo, resign; local alpha-beta AI opponent at 1-3 ply or two players on one screen.
+- "Tony's table" is a local engine that plays the board and shows reflections drawn from RuDao (not verbatim quotations); the site chat panel can be opened over the board to ask about the book while playing. It is not the author himself.
+- Links: nav and footer on every page, a TOC bullet under 4.3, and a callout at the top of https://rudao.org/ch/43boardgame.
+- Friendly URL aliases (301): /board-games, /boardgames, /weiqi, /xiangqi.
+
 ## Full Chapters Online (linked from TOC)
 
 The following chapters are published in full on this site, each linked from its TOC row:

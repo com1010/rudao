@@ -2,7 +2,7 @@
 <!--
   RuDao - https://rudao.org/
   Bilingual book site: landing page + 38 chapter pages under /ch/<num><slug>,
-  plus the study guide, FAQ and consultation page.
+  plus the study guide, FAQ, consultation page and the Board Games page.
   Deliberately NOT included:
     1. "#anchor" fragments - Google/Baidu treat them as part of the same page,
        not as separate URLs.
@@ -80,6 +80,12 @@
     <url>
         <loc>https://rudao.org/consult</loc>
         <lastmod>2026-11-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://rudao.org/games</loc>
+        <lastmod>2026-11-09</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>

@@ -51,5 +51,11 @@
 /ch/21/hundredshools   /ch/21hundredschools   301
 /ch/21hundredshools    /ch/21hundredschools   301
 
+# Board Games page - friendly aliases
+/board-games   /games   301
+/boardgames    /games   301
+/weiqi         /games   301
+/xiangqi       /games#xiangqi   301
+
 # trailing slash on a chapter URL
 /ch/:slug/   /ch/:slug   301
