@@ -26,6 +26,8 @@
  *    to this Git repository).
  */
 
+import { archiveMessage } from './_log.js';
+
 const JSON_HEADERS = { 'Content-Type': 'application/json; charset=utf-8' };
 
 function json(data, status = 200) {
@@ -70,7 +72,13 @@ export async function onRequestPost(context) {
     return json({ success: false, error: 'The message is too short.' }, 400);
   }
 
+  /* Keep the author's own copy, whatever happens to the email, so a
+     message is never lost to a provider outage. */
+  const record = (delivered) =>
+    archiveMessage(context, { name, email, message, page, delivered });
+
   if (!env.RESEND_API_KEY) {
+    record('no email backend configured');
     return json(
       { success: false, error: 'Email backend not configured (missing RESEND_API_KEY).' },
       501
@@ -121,12 +129,14 @@ ${message}
 
   if (!resendRes.ok) {
     const detail = await resendRes.text().catch(() => '');
+    record('failed');
     return json(
       { success: false, error: 'Upstream email provider rejected the message.', detail: detail.slice(0, 400) },
       502
     );
   }
 
+  record('yes');
   return json({ success: true, delivered_to: to.length });
 }
 

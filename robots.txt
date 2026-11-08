@@ -61,6 +61,10 @@ Allow: /
 User-agent: *
 Allow: /
 
+# Private: the author's chat archive and every function endpoint
+Disallow: /admin-chat-log
+Disallow: /api/
+
 # Sitemap
 # Only rudao.us - declaring the pages.dev / github.io mirrors here would
 # point crawlers at duplicate content and dilute the canonical domain.

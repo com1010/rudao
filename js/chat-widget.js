@@ -218,6 +218,12 @@
     vAi.appendChild(quotaLine);
     vAi.appendChild(form);
 
+    /* Plain notice: the author keeps a copy of these conversations. */
+    var consent = paragraph(
+      'Conversations may be kept so Tony can read them later. Please do not send passwords, card numbers or other sensitive details.',
+      'rp-fine rp-consent');
+    vAi.appendChild(consent);
+
     /* view: Tony */
     var vTony = el('div', 'rp-view');
     vTony.appendChild(paragraph('Tony answers readers himself when he can. Direct chat is free for the first one or two conversations — after that, longer questions go through the consulting tab.'));

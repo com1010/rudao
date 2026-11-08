@@ -61,8 +61,16 @@
  *      CHAT_MODEL     = overrides the model per provider (optional)
  *      GEMINI_API_KEY = AIza...                 (optional)
  *
- * PRIVACY: no message content is logged or stored by this function.
+ * PRIVACY: each answered question is archived to the author's private
+ * log (KV binding CHAT_LOG) so Tony can read what readers ask. Stored:
+ * the question, the answer, model, country code, latency. Not stored:
+ * IP address, cookies, browser identifiers. Entries expire after 180
+ * days. Delete the binding to switch archiving off entirely; the chat
+ * keeps working, it simply stops being recorded. The panel tells
+ * readers that conversations may be kept for the author.
  */
+
+import { archiveChat } from './_log.js';
 
 const MAX_TURNS = 12;          // messages kept from the client
 const MAX_CHARS = 1200;        // per user message
@@ -430,6 +438,7 @@ export async function onRequestPost(context) {
 
 async function handlePost(context) {
   const { request, env } = context;
+  const startedAt = Date.now();
 
   const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
   if (throttled(ip)) {
@@ -479,6 +488,7 @@ async function handlePost(context) {
       r = { ok: false, status: 502, detail: String((err && err.message) || err).slice(0, 200) };
     }
     if (r && r.ok && r.reply) {
+      archiveChat(context, turns, r, name, startedAt);
       return json({ ok: true, reply: r.reply, provider: name, model: r.model || null });
     }
     tried.push({ provider: name, status: (r && r.status) || 0, detail: (r && r.detail) || '' });
@@ -544,7 +554,7 @@ async function handleGet(context) {
   out.commit = String((env && (env.CF_PAGES_COMMIT_SHA || '')) || '').slice(0, 7) || null;
   out.branch = (env && env.CF_PAGES_BRANCH) || null;
   out.env_keys = Object.keys(env || {})
-    .filter((k) => /compat|deepseek|gemini|ai_order|chat_model|ark|openai|^ai$/i.test(k))
+    .filter((k) => /compat|deepseek|gemini|ai_order|chat_model|ark|openai|chat_log|admin_password|^ai$/i.test(k))
     .sort()
     .map((k) => ({
       name: k,

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>RuDao - chat archive (admin)</title>
+<style>
+    :root {
+        --paper: #fdfbf6;
+        --ink: #1a1a1a;
+        --ink-soft: #3d3a35;
+        --gray: #6b665e;
+        --line: rgba(10,10,10,.12);
+        --red: #a93226;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0; padding: 40px 20px 80px;
+        background: var(--paper); color: var(--ink-soft);
+        font-family: Garamond, Georgia, serif;
+        font-size: 16px; line-height: 1.6;
+    }
+    main { max-width: 900px; margin: 0 auto; }
+    h1 { font-size: 1.5rem; font-weight: 400; letter-spacing: .02em; margin: 0 0 4px; color: var(--ink); }
+    h1 span { color: var(--red); }
+    .sub { margin: 0 0 26px; font-size: .82rem; color: var(--gray); }
+    .bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-end; padding: 16px 0 0; border-top: 1px solid var(--line); }
+    label { display: block; font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--gray); margin-bottom: 4px; }
+    input, select, button {
+        font-family: inherit; font-size: .9rem; color: var(--ink-soft);
+        padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: #fff;
+    }
+    input[type=password] { min-width: 220px; }
+    button { cursor: pointer; background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    button:hover { background: var(--red); border-color: var(--red); }
+    button.ghost { background: #fff; color: var(--ink-soft); border-color: var(--line); }
+    button.ghost:hover { color: var(--red); border-color: var(--red); background: #fff; }
+    .status { margin: 16px 0 0; font-size: .8rem; color: var(--gray); min-height: 1.2em; }
+    .status.bad { color: var(--red); }
+    .meta { margin: 6px 0 0; font-size: .74rem; color: var(--gray); }
+    pre {
+        margin: 16px 0 0; padding: 18px; border: 1px solid var(--line); border-radius: 8px;
+        background: #fff; color: var(--ink);
+        font-family: ui-monospace, "SF Mono", Consolas, monospace;
+        font-size: .74rem; line-height: 1.62; white-space: pre-wrap; word-break: break-word;
+        max-height: 68vh; overflow: auto;
+    }
+    .hide { display: none; }
+    .foot { margin-top: 28px; font-size: .72rem; color: var(--gray); }
+</style>
+</head>
+<body>
+<main>
+    <h1>RuDao <span>chat archive</span></h1>
+    <p class="sub">Private log of reader questions, AI answers and contact-form messages. Admin only.</p>
+
+    <div class="bar">
+        <div>
+            <label for="pw">Admin password</label>
+            <input id="pw" type="password" autocomplete="current-password" placeholder="ADMIN_PASSWORD">
+        </div>
+        <div>
+            <label for="days">Window</label>
+            <select id="days">
+                <option value="1">Today</option>
+                <option value="7" selected>Last 7 days</option>
+                <option value="30">Last 30 days</option>
+                <option value="90">Last 90 days</option>
+            </select>
+        </div>
+        <div>
+            <label for="kind">Show</label>
+            <select id="kind">
+                <option value="all" selected>Everything</option>
+                <option value="chat">Chat Q &amp; A</option>
+                <option value="msg">Messages</option>
+            </select>
+        </div>
+        <button id="load" type="button">Open the log</button>
+        <button id="save" type="button" class="ghost">Download .txt</button>
+        <button id="signout" type="button" class="ghost">Sign out</button>
+    </div>
+
+    <p id="status" class="status"></p>
+    <p id="meta" class="meta"></p>
+    <pre id="log" class="hide"></pre>
+
+    <p class="foot">
+        Entries expire after 180 days. Stored in Cloudflare KV, binding CHAT_LOG.
+        No IP addresses are kept. If the page says "not configured", add the KV
+        binding and the ADMIN_PASSWORD secret in Cloudflare, then Retry deployment.
+    </p>
+</main>
+
+<script>
+(function () {
+    'use strict';
+
+    var KEY = 'rudao_admin_key';
+    var pw = document.getElementById('pw');
+    var days = document.getElementById('days');
+    var kind = document.getElementById('kind');
+    var loadBtn = document.getElementById('load');
+    var saveBtn = document.getElementById('save');
+    var outBtn = document.getElementById('signout');
+    var status = document.getElementById('status');
+    var meta = document.getElementById('meta');
+    var pre = document.getElementById('log');
+    var lastText = '';
+
+    var saved = sessionStorage.getItem(KEY);
+    if (saved) pw.value = saved;
+
+    function say(msg, bad) {
+        status.textContent = msg || '';
+        status.className = 'status' + (bad ? ' bad' : '');
+    }
+
+    function key() {
+        var v = pw.value.trim();
+        if (!v) { say('Enter the admin password.', true); return ''; }
+        sessionStorage.setItem(KEY, v);
+        return v;
+    }
+
+    function url(extra) {
+        return '/api/admin/logs?days=' + encodeURIComponent(days.value) +
+            '&kind=' + encodeURIComponent(kind.value) + (extra || '');
+    }
+
+    function reason(code) {
+        if (code === 'bad_password') return 'Wrong password.';
+        if (code === 'locked') return 'Too many attempts. Wait ten minutes, then try again.';
+        if (code === 'not_configured') return 'No ADMIN_PASSWORD secret on this deployment. Add it in Cloudflare, then Retry deployment.';
+        if (code === 'no_kv') return 'No CHAT_LOG KV binding on this deployment. Add it in Cloudflare, then Retry deployment.';
+        return code || 'Request failed.';
+    }
+
+    function load() {
+        var k = key();
+        if (!k) return;
+        say('Reading the archive...');
+        meta.textContent = '';
+        fetch(url(), { headers: { 'x-admin-key': k }, cache: 'no-store' })
+            .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+            .then(function (res) {
+                var d = res.d || {};
+                if (!res.ok || !d.ok) { say(reason(d.code), true); return; }
+                if (!d.count) {
+                    say('Nothing archived in this window yet.');
+                    pre.classList.add('hide');
+                    return;
+                }
+                lastText = render(d.entries);
+                pre.textContent = lastText;
+                pre.classList.remove('hide');
+                say('Loaded ' + d.count + ' entr' + (d.count === 1 ? 'y' : 'ies') + '.');
+                meta.textContent = 'generated ' + d.generated + '  ·  ' + d.host +
+                    '  ·  last ' + d.days + ' day' + (d.days === 1 ? '' : 's') +
+                    (d.truncated ? '  ·  partial list (key cap reached)' : '');
+            })
+            .catch(function (e) { say('Network error: ' + e.message, true); });
+    }
+
+    function render(entries) {
+        var line = '-'.repeat(72);
+        var chat = entries.filter(function (e) { return e.kind !== 'msg'; }).length;
+        var msg = entries.length - chat;
+        var out = [
+            'RuDao Chat Archive - admin copy',
+            'Site: ' + location.host + '   Entries: ' + entries.length +
+                ' (chat ' + chat + ', messages ' + msg + ')',
+            '='.repeat(72), ''
+        ];
+        entries.forEach(function (e, i) {
+            out.push('[' + (i + 1) + '] ' + (e.t || '') + (e.country ? '  ' + e.country : '') +
+                (e.kind === 'msg' ? '  MESSAGE' : '  CHAT' +
+                    (e.model ? '  ' + e.model : '') +
+                    (e.ms ? '  ' + (e.ms / 1000).toFixed(1) + 's' : '')));
+            out.push('');
+            if (e.kind === 'msg') {
+                out.push('From: ' + (e.name || 'Anonymous') + (e.email ? ' <' + e.email + '>' : ''));
+                if (e.delivered) out.push('Emailed: ' + e.delivered);
+                out.push('');
+                out.push(e.message || '');
+            } else {
+                out.push('Q: ' + (e.q || ''));
+                out.push('');
+                out.push('A: ' + (e.a || ''));
+            }
+            out.push('', line, '');
+        });
+        return out.join('\n');
+    }
+
+    function save() {
+        var k = key();
+        if (!k) return;
+        say('Preparing the text file...');
+        fetch(url('&format=txt'), { headers: { 'x-admin-key': k }, cache: 'no-store' })
+            .then(function (r) {
+                if (!r.ok) { return r.json().then(function (d) { throw new Error(reason(d.code)); }); }
+                return r.blob();
+            })
+            .then(function (blob) {
+                var a = document.createElement('a');
+                var stamp = new Date().toISOString().slice(0, 10);
+                a.href = URL.createObjectURL(blob);
+                a.download = 'rudao-chat-log-' + stamp + '.txt';
+                document.body.appendChild(a);
+                a.click();
+                setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+                say('Downloaded. Keep the file somewhere only you can read.');
+            })
+            .catch(function (e) { say(e.message, true); });
+    }
+
+    loadBtn.addEventListener('click', load);
+    saveBtn.addEventListener('click', save);
+    outBtn.addEventListener('click', function () {
+        sessionStorage.removeItem(KEY);
+        pw.value = '';
+        pre.classList.add('hide');
+        pre.textContent = '';
+        meta.textContent = '';
+        say('Signed out of this tab.');
+    });
+    pw.addEventListener('keydown', function (e) { if (e.key === 'Enter') load(); });
+})();
+</script>
+</body>
+</html>

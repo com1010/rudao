@@ -5810,6 +5810,7 @@ a[href^="http"].urllink {
 .rp-view > .rp-p:first-child { padding-top: 14px; }
 .rp-lead { font-family: var(--font-serif-en-body); font-size: .92rem !important; }
 .rp-fine { font-size: .68rem !important; color: var(--gray); line-height: 1.55; }
+.rp-consent { margin: 0 !important; padding: 0 15px 10px !important; font-size: .64rem !important; line-height: 1.5; color: var(--gray-light); }
 .rp-steps { margin: 0 0 12px; padding: 0 15px 0 32px; font-size: .8rem; line-height: 1.6; }
 .rp-steps li { margin-bottom: 6px; }
 

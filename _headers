@@ -1,0 +1,14 @@
+# Cloudflare Pages header rules
+# The chat archive is for the author only: never indexed, never cached.
+
+/admin-chat-log
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store
+
+/admin-chat-log.html
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store
+
+/api/admin/*
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
