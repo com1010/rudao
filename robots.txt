@@ -1,68 +1,37 @@
 # robots.txt - RuDao.org
-# Allow all search engines and AI crawlers
+#
+# Every search engine and AI crawler is welcome on the book itself.
+# The only closed doors are the author's private chat archive and the
+# API endpoints behind it.
+#
+# NOTE on structure: all crawlers below share ONE rule set, written as
+# consecutive User-agent lines. That matters - a crawler that finds its
+# own named group ignores every other group, so a Disallow placed under
+# "User-agent: *" would never reach Googlebot. Keep them together.
 
-# Google
 User-agent: Googlebot
-Allow: /
-
-# Google Image
 User-agent: Googlebot-Image
-Allow: /
-
-# Baidu
 User-agent: Baiduspider
-Allow: /
-
-# Bing
 User-agent: Bingbot
-Allow: /
-
-# Yandex
 User-agent: YandexBot
-Allow: /
-
-# DuckDuckGo
 User-agent: DuckDuckBot
-Allow: /
-
-# Apple
 User-agent: Applebot
-Allow: /
-
-# AI Crawlers - ChatGPT, GPTBot, Perplexity, Claude, Google AI
 User-agent: GPTBot
-Allow: /
-
 User-agent: ChatGPT-User
-Allow: /
-
+User-agent: OAI-SearchBot
 User-agent: PerplexityBot
-Allow: /
-
 User-agent: ClaudeBot
-Allow: /
-
 User-agent: anthropic-ai
-Allow: /
-
 User-agent: Google-Extended
-Allow: /
-
 User-agent: CCBot
-Allow: /
-
 User-agent: AI2Bot
-Allow: /
-
 User-agent: Amazonbot
-Allow: /
-
-# Allow all
 User-agent: *
 Allow: /
 
 # Private: the author's chat archive and every function endpoint
 Disallow: /admin-chat-log
+Disallow: /admin-chat-log.html
 Disallow: /api/
 
 # Sitemap
