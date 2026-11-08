@@ -5824,6 +5824,27 @@ a[href^="http"].urllink {
 .rp-assistant .rp-bubble { border-bottom-left-radius: 4px; }
 .rp-bubble-warn { background: #fdf3ee; border-color: rgba(169,50,38,.28); }
 
+/* listen button under each AI reply - step 1 browser voice, later the
+   author's own cloned voice served by /api/tts */
+.rp-speak {
+    flex: 0 0 auto;
+    align-self: flex-start;
+    margin: 2px 0 0 6px;
+    padding: 2px 6px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    font-size: .82rem;
+    line-height: 1;
+    color: var(--vermillion);
+    opacity: .55;
+    cursor: pointer;
+    transition: opacity .18s ease, transform .18s ease;
+}
+.rp-speak:hover, .rp-speak:focus-visible { opacity: 1; transform: translateY(-1px); }
+.rp-speak:focus-visible { outline: 2px solid var(--vermillion); outline-offset: 2px; }
+.rp-speak.is-playing { opacity: 1; }
+
 .rp-typing { display: inline-flex; gap: 4px; align-items: center; }
 .rp-typing span { width: 5px; height: 5px; border-radius: 50%; background: var(--gray-light); animation: rpBlink 1.2s infinite ease-in-out; }
 .rp-typing span:nth-child(2) { animation-delay: .18s; }

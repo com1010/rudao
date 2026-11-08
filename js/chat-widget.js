@@ -20,6 +20,7 @@
 
   var CONFIG = {
     endpoint: '/api/chat',
+    speakEndpoint: '/api/tts',
     email: 'Tony@RuDao.org',
     contactAnchor: '#contact',
     usdcAnchor: '#vip-edition',
@@ -49,6 +50,83 @@
      A fresh key means nobody inherits an old count from the 3-question era. */
   var QUOTA_KEY = 'rudao_chat_tokens_used';
   var PRO_KEY = 'rudao_chat_pro';
+
+  /* ---------- voice reply (listen button under each AI answer) ---------- */
+  /* Step 1: POST /api/tts answers with real audio once the Fish Audio key
+     is configured (later: the author's own cloned voice). Until then the
+     endpoint says not_configured and we fall back to the browser's built-in
+     speech synthesis - free, works offline, no key needed. */
+  var SPEAK_ON = '\uD83D\uDD0A';    /* 🔊 idle   */
+  var SPEAK_BUSY = '\u2026';        /* … loading */
+  var speak = { audio: null, btn: null };
+
+  function speakIdle(btn) {
+    btn.textContent = SPEAK_ON;
+    btn.classList.remove('is-playing');
+    if (speak.btn === btn) speak.btn = null;
+  }
+
+  function stopSpeak() {
+    if (speak.audio) {
+      try { speak.audio.pause(); } catch (e) { /* ignore */ }
+      try { URL.revokeObjectURL(speak.audio.src); } catch (e) { /* ignore */ }
+      speak.audio = null;
+    }
+    try { if (window.speechSynthesis) window.speechSynthesis.cancel(); } catch (e) { /* ignore */ }
+    if (speak.btn) speakIdle(speak.btn);
+    speak.btn = null;
+  }
+
+  /* Zero-cost fallback: the reader's own device does the talking. */
+  function browserSpeak(text, btn) {
+    if (!('speechSynthesis' in window)) {
+      speakIdle(btn);
+      btn.title = 'Voice is not supported in this browser.';
+      return;
+    }
+    var clean = text.replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '');
+    var u = new SpeechSynthesisUtterance(clean);
+    u.lang = /[\u4e00-\u9fff]/.test(clean) ? 'zh-CN' : 'en-US';
+    u.rate = 1;
+    try {
+      var voices = window.speechSynthesis.getVoices();
+      for (var i = 0; i < voices.length; i++) {
+        if (voices[i].lang && voices[i].lang.replace('_', '-').indexOf(u.lang.split('-')[0]) === 0) {
+          u.voice = voices[i]; break;
+        }
+      }
+    } catch (e) { /* ignore */ }
+    u.onend = stopSpeak;
+    u.onerror = stopSpeak;
+    try { window.speechSynthesis.speak(u); } catch (e) { speakIdle(btn); }
+  }
+
+  function speakText(text, btn) {
+    if (speak.btn === btn) { stopSpeak(); return; }   /* tapping again stops it */
+    stopSpeak();
+    speak.btn = btn;
+    btn.textContent = SPEAK_BUSY;
+    btn.classList.add('is-playing');
+    fetch(CONFIG.speakEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: text })
+    }).then(function (r) {
+      var ct = r.headers.get('Content-Type') || '';
+      if (ct.indexOf('audio') === 0) {
+        return r.blob().then(function (blob) {
+          speak.audio = new Audio(URL.createObjectURL(blob));
+          speak.audio.onended = stopSpeak;
+          speak.audio.onerror = stopSpeak;
+          return speak.audio.play().catch(function () { speakIdle(btn); });
+        });
+      }
+      /* JSON answer = server voice not ready yet, use the browser's own. */
+      browserSpeak(text, btn);
+    }).catch(function () {
+      browserSpeak(text, btn);
+    });
+  }
 
   /* ---------- tiny helpers ---------- */
   function el(tag, cls, text) {
@@ -340,6 +418,15 @@
     var bubble = el('div', 'rp-bubble');
     bubble.textContent = text;
     row.appendChild(bubble);
+    if (role === 'assistant') {
+      var sp = el('button', 'rp-speak');
+      sp.type = 'button';
+      sp.textContent = SPEAK_ON;
+      sp.setAttribute('aria-label', 'Listen to this reply');
+      sp.title = 'Listen to this reply 朗读这条回复';
+      sp.addEventListener('click', function () { speakText(text, sp); });
+      row.appendChild(sp);
+    }
     log.appendChild(row);
     wrapZh(bubble);
     log.scrollTop = log.scrollHeight;
