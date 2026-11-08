@@ -386,8 +386,6 @@
     addMsg('user', q);
     messages.push({ role: 'user', content: q });
 
-    if (!isPro()) { lsSet(QUOTA_KEY, String(usedCount() + 1)); renderQuota(); }
-
     busy = true;
     sendBtn.disabled = true;
     typing(true);
@@ -402,21 +400,41 @@
       typing(false);
       var d = res.data || {};
       if (!res.status || res.status >= 400 || d.ok === false) {
-        offerFallback(d.message);
+        failed(res.status, d.message);
         return;
       }
       var reply = String(d.reply || '').trim();
-      if (!reply) { offerFallback(); return; }
+      if (!reply) { failed(res.status); return; }
+      /* Only a real answer costs a free question. */
+      if (!isPro()) { lsSet(QUOTA_KEY, String(usedCount() + 1)); renderQuota(); }
       messages.push({ role: 'assistant', content: reply });
       addMsg('assistant', reply);
     }).catch(function () {
       typing(false);
-      offerFallback();
+      failed(0);
     }).then(function () {
       busy = false;
       sendBtn.disabled = false;
       input.focus();
     });
+  }
+
+  /* The answer never arrived: refund the turn, put the text back in the
+     box, and say who can help instead. */
+  function failed(status, note) {
+    if (messages.length && messages[messages.length - 1].role === 'user') {
+      var lastQ = messages.pop().content;
+      var rows = log.querySelectorAll('.rp-msg.rp-user');
+      if (rows.length) rows[rows.length - 1].parentNode.removeChild(rows[rows.length - 1]);
+      if (!input.value) {
+        input.value = lastQ;
+        input.style.height = 'auto';
+        input.style.height = Math.min(96, input.scrollHeight) + 'px';
+      }
+    }
+    offerFallback(status === 503
+      ? 'The AI assistant is not open yet - your question was not counted.'
+      : note);
   }
 
   function offerFallback(note) {

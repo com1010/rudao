@@ -9,11 +9,19 @@
  * PROVIDERS (first one configured wins)
  * 1. Google Gemini  — free tier, no card. Best quality/cost here.
  *      https://aistudio.google.com/apikey  ->  GEMINI_API_KEY
- * 2. Cloudflare Workers AI (binding "AI") — 10k neurons/day free.
- *      Dashboard -> Workers & Pages -> ru dao project -> Settings
- *      -> Functions -> AI bindings -> add binding named  AI
+ * 2. Cloudflare Workers AI (binding "AI") — 10k neurons/day free,
+ *      no card, no second account. This is the zero-cost default.
+ *      Dashboard -> Workers & Pages -> rudao -> Settings
+ *      -> Bindings (or Functions) -> Add -> Workers AI -> name it  AI
+ *      -> then Deployments -> Retry deployment.
+ *      Model default: @cf/qwen/qwen3-30b-a3b-fp8 (cheap per neuron,
+ *      strong Chinese, 128K context). Falls back to
+ *      @cf/meta/llama-3.1-8b-instruct if that model is unavailable.
  * 3. Nothing configured -> HTTP 503 with a friendly message and the
  *      widget falls back to "email Tony" mode. The site never breaks.
+ *
+ * HEALTH CHECK: GET /api/chat reports which providers are wired up,
+ * without ever echoing a key. Use it to confirm a binding took effect.
  *
  * SECRETS (Cloudflare dashboard -> your Pages project -> Settings ->
  * Variables and Secrets; add as "Secret", then redeploy):
@@ -29,6 +37,16 @@ const MAX_CHARS = 1200;        // per user message
 const MAX_BODY = 20000;        // bytes of JSON body
 const WINDOW_MS = 60 * 60 * 1000;
 const PER_IP_PER_HOUR = 30;
+
+/* Workers AI free-tier models, in preference order.
+   qwen3-30b-a3b-fp8 costs ~4.6k neurons per million input tokens and
+   ~30k per million output — roughly 200+ book questions inside the
+   daily 10k neuron allowance, and it reads Chinese far better than
+   Llama 3.1 8B (which costs 25k / 75k per million). */
+const AI_MODELS = [
+  '@cf/qwen/qwen3-30b-a3b-fp8',
+  '@cf/meta/llama-3.1-8b-instruct'
+];
 
 const JSON_HEADERS = {
   'Content-Type': 'application/json; charset=utf-8',
@@ -174,14 +192,53 @@ async function callGemini(env, systemPrompt, turns) {
 }
 
 async function callWorkersAI(env, systemPrompt, turns) {
-  const model = env.CHAT_MODEL || '@cf/meta/llama-3.1-8b-instruct';
+  /* CHAT_MODEL wins if set; otherwise try the cheap bilingual model
+     first, then the small Llama that is available on every account. */
+  const models = env.CHAT_MODEL ? [env.CHAT_MODEL] : AI_MODELS;
   const messages = [{ role: 'system', content: systemPrompt }].concat(
     turns.map((m) => ({ role: m.role === 'assistant' ? 'assistant' : 'user', content: m.content }))
   );
-  const out = await env.AI.run(model, { messages, max_tokens: 700, temperature: 0.6 });
-  const reply = (out && (out.response || out.result)) ? String(out.response || out.result).trim() : '';
-  if (!reply) return { ok: false, status: 502, detail: 'empty response' };
-  return { ok: true, reply };
+
+  let last = { ok: false, status: 502, detail: 'no model attempted' };
+
+  for (const model of models) {
+    const input = { messages, max_tokens: 700, temperature: 0.6 };
+    /* Hybrid reasoning models (Qwen3, Gemma 4) otherwise spend the token
+       budget thinking before they answer. Only these models accept the flag. */
+    if (/qwen3|glm|gemma-4/i.test(model)) {
+      input.chat_template_kwargs = { enable_thinking: false };
+    }
+    try {
+      const out = await env.AI.run(model, input);
+      let reply = '';
+      if (out && typeof out.response === 'string') reply = out.response;
+      else if (out && out.choices && out.choices[0] && out.choices[0].message) {
+        reply = out.choices[0].message.content || '';
+      } else if (out && typeof out.result === 'string') reply = out.result;
+      reply = cleanReply(reply);
+      if (reply) return { ok: true, reply, model };
+      last = { ok: false, status: 502, detail: 'empty response from ' + model };
+    } catch (err) {
+      last = {
+        ok: false,
+        status: 502,
+        detail: (model + ': ' + String((err && err.message) || err)).slice(0, 240)
+      };
+    }
+  }
+  return last;
+}
+
+/* Strip reasoning traces some models leak into the answer. */
+function cleanReply(raw) {
+  let t = String(raw || '');
+  t = t.replace(/<think\b[^>]*>[\s\S]*?<\/think\b[^>]*>/gi, '');
+  const dangling = t.toLowerCase().lastIndexOf('</think');
+  if (dangling !== -1) {
+    const gt = t.indexOf('>', dangling);
+    if (gt !== -1) t = t.slice(gt + 1);
+  }
+  return t.replace(/<\|?think\|?>/gi, '').trim();
 }
 
 /* ------------------------------------------------------------------ */
@@ -219,7 +276,7 @@ export async function onRequestPost(context) {
     return json({
       ok: false,
       code: 'not_configured',
-      message: 'RuDao AI is not connected yet. Tony answers personally: Tony@RuDao.org'
+      message: 'The AI assistant is not open yet. Tony answers readers personally: Tony@RuDao.org'
     }, 503);
   }
 
@@ -249,8 +306,25 @@ export async function onRequestPost(context) {
   return json({ ok: true, reply: result.reply });
 }
 
-// Anything other than POST -> gentle 405 with the contact route.
-export async function onRequestGet() {
-  return json({ ok: false, code: 'method_not_allowed',
-    message: 'POST a JSON body: {"messages":[{"role":"user","content":"..."}]}' }, 405);
+/* Health check — open /api/chat in a browser to see whether the
+   Workers AI binding (or Gemini key) actually reached production.
+   Never echoes a secret, only booleans. */
+export async function onRequestGet(context) {
+  const { env } = context;
+  const ai = !!(env && env.AI && typeof env.AI.run === 'function');
+  const gemini = !!(env && env.GEMINI_API_KEY);
+  return json({
+    ok: true,
+    service: 'RuDao AI chat',
+    live: ai || gemini,
+    providers: {
+      gemini: gemini,
+      workers_ai: ai,
+      model: gemini ? (env.CHAT_MODEL || 'gemini-2.5-flash')
+        : ai ? (env.CHAT_MODEL || AI_MODELS[0]) : null
+    },
+    usage: 'POST {"messages":[{"role":"user","content":"..."}]}',
+    fix: (ai || gemini) ? null
+      : 'Add an AI binding named AI (or a GEMINI_API_KEY secret), then Retry deployment.'
+  }, 200);
 }
