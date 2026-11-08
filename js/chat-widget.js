@@ -305,7 +305,13 @@
     Array.prototype.forEach.call(panel.querySelectorAll('.rp-view'), function (v, i) {
       v.hidden = i !== map[name];
     });
-    if (name === 'ai') setTimeout(function () { input.focus(); }, 30);
+    if (name === 'ai') setTimeout(function () {
+      /* focus without letting the browser scroll the token notice out of
+         view, then pin the view to the top anyway */
+      try { input.focus({ preventScroll: true }); } catch (e) { input.focus(); }
+      var v = panel.querySelector('.rp-view:not([hidden])');
+      if (v) v.scrollTop = 0;
+    }, 30);
   }
 
   function seed() {
