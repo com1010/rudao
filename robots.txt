@@ -29,6 +29,9 @@ User-agent: Amazonbot
 User-agent: *
 Allow: /
 
+# /sitemap and the three public-domain Chinese classics at /ch/lunyu,
+# /ch/daodejing and /ch/artofwar are public and covered by "Allow: /".
+
 # Private: the author's chat archive and every function endpoint
 Disallow: /admin-chat-log
 Disallow: /admin-chat-log.html

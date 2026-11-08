@@ -162,6 +162,65 @@
 .gm-volume input:disabled { opacity: .4; cursor: default; }
 .gm-sound-hint { font-size: .72rem; line-height: 1.4; color: var(--gray); }
 
+/* ---------- On / Off segmented switch, volume readout, test sound ----------
+   An "On" button must always turn sound ON. The previous single pill showed
+   the current state, so clicking "On" actually muted the board - readers
+   reported the control as broken. Two explicit buttons remove the ambiguity. */
+.gm-switch {
+    display: inline-flex;
+    align-items: stretch;
+    border: 1px solid var(--paper-shadow);
+    border-radius: 3px;
+    overflow: hidden;
+    background: #fff;
+}
+.gm-switch-btn {
+    min-width: 3.35rem;
+    padding: .38rem .6rem;
+    border: 0;
+    background: transparent;
+    color: var(--gray);
+    font-family: var(--font-sans);
+    font-size: .76rem;
+    letter-spacing: .05em;
+    line-height: 1.2;
+    transition: background .18s ease, color .18s ease;
+}
+.gm-switch-btn + .gm-switch-btn { border-left: 1px solid var(--paper-shadow); }
+.gm-switch-btn:hover { background: rgba(169, 50, 38, .07); color: var(--vermillion-deep); }
+.gm-switch-btn.is-on {
+    background: #fff8f3;
+    color: var(--vermillion-deep);
+    font-weight: 600;
+    box-shadow: inset 0 -2px 0 var(--vermillion);
+}
+.gm-switch-btn:focus-visible { outline: 2px solid var(--vermillion); outline-offset: -2px; }
+.gm-volume output {
+    min-width: 2.7rem;
+    font-family: var(--font-sans);
+    font-size: .73rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--vermillion-deep);
+    text-align: right;
+}
+.gm-test-btn {
+    padding: .38rem .7rem;
+    border: 1px solid var(--paper-shadow);
+    border-radius: 3px;
+    background: #fff;
+    color: var(--ink-mid);
+    font-family: var(--font-sans);
+    font-size: .74rem;
+    letter-spacing: .03em;
+    white-space: nowrap;
+    transition: border-color .18s ease, background .18s ease;
+}
+.gm-test-btn:hover { border-color: var(--vermillion); background: #fff8f3; color: var(--vermillion-deep); }
+.gm-test-btn:focus-visible { outline: 2px solid var(--vermillion); outline-offset: 2px; }
+/* Small visual confirmation that a sound actually fired. */
+.gm-audio-row.is-sounding .gm-sound-icon { color: var(--gold); transform: scale(1.28); }
+.gm-sound-icon { transition: color .18s ease, transform .18s ease; }
+
 /* ---------- tabs ---------- */
 .gm-play { padding-top: clamp(1.8rem, 3.5vw, 2.8rem); }
 .gm-tabs {

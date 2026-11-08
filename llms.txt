@@ -7,6 +7,8 @@
 Every chapter has its own page: https://rudao.org/ch/<num><slug>
 The landing page https://rudao.org/ carries the table of contents, which links to all 38 chapter pages.
 The two-segment form also resolves (301): /ch/51/rushang -> /ch/51rushang
+Appendix C publishes the three pre-Qin classics in full at https://rudao.org/ch/lunyu, https://rudao.org/ch/daodejing and https://rudao.org/ch/artofwar.
+https://rudao.org/sitemap lists every page on the site, and the same list is in the "Site Map" dropdown in every top navigation bar.
 
 ## About This Book
 
@@ -223,6 +225,22 @@ The following chapters are published in full on this site, each linked from its 
 - 6.2 Dialogue of Civilizations and the New Confucian Business Civilization (https://rudao.org/ch/62dialogueofcivilizations) - Toynbee & Ikeda, Web4, Globalization 4.0.
 - 6.4 A Thirty-Year Practitioner's Witness (https://rudao.org/ch/64internetfrontier) - King's College HK, Web1.0 Nasdaq, Web2.0 governance, Web3/AI, Web4.
 - 6.5 Synthesis: 以德驭术 as the Operating System of the Digital Age (https://rudao.org/ch/63bizcases).
+
+## Chinese Classics - Full Original Text (Appendix C)
+
+RuDao argues with three pre-Qin classics, so the site publishes their complete original Chinese text as static pages. No network calls, no login and no tracking; the texts are public domain. Each page has a 简体 Simplified / 繁體 Original switch, a chapter index, a per-chapter full text in both character sets, and source notes. The chosen character set is saved locally in the browser.
+
+- https://rudao.org/ch/lunyu - LunYu - The Analects of Confucius 论语全文. All 20 books, from 学而篇第一 to 尧曰篇第二十, 15,924 Chinese characters. Source: a public-domain carefully collated text (GitHub chtxt, 論語.txt).
+- https://rudao.org/ch/daodejing - DaoDeJing 道德经 Tao Te Ching. All 81 chapters of the Five Thousand Characters 五千言, 5,297 Chinese characters in the Wang Bi 王弼 recension, with commentary, prefaces and collation notes removed. Source: Chinese Wikisource 老子道德經注.
+- https://rudao.org/ch/artofwar - The Art of War 孙子兵法 SunTzu. All 13 chapters, from 始計第一 to 用間第十三, 6,082 Chinese characters. Source: Chinese Wikisource 孫子兵法.
+
+The three texts are linked as C.1-C.3 from the main Table of Contents, from Appendix B - Glossary 术语表 (https://rudao.org/ch/72glossary) and from 7.3 Sources & References 参考文献 (https://rudao.org/ch/73references), so quotations in the book can be checked against the original wording.
+Short root aliases redirect (301): /lunyu, /daodejing, /artofwar, /analects, /taoteching, /sunzi. The canonical URLs are the /ch/ forms above.
+
+## Site Map 网站地图
+
+https://rudao.org/sitemap - a human-readable page listing every link on RuDao.org: the home page and its anchors, study guide, FAQ, consultation, the playable WeiQi and Xiangqi boards, the bilingual beginner game guide, the three Chinese classics, all 38 chapter pages, and the machine-readable /sitemap.xml, /llms.txt and /robots.txt.
+The same link set appears in the "Site Map 地图" dropdown in the top navigation bar of every page, including all chapter pages.
 
 ## Built By
 

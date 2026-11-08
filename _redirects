@@ -59,3 +59,16 @@
 
 # trailing slash on a chapter URL
 /ch/:slug/   /ch/:slug   301
+
+# Appendix C - Chinese classics. The canonical URLs live under /ch/;
+# these short root aliases 301 to them so older shared links still work.
+/lunyu         /ch/lunyu        301
+/daodejing     /ch/daodejing    301
+/artofwar      /ch/artofwar     301
+/analects      /ch/lunyu        301
+/taoteching    /ch/daodejing    301
+/sunzi         /ch/artofwar     301
+
+# Human-readable site map lives at /sitemap (Cloudflare pretty URL).
+# No .html redirect rule here: Pages resolves /sitemap to /sitemap.html
+# internally, and a self-referential 301 could loop.

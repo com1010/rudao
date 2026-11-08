@@ -103,10 +103,26 @@
        simply stay silent and everything else keeps working.
        -------------------------------------------------------- */
     var Sound = window.RuDaoSound || null;
+    var soundFlashTimer = 0;
+    function soundFlash() {
+        var row = $('gm-sound-row');
+        if (!row) return;
+        row.classList.add('is-sounding');
+        window.clearTimeout(soundFlashTimer);
+        soundFlashTimer = window.setTimeout(function () {
+            row.classList.remove('is-sounding');
+        }, 260);
+    }
+    function fire(name) {
+        if (!Sound) return false;
+        var ok = Sound.play(name);
+        if (ok) soundFlash();
+        return ok;
+    }
     function snd(name, delay) {
         if (!Sound) return;
-        if (delay) window.setTimeout(function () { Sound.play(name); }, delay);
-        else Sound.play(name);
+        if (delay) window.setTimeout(function () { fire(name); }, delay);
+        else fire(name);
     }
 
     var Voice = window.RuDaoVoice || null;
@@ -314,31 +330,50 @@
        Sound bar - on/off and volume, remembered in localStorage
        -------------------------------------------------------- */
     function wireSound() {
-        var toggle = $('sound-toggle');
-        var state = $('sound-state');
+        var onBtn = $('sound-on');
+        var offBtn = $('sound-off');
         var vol = $('sound-volume');
-        if (!Sound || !toggle || !state || !vol) {
-            if (toggle) toggle.disabled = true;
+        var volOut = $('sound-volume-value');
+        var testBtn = $('sound-test');
+        if (!Sound || !onBtn || !offBtn || !vol || !volOut) {
+            if (onBtn) onBtn.disabled = true;
+            if (offBtn) offBtn.disabled = true;
             return;
         }
         function paint() {
             var on = Sound.isEnabled();
-            toggle.classList.toggle('is-on', on);
-            toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
-            state.textContent = on ? 'On' : 'Off';
-            vol.disabled = !on;
-            vol.value = String(Math.round(Sound.getVolume() * 100));
+            var pct = Math.round(Sound.getVolume() * 100);
+            onBtn.classList.toggle('is-on', on);
+            offBtn.classList.toggle('is-on', !on);
+            onBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+            offBtn.setAttribute('aria-pressed', on ? 'false' : 'true');
+            /* Volume stays usable while muted - set it first, then press On. */
+            vol.value = String(pct);
+            volOut.textContent = pct + '%';
+            if (testBtn) testBtn.title = on
+                ? 'Play a stone sound at ' + pct + '%'
+                : 'Turn board sounds on and play a test stone';
         }
-        toggle.addEventListener('click', function () {
-            var on = !Sound.isEnabled();
+        function setOn(on) {
             Sound.setEnabled(on);
             paint();
-            if (on) Sound.play('ui');
-        });
+            if (on) fire('go');  /* immediate audible confirmation */
+        }
+        onBtn.addEventListener('click', function () { setOn(true); });
+        offBtn.addEventListener('click', function () { setOn(false); });
         vol.addEventListener('input', function () {
             Sound.setVolume(parseInt(vol.value, 10) / 100);
+            volOut.textContent = vol.value + '%';
         });
-        vol.addEventListener('change', function () { Sound.play('ui'); });
+        /* A short stone sample on release proves the new level is audible. */
+        vol.addEventListener('change', function () {
+            paint();
+            if (Sound.isEnabled()) fire('go');
+        });
+        if (testBtn) testBtn.addEventListener('click', function () {
+            if (!Sound.isEnabled()) setOn(true);
+            else fire('go');
+        });
         paint();
     }
 
@@ -346,21 +381,23 @@
        Bilingual spoken cues - on/off, language and how often
        -------------------------------------------------------- */
     function wireVoice() {
-        var toggle = $('voice-toggle');
-        var state = $('voice-state');
+        var onBtn = $('voice-on');
+        var offBtn = $('voice-off');
         var langSel = $('voice-lang');
         var scopeSel = $('voice-scope');
         var hint = $('voice-status');
-        if (!Voice || !toggle || !state || !langSel || !scopeSel || !hint) {
-            if (toggle) toggle.disabled = true;
-            if (hint) hint.textContent = 'Spoken cues are not available in this browser.';
+        if (!Voice || !onBtn || !offBtn || !langSel || !scopeSel || !hint) {
+            if (onBtn) onBtn.disabled = true;
+            if (offBtn) offBtn.disabled = true;
+            hint.textContent = 'Spoken cues are not available in this browser.';
             return;
         }
         function paint() {
             var on = Voice.isEnabled();
-            toggle.classList.toggle('is-on', on);
-            toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
-            state.textContent = on ? 'On' : 'Off';
+            onBtn.classList.toggle('is-on', on);
+            offBtn.classList.toggle('is-on', !on);
+            onBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+            offBtn.setAttribute('aria-pressed', on ? 'false' : 'true');
             langSel.disabled = !on;
             scopeSel.disabled = !on;
             langSel.value = Voice.getLang();
@@ -376,12 +413,14 @@
             else hint.textContent = 'No system voices listed - the browser default will be used.';
         }
         Voice.onStatus(paintStatus);
-        toggle.addEventListener('click', function () {
-            Voice.setEnabled(!Voice.isEnabled());
+        function setVoice(on) {
+            Voice.setEnabled(on);
             paint();
             paintStatus(Voice.status());
-            if (Voice.isEnabled()) Voice.cue('ready');
-        });
+            if (on) Voice.cue('ready');
+        }
+        onBtn.addEventListener('click', function () { setVoice(true); });
+        offBtn.addEventListener('click', function () { setVoice(false); });
         langSel.addEventListener('change', function () {
             Voice.setLang(langSel.value);
             if (Voice.isEnabled()) Voice.cue('ready');

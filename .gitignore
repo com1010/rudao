@@ -16,6 +16,10 @@ desktop.ini
 # Dependencies (if added later)
 node_modules/
 
+# Python build helpers
+__pycache__/
+*.pyc
+
 # Wrangler local cache (Cloudflare CLI)
 .wrangler/
 
