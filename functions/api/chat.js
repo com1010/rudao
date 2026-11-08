@@ -62,26 +62,32 @@ const MAX_BODY = 20000;        // bytes of JSON body
 const WINDOW_MS = 60 * 60 * 1000;
 const PER_IP_PER_HOUR = 30;
 
-/* Workers AI free-tier models, in preference order.
-   qwen3-30b-a3b-fp8 costs ~4.6k neurons per million input tokens and
-   ~30k per million output — roughly 200+ book questions inside the
-   daily 10k neuron allowance, and it reads Chinese far better than
-   Llama 3.1 8B (which costs 25k / 75k per million). */
+/* Workers AI models, in preference order. Checked against the model
+   catalog on 2026-11-08:
+     gemma-4-26b-a4b-it   256K ctx, $0.10/M in, $0.30/M out, no
+                          deprecation, and it documents chat_template_kwargs
+                          so thinking can be switched off. ~130 answers a
+                          day inside the free 10k neurons.
+     llama-3.3-70b        only 24K ctx and $0.293/$2.253 per M — kept as a
+                          last resort only.
+   Retired ids do not fail gracefully: llama-3.1-8b went on 2026-05-30 and
+   qwen3-30b-a3b-fp8 is announced for 2026-11-20, so re-run ?models=1
+   before trusting this list. */
 const AI_MODELS = [
-  '@cf/qwen/qwen3-30b-a3b-fp8',
-  '@cf/meta/llama-3.1-8b-instruct'
+  '@cf/google/gemma-4-26b-a4b-it',
+  '@cf/meta/llama-3.3-70b-instruct-fp8-fast'
 ];
 
 /* Candidates tried by GET /api/chat?models=1 — Cloudflare retires model
-   ids without warning (llama-3.1-8b went on 2026-05-30), so this probe
-   answers "which of these actually runs on this account today". */
+   ids without warning, so this probe answers "which of these actually
+   runs on this account today". */
 const MODEL_PROBE = [
-  '@cf/qwen/qwen3-30b-a3b-fp8',
-  '@cf/meta/llama-3.3-70b-instruct-fp8-fast',
-  '@cf/openai/gpt-oss-120b',
-  '@cf/zai-org/glm-4.7-flash',
   '@cf/google/gemma-4-26b-a4b-it',
-  '@cf/mistralai/mistral-small-3.1-24b-instruct'
+  '@cf/meta/llama-3.3-70b-instruct-fp8-fast',
+  '@cf/mistralai/mistral-small-3.1-24b-instruct',
+  '@cf/zai-org/glm-4.7-flash',
+  '@cf/openai/gpt-oss-120b',
+  '@cf/qwen/qwen3-30b-a3b-fp8'
 ];
 
 const JSON_HEADERS = {
@@ -238,12 +244,17 @@ async function callWorkersAI(env, systemPrompt, turns) {
   let last = { ok: false, status: 502, detail: 'no model attempted' };
 
   for (const model of models) {
-    const input = { messages, max_tokens: 700, temperature: 0.6 };
-    /* Hybrid reasoning models (Qwen3, Gemma 4) otherwise spend the token
-       budget thinking before they answer. Only these models accept the flag. */
-    if (/qwen3|glm|gemma-4/i.test(model)) {
-      input.chat_template_kwargs = { enable_thinking: false };
-    }
+    /* Only send chat_template_kwargs to the models that document it.
+       An unknown field on qwen3 took the whole isolate down (error
+       1101), so this is deliberately a whitelist, not a guess. */
+    const input = /gemma-4/i.test(model)
+      ? {
+        messages,
+        max_completion_tokens: 700,
+        temperature: 0.6,
+        chat_template_kwargs: { enable_thinking: false }
+      }
+      : { messages, max_tokens: 700, temperature: 0.6 };
     try {
       const out = await env.AI.run(model, input);
       let reply = '';
@@ -475,6 +486,18 @@ async function handlePost(context) {
    actually reached production. Never echoes a secret, only booleans
    and hostnames. Add ?probe=1 to test real reachability from the edge. */
 export async function onRequestGet(context) {
+  try {
+    return await handleGet(context);
+  } catch (err) {
+    return json({
+      ok: false,
+      code: 'crash',
+      detail: String((err && (err.stack || err.message)) || err).slice(0, 400)
+    }, 200);
+  }
+}
+
+async function handleGet(context) {
   const { env, request } = context;
   const state = providerState(env);
   const cfg = compatConfig(env);
