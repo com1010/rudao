@@ -7,8 +7,15 @@
  * calls a free-tier LLM.
  *
  * PROVIDERS — tried in the order given by AI_ORDER (default below:
- * free first, paid overflow last). Any provider that is not configured
- * is skipped silently.
+ * paid key first, free Worker AI as the safety net). Any provider that
+ * is not configured is skipped silently.
+ *
+ *   compat    Any OpenAI-compatible endpoint. Currently DeepSeek
+ *             (deepseek-flash): ~2.9s, ~9.6k prompt tokens per answer,
+ *             roughly $0.0016 a question, and the strongest reader of
+ *             this book's bilingual text. Funded by AI_COMPAT_KEY.
+ *             When the wallet empties it returns 402 and the chain
+ *             quietly hands over to Workers AI, so chat never dies.
  *
  *   workers   Cloudflare Workers AI via the binding named "AI".
  *             10k neurons/day free, no card, no second account, and it
@@ -17,7 +24,8 @@
  *             Dashboard -> Workers & Pages -> rudao -> Settings
  *             -> Bindings -> Add -> Workers AI -> name it  AI
  *             -> Deployments -> Retry deployment.
- *             Models: @cf/qwen/qwen3-30b-a3b-fp8 then llama-3.1-8b.
+ *             Models: @cf/google/gemma-4-26b-a4b-it, then
+ *             @cf/meta/llama-3.3-70b-instruct-fp8-fast.
  *
  *   compat    Any OpenAI-compatible endpoint, for when you want a
  *             stronger Chinese model or an overflow when the free
@@ -49,7 +57,7 @@
  * SECRETS (Cloudflare dashboard -> your Pages project -> Settings ->
  * Variables and Secrets; add as "Secret", then redeploy):
  *      AI_COMPAT_BASE, AI_COMPAT_KEY, AI_COMPAT_MODEL
- *      AI_ORDER       = workers,compat,gemini   (optional)
+ *      AI_ORDER       = compat,workers,gemini   (optional)
  *      CHAT_MODEL     = overrides the model per provider (optional)
  *      GEMINI_API_KEY = AIza...                 (optional)
  *
@@ -374,9 +382,10 @@ async function callCompat(env, systemPrompt, turns) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Provider chain — free first, paid overflow last                     */
-/* ------------------------------------------------------------------ */
-const PROVIDER_ORDER = ['workers', 'compat', 'gemini'];
+/* Provider chain — the funded key answers, the free tier absorbs the
+   overflow and any upstream failure. Flip with AI_ORDER if that ever
+   needs to change (e.g. workers,compat once the balance runs low). */
+const PROVIDER_ORDER = ['compat', 'workers', 'gemini'];
 
 function providerState(env) {
   return {
@@ -522,7 +531,7 @@ async function handleGet(context) {
         : { configured: false, needs: ['AI_COMPAT_BASE', 'AI_COMPAT_KEY', 'AI_COMPAT_MODEL'] },
       gemini: state.gemini
     },
-    order_note: 'chain follows AI_ORDER, default workers,compat,gemini (free first)',
+    order_note: 'chain follows AI_ORDER, default compat,workers,gemini (funded key first, free tier as fallback)',
     usage: 'POST {"messages":[{"role":"user","content":"..."}]}',
     fix: chain.length ? null
       : 'Add an AI binding named AI, or AI_COMPAT_BASE/KEY/MODEL, then Retry deployment.'
