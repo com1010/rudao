@@ -2,7 +2,7 @@
  * Cloudflare Pages Function — /api/blog
  * ------------------------------------------------------------
  * Public message board for the "Readers' Blog 读者博客" section
- * of RuDao.org / RuDao.us.
+ * of RuDao.org.
  *
  *   GET    /api/blog?limit=10&cursor=<ck>  → newest-first list of public posts
  *   POST   /api/blog                       → publish a message (no login required)

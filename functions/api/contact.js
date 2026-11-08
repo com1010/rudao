@@ -94,10 +94,10 @@ export async function onRequestPost(context) {
     .map((s) => s.trim())
     .filter(Boolean);
 
-  const subject = `RuDao.us — new message from ${name}`;
+  const subject = `RuDao.org — new message from ${name}`;
   const html = `
     <div style="font-family:Georgia,serif;line-height:1.7;color:#1a1a1a">
-      <h2 style="color:#a93226;margin:0 0 4px">RuDao.us — Contact Form</h2>
+      <h2 style="color:#a93226;margin:0 0 4px">RuDao.org — Contact Form</h2>
       <p style="color:#6b6b6b;margin:0 0 20px;font-size:13px">儒道 · Beyond The Art of War</p>
       <p><strong>Name:</strong> ${escapeHtml(name)}</p>
       <p><strong>Email:</strong> ${escapeHtml(email)}</p>
@@ -106,7 +106,7 @@ export async function onRequestPost(context) {
       <p style="white-space:pre-wrap;font-size:16px">${escapeHtml(message)}</p>
     </div>
   `;
-  const text = `RuDao.us — Contact Form
+  const text = `RuDao.org — Contact Form
 
 Name:  ${name}
 Email: ${email}

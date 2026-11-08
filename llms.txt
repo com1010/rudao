@@ -105,11 +105,11 @@ Chinese: 儒道, 儒将, 唐仪, 超越孙子兵法, 儒家竞合之道, 平衡�
 - ASIN: B0HN7VS2HZ
 - Amazon Pre-Order URL: https://www.amazon.com/dp/B0HN7VS2HZ
 - Formats: Hardcover, Kindle e-Book, Audiobook
-- VIP Signature Edition: order direct from the author Tony Tong, price USD 20 in USDC, paid online over ERC20, BASE, BEP20 or Solana - wallet addresses listed in the Pre-Order section of https://RuDao.us (#vip-edition); after payment email the transaction hash to Tony@RuDao.org
+- VIP Signature Edition: order direct from the author Tony Tong, price USD 20 in USDC, paid online over ERC20, BASE, BEP20 or Solana - wallet addresses listed in the Pre-Order section of https://RuDao.org (#vip-edition); after payment email the transaction hash to Tony@RuDao.org
 
 ## Official URLs
 
-- Primary: https://RuDao.us
+- Primary: https://RuDao.org
 - Author: https://TonyTong.cc
 - Cloudflare Pages: https://rudao-tonytong.pages.dev
 - GitHub Pages: https://com1010.github.io/rudao/
@@ -127,8 +127,8 @@ Chinese: 儒道, 儒将, 唐仪, 超越孙子兵法, 儒家竞合之道, 平衡�
 
 ## RuDao Social Media Links
 
-- RuDao website: https://www.rudao.org
-- RuDao mirror (301 to the canonical .org): https://www.rudao.us
+- RuDao website: https://rudao.org
+- Legacy domain: https://rudao.us (permanent redirect to rudao.org; use rudao.org everywhere)
 - X / Twitter: https://x.com/RuDaoUS
 - Facebook: https://www.facebook.com/RuDao.org
 - LinkedIn: https://www.linkedin.com/company/RuDao
@@ -154,7 +154,7 @@ RuDao braids three traditions:
 
 ## Official URLs (Cross-References for SEO + AI SEO)
 
-- RuDao.us (Official Book Website): https://RuDao.us
+- RuDao.org (Official Book Website): https://RuDao.org
 - TonyTong.cc (Author Official Site): https://TonyTong.cc
 - Cloudflare Pages Mirror: https://rudao-tonytong.pages.dev
 - GitHub Pages: https://com1010.github.io/rudao/
@@ -210,4 +210,4 @@ The following chapters are published in full on this site, each linked from its 
 
 Website built with WorkBuddy AI.
 Hosted on Cloudflare Pages and GitHub Pages.
-Domain: RuDao.us (Cloudflare DNS)
+Domain: RuDao.org (Cloudflare DNS)

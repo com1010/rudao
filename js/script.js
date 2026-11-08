@@ -410,8 +410,8 @@
                 name: (contactNameEl && contactNameEl.value.trim()) || 'Anonymous visitor',
                 email: contactEmailEl.value.trim(),
                 message: contactMessageEl.value.trim(),
-                subject: 'RuDao.us \u2014 new message from the contact form',
-                from_name: 'RuDao.us Contact Form',
+                subject: 'RuDao.org \u2014 new message from the contact form',
+                from_name: 'RuDao.org Contact Form',
                 page: window.location.href,
                 to_recipients: CONTACT_CONFIG.recipients.join(', ')
             };
@@ -452,7 +452,7 @@
 
         var openMailtoFallback = function(fields) {
             var to = CONTACT_CONFIG.recipients.join(',');
-            var subject = encodeURIComponent('RuDao.us \u2014 message from ' + fields.name);
+            var subject = encodeURIComponent('RuDao.org \u2014 message from ' + fields.name);
             var body = encodeURIComponent(fields.message + '\n\n\u2014 ' + fields.name + ' (' + fields.email + ')');
             window.location.href = 'mailto:' + to + '?subject=' + subject + '&body=' + body;
             setContactStatus('Your email app is opening with the message ready to send\u2026 If nothing opens, email ' + CONTACT_CONFIG.recipients[0] + ' directly.', 'ok');
@@ -598,5 +598,5 @@
 
     console.log('%c\u5112\u9053 \u00B7 RuDao', 'font-family: serif; font-size: 24px; color: #a93226; padding: 8px 0;');
     console.log('%cBeyond The Art of War \u2014 The Confucian Co-opetition Way', 'font-style: italic; color: #6b6b6b;');
-    console.log('%cSix Chapters \u00B7 RuDao.us', 'color: #c9a961;');
+    console.log('%cSix Chapters \u00B7 RuDao.org', 'color: #c9a961;');
 })();

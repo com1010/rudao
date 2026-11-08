@@ -1,4 +1,4 @@
-# robots.txt - RuDao.us
+# robots.txt - RuDao.org
 # Allow all search engines and AI crawlers
 
 # Google
