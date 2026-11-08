@@ -72,6 +72,18 @@ const AI_MODELS = [
   '@cf/meta/llama-3.1-8b-instruct'
 ];
 
+/* Candidates tried by GET /api/chat?models=1 — Cloudflare retires model
+   ids without warning (llama-3.1-8b went on 2026-05-30), so this probe
+   answers "which of these actually runs on this account today". */
+const MODEL_PROBE = [
+  '@cf/qwen/qwen3-30b-a3b-fp8',
+  '@cf/meta/llama-3.3-70b-instruct-fp8-fast',
+  '@cf/openai/gpt-oss-120b',
+  '@cf/zai-org/glm-4.7-flash',
+  '@cf/google/gemma-4-26b-a4b-it',
+  '@cf/mistralai/mistral-small-3.1-24b-instruct'
+];
+
 const JSON_HEADERS = {
   'Content-Type': 'application/json; charset=utf-8',
   'Cache-Control': 'no-store'
@@ -550,6 +562,37 @@ export async function onRequestGet(context) {
         ms: Date.now() - started,
         error: String((err && err.message) || err).slice(0, 200)
       };
+    }
+  }
+
+  /* ?models=1 asks Workers AI to run each candidate for a few tokens.
+     Costs a handful of neurons and says which ids still exist. */
+  const modelsQ = request ? new URL(request.url).searchParams.get('models') : null;
+  if (modelsQ) {
+    if (!state.workers) {
+      out.model_probe = { error: 'no AI binding on this deployment' };
+    } else {
+      const list = modelsQ === '1' ? MODEL_PROBE : modelsQ.split(',').map((s) => s.trim()).filter(Boolean);
+      out.model_probe = [];
+      for (const m of list) {
+        const t0 = Date.now();
+        try {
+          const r = await env.AI.run(m, {
+            messages: [{ role: 'user', content: 'Reply with one word: ok' }],
+            max_tokens: 8
+          });
+          const text = r && (typeof r.response === 'string' ? r.response
+            : (r.choices && r.choices[0] && r.choices[0].message && r.choices[0].message.content) || '');
+          out.model_probe.push({ model: m, ok: true, ms: Date.now() - t0, sample: String(text).slice(0, 40) });
+        } catch (err) {
+          out.model_probe.push({
+            model: m,
+            ok: false,
+            ms: Date.now() - t0,
+            error: String((err && err.message) || err).slice(0, 160)
+          });
+        }
+      }
     }
   }
 
