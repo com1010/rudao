@@ -378,6 +378,19 @@ function runProvider(name, env, systemPrompt, turns) {
 /* Handler                                                             */
 /* ------------------------------------------------------------------ */
 export async function onRequestPost(context) {
+  try {
+    return await handlePost(context);
+  } catch (err) {
+    /* Never let a reader see an opaque platform error page. */
+    return json({
+      ok: false,
+      code: 'crash',
+      detail: String((err && (err.stack || err.message)) || err).slice(0, 400)
+    }, 200);
+  }
+}
+
+async function handlePost(context) {
   const { request, env } = context;
 
   const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
@@ -434,13 +447,16 @@ export async function onRequestPost(context) {
     last = r || last;
   }
 
+  /* Deliberately 200 with ok:false: the widget keys off ok, and a 5xx
+     body is the one thing Cloudflare's own edge may replace with an
+     unhelpful "error code: 502" page. */
   return json({
     ok: false,
     code: 'upstream_error',
     status: last.status,
     tried,
     message: 'The assistant is briefly unavailable. Please try again, or email Tony@RuDao.org.'
-  }, 502);
+  }, 200);
 }
 
 /* Health check — open /api/chat in a browser to see which provider
