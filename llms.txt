@@ -1,6 +1,6 @@
 # RuDao (儒道) - Beyond The Art of War
 # By Tony Tong (唐仪)
-# https://rudao.us/ | https://TonyTong.cc
+# https://rudao.org/ | https://TonyTong.cc
 
 ## About This Book
 
@@ -128,7 +128,7 @@ Chinese: 儒道, 儒将, 唐仪, 超越孙子兵法, 儒家竞合之道, 平衡�
 ## RuDao Social Media Links
 
 - RuDao website: https://www.rudao.org
-- RuDao mirror (US): https://www.rudao.us
+- RuDao mirror (301 to the canonical .org): https://www.rudao.us
 - X / Twitter: https://x.com/RuDaoUS
 - Facebook: https://www.facebook.com/RuDao.org
 - LinkedIn: https://www.linkedin.com/company/RuDao

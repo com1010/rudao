@@ -66,6 +66,6 @@ Disallow: /admin-chat-log
 Disallow: /api/
 
 # Sitemap
-# Only rudao.us - declaring the pages.dev / github.io mirrors here would
+# Only rudao.org - declaring the pages.dev / github.io mirrors here would
 # point crawlers at duplicate content and dilute the canonical domain.
-Sitemap: https://rudao.us/sitemap.xml
+Sitemap: https://rudao.org/sitemap.xml

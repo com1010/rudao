@@ -1,5 +1,5 @@
 /**
- * RuDao chat widget — floating reader / buyer chat for rudao.us
+ * RuDao chat widget — floating reader / buyer chat for rudao.org
  * ------------------------------------------------------------
  * Three tabs:
  *   1. Ask RuDao AI  — grounded on the book + site (POST /api/chat)

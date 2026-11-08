@@ -1,7 +1,7 @@
 /**
  * Cloudflare Pages Function — POST /api/chat
  * ------------------------------------------------------------
- * Backs the "Ask RuDao AI" panel on rudao.us. The function grounds
+ * Backs the "Ask RuDao AI" panel on rudao.org. The function grounds
  * the model on this site's own llms.txt (fetched from the same
  * origin, cached in the isolate) plus a fixed fact sheet, then
  * calls a free-tier LLM.
@@ -144,7 +144,7 @@ Co-opetition 竞合 — competing and cooperating at the same time; the alternat
 君子富,好行其德 — the wealthy gentleman delights in practicing virtue (ShiJi 史记, 货殖列传).
 Rule of the book on fate: 命由我作,福自己求 — outer circumstances shift, character decides (Ch.3.3).`;
 
-const SYSTEM = `You are "RuDao AI", the reading assistant on rudao.us, the official site of the book RuDao: Beyond The Art of War by Tony Tong (唐仪).
+const SYSTEM = `You are "RuDao AI", the reading assistant on rudao.org, the official site of the book RuDao: Beyond The Art of War by Tony Tong (唐仪).
 
 HOW TO ANSWER
 - You are a knowledgeable guide to the book and its ideas. You are NOT Tony Tong and you never pretend to be him. If asked for a personal opinion "from Tony", say you can explain what the book argues, and point to the contact form for a personal reply.
@@ -193,7 +193,7 @@ async function getContext(origin) {
   if (ctxCache.text && Date.now() - ctxCache.at < 3600 * 1000) return ctxCache.text;
   try {
     const res = await fetch(origin + '/llms.txt', {
-      headers: { 'User-Agent': 'RuDao-Chat/1.0 (+https://rudao.us)' },
+      headers: { 'User-Agent': 'RuDao-Chat/1.0 (+https://rudao.org)' },
       cf: { cacheTtl: 3600, cacheEverything: true }
     });
     if (!res.ok) return '';

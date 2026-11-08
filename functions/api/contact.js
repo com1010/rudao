@@ -11,14 +11,17 @@
  * configured either, to the visitor's own email app (mailto:).
  *
  * SETUP (about 5 minutes)
- * 1. Create a free Resend account and add the domain `rudao.us`
- *    (Resend shows 2-3 DNS records — add them in Cloudflare DNS).
+ * 1. Create a free Resend account and add a sending domain (the one
+ *    verified today is `rudao.us`; add `rudao.org` too if you want the
+ *    From address to match the canonical site). Resend shows 2-3 DNS
+ *    records - add them in Cloudflare DNS.
  * 2. Create an API key in Resend.
  * 3. Cloudflare dashboard → Workers & Pages → your RuDao Pages project
  *    → Settings → Variables and Secrets, add:
  *
  *        RESEND_API_KEY = re_xxxxxxxxxxxxxxxx
- *        CONTACT_FROM   = RuDao.us Contact Form <noreply@rudao.us>
+ *        CONTACT_FROM   = RuDao.org Contact Form <noreply@rudao.us>
+ *                         (keep the domain that Resend verified)
  *        CONTACT_TO     = Tony@RuDao.org,com2000@agent.qq.com
  *
  * 4. Commit and push — Cloudflare Pages deploys this function automatically
@@ -85,7 +88,7 @@ export async function onRequestPost(context) {
     );
   }
 
-  const from = env.CONTACT_FROM || 'RuDao.us Contact Form <noreply@rudao.us>';
+  const from = env.CONTACT_FROM || 'RuDao.org Contact Form <noreply@rudao.us>';
   const to = (env.CONTACT_TO || 'Tony@RuDao.org,com2000@agent.qq.com')
     .split(',')
     .map((s) => s.trim())
