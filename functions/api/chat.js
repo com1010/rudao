@@ -566,24 +566,39 @@ export async function onRequestGet(context) {
   }
 
   /* ?models=1 asks Workers AI to run each candidate for a few tokens.
-     Costs a handful of neurons and says which ids still exist. */
+     Costs a handful of neurons and says which ids still exist.
+     ?variant=thinkoff / nothink / plain narrows down how to stop a
+     reasoning model from spending the whole budget thinking. */
   const modelsQ = request ? new URL(request.url).searchParams.get('models') : null;
   if (modelsQ) {
     if (!state.workers) {
       out.model_probe = { error: 'no AI binding on this deployment' };
     } else {
+      const q = new URL(request.url);
+      const variant = q.get('variant') || 'plain';
+      const budget = Number(q.get('tokens')) || 80;
       const list = modelsQ === '1' ? MODEL_PROBE : modelsQ.split(',').map((s) => s.trim()).filter(Boolean);
+      out.variant = variant;
       out.model_probe = [];
       for (const m of list) {
         const t0 = Date.now();
+        const input = {
+          messages: [{ role: 'user', content: 'Reply with one word: ok' }],
+          max_tokens: budget
+        };
+        if (variant === 'thinkoff') input.chat_template_kwargs = { enable_thinking: false };
+        if (variant === 'nothink') input.messages = [{ role: 'user', content: 'Reply with one word: ok /no_think' }];
         try {
-          const r = await env.AI.run(m, {
-            messages: [{ role: 'user', content: 'Reply with one word: ok' }],
-            max_tokens: 8
-          });
+          const r = await env.AI.run(m, input);
           const text = r && (typeof r.response === 'string' ? r.response
             : (r.choices && r.choices[0] && r.choices[0].message && r.choices[0].message.content) || '');
-          out.model_probe.push({ model: m, ok: true, ms: Date.now() - t0, sample: String(text).slice(0, 40) });
+          out.model_probe.push({
+            model: m,
+            ok: true,
+            ms: Date.now() - t0,
+            chars: String(text).length,
+            sample: String(text).replace(/\s+/g, ' ').slice(0, 60)
+          });
         } catch (err) {
           out.model_probe.push({
             model: m,
