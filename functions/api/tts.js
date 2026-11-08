@@ -14,9 +14,12 @@
  *   1. elevenlabs.io -> avatar -> Profile -> API Keys -> create a key
  *   2. Voices page -> the cloned "Tony Tong" voice -> copy its Voice ID
  *   3. Pages project settings -> environment variables:
- *        ELEVENLABS_API_KEY   (Secret)   the API key
- *        ELEVENLABS_VOICE_ID  (Variable) the cloned voice id
- *        ELEVENLABS_MODEL     (Variable) optional; defaults to
+ *        ELEVENLABS_API_KEY    (Secret)   the API key
+ *        ELEVENLABS_VOICE_ID   (Variable) the voice id for English replies
+ *        ELEVENLABS_VOICE_ID_ZH (Variable) optional second clone trained on
+ *                              Mandarin; Chinese replies use it when set,
+ *                              otherwise they fall back to ELEVENLABS_VOICE_ID
+ *        ELEVENLABS_MODEL      (Variable) optional; defaults to
  *                                        eleven_flash_v2_5 (fast, half credits,
  *                                        speaks EN + ZH). Use eleven_multilingual_v2
  *                                        for the richest quality (2x credits).
@@ -49,15 +52,20 @@ function detectProvider(env) {
 
 function providerInfo(env) {
     const p = detectProvider(env);
-    return {
+    const info = {
         provider: p || "none",
         configured: Boolean(p),
-        model: p === "fish" ? (env.FISH_MODEL || "s2.1-pro-free") : (env.ELEVENLABS_MODEL || "eleven_flash_v2_5"),
-        voice: p === "fish"
-            ? (env.FISH_VOICE_ID ? "custom" : "default")
-            : (env.ELEVENLABS_VOICE_ID ? "custom" : "default"),
         commit: env.CF_PAGES_COMMIT_SHA ? env.CF_PAGES_COMMIT_SHA.slice(0, 7) : "unknown"
     };
+    if (p === "elevenlabs") {
+        info.model = env.ELEVENLABS_MODEL || "eleven_flash_v2_5";
+        info.voice = env.ELEVENLABS_VOICE_ID ? "custom" : "default";
+        info.voice_zh = env.ELEVENLABS_VOICE_ID_ZH ? "custom" : "fallback-to-en";
+    } else {
+        info.model = env.FISH_MODEL || "s2.1-pro-free";
+        info.voice = env.FISH_VOICE_ID ? "custom" : "default";
+    }
+    return info;
 }
 
 export async function onRequestGet({ request, env }) {
@@ -87,7 +95,12 @@ export async function onRequestGet({ request, env }) {
 }
 
 function speakElevenLabs(text, env) {
-    if (!env.ELEVENLABS_VOICE_ID) {
+    /* Two clones, one per language: the English-trained voice speaks EN,
+       the Mandarin-trained voice speaks ZH. Chinese falls back to the
+       English voice until ELEVENLABS_VOICE_ID_ZH is set. */
+    const isZh = /[\u4e00-\u9fff]/.test(text);
+    const voiceId = (isZh && env.ELEVENLABS_VOICE_ID_ZH) || env.ELEVENLABS_VOICE_ID;
+    if (!voiceId) {
         return Promise.resolve(json({
             ok: false,
             error: "not_configured",
@@ -97,7 +110,7 @@ function speakElevenLabs(text, env) {
     }
     const model = env.ELEVENLABS_MODEL || "eleven_flash_v2_5";
     return fetch(
-        "https://api.elevenlabs.io/v1/text-to-speech/" + env.ELEVENLABS_VOICE_ID + "?output_format=mp3_44100_128",
+        "https://api.elevenlabs.io/v1/text-to-speech/" + voiceId + "?output_format=mp3_44100_128",
         {
             method: "POST",
             headers: {
