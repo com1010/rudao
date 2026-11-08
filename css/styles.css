@@ -5795,6 +5795,9 @@ a[href^="http"].urllink {
 .rp-brand-text em { font-style: normal; font-family: var(--font-sans); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gray); }
 .rp-close { border: 0; background: none; font-size: 1.4rem; line-height: 1; color: var(--gray); cursor: pointer; padding: 2px 6px; }
 .rp-close:hover { color: var(--vermillion); }
+/* master voice switch in the chat header */
+.rp-voice-toggle { border: 0; background: none; font-size: 1rem; line-height: 1; color: var(--gray); cursor: pointer; padding: 2px 4px; opacity: .75; transition: opacity .18s ease, color .18s ease; }
+.rp-voice-toggle:hover, .rp-voice-toggle:focus-visible { color: var(--vermillion); opacity: 1; }
 
 .rp-tabs { display: flex; border-bottom: 1px solid rgba(10,10,10,.09); }
 .rp-tab {

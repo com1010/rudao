@@ -21,6 +21,11 @@
   var CONFIG = {
     endpoint: '/api/chat',
     speakEndpoint: '/api/tts',
+
+    /* Spoken when the panel opens (the author's cloned voices via /api/tts,
+       one clip per language so each voice speaks its own language). */
+    greetingEn: 'Welcome to RuDao.',
+    greetingZh: '大家好,我是唐仪。欢迎来到儒道!',
     email: 'Tony@RuDao.org',
     contactAnchor: '#contact',
     usdcAnchor: '#vip-edition',
@@ -51,14 +56,18 @@
   var QUOTA_KEY = 'rudao_chat_tokens_used';
   var PRO_KEY = 'rudao_chat_pro';
 
-  /* ---------- voice reply (listen button under each AI answer) ---------- */
-  /* Step 1: POST /api/tts answers with real audio once the Fish Audio key
-     is configured (later: the author's own cloned voice). Until then the
-     endpoint says not_configured and we fall back to the browser's built-in
-     speech synthesis - free, works offline, no key needed. */
+  /* ---------- voice reply (listen button + auto-play) ---------- */
+  /* The server endpoint answers with real audio in the author's cloned
+     voices (ElevenLabs: EN voice for English, ZH voice for Mandarin).
+     When it is not configured it answers JSON and we fall back to the
+     browser's built-in speech synthesis - free, works offline. */
   var SPEAK_ON = '\uD83D\uDD0A';    /* 🔊 idle   */
+  var SPEAK_OFF = '\uD83D\uDD07';   /* 🔇 muted  */
   var SPEAK_BUSY = '\u2026';        /* … loading */
+  var VOICE_KEY = 'rudao_chat_voice_on';   /* '0' = muted; default ON */
   var speak = { audio: null, btn: null };
+
+  function voiceAuto() { return lsGet(VOICE_KEY, '1') !== '0'; }
 
   function speakIdle(btn) {
     btn.textContent = SPEAK_ON;
@@ -77,56 +86,64 @@
     speak.btn = null;
   }
 
-  /* Zero-cost fallback: the reader's own device does the talking. */
-  function browserSpeak(text, btn) {
-    if (!('speechSynthesis' in window)) {
-      speakIdle(btn);
-      btn.title = 'Voice is not supported in this browser.';
-      return;
-    }
-    var clean = text.replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '');
-    var u = new SpeechSynthesisUtterance(clean);
-    u.lang = /[\u4e00-\u9fff]/.test(clean) ? 'zh-CN' : 'en-US';
-    u.rate = 1;
-    try {
-      var voices = window.speechSynthesis.getVoices();
-      for (var i = 0; i < voices.length; i++) {
-        if (voices[i].lang && voices[i].lang.replace('_', '-').indexOf(u.lang.split('-')[0]) === 0) {
-          u.voice = voices[i]; break;
-        }
-      }
-    } catch (e) { /* ignore */ }
-    u.onend = stopSpeak;
-    u.onerror = stopSpeak;
-    try { window.speechSynthesis.speak(u); } catch (e) { speakIdle(btn); }
-  }
-
-  function speakText(text, btn) {
-    if (speak.btn === btn) { stopSpeak(); return; }   /* tapping again stops it */
-    stopSpeak();
-    speak.btn = btn;
-    btn.textContent = SPEAK_BUSY;
-    btn.classList.add('is-playing');
-    fetch(CONFIG.speakEndpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text: text })
-    }).then(function (r) {
-      var ct = r.headers.get('Content-Type') || '';
-      if (ct.indexOf('audio') === 0) {
-        return r.blob().then(function (blob) {
-          speak.audio = new Audio(URL.createObjectURL(blob));
-          speak.audio.onended = stopSpeak;
-          speak.audio.onerror = stopSpeak;
-          return speak.audio.play().catch(function () { speakIdle(btn); });
-        });
-      }
-      /* JSON answer = server voice not ready yet, use the browser's own. */
-      browserSpeak(text, btn);
-    }).catch(function () {
-      browserSpeak(text, btn);
+  /* Zero-cost fallback: the reader's own device does the talking.
+     speechSynthesis queues the utterances, so a whole sequence plays in
+     order even when the clips mix English and Mandarin. */
+  function browserSpeakAll(texts, btn) {
+    if (!('speechSynthesis' in window)) { if (btn) speakIdle(btn); stopSpeak(); return; }
+    texts.forEach(function (t, idx) {
+      var clean = t.replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '');
+      var u = new SpeechSynthesisUtterance(clean);
+      u.lang = /[\u4e00-\u9fff]/.test(clean) ? 'zh-CN' : 'en-US';
+      u.rate = 1;
+      if (idx === texts.length - 1) { u.onend = stopSpeak; u.onerror = stopSpeak; }
+      try { window.speechSynthesis.speak(u); } catch (e) { stopSpeak(); }
     });
   }
+
+  /* Play the texts one after another. Server audio first; if the very
+     first request says "not configured", the rest goes to the browser
+     engine instead. */
+  function speakSeq(texts, btn) {
+    if (speak.btn && speak.btn === btn) { stopSpeak(); return; }  /* tap again stops it */
+    stopSpeak();
+    speak.btn = btn || null;
+    if (btn) { btn.textContent = SPEAK_BUSY; btn.classList.add('is-playing'); }
+
+    var i = 0;
+    function nextClip() {
+      if (speak.audio) {
+        try { URL.revokeObjectURL(speak.audio.src); } catch (e) { /* ignore */ }
+        speak.audio = null;
+      }
+      if (i >= texts.length) { stopSpeak(); return; }
+      var t = texts[i++];
+      fetch(CONFIG.speakEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: t })
+      }).then(function (r) {
+        var ct = r.headers.get('Content-Type') || '';
+        if (ct.indexOf('audio') !== 0) {
+          /* no server voice yet - the browser takes the whole sequence */
+          browserSpeakAll(texts.slice(i - 1), btn);
+          return;
+        }
+        return r.blob().then(function (blob) {
+          var a = new Audio(URL.createObjectURL(blob));
+          speak.audio = a;
+          a.onended = nextClip;
+          a.onerror = nextClip;
+          return a.play().catch(function () { stopSpeak(); });
+        });
+      }).catch(function () {
+        stopSpeak();
+      });
+    }
+    nextClip();
+  }
+
+  function speakText(text, btn) { speakSeq([text], btn); }
 
   /* ---------- tiny helpers ---------- */
   function el(tag, cls, text) {
@@ -198,7 +215,15 @@
   var messages = [];      /* {role:'user'|'assistant', content} */
   var busy = false;
   var built = false;
-  var root, panel, log, input, sendBtn, quotaLine, paywall, tabBtns, views, tokenLine;
+  var root, panel, log, input, sendBtn, quotaLine, paywall, tabBtns, views, tokenLine, voiceBtn;
+
+  function renderVoiceBtn() {
+    if (!voiceBtn) return;
+    voiceBtn.textContent = voiceAuto() ? SPEAK_ON : SPEAK_OFF;
+    voiceBtn.title = voiceAuto()
+      ? 'Voice replies ON - click to mute 语音回复:开,点击关闭'
+      : 'Voice replies OFF - click to auto-play 语音回复:关,点击开启';
+  }
 
   /* ---------- build UI ---------- */
   function build() {
@@ -230,7 +255,21 @@
     close.type = 'button';
     close.setAttribute('aria-label', 'Close chat');
     close.addEventListener('click', closePanel);
+
+    /* master voice switch: ON = the greeting and every AI reply are spoken
+       automatically; OFF = silent unless the reader taps a 🔊 button */
+    voiceBtn = el('button', 'rp-voice-toggle');
+    voiceBtn.type = 'button';
+    voiceBtn.setAttribute('aria-label', 'Toggle voice replies 语音开关');
+    renderVoiceBtn();
+    voiceBtn.addEventListener('click', function () {
+      lsSet(VOICE_KEY, voiceAuto() ? '0' : '1');
+      renderVoiceBtn();
+      if (!voiceAuto()) stopSpeak();
+    });
+
     head.appendChild(brand);
+    head.appendChild(voiceBtn);
     head.appendChild(close);
 
     /* tabs */
@@ -567,7 +606,14 @@
       /* Only a real answer costs tokens. */
       if (!isPro()) { lsSet(QUOTA_KEY, String(tokensUsed() + CONFIG.tokensPerQuestion)); renderQuota(); }
       messages.push({ role: 'assistant', content: reply });
-      addMsg('assistant', reply);
+      var row = addMsg('assistant', reply);
+      /* Voice ON by default: the reply is spoken as it appears, in the
+         author's own voice. The reader can mute via the header switch;
+         the per-message 🔊 button always works either way. */
+      if (voiceAuto()) {
+        var sp = row.querySelector('.rp-speak');
+        if (sp) speakText(reply, sp);
+      }
     }).catch(function () {
       typing(false);
       failed(0);
@@ -614,11 +660,15 @@
     root.classList.add('is-open');
     document.body.classList.add('rp-lock-scroll');
     setTimeout(function () { try { input.focus(); } catch (e) {} }, 40);
+    /* the author greets every reader by voice (his own cloned voices,
+       one clip per language); silenced when the reader muted the chat */
+    if (voiceAuto()) speakSeq([CONFIG.greetingEn, CONFIG.greetingZh], null);
   }
   function closePanel() {
     panel.hidden = true;
     root.classList.remove('is-open');
     document.body.classList.remove('rp-lock-scroll');
+    stopSpeak();
   }
 
   document.addEventListener('keydown', function (e) {
