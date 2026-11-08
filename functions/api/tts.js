@@ -3,24 +3,28 @@
  *
  * Turns a chat answer into speech so readers can listen instead of read.
  *
- * Provider: Fish Audio (https://fish.audio)
- *   POST https://api.fish.audio/v1/tts
- *   headers: Authorization: Bearer <key>, Content-Type: application/json,
- *            model: s2.1-pro-free (USD 0, fine for a reader-facing voice)
- *   body:    { text, reference_id (the cloned TonyTong voice), format: mp3, language }
- *   returns: raw audio bytes
+ * Providers, tried in this order (TTS_PROVIDER can pin one explicitly):
+ *   1. ElevenLabs - the author's own cloned voice ("TonyTong")
+ *        POST https://api.elevenlabs.io/v1/text-to-speech/<voice_id>
+ *        headers: xi-api-key: <key>
+ *        body: { text, model_id, voice_settings }   ->  raw mp3 bytes
+ *   2. Fish Audio - fallback provider (s2.1-pro-free is USD 0)
  *
- * Setup (step 2 - "the author's own voice"):
- *   1. Record 1-3 min of clean speech (EN + ZH), upload at fish.audio,
- *      create the clone, copy its voice id.
- *   2. Pages project settings -> environment variables:
- *        FISH_API_KEY   (Secret)   API key from fish.audio
- *        FISH_VOICE_ID  (Variable) the cloned voice id (optional; when absent
- *                                  Fish picks its default catalog voice)
- *        FISH_MODEL     (Variable) optional override, defaults to s2.1-pro-free
- *   3. Retry the deployment - variables only reach new builds.
+ * Setup - the author's own voice (ElevenLabs):
+ *   1. elevenlabs.io -> avatar -> Profile -> API Keys -> create a key
+ *   2. Voices page -> the cloned "Tony Tong" voice -> copy its Voice ID
+ *   3. Pages project settings -> environment variables:
+ *        ELEVENLABS_API_KEY   (Secret)   the API key
+ *        ELEVENLABS_VOICE_ID  (Variable) the cloned voice id
+ *        ELEVENLABS_MODEL     (Variable) optional; defaults to
+ *                                        eleven_flash_v2_5 (fast, half credits,
+ *                                        speaks EN + ZH). Use eleven_multilingual_v2
+ *                                        for the richest quality (2x credits).
+ *   4. Retry the deployment - variables only reach new builds.
+ *   Tip: GET /api/tts?voices=1 lists every voice on the account with its id,
+ *   so the right voice id can be copied straight from this endpoint.
  *
- * While FISH_API_KEY is missing the endpoint reports not_configured and the
+ * While no key is configured the endpoint reports not_configured and the
  * chat widget falls back to the browser's built-in speech synthesis, so the
  * listen button works from day one at zero cost.
  */
@@ -34,15 +38,125 @@ function json(data, status) {
     });
 }
 
-export async function onRequestGet({ env }) {
-    return json({
-        ok: true,
-        service: "RuDao voice reply",
-        provider: "fish-audio",
-        configured: Boolean(env.FISH_API_KEY),
-        model: env.FISH_MODEL || "s2.1-pro-free",
-        voice: env.FISH_VOICE_ID ? "custom" : "default",
+function detectProvider(env) {
+    const pinned = env.TTS_PROVIDER;
+    if (pinned === "elevenlabs" && env.ELEVENLABS_API_KEY) return "elevenlabs";
+    if (pinned === "fish" && env.FISH_API_KEY) return "fish";
+    if (env.ELEVENLABS_API_KEY) return "elevenlabs";
+    if (env.FISH_API_KEY) return "fish";
+    return null;
+}
+
+function providerInfo(env) {
+    const p = detectProvider(env);
+    return {
+        provider: p || "none",
+        configured: Boolean(p),
+        model: p === "fish" ? (env.FISH_MODEL || "s2.1-pro-free") : (env.ELEVENLABS_MODEL || "eleven_flash_v2_5"),
+        voice: p === "fish"
+            ? (env.FISH_VOICE_ID ? "custom" : "default")
+            : (env.ELEVENLABS_VOICE_ID ? "custom" : "default"),
         commit: env.CF_PAGES_COMMIT_SHA ? env.CF_PAGES_COMMIT_SHA.slice(0, 7) : "unknown"
+    };
+}
+
+export async function onRequestGet({ request, env }) {
+    const url = new URL(request.url);
+
+    /* Admin helper: list the account's voices so the cloned voice id can be
+       copied without digging through the ElevenLabs dashboard. */
+    if (url.searchParams.has("voices")) {
+        if (!env.ELEVENLABS_API_KEY) {
+            return json({ ok: false, error: "not_configured", message: "Set ELEVENLABS_API_KEY first." });
+        }
+        try {
+            const r = await fetch("https://api.elevenlabs.io/v1/voices", {
+                headers: { "xi-api-key": env.ELEVENLABS_API_KEY }
+            });
+            const d = await r.json();
+            const voices = (d.voices || []).map(function (v) {
+                return { id: v.voice_id, name: v.name, category: v.category };
+            });
+            return json({ ok: r.ok, count: voices.length, voices: voices });
+        } catch (e) {
+            return json({ ok: false, error: "network", message: String(e && e.message || e) });
+        }
+    }
+
+    return json(Object.assign({ ok: true, service: "RuDao voice reply" }, providerInfo(env)));
+}
+
+function speakElevenLabs(text, env) {
+    if (!env.ELEVENLABS_VOICE_ID) {
+        return Promise.resolve(json({
+            ok: false,
+            error: "not_configured",
+            message: "ELEVENLABS_VOICE_ID is missing - copy the voice id of the cloned voice.",
+            fallback: "browser"
+        }));
+    }
+    const model = env.ELEVENLABS_MODEL || "eleven_flash_v2_5";
+    return fetch(
+        "https://api.elevenlabs.io/v1/text-to-speech/" + env.ELEVENLABS_VOICE_ID + "?output_format=mp3_44100_128",
+        {
+            method: "POST",
+            headers: {
+                "xi-api-key": env.ELEVENLABS_API_KEY,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                text: text,
+                model_id: model,
+                voice_settings: { stability: 0.5, similarity_boost: 0.75, use_speaker_boost: true }
+            })
+        }
+    ).then(function (upstream) {
+        if (!upstream.ok) {
+            return upstream.text().then(function (t) {
+                return json({
+                    ok: false,
+                    error: "upstream",
+                    status: upstream.status,
+                    detail: String(t || "").slice(0, 300),
+                    fallback: "browser"
+                });
+            });
+        }
+        return new Response(upstream.body, {
+            status: 200,
+            headers: { "Content-Type": "audio/mpeg", "Cache-Control": "no-store" }
+        });
+    });
+}
+
+function speakFish(text, env) {
+    const lang = /[\u4e00-\u9fff]/.test(text) ? "zh-CN" : "en";
+    const payload = { text: text, format: "mp3", language: lang };
+    if (env.FISH_VOICE_ID) payload.reference_id = env.FISH_VOICE_ID;
+    return fetch("https://api.fish.audio/v1/tts", {
+        method: "POST",
+        headers: {
+            "Authorization": "Bearer " + env.FISH_API_KEY,
+            "Content-Type": "application/json",
+            "model": env.FISH_MODEL || "s2.1-pro-free"
+        },
+        body: JSON.stringify(payload)
+    }).then(function (upstream) {
+        if (!upstream.ok) {
+            return upstream.text().then(function (t) {
+                return json({
+                    ok: false,
+                    error: "upstream",
+                    status: upstream.status,
+                    detail: String(t || "").slice(0, 300),
+                    fallback: "browser"
+                });
+            });
+        }
+        return new Response(upstream.body, {
+            status: 200,
+            headers: { "Content-Type": "audio/mpeg", "Cache-Control": "no-store" }
+        });
     });
 }
 
@@ -62,45 +176,16 @@ export async function onRequestPost({ request, env }) {
         return json({ ok: false, error: "too_long", message: "Reply too long for one voice clip." });
     }
 
-    if (!env.FISH_API_KEY) {
+    const provider = detectProvider(env);
+    if (!provider) {
         /* The widget reads this and switches to the browser's own speech. */
         return json({ ok: false, error: "not_configured", fallback: "browser" });
     }
 
-    const lang = /[\u4e00-\u9fff]/.test(text) ? "zh-CN" : "en";
-    const payload = { text: text, format: "mp3", language: lang };
-    if (env.FISH_VOICE_ID) payload.reference_id = env.FISH_VOICE_ID;
-
     try {
-        const upstream = await fetch("https://api.fish.audio/v1/tts", {
-            method: "POST",
-            headers: {
-                "Authorization": "Bearer " + env.FISH_API_KEY,
-                "Content-Type": "application/json",
-                "model": env.FISH_MODEL || "s2.1-pro-free"
-            },
-            body: JSON.stringify(payload)
-        });
-
-        if (!upstream.ok) {
-            let detail = "";
-            try { detail = (await upstream.text()).slice(0, 300); } catch (e) { /* ignore */ }
-            return json({
-                ok: false,
-                error: "upstream",
-                status: upstream.status,
-                detail: detail,
-                fallback: "browser"
-            });
-        }
-
-        return new Response(upstream.body, {
-            status: 200,
-            headers: {
-                "Content-Type": "audio/mpeg",
-                "Cache-Control": "no-store"
-            }
-        });
+        return await (provider === "elevenlabs"
+            ? speakElevenLabs(text, env)
+            : speakFish(text, env));
     } catch (e) {
         return json({ ok: false, error: "network", message: String(e && e.message || e), fallback: "browser" });
     }
