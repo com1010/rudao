@@ -6,28 +6,50 @@
  * origin, cached in the isolate) plus a fixed fact sheet, then
  * calls a free-tier LLM.
  *
- * PROVIDERS (first one configured wins)
- * 1. Google Gemini  — free tier, no card. Best quality/cost here.
- *      https://aistudio.google.com/apikey  ->  GEMINI_API_KEY
- * 2. Cloudflare Workers AI (binding "AI") — 10k neurons/day free,
- *      no card, no second account. This is the zero-cost default.
- *      Dashboard -> Workers & Pages -> rudao -> Settings
- *      -> Bindings (or Functions) -> Add -> Workers AI -> name it  AI
- *      -> then Deployments -> Retry deployment.
- *      Model default: @cf/qwen/qwen3-30b-a3b-fp8 (cheap per neuron,
- *      strong Chinese, 128K context). Falls back to
- *      @cf/meta/llama-3.1-8b-instruct if that model is unavailable.
+ * PROVIDERS — tried in the order given by AI_ORDER (default below:
+ * free first, paid overflow last). Any provider that is not configured
+ * is skipped silently.
+ *
+ *   workers   Cloudflare Workers AI via the binding named "AI".
+ *             10k neurons/day free, no card, no second account, and it
+ *             is NOT region-locked — it runs on Cloudflare's own network,
+ *             so Hong Kong and mainland China are fine.
+ *             Dashboard -> Workers & Pages -> rudao -> Settings
+ *             -> Bindings -> Add -> Workers AI -> name it  AI
+ *             -> Deployments -> Retry deployment.
+ *             Models: @cf/qwen/qwen3-30b-a3b-fp8 then llama-3.1-8b.
+ *
+ *   compat    Any OpenAI-compatible endpoint, for when you want a
+ *             stronger Chinese model or an overflow when the free
+ *             neurons run out. Same three variables work for all of:
+ *               DeepSeek    AI_COMPAT_BASE = https://api.deepseek.com
+ *                           AI_COMPAT_MODEL = deepseek-flash
+ *                           (new accounts: 5M free tokens, no card)
+ *               Doubao/Ark  AI_COMPAT_BASE = https://ark.cn-beijing.volces.com/api/v3
+ *                           AI_COMPAT_MODEL = doubao-seed-2-1-pro-260628
+ *                           (Volcano Ark: 500k free tokens per model)
+ *               Qwen        AI_COMPAT_BASE = https://dashscope.aliyuncs.com/compatible-mode/v1
+ *               GLM         AI_COMPAT_BASE = https://open.bigmodel.cn/api/paas/v4
+ *               Moonshot    AI_COMPAT_BASE = https://api.moonshot.cn/v1
+ *             AI_COMPAT_KEY = the provider key (store as a Secret).
+ *
+ *   gemini    Google Gemini. Region-locked in some places, so it is
+ *             last and optional. GEMINI_API_KEY = AIza...
+ *
  * 3. Nothing configured -> HTTP 503 with a friendly message and the
  *      widget falls back to "email Tony" mode. The site never breaks.
  *
- * HEALTH CHECK: GET /api/chat reports which providers are wired up,
- * without ever echoing a key. Use it to confirm a binding took effect.
+ * HEALTH CHECK: GET /api/chat reports the provider chain without ever
+ * echoing a key. Add ?probe=1 to make a real (unauthenticated) request
+ * to the compat endpoint — it proves Cloudflare's edge can reach that
+ * host and reports the round-trip time.
  *
  * SECRETS (Cloudflare dashboard -> your Pages project -> Settings ->
  * Variables and Secrets; add as "Secret", then redeploy):
- *      GEMINI_API_KEY = AIza...
- *      CHAT_MODEL     = gemini-2.5-flash        (optional)
- *      CHAT_DAILY_CAP = 300                     (optional, per isolate)
+ *      AI_COMPAT_BASE, AI_COMPAT_KEY, AI_COMPAT_MODEL
+ *      AI_ORDER       = workers,compat,gemini   (optional)
+ *      CHAT_MODEL     = overrides the model per provider (optional)
+ *      GEMINI_API_KEY = AIza...                 (optional)
  *
  * PRIVACY: no message content is logged or stored by this function.
  */
@@ -188,7 +210,7 @@ async function callGemini(env, systemPrompt, turns) {
     data.candidates[0].content.parts) || [];
   const reply = parts.map((p) => p.text || '').join('').trim();
   if (!reply) return { ok: false, status: 502, detail: 'empty candidate' };
-  return { ok: true, reply };
+  return { ok: true, reply, model };
 }
 
 async function callWorkersAI(env, systemPrompt, turns) {
@@ -242,6 +264,115 @@ function cleanReply(raw) {
 }
 
 /* ------------------------------------------------------------------ */
+/* Any OpenAI-compatible endpoint — DeepSeek, Doubao/Ark, Qwen, GLM,   */
+/* Moonshot, OpenRouter, a local gateway. One adapter for all of them. */
+/* ------------------------------------------------------------------ */
+function compatConfig(env) {
+  return {
+    base: String((env && env.AI_COMPAT_BASE) || '').replace(/\/+$/, ''),
+    key: (env && env.AI_COMPAT_KEY) || '',
+    model: (env && (env.CHAT_MODEL || env.AI_COMPAT_MODEL)) || '',
+    get ready() { return !!(this.base && this.key && this.model); }
+  };
+}
+
+/* DeepSeek and Doubao/Ark both think before they answer by default.
+   For a 90-180 word reading-assistant reply that is wasted tokens and
+   ten wasted seconds, so ask for the non-thinking path where it exists.
+   Other hosts ignore or reject the field, so only send it to the ones
+   known to understand it. */
+function wantsThinkingFlag(base) {
+  return /deepseek\.com|volces\.com|bytepluses\.com|bigmodel\.cn/i.test(base);
+}
+
+async function callCompat(env, systemPrompt, turns) {
+  const cfg = compatConfig(env);
+  if (!cfg.ready) return { ok: false, status: 0, detail: 'compat not configured' };
+
+  const messages = [{ role: 'system', content: systemPrompt }]
+    .concat(turns.map((m) => ({ role: m.role, content: m.content })));
+
+  const send = async (withFlag) => {
+    const body = {
+      model: cfg.model,
+      messages,
+      temperature: 0.6,
+      max_tokens: 700,
+      stream: false
+    };
+    if (withFlag) body.thinking = { type: 'disabled' };
+    const res = await fetch(cfg.base + '/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + cfg.key
+      },
+      body: JSON.stringify(body)
+    });
+    return { res, text: await res.text() };
+  };
+
+  const useFlag = wantsThinkingFlag(cfg.base);
+  let out = await send(useFlag);
+  /* A host that does not know the field answers 400 — retry bare. */
+  if (!out.res.ok && out.res.status === 400 && useFlag) out = await send(false);
+
+  if (!out.res.ok) {
+    return {
+      ok: false,
+      status: out.res.status,
+      detail: out.text.slice(0, 300),
+      model: cfg.model
+    };
+  }
+
+  let data;
+  try { data = JSON.parse(out.text); }
+  catch (err) { return { ok: false, status: 502, detail: 'bad json from ' + cfg.model }; }
+
+  const msg = data && data.choices && data.choices[0] && data.choices[0].message;
+  let reply = '';
+  if (msg) {
+    if (typeof msg.content === 'string') reply = msg.content;
+    else if (Array.isArray(msg.content)) {
+      reply = msg.content.map((p) => (p && p.text) || '').join('');
+    }
+  }
+  reply = cleanReply(reply);
+  if (!reply) return { ok: false, status: 502, detail: 'empty reply from ' + cfg.model };
+  return { ok: true, reply, model: cfg.model };
+}
+
+/* ------------------------------------------------------------------ */
+/* Provider chain — free first, paid overflow last                     */
+/* ------------------------------------------------------------------ */
+const PROVIDER_ORDER = ['workers', 'compat', 'gemini'];
+
+function providerState(env) {
+  return {
+    workers: !!(env && env.AI && typeof env.AI.run === 'function'),
+    compat: compatConfig(env).ready,
+    gemini: !!(env && env.GEMINI_API_KEY)
+  };
+}
+
+function providerChain(env) {
+  const wanted = String((env && env.AI_ORDER) || '')
+    .split(',')
+    .map((s) => s.trim().toLowerCase())
+    .filter(Boolean);
+  const order = wanted.length ? wanted : PROVIDER_ORDER;
+  const state = providerState(env);
+  return order.filter((p) => state[p]);
+}
+
+function runProvider(name, env, systemPrompt, turns) {
+  if (name === 'workers') return callWorkersAI(env, systemPrompt, turns);
+  if (name === 'compat') return callCompat(env, systemPrompt, turns);
+  return callGemini(env, systemPrompt, turns);
+}
+
+/* ------------------------------------------------------------------ */
 /* Handler                                                             */
 /* ------------------------------------------------------------------ */
 export async function onRequestPost(context) {
@@ -270,9 +401,8 @@ export async function onRequestPost(context) {
     return json({ ok: false, code: 'no_question' }, 400);
   }
 
-  const hasGemini = !!env.GEMINI_API_KEY;
-  const hasWorkersAI = !!(env && env.AI && typeof env.AI.run === 'function');
-  if (!hasGemini && !hasWorkersAI) {
+  const chain = providerChain(env);
+  if (!chain.length) {
     return json({
       ok: false,
       code: 'not_configured',
@@ -284,47 +414,91 @@ export async function onRequestPost(context) {
   const site = await getContext(origin);
   const systemPrompt = SYSTEM + (site || '(site summary unavailable)') + '\n\nFACT SHEET:\n' + FACTS;
 
-  let result;
-  try {
-    result = hasGemini
-      ? await callGemini(env, systemPrompt, turns)
-      : await callWorkersAI(env, systemPrompt, turns);
-  } catch (err) {
-    return json({ ok: false, code: 'upstream_error',
-      message: 'The assistant is briefly unavailable. Please try again, or email Tony@RuDao.org.' }, 502);
+  /* Walk the chain: a free provider that fails or hits its daily
+     allowance hands over to the next one instead of showing an error. */
+  let last = { ok: false, status: 502, detail: 'no provider answered' };
+  const tried = [];
+  for (const name of chain) {
+    let r;
+    try {
+      r = await runProvider(name, env, systemPrompt, turns);
+    } catch (err) {
+      r = { ok: false, status: 502, detail: String((err && err.message) || err).slice(0, 200) };
+    }
+    if (r && r.ok && r.reply) {
+      return json({ ok: true, reply: r.reply, provider: name, model: r.model || null });
+    }
+    tried.push({ provider: name, status: (r && r.status) || 0, detail: (r && r.detail) || '' });
+    last = r || last;
   }
 
-  if (!result.ok) {
-    return json({
-      ok: false,
-      code: 'upstream_error',
-      status: result.status,
-      message: 'The assistant is briefly unavailable. Please try again, or email Tony@RuDao.org.'
-    }, 502);
-  }
-
-  return json({ ok: true, reply: result.reply });
+  return json({
+    ok: false,
+    code: 'upstream_error',
+    status: last.status,
+    tried,
+    message: 'The assistant is briefly unavailable. Please try again, or email Tony@RuDao.org.'
+  }, 502);
 }
 
-/* Health check — open /api/chat in a browser to see whether the
-   Workers AI binding (or Gemini key) actually reached production.
-   Never echoes a secret, only booleans. */
+/* Health check — open /api/chat in a browser to see which provider
+   actually reached production. Never echoes a secret, only booleans
+   and hostnames. Add ?probe=1 to test real reachability from the edge. */
 export async function onRequestGet(context) {
-  const { env } = context;
-  const ai = !!(env && env.AI && typeof env.AI.run === 'function');
-  const gemini = !!(env && env.GEMINI_API_KEY);
-  return json({
+  const { env, request } = context;
+  const state = providerState(env);
+  const cfg = compatConfig(env);
+  let host = null;
+  try { host = cfg.base ? new URL(cfg.base).host : null; } catch (err) { host = 'invalid-url'; }
+
+  const chain = providerChain(env);
+  const out = {
     ok: true,
     service: 'RuDao AI chat',
-    live: ai || gemini,
+    live: chain.length > 0,
+    chain,
     providers: {
-      gemini: gemini,
-      workers_ai: ai,
-      model: gemini ? (env.CHAT_MODEL || 'gemini-2.5-flash')
-        : ai ? (env.CHAT_MODEL || AI_MODELS[0]) : null
+      workers_ai: state.workers,
+      compat: state.compat
+        ? { host, model: cfg.model }
+        : { configured: false, needs: ['AI_COMPAT_BASE', 'AI_COMPAT_KEY', 'AI_COMPAT_MODEL'] },
+      gemini: state.gemini
     },
+    order_note: 'chain follows AI_ORDER, default workers,compat,gemini (free first)',
     usage: 'POST {"messages":[{"role":"user","content":"..."}]}',
-    fix: (ai || gemini) ? null
-      : 'Add an AI binding named AI (or a GEMINI_API_KEY secret), then Retry deployment.'
-  }, 200);
+    fix: chain.length ? null
+      : 'Add an AI binding named AI, or AI_COMPAT_BASE/KEY/MODEL, then Retry deployment.'
+  };
+
+  /* ?probe=1 sends one unauthenticated request: 401 means the host is
+     reachable from Cloudflare's edge, a network error means it is not.
+     Costs nothing and reveals no key. */
+  if (request && new URL(request.url).searchParams.get('probe') && cfg.base) {
+    const started = Date.now();
+    try {
+      const res = await fetch(cfg.base + '/chat/completions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ model: cfg.model || 'probe', messages: [{ role: 'user', content: 'ping' }] })
+      });
+      out.probe = {
+        host,
+        reachable: true,
+        http: res.status,
+        ms: Date.now() - started,
+        reading: res.status === 401
+          ? 'reachable - 401 just means no key was sent'
+          : res.status < 500 ? 'reachable' : 'host reachable, upstream error'
+      };
+    } catch (err) {
+      out.probe = {
+        host,
+        reachable: false,
+        ms: Date.now() - started,
+        error: String((err && err.message) || err).slice(0, 200)
+      };
+    }
+  }
+
+  return json(out, 200);
 }
