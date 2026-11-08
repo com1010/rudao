@@ -196,7 +196,7 @@
 
     var form = el('form', 'rp-form');
     input = el('textarea', 'rp-input');
-    input.rows = 1;
+    input.rows = 4;
     input.placeholder = 'Ask about RuShang, 竞合, the book…';
     input.setAttribute('aria-label', 'Your question');
     input.addEventListener('keydown', function (e) {
@@ -204,7 +204,7 @@
     });
     input.addEventListener('input', function () {
       input.style.height = 'auto';
-      input.style.height = Math.min(96, input.scrollHeight) + 'px';
+      input.style.height = Math.min(190, input.scrollHeight) + 'px';
     });
     sendBtn = el('button', 'rp-send', 'Send');
     sendBtn.type = 'submit';
@@ -263,7 +263,15 @@
     panel.appendChild(vPro);
 
     root.appendChild(panel);
-    root.appendChild(fab);
+    /* A page may supply its own trigger, the way the homepage hero does.
+       Then it also owns the placement, and a second floating pill doing
+       the same job would only sit on top of the hero button, so it is
+       never mounted. */
+    if (document.querySelector('[data-rp-hide-fab]')) {
+      root.className = 'rp-root rp-no-fab';
+    } else {
+      root.appendChild(fab);
+    }
     document.body.appendChild(root);
 
     wrapZh(panel);
@@ -493,7 +501,7 @@
       if (!input.value) {
         input.value = lastQ;
         input.style.height = 'auto';
-        input.style.height = Math.min(96, input.scrollHeight) + 'px';
+        input.style.height = Math.min(190, input.scrollHeight) + 'px';
       }
     }
     offerFallback(status === 503
