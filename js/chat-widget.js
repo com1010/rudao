@@ -78,7 +78,7 @@
   function stopSpeak() {
     if (speak.audio) {
       try { speak.audio.pause(); } catch (e) { /* ignore */ }
-      try { URL.revokeObjectURL(speak.audio.src); } catch (e) { /* ignore */ }
+      try { if (speak.audio.src.indexOf('blob:') === 0) URL.revokeObjectURL(speak.audio.src); } catch (e) { /* ignore */ }
       speak.audio = null;
     }
     try { if (window.speechSynthesis) window.speechSynthesis.cancel(); } catch (e) { /* ignore */ }
@@ -101,9 +101,13 @@
     });
   }
 
-  /* Play the texts one after another. Server audio first; if the very
-     first request says "not configured", the rest goes to the browser
-     engine instead. */
+  /* Play the texts one after another. Each clip is an <audio> element
+     pointed straight at the streaming endpoint: the browser starts
+     playing as soon as the first bytes arrive, instead of waiting for
+     the whole clip to be synthesized (that fetch-blob round trip was
+     the 5-second silence). If the server has no voice configured, the
+     audio element errors out immediately and the browser engine takes
+     the rest of the sequence. */
   function speakSeq(texts, btn) {
     if (speak.btn && speak.btn === btn) { stopSpeak(); return; }  /* tap again stops it */
     stopSpeak();
@@ -111,33 +115,28 @@
     if (btn) { btn.textContent = SPEAK_BUSY; btn.classList.add('is-playing'); }
 
     var i = 0;
+    var serverFailed = false;
     function nextClip() {
-      if (speak.audio) {
-        try { URL.revokeObjectURL(speak.audio.src); } catch (e) { /* ignore */ }
-        speak.audio = null;
-      }
       if (i >= texts.length) { stopSpeak(); return; }
       var t = texts[i++];
-      fetch(CONFIG.speakEndpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: t })
-      }).then(function (r) {
-        var ct = r.headers.get('Content-Type') || '';
-        if (ct.indexOf('audio') !== 0) {
-          /* no server voice yet - the browser takes the whole sequence */
-          browserSpeakAll(texts.slice(i - 1), btn);
-          return;
-        }
-        return r.blob().then(function (blob) {
-          var a = new Audio(URL.createObjectURL(blob));
-          speak.audio = a;
-          a.onended = nextClip;
-          a.onerror = nextClip;
-          return a.play().catch(function () { stopSpeak(); });
-        });
-      }).catch(function () {
-        stopSpeak();
+      if (serverFailed) {
+        browserSpeakAll(texts.slice(i - 1), btn);
+        return;
+      }
+      var a = new Audio(CONFIG.speakEndpoint + '?text=' + encodeURIComponent(t));
+      speak.audio = a;
+      a.preload = 'auto';
+      a.onended = nextClip;
+      a.onerror = function () {
+        /* first clip failed -> the whole sequence goes to the browser engine */
+        if (speak.audio === a) speak.audio = null;
+        serverFailed = true;
+        browserSpeakAll(texts.slice(i - 1), btn);
+      };
+      a.play().catch(function () {
+        if (speak.audio === a) speak.audio = null;
+        serverFailed = true;
+        browserSpeakAll(texts.slice(i - 1), btn);
       });
     }
     nextClip();

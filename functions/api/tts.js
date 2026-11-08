@@ -78,6 +78,15 @@ function providerInfo(env) {
 export async function onRequestGet({ request, env }) {
     const url = new URL(request.url);
 
+    /* streaming playback for the chat widget */
+    const text = (url.searchParams.get("text") || "").trim();
+    if (text) {
+        if (text.length > MAX_CHARS) {
+            return json({ ok: false, error: "too_long", fallback: "browser" });
+        }
+        return audioStream(text, env);
+    }
+
     /* Admin helper: list the account's voices so the cloned voice id can be
        copied without digging through the ElevenLabs dashboard. */
     if (url.searchParams.has("voices")) {
@@ -101,8 +110,63 @@ export async function onRequestGet({ request, env }) {
     return json(Object.assign({ ok: true, service: "RuDao voice reply" }, providerInfo(env)));
 }
 
-function speakElevenLabs(text, env) {
-    /* Two clones, one per language: the English-trained voice speaks EN,
+/* Streaming playback endpoint: GET /api/tts?text=... returns the raw audio
+   stream so an <audio> element can start playing while the provider is
+   still synthesizing - the reader hears the first words in well under a
+   second instead of waiting for the whole clip. The provider decision is
+   made on the upstream response HEADERS (which arrive first); the audio
+   body is piped through untouched. The standby provider kicks in exactly
+   as on POST. The chat widget points <audio>.src here. */
+function audioStream(text, env) {
+    const provider = detectProvider(env);
+    if (!provider) {
+        return json({ ok: false, error: "not_configured", fallback: "browser" });
+    }
+    const standby = provider === "fish" ? "elevenlabs" : "fish";
+    const standbyReady = standby === "fish"
+        ? Boolean(env.FISH_API_KEY)
+        : Boolean(env.ELEVENLABS_API_KEY);
+
+    function speak(p, t) {
+        return p === "fish" ? speakFish(t, env) : speakElevenLabs(t, env);
+    }
+
+    return speak(provider, text).then(function (res) {
+        const ct = res.headers.get("Content-Type") || "";
+        if (ct.startsWith("audio")) {
+            return pass(res);
+        }
+        /* headers say the primary refused - try the standby before giving up */
+        if (standbyReady) {
+            return speak(standby, text).then(function (res2) {
+                return (res2.headers.get("Content-Type") || "").startsWith("audio")
+                    ? pass(res2)
+                    : json({ ok: false, error: "upstream", fallback: "browser" });
+            }).catch(function () {
+                return json({ ok: false, error: "network", fallback: "browser" });
+            });
+        }
+        return res;
+    }).catch(function (e) {
+        if (standbyReady) {
+            return speak(standby, text).then(function (res2) {
+                return (res2.headers.get("Content-Type") || "").startsWith("audio")
+                    ? pass(res2)
+                    : json({ ok: false, error: "network", fallback: "browser" });
+            });
+        }
+        return json({ ok: false, error: "network", message: String(e && e.message || e), fallback: "browser" });
+    });
+}
+
+function pass(res) {
+    return new Response(res.body, {
+        status: 200,
+        headers: { "Content-Type": "audio/mpeg", "Cache-Control": "no-store", "Accept-Ranges": "none" }
+    });
+}
+
+function speakElevenLabs(text, env) {    /* Two clones, one per language: the English-trained voice speaks EN,
        the Mandarin-trained voice speaks ZH. Chinese falls back to the
        English voice until ELEVENLABS_VOICE_ID_ZH is set. */
     const isZh = /[\u4e00-\u9fff]/.test(text);
@@ -151,7 +215,18 @@ function speakElevenLabs(text, env) {
 
 function speakFish(text, env) {
     const lang = /[\u4e00-\u9fff]/.test(text) ? "zh-CN" : "en";
-    const payload = { text: text, format: "mp3", language: lang };
+    const payload = {
+        text: text,
+        format: "mp3",
+        language: lang,
+        /* speed knobs (docs.fish.audio): "balanced" latency starts emitting
+           audio ~300ms in; a small chunk_length batches less text before the
+           engine starts speaking; 64 kbps keeps the transfer small with no
+           loss for speech. */
+        latency: "balanced",
+        chunk_length: 100,
+        mp3_bitrate: 64
+    };
     if (env.FISH_VOICE_ID) payload.reference_id = env.FISH_VOICE_ID;
     return fetch("https://api.fish.audio/v1/tts", {
         method: "POST",
