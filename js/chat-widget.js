@@ -238,7 +238,7 @@
       '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">' +
       '<path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.9 8.9 0 0 1-3.8-.8L3 21l1.8-5.4A8.4 8.4 0 0 1 4 11.5 8.4 8.4 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"/></svg></span>' +
       '<span class="rp-fab-label"><span class="rp-fab-en">Chat about RuDao</span>' +
-      '<span class="rp-fab-cn zh">问书 儒道 问答</span></span>';
+      '<span class="rp-fab-cn zh">儒道互动 谈书问道 有问必答</span></span>';
     fab.addEventListener('click', open);
 
     panel = el('div', 'rp-panel');

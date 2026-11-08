@@ -747,10 +747,9 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     letter-spacing: 0.04em;
 }
 
-/* The "Chat 问书" call to action, sitting on the 儒道 line.
-   Kept optically quiet: paper fill, hairline vermillion edge, and it
-   only fills in on hover so it never competes with the title. */
-/* Chat 问书 entry point - sits on its own line, under the author link */
+/* The "Chat about RuDao" call to action, sitting on the 儒道 line.
+   A solid vermillion pill with a pulse ring so the chat entry is obvious. */
+/* Chat about RuDao entry point - sits on its own line, under the author link */
 .hero-chat-row {
     display: flex;
     justify-content: center;
@@ -806,7 +805,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .hero-chat-en { font-size: 1.06rem; letter-spacing: 0.01em; white-space: nowrap; }
 .hero-chat-cn {
     font-family: var(--font-cn-body);
-    font-size: 1rem;
+    /* Match the English line above so .zh can render exactly 4px smaller. */
+    font-size: 1.06rem;
     letter-spacing: 0.14em;
     opacity: 0.92;
     white-space: nowrap;
@@ -5797,7 +5797,9 @@ a[href^="http"].urllink {
 .rp-fab-icon { display: inline-flex; flex: none; }
 .rp-fab-label { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; }
 .rp-fab-en { white-space: nowrap; line-height: 1.15; }
-.rp-fab-cn { font-family: var(--font-cn); font-size: .95rem; letter-spacing: .12em; opacity: .92; white-space: nowrap; line-height: 1.2; }
+/* This span is also .zh: keep the 4px-smaller rule instead of
+   overriding it with a fixed rem value (site-wide CJK typography rule). */
+.rp-fab-cn { font-family: var(--font-cn); font-size: calc(1em - 4px); letter-spacing: .12em; opacity: .92; white-space: nowrap; line-height: 1.2; }
 
 .rp-panel {
     position: absolute; right: 0; bottom: 66px;
@@ -5931,7 +5933,7 @@ a[href^="http"].urllink {
     .hero-chat-btn { font-size: 0.95rem; padding: 13px 20px 13px 16px; gap: 10px; }
     .hero-chat-btn svg { width: 20px; height: 20px; }
     .hero-chat-en { font-size: 0.95rem; }
-    .hero-chat-cn { font-size: 1rem; letter-spacing: 0.10em; }
+    .hero-chat-cn { font-size: 0.95rem; letter-spacing: 0.10em; }
     .hero-chat-arrow { font-size: 1.1rem; }
 }
 @media (max-width: 520px) {

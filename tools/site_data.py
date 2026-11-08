@@ -17,7 +17,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-CACHE = "20261109e"
+CACHE = "20261109f"
 
 # ---------------------------------------------------------------------------
 # Static site links. Every entry here is also rendered into the nav dropdown.
