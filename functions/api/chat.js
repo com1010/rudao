@@ -42,7 +42,9 @@
  * HEALTH CHECK: GET /api/chat reports the provider chain without ever
  * echoing a key. Add ?probe=1 to make a real (unauthenticated) request
  * to the compat endpoint — it proves Cloudflare's edge can reach that
- * host and reports the round-trip time.
+ * host and reports the round-trip time. Add ?probe=auth to send the key
+ * with a one-token request, which tells "key rejected" (401) apart from
+ * "key fine, wallet empty" (402).
  *
  * SECRETS (Cloudflare dashboard -> your Pages project -> Settings ->
  * Variables and Secrets; add as "Secret", then redeploy):
@@ -472,27 +474,49 @@ export async function onRequestGet(context) {
 
   /* ?probe=1 sends one unauthenticated request: 401 means the host is
      reachable from Cloudflare's edge, a network error means it is not.
-     Costs nothing and reveals no key. */
-  if (request && new URL(request.url).searchParams.get('probe') && cfg.base) {
+     ?probe=auth repeats it with the real key and 1 output token, which
+     separates "key rejected" (401) from "key fine, wallet empty" (402).
+     Costs at most a couple of tokens and reveals no key. */
+  const probe = request ? new URL(request.url).searchParams.get('probe') : null;
+  if (probe && cfg.base) {
+    const withKey = probe === 'auth' && cfg.ready;
     const started = Date.now();
+    const headers = { 'Content-Type': 'application/json' };
+    if (withKey) headers.Authorization = 'Bearer ' + cfg.key;
     try {
       const res = await fetch(cfg.base + '/chat/completions', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ model: cfg.model || 'probe', messages: [{ role: 'user', content: 'ping' }] })
+        headers,
+        body: JSON.stringify({
+          model: cfg.model || 'probe',
+          messages: [{ role: 'user', content: 'ping' }],
+          max_tokens: withKey ? 1 : undefined,
+          stream: false
+        })
       });
+      const readings = {
+        200: withKey ? 'key works and has credit' : 'reachable',
+        401: withKey ? 'key rejected or missing' : 'reachable - 401 only means no key was sent',
+        402: 'key is valid but the account balance is empty - top up',
+        403: 'key lacks permission for this model',
+        404: 'model name not found at this host',
+        429: 'rate limited (free tiers are often a few requests per minute)',
+        500: 'provider error'
+      };
       out.probe = {
         host,
+        signed: withKey,
         reachable: true,
         http: res.status,
         ms: Date.now() - started,
-        reading: res.status === 401
-          ? 'reachable - 401 just means no key was sent'
-          : res.status < 500 ? 'reachable' : 'host reachable, upstream error'
+        reading: readings[res.status] || (res.status < 500 ? 'reachable' : 'host reachable, upstream error')
       };
+      if (withKey && res.status === 402) out.probe.fix = 'Top up at platform.deepseek.com, or rely on the Workers AI binding.';
+      if (withKey && res.status === 401) out.probe.fix = 'Create a new key and replace AI_COMPAT_KEY.';
     } catch (err) {
       out.probe = {
         host,
+        signed: withKey,
         reachable: false,
         ms: Date.now() - started,
         error: String((err && err.message) || err).slice(0, 200)
