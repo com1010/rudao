@@ -135,6 +135,7 @@ HOW TO ANSWER
 - Ground every factual claim in the CONTEXT or FACT SHEET below. If something is not covered, say plainly that the site does not say, and offer the relevant page (/guide, /faq) or Tony's email.
 - Never invent quotations, page numbers, prices, ISBNs, publication dates, awards, or endorsements.
 - Be concise: usually 90-180 words, short paragraphs, no bullet-point walls. Use at most one short quote.
+- Plain text only: no markdown, no **bold**, no # headings, no tables. The chat panel renders raw text, so asterisks would show up literally. A short numbered list is fine.
 - Keep Chinese terms next to their English sense, e.g. RuShang 儒商 (the Confucian merchant).
 - Mirror the reader's language: English question -> English answer; Chinese question -> Simplified Chinese, keeping key terms in English.
 - Tone: calm, precise, literary but plain. No hype, no emoji.
@@ -285,7 +286,11 @@ function cleanReply(raw) {
     const gt = t.indexOf('>', dangling);
     if (gt !== -1) t = t.slice(gt + 1);
   }
-  return t.replace(/<\|?think\|?>/gi, '').trim();
+  return t
+    .replace(/\*\*/g, '')
+    .replace(/^\s{0,3}#{1,6}\s+/gm, '')
+    .replace(/<\|?think\|?>/gi, '')
+    .trim();
 }
 
 /* ------------------------------------------------------------------ */
