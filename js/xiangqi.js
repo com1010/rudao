@@ -487,7 +487,11 @@
             if (!pt) return;
             var p = at(state.board, pt[0], pt[1]);
             if (selected) {
-                if (p && p.c === state.turn) { selected = pt; render(); return; }
+                if (p && p.c === state.turn) {
+                    selected = pt; render();
+                    emit('select', { by: 'human', piece: p.t, side: state.turn, from: pt });
+                    return;
+                }
                 var hs = hints(), found = false;
                 for (var i = 0; i < hs.length; i++) {
                     if (hs[i].to[0] === pt[0] && hs[i].to[1] === pt[1]) { found = true; break; }
@@ -495,7 +499,10 @@
                 if (found) { doMove(selected, pt); return; }
                 selected = null; render(); return;
             }
-            if (p && p.c === state.turn) { selected = pt; render(); }
+            if (p && p.c === state.turn) {
+                selected = pt; render();
+                emit('select', { by: 'human', piece: p.t, side: state.turn, from: pt });
+            }
         }
 
         function api() {

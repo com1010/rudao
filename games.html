@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Board Games - WeiQi / Go and Chinese Chess | RuDao 儒道</title>
-<meta name="description" content="Play WeiQi (Go) and Chinese Chess (Xiangqi) on RuDao.org. Two playable boards, a friendly AI table companion, and notes on LiYi 礼仪 from Chapter 4.3 of RuDao - Beyond The Art of War by Tony Tong 唐仪." />
+<meta name="description" content="Play WeiQi (Go) and Chinese Chess (Xiangqi) on RuDao.org. Two playable boards, optional board sounds, a friendly AI table companion, and notes on LiYi 礼仪 from Chapter 4.3 of RuDao - Beyond The Art of War by Tony Tong 唐仪." />
 <meta name="keywords" content="WeiQi, Go board game, 围棋, Chinese Chess, Xiangqi, 象棋, board games, LiYi, 礼仪, RuDao, Tony Tong, 唐仪, play Go online, play Xiangqi online" />
 <meta name="author" content="Tony Tong (唐仪) - https://TonyTong.cc" />
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Quintessential&family=Merriweather:wght@300;400;700&family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/css/styles.css?v=20261109a" />
-<link rel="stylesheet" href="/css/games.css?v=20261109a" />
+<link rel="stylesheet" href="/css/games.css?v=20261109b" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -145,6 +145,24 @@
 
     <section class="gm-play" aria-label="Play a board game">
         <div class="container">
+            <div class="gm-soundbar">
+                <div class="gm-sound-label">
+                    <span class="gm-sound-icon" aria-hidden="true">&#9834;</span>
+                    <span>Board sounds <span class="zh">棋子音效</span></span>
+                </div>
+                <div class="gm-sound-ctl">
+                    <button type="button" class="gm-sound-toggle is-on" id="sound-toggle" aria-pressed="true" aria-label="Toggle board sounds">
+                        <span class="gm-sound-dot" aria-hidden="true"></span>
+                        <span id="sound-state">On</span>
+                    </button>
+                    <label class="gm-volume">
+                        <span>Volume</span>
+                        <input type="range" id="sound-volume" min="10" max="100" step="5" value="70" aria-label="Board sound volume" />
+                    </label>
+                    <span class="gm-sound-hint">Sounds are made in your browser - no files, no microphone.</span>
+                </div>
+            </div>
+
             <div class="gm-tabs" role="tablist" aria-label="Choose a game">
                 <button type="button" class="gm-tab is-on" id="tab-go" role="tab" aria-selected="true" aria-controls="panel-go" data-game="go">
                     <span class="gm-tab-en">WeiQi / Go</span><span class="zh">围棋</span>
@@ -462,8 +480,9 @@
     </script>
 <script src="/js/script.js?v=20261023b"></script>
 <script src="/js/go.js?v=20261109a"></script>
-<script src="/js/xiangqi.js?v=20261109a"></script>
-<script src="/js/games.js?v=20261109a"></script>
+<script src="/js/xiangqi.js?v=20261109b"></script>
+<script src="/js/game-sound.js?v=20261109b"></script>
+<script src="/js/games.js?v=20261109b"></script>
 <script src="/js/zh-wrap.js?v=20261109a"></script>
 <script src="/js/chat-widget.js?v=20261108l" defer></script>
 </body>

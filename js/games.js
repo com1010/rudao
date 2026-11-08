@@ -97,6 +97,18 @@
 
     function clearLog(id) { $(id).innerHTML = ''; }
 
+    /* --------------------------------------------------------
+       Board sounds - synthesised locally by js/game-sound.js.
+       The module is optional: if it fails to load, the boards
+       simply stay silent and everything else keeps working.
+       -------------------------------------------------------- */
+    var Sound = window.RuDaoSound || null;
+    function snd(name, delay) {
+        if (!Sound) return;
+        if (delay) window.setTimeout(function () { Sound.play(name); }, delay);
+        else Sound.play(name);
+    }
+
     var GO_LETTERS = 'ABCDEFGHJKLMNOPQRST';
     function goCoord(x, y, size) { return GO_LETTERS.charAt(x) + (size - y); }
     function goSide(c) { return c === 1 ? 'Black' : 'White'; }
@@ -141,6 +153,7 @@
             case 'start':
                 clearLog('go-log');
                 say('start');
+                snd('start');
                 goStatus();
                 break;
             case 'thinking':
@@ -151,25 +164,30 @@
                 addLog('go-log', (e.by === 'ai' ? 'Tony' : 'You') + ' ' + goSide(s.turn === 1 ? 2 : 1) +
                     ' ' + goCoord(e.x, e.y, s.size) + (e.captured ? ' +' + e.captured : ''), e.by === 'ai');
                 say(e.captured ? 'capture' : 'move');
+                snd(e.captured ? 'go-capture' : 'go');
                 goStatus();
                 break;
             case 'pass':
                 addLog('go-log', (e.by === 'ai' ? 'Tony' : 'You') + ' passed', e.by === 'ai');
                 say('pass');
+                snd('pass');
                 if (e.ended) setStatus('go-status', goResult(go.getState().result), 'over');
                 else goStatus();
                 break;
             case 'invalid':
                 setStatus('go-status', esc(e.reason), 'alert');
                 say('invalid');
+                snd('invalid');
                 break;
             case 'undo':
                 say('undo');
+                snd('undo');
                 goStatus();
                 break;
             case 'end':
                 setStatus('go-status', goResult(e.result), 'over');
                 say('end');
+                snd('end', 170);
                 break;
         }
     }
@@ -205,6 +223,7 @@
             case 'start':
                 clearLog('xq-log');
                 say('start');
+                snd('start');
                 xqStatus();
                 break;
             case 'thinking':
@@ -215,23 +234,31 @@
                 addLog('xq-log', (e.by === 'ai' ? 'Tony' : 'You') + ' ' + xqSide(e.side) + ' ' + glyph +
                     ' ' + esc(e.coord) + (e.capture ? ' x' : ''), e.by === 'ai');
                 say(e.capture ? 'capture' : (xq.getState().check ? 'check' : 'move'));
+                snd(e.capture ? 'xq-capture' : 'xq');
                 xqStatus();
                 break;
             case 'check':
                 say('check');
+                if (!e.over) snd('check', 130);
                 xqStatus();
+                break;
+            case 'select':
+                snd('select');
                 break;
             case 'invalid':
                 setStatus('xq-status', esc(e.reason), 'alert');
                 say('invalid');
+                snd('invalid');
                 break;
             case 'undo':
                 say('undo');
+                snd('undo');
                 xqStatus();
                 break;
             case 'end':
                 setStatus('xq-status', xqResult(e.result), 'over');
                 say('end');
+                snd('end', 200);
                 break;
         }
     }
@@ -256,6 +283,38 @@
         $('tab-go').setAttribute('aria-selected', isGo ? 'true' : 'false');
         $('tab-xq').setAttribute('aria-selected', isGo ? 'false' : 'true');
         if (isGo) goStatus(); else xqStatus();
+    }
+
+    /* --------------------------------------------------------
+       Sound bar - on/off and volume, remembered in localStorage
+       -------------------------------------------------------- */
+    function wireSound() {
+        var toggle = $('sound-toggle');
+        var state = $('sound-state');
+        var vol = $('sound-volume');
+        if (!Sound || !toggle || !state || !vol) {
+            if (toggle) toggle.disabled = true;
+            return;
+        }
+        function paint() {
+            var on = Sound.isEnabled();
+            toggle.classList.toggle('is-on', on);
+            toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+            state.textContent = on ? 'On' : 'Off';
+            vol.disabled = !on;
+            vol.value = String(Math.round(Sound.getVolume() * 100));
+        }
+        toggle.addEventListener('click', function () {
+            var on = !Sound.isEnabled();
+            Sound.setEnabled(on);
+            paint();
+            if (on) Sound.play('ui');
+        });
+        vol.addEventListener('input', function () {
+            Sound.setVolume(parseInt(vol.value, 10) / 100);
+        });
+        vol.addEventListener('change', function () { Sound.play('ui'); });
+        paint();
     }
 
     /* --------------------------------------------------------
@@ -295,6 +354,8 @@
         $('xq-mode').addEventListener('change', xqNewGame);
         $('xq-side').addEventListener('change', xqNewGame);
         $('xq-level').addEventListener('change', xqNewGame);
+
+        wireSound();
 
         var h = (window.location.hash || '').toLowerCase();
         if (/xiangqi|chinese-chess|panel-xq|chess/.test(h)) switchTab('xq');
