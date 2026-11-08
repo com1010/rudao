@@ -472,6 +472,19 @@ export async function onRequestGet(context) {
       : 'Add an AI binding named AI, or AI_COMPAT_BASE/KEY/MODEL, then Retry deployment.'
   };
 
+  /* Which build is actually serving, and which AI-ish variable names
+     exist in this environment. Names and presence only — never values.
+     This is what tells "not redeployed" apart from "variable misnamed". */
+  out.commit = String((env && (env.CF_PAGES_COMMIT_SHA || '')) || '').slice(0, 7) || null;
+  out.branch = (env && env.CF_PAGES_BRANCH) || null;
+  out.env_keys = Object.keys(env || {})
+    .filter((k) => /compat|deepseek|gemini|ai_order|chat_model|ark|openai|^ai$/i.test(k))
+    .sort()
+    .map((k) => ({
+      name: k,
+      set: typeof env[k] === 'string' ? env[k].length > 0 : !!env[k]
+    }));
+
   /* ?probe=1 sends one unauthenticated request: 401 means the host is
      reachable from Cloudflare's edge, a network error means it is not.
      ?probe=auth repeats it with the real key and 1 output token, which
