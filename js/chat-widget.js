@@ -6,8 +6,9 @@
  *   2. Ask Tony      — email, contact form, and any messenger you enable
  *   3. Consulting    — paid sessions / signed copies (USDC + card links)
  *
- * Free trial: 3 AI questions per browser (localStorage). After that the
- * panel offers Tony's channels and paid options; an access code (emailed
+ * Free trial: CONFIG.freeQuestions AI questions per browser (localStorage).
+ * After that the panel offers Tony's channels and paid options; an access
+ * code (emailed
  * after payment) unlocks unlimited AI chat on that browser. Only the
  * SHA-256 hash of the code lives in this file, never the code itself.
  *
@@ -35,12 +36,14 @@
     paypal: '',                         /* https://paypal.me/... */
     usdcNote: 'USDC (ERC20 / BASE / BEP20 / Solana)',
 
-    freeQuestions: 3,
+    freeQuestions: 10,
     accessCodeHash: '',                 /* sha256 hex of the unlock code; '' = code box disabled */
     sessionLabel: '60-minute private session with Tony Tong'
   };
 
-  var QUOTA_KEY = 'rudao_chat_used';
+  /* v2: raised the trial from 3 to 10, and a new key means every reader
+     starts that trial from zero instead of inheriting the old count. */
+  var QUOTA_KEY = 'rudao_chat_used_v2';
   var PRO_KEY = 'rudao_chat_pro';
 
   /* ---------- tiny helpers ---------- */
@@ -333,7 +336,7 @@
   function renderPaywall() {
     paywall.innerHTML = '';
     paywall.hidden = false;
-    var h = el('strong', 'rp-paywall-title', 'You have used your 3 free questions.');
+    var h = el('strong', 'rp-paywall-title', 'You have used your ' + CONFIG.freeQuestions + ' free questions.');
     paywall.appendChild(h);
     paywall.appendChild(paragraph('Keep going two ways: ask Tony directly (free, he replies personally), or book a private session.'));
 
