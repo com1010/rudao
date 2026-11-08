@@ -6,10 +6,10 @@
  *   2. Ask Tony      — email, contact form, and any messenger you enable
  *   3. Consulting    — paid sessions / signed copies (USDC + card links)
  *
- * Free trial: CONFIG.freeQuestions AI questions per browser (localStorage).
- * After that the panel offers Tony's channels and paid options; an access
- * code (emailed
- * after payment) unlocks unlimited AI chat on that browser. Only the
+ * Free allowance: CONFIG.freeTokens RuDao Tokens per browser (localStorage),
+ * CONFIG.tokensPerQuestion spent per answered question. When the balance
+ * runs out the panel offers Tony's channels and a way to buy more tokens;
+ * an access code unlocks unlimited AI chat on that browser. Only the
  * SHA-256 hash of the code lives in this file, never the code itself.
  *
  * CONFIGURE: edit the CONFIG block below. Any channel left as '' is
@@ -36,14 +36,18 @@
     paypal: '',                         /* https://paypal.me/... */
     usdcNote: 'USDC (ERC20 / BASE / BEP20 / Solana)',
 
-    freeQuestions: 10,
+    /* RuDao Tokens — the reader's allowance, shown as a balance rather
+       than a question count. 100 tokens at 10 per answer = 10 questions. */
+    freeTokens: 100,                    /* granted to every reader on first visit */
+    tokensPerQuestion: 10,              /* spent per answered question */
+    tokensUrl: 'https://TonyTong.cc',   /* where to ask the author for more */
     accessCodeHash: '',                 /* sha256 hex of the unlock code; '' = code box disabled */
     sessionLabel: '60-minute private session with Tony Tong'
   };
 
-  /* v2: raised the trial from 3 to 10, and a new key means every reader
-     starts that trial from zero instead of inheriting the old count. */
-  var QUOTA_KEY = 'rudao_chat_used_v2';
+  /* Tokens spent, not questions asked — the balance is what readers see.
+     A fresh key means nobody inherits an old count from the 3-question era. */
+  var QUOTA_KEY = 'rudao_chat_tokens_used';
   var PRO_KEY = 'rudao_chat_pro';
 
   /* ---------- tiny helpers ---------- */
@@ -91,9 +95,16 @@
   }
   function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
 
-  function usedCount() { return parseInt(lsGet(QUOTA_KEY, '0'), 10) || 0; }
+  function tokensUsed() { return parseInt(lsGet(QUOTA_KEY, '0'), 10) || 0; }
   function isPro() { return lsGet(PRO_KEY, '') === '1'; }
-  function left() { return isPro() ? Infinity : Math.max(0, CONFIG.freeQuestions - usedCount()); }
+  function tokensLeft() {
+    return isPro() ? Infinity : Math.max(0, CONFIG.freeTokens - tokensUsed());
+  }
+  /* Whole questions the remaining balance can still pay for. */
+  function questionsLeft() {
+    if (isPro()) return Infinity;
+    return Math.floor(tokensLeft() / CONFIG.tokensPerQuestion);
+  }
 
   function sha256(str) {
     if (!(window.crypto && crypto.subtle)) return Promise.resolve('');
@@ -109,7 +120,7 @@
   var messages = [];      /* {role:'user'|'assistant', content} */
   var busy = false;
   var built = false;
-  var root, panel, log, input, sendBtn, quotaLine, paywall, tabBtns, views;
+  var root, panel, log, input, sendBtn, quotaLine, paywall, tabBtns, views, tokenLine;
 
   /* ---------- build UI ---------- */
   function build() {
@@ -165,6 +176,17 @@
 
     /* view: AI */
     var vAi = el('div', 'rp-view');
+
+    /* Token notice — states the grant, and where to ask for more. Kept
+       above the conversation so a first-time reader sees it without
+       scrolling; the live balance sits under the input. */
+    var tokenNote = el('div', 'rp-tokens');
+    tokenLine = paragraph('', 'rp-tokens-line');
+    tokenNote.appendChild(tokenLine);
+    tokenNote.appendChild(paragraph(
+      'If you need to chat more and want to buy more RuDao Tokens, please write to TonyTong.cc and leave a message for the author.',
+      'rp-tokens-fine'));
+
     log = el('div', 'rp-log');
     log.setAttribute('aria-live', 'polite');
     quotaLine = el('p', 'rp-quota');
@@ -190,6 +212,7 @@
     form.appendChild(sendBtn);
     form.addEventListener('submit', function (e) { e.preventDefault(); submit(); });
 
+    vAi.appendChild(tokenNote);
     vAi.appendChild(log);
     vAi.appendChild(paywall);
     vAi.appendChild(quotaLine);
@@ -315,19 +338,41 @@
     log.scrollTop = log.scrollHeight;
   }
 
+  /* The line above the conversation carries the balance too, so a reader
+     never sees "100" after spending forty of them. */
+  function renderTokens(t) {
+    if (!tokenLine) return;
+    var line;
+    if (isPro()) {
+      line = 'You have unlimited RuDao Tokens on this browser, and you can use them to chat about the book or to consult with the author, Tony Tong (TonyTong.cc).';
+    } else if (t > 0) {
+      line = 'You have ' + t + ' free RuDao Tokens, and you can use them to chat about the book or to consult with the author, Tony Tong (TonyTong.cc).';
+    } else {
+      line = 'Your free RuDao Tokens are used up. Write to TonyTong.cc and ask the author for more.';
+    }
+    if (tokenLine.textContent !== line) {
+      tokenLine.textContent = line;
+      wrapZh(tokenLine);
+    }
+  }
+
   function renderQuota() {
     if (isPro()) {
       quotaLine.textContent = 'Unlimited chat unlocked on this browser.';
       paywall.hidden = true;
+      renderTokens(Infinity);
+      wrapZh(quotaLine);
       return;
     }
-    var l = left();
-    if (l > 0) {
-      quotaLine.textContent = l + ' free ' + (l === 1 ? 'question' : 'questions') + ' left · ' +
-        CONFIG.freeQuestions + ' free per reader';
+    var t = tokensLeft();
+    var q = questionsLeft();
+    renderTokens(t);
+    if (q > 0) {
+      quotaLine.textContent = 'Balance: ' + t + ' RuDao Tokens · ' + CONFIG.tokensPerQuestion +
+        ' per question · ' + q + ' more ' + (q === 1 ? 'question' : 'questions');
       paywall.hidden = true;
     } else {
-      quotaLine.textContent = 'Free trial used.';
+      quotaLine.textContent = 'Balance: 0 RuDao Tokens.';
       renderPaywall();
     }
     wrapZh(quotaLine);
@@ -336,12 +381,16 @@
   function renderPaywall() {
     paywall.innerHTML = '';
     paywall.hidden = false;
-    var h = el('strong', 'rp-paywall-title', 'You have used your ' + CONFIG.freeQuestions + ' free questions.');
+    var h = el('strong', 'rp-paywall-title',
+      'Your ' + CONFIG.freeTokens + ' free RuDao Tokens are used up.');
     paywall.appendChild(h);
-    paywall.appendChild(paragraph('Keep going two ways: ask Tony directly (free, he replies personally), or book a private session.'));
+    paywall.appendChild(paragraph(
+      'You can still write to Tony directly - he answers readers himself. To buy more RuDao Tokens and keep chatting with the book, ask him for a top-up.'));
 
     var links = el('div', 'rp-links');
-    links.appendChild(linkBtn('Email Tony', 'mailto:' + CONFIG.email));
+    if (CONFIG.tokensUrl) links.appendChild(linkBtn('Buy more tokens · TonyTong.cc', CONFIG.tokensUrl));
+    if (CONFIG.contactAnchor) links.appendChild(linkBtn('Leave a message for Tony', CONFIG.contactAnchor));
+    links.appendChild(linkBtn('Email Tony · ' + CONFIG.email, 'mailto:' + CONFIG.email));
     var toPro = el('button', 'rp-btn rp-btn-accent', 'See consulting options');
     toPro.type = 'button';
     toPro.addEventListener('click', function () { showTab('pro'); });
@@ -382,7 +431,7 @@
     if (busy) return;
     var q = (input.value || '').trim();
     if (!q) return;
-    if (!isPro() && left() <= 0) { renderQuota(); return; }
+    if (!isPro() && questionsLeft() <= 0) { renderQuota(); return; }
 
     input.value = '';
     input.style.height = 'auto';
@@ -408,8 +457,8 @@
       }
       var reply = String(d.reply || '').trim();
       if (!reply) { failed(res.status); return; }
-      /* Only a real answer costs a free question. */
-      if (!isPro()) { lsSet(QUOTA_KEY, String(usedCount() + 1)); renderQuota(); }
+      /* Only a real answer costs tokens. */
+      if (!isPro()) { lsSet(QUOTA_KEY, String(tokensUsed() + CONFIG.tokensPerQuestion)); renderQuota(); }
       messages.push({ role: 'assistant', content: reply });
       addMsg('assistant', reply);
     }).catch(function () {
