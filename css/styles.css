@@ -5902,6 +5902,13 @@ a[href^="http"].urllink {
 .rp-send:disabled { opacity: .45; cursor: default; }
 
 .rp-actions { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; }
+.rp-actions > .rp-mic-lang { margin-right: auto; }
+.rp-mic-lang {
+    padding: 4px 8px; cursor: pointer; border-radius: 999px;
+    border: 1px solid rgba(169,50,38,.28); background: #fff; color: var(--gray);
+    font-family: var(--font-sans); font-size: .62rem; letter-spacing: .06em; line-height: 1.2;
+}
+.rp-mic-lang:hover { color: var(--vermillion); border-color: rgba(169,50,38,.5); }
 .rp-mic {
     display: inline-flex; align-items: center; justify-content: center;
     width: 34px; height: 33px; padding: 0; cursor: pointer;

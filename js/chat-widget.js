@@ -215,7 +215,7 @@
   var busy = false;
   var built = false;
   var root, panel, log, input, sendBtn, quotaLine, paywall, tabBtns, views, tokenLine, voiceBtn;
-  var micBtn, recog, micOn;
+  var micBtn, langBtn, recog, micOn;
 
   function renderVoiceBtn() {
     if (!voiceBtn) return;
@@ -336,12 +336,22 @@
     var SRClass = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (SRClass) {
       var actions = el('div', 'rp-actions');
+      /* Language pill: Web Speech API cannot auto-detect the spoken
+         language, so the reader picks the recognizer. AUTO follows the
+         browser language; one click cycles AUTO -> 中 -> EN and the
+         choice is remembered on this device. */
+      langBtn = el('button', 'rp-mic-lang', micLangLabel());
+      langBtn.type = 'button';
+      langBtn.setAttribute('aria-label', 'Voice input language 语音识别语言');
+      langBtn.title = 'Voice input language: Auto (browser). Click for 中文 / English.';
+      langBtn.addEventListener('click', function () { cycleMicLang(); });
       micBtn = el('button', 'rp-mic');
       micBtn.type = 'button';
       micBtn.setAttribute('aria-label', 'Voice typing 语音输入');
       micBtn.title = 'Voice typing 语音输入 (click again to stop)';
       micBtn.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3z"/><path d="M17 11a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z"/></svg>';
       micBtn.addEventListener('click', function () { toggleMic(); });
+      actions.appendChild(langBtn);
       actions.appendChild(micBtn);
       actions.appendChild(sendBtn);
       form.appendChild(actions);
@@ -596,12 +606,33 @@
 
   /* ---------- voice typing (mic button) ---------- */
 
-  /* Speech input language: a saved choice wins, else follow the browser
-     language (zh browsers dictatate zh-CN, the rest en-US). */
+  /* Speech input language: the recognizer must match the language you
+     speak, or the transcript turns to garble. AUTO follows the browser
+     language; 中 forces Mandarin zh-CN; EN forces English en-US. */
+  function micLangMode() {
+    var m = lsGet('rudao_chat_mic_lang', 'auto');
+    return (m === 'zh' || m === 'en') ? m : 'auto';
+  }
   function micLang() {
-    var saved = lsGet('rudao_chat_mic_lang', '');
-    if (saved) return saved;
+    var m = micLangMode();
+    if (m === 'zh') return 'zh-CN';
+    if (m === 'en') return 'en-US';
     return /^zh/i.test(navigator.language || '') ? 'zh-CN' : 'en-US';
+  }
+  function micLangLabel() {
+    var m = micLangMode();
+    return m === 'zh' ? '中' : m === 'en' ? 'EN' : 'AUTO';
+  }
+  function cycleMicLang() {
+    var m = micLangMode();
+    m = m === 'auto' ? 'zh' : m === 'zh' ? 'en' : 'auto';
+    lsSet('rudao_chat_mic_lang', m);
+    if (langBtn) {
+      langBtn.textContent = micLangLabel();
+      langBtn.title = 'Voice input language: ' + micLangLabel() +
+        ' - click to switch (AUTO follows browser, 中 = Mandarin, EN = English)';
+    }
+    setMicUI(micOn);
   }
 
   function setMicUI(on, note) {
@@ -609,7 +640,7 @@
     if (micBtn) micBtn.classList.toggle('listening', micOn);
     if (input) {
       input.placeholder = note || (micOn
-        ? 'Listening… 请说话 (' + micLang() + ')'
+        ? 'Listening… 请说话 [' + micLangLabel() + ' · ' + micLang() + ']'
         : 'Ask about RuShang, 竞合, the book… or tap the mic');
     }
   }
