@@ -5904,15 +5904,15 @@ a[href^="http"].urllink {
 .rp-actions { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; }
 .rp-actions > .rp-mic-lang { margin-right: auto; }
 .rp-mic-lang {
-    padding: 4px 8px; cursor: pointer; border-radius: 999px;
+    padding: 7px 11px; cursor: pointer; border-radius: 999px;
     border: 1px solid rgba(169,50,38,.28); background: #fff; color: var(--gray);
-    font-family: var(--font-sans); font-size: .62rem; letter-spacing: .06em; line-height: 1.2;
+    font-family: var(--font-sans); font-size: .66rem; letter-spacing: .06em; line-height: 1.2;
 }
 .rp-mic-lang:hover { color: var(--vermillion); border-color: rgba(169,50,38,.5); }
 .rp-mic {
     display: inline-flex; align-items: center; justify-content: center;
-    width: 34px; height: 33px; padding: 0; cursor: pointer;
-    border: 1px solid rgba(169,50,38,.35); border-radius: 10px;
+    width: 44px; height: 42px; padding: 0; cursor: pointer;
+    border: 1px solid rgba(169,50,38,.35); border-radius: 12px;
     background: #fff; color: var(--vermillion);
 }
 .rp-mic:hover { background: rgba(169,50,38,.08); }

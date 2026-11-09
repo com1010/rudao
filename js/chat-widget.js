@@ -65,7 +65,10 @@
   var SPEAK_OFF = '\uD83D\uDD07';   /* 🔇 muted  */
   var SPEAK_BUSY = '\u2026';        /* … loading */
   var VOICE_KEY = 'rudao_chat_voice_on';   /* '0' = muted; default ON */
-  var speak = { audio: null, btn: null };
+  /* token = the one channel every clip must hold. Starting a new sequence
+     bumps it, so a paused or erroring old clip can never fire its fallback
+     (that behaviour is exactly what put two voices on top of each other). */
+  var speak = { audio: null, btn: null, token: 0 };
 
   function voiceAuto() { return lsGet(VOICE_KEY, '1') !== '0'; }
 
@@ -76,10 +79,14 @@
   }
 
   function stopSpeak() {
+    speak.token += 1;                 /* silence every clip of older sequences */
     if (speak.audio) {
-      try { speak.audio.pause(); } catch (e) { /* ignore */ }
-      try { if (speak.audio.src.indexOf('blob:') === 0) URL.revokeObjectURL(speak.audio.src); } catch (e) { /* ignore */ }
+      var old = speak.audio;
       speak.audio = null;
+      try { old.onended = null; old.onerror = null; } catch (e) { /* ignore */ }
+      try { old.pause(); } catch (e) { /* ignore */ }
+      try { old.removeAttribute('src'); old.load(); } catch (e) { /* ignore */ }
+      try { if (old.src && old.src.indexOf('blob:') === 0) URL.revokeObjectURL(old.src); } catch (e) { /* ignore */ }
     }
     try { if (window.speechSynthesis) window.speechSynthesis.cancel(); } catch (e) { /* ignore */ }
     if (speak.btn) speakIdle(speak.btn);
@@ -88,15 +95,20 @@
 
   /* Zero-cost fallback: the reader's own device does the talking.
      speechSynthesis queues the utterances, so a whole sequence plays in
-     order even when the clips mix English and Mandarin. */
-  function browserSpeakAll(texts, btn) {
+     order even when the clips mix English and Mandarin. The token check
+     keeps a superseded sequence from starting a second voice. */
+  function browserSpeakAll(texts, btn, token) {
     if (!('speechSynthesis' in window)) { if (btn) speakIdle(btn); stopSpeak(); return; }
     texts.forEach(function (t, idx) {
+      if (token !== speak.token) return;
       var clean = t.replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '');
       var u = new SpeechSynthesisUtterance(clean);
       u.lang = /[\u4e00-\u9fff]/.test(clean) ? 'zh-CN' : 'en-US';
       u.rate = 1;
-      if (idx === texts.length - 1) { u.onend = stopSpeak; u.onerror = stopSpeak; }
+      if (idx === texts.length - 1) {
+        u.onend = function () { if (token === speak.token) stopSpeak(); };
+        u.onerror = function () { if (token === speak.token) stopSpeak(); };
+      }
       try { window.speechSynthesis.speak(u); } catch (e) { stopSpeak(); }
     });
   }
@@ -107,36 +119,41 @@
      the whole clip to be synthesized (that fetch-blob round trip was
      the 5-second silence). If the server has no voice configured, the
      audio element errors out immediately and the browser engine takes
-     the rest of the sequence. */
+     the rest of the sequence. Only the newest sequence may make sound. */
   function speakSeq(texts, btn) {
     if (speak.btn && speak.btn === btn) { stopSpeak(); return; }  /* tap again stops it */
     stopSpeak();
+    var token = speak.token;
     speak.btn = btn || null;
     if (btn) { btn.textContent = SPEAK_BUSY; btn.classList.add('is-playing'); }
 
     var i = 0;
     var serverFailed = false;
     function nextClip() {
+      if (token !== speak.token) return;          /* a newer sequence took over */
       if (i >= texts.length) { stopSpeak(); return; }
       var t = texts[i++];
       if (serverFailed) {
-        browserSpeakAll(texts.slice(i - 1), btn);
+        browserSpeakAll(texts.slice(i - 1), btn, token);
         return;
       }
       var a = new Audio(CONFIG.speakEndpoint + '?text=' + encodeURIComponent(t));
       speak.audio = a;
       a.preload = 'auto';
-      a.onended = nextClip;
+      a.onended = function () { if (token === speak.token) nextClip(); };
       a.onerror = function () {
+        if (token !== speak.token) return;        /* stopped by us - stay silent */
         /* first clip failed -> the whole sequence goes to the browser engine */
         if (speak.audio === a) speak.audio = null;
         serverFailed = true;
-        browserSpeakAll(texts.slice(i - 1), btn);
+        browserSpeakAll(texts.slice(i - 1), btn, token);
       };
-      a.play().catch(function () {
+      a.play().catch(function (err) {
+        if (token !== speak.token) return;        /* superseded: never fall back */
+        if (err && err.name === 'AbortError') return;
         if (speak.audio === a) speak.audio = null;
         serverFailed = true;
-        browserSpeakAll(texts.slice(i - 1), btn);
+        browserSpeakAll(texts.slice(i - 1), btn, token);
       });
     }
     nextClip();
@@ -352,7 +369,7 @@
       micBtn.type = 'button';
       micBtn.setAttribute('aria-label', 'Voice typing 语音输入');
       micBtn.title = 'Voice typing 语音输入 (click again to stop)';
-      micBtn.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3z"/><path d="M17 11a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z"/></svg>';
+      micBtn.innerHTML = '<svg viewBox="0 0 24 24" width="21" height="21" fill="currentColor" aria-hidden="true"><path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3z"/><path d="M17 11a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z"/></svg>';
       micBtn.addEventListener('click', function () { toggleMic(); });
       actions.appendChild(langBtn);
       actions.appendChild(micBtn);
@@ -648,20 +665,39 @@
     }
   }
 
-  /* Patience: browsers close the recognizer after roughly one second of
-     silence, but a reader pausing to think is not finished speaking. So
-     when the recognizer goes quiet the mic stays warm for 6 seconds: if
-     the reader keeps talking, the new words are appended to the same
-     question; only after a full 6-second pause does the question send.
-     Click the mic during the window to keep talking at once. */
+  /* Patience: a reader pausing to think is not finished speaking, so the
+     question only sends after a full 6 seconds without new words. The
+     recognizer runs in continuous mode and rests on our own idle timer -
+     it is never restarted in a loop (each restart made the browser beep,
+     and kept the mic hot after Send). */
   var MIC_PATIENCE_MS = 6000;
+  var MIC_NO_SPEECH_MS = 12000;
+  var micNoSpeechTimer = null;
+  var micRestarts = 0;
+
+  /* Hard stop: recogniser closed, timers cleared, nothing restarts it.
+     Called on Send, on panel close, on mute-everything paths. */
+  function micAbort(note) {
+    if (micSubmitTimer) { clearTimeout(micSubmitTimer); micSubmitTimer = null; }
+    if (micNoSpeechTimer) { clearTimeout(micNoSpeechTimer); micNoSpeechTimer = null; }
+    micState = '';
+    micHeard = '';
+    micRestarts = 0;
+    if (recog) {
+      var r = recog;
+      recog = null;
+      try { r.onresult = null; r.onend = null; r.onerror = null; } catch (e) { /* ignore */ }
+      try { r.abort(); } catch (e) { /* ignore */ }
+      try { r.stop(); } catch (e) { /* ignore */ }
+    }
+    setMicUI(false, note);
+  }
 
   function micFinish() {
-    if (micSubmitTimer) { clearTimeout(micSubmitTimer); micSubmitTimer = null; }
-    micState = '';
-    setMicUI(false);
+    var heard = micHeard;
     var text = (input.value || '').trim();
-    if (micHeard && text && !busy) submit();
+    micAbort();
+    if (heard && text && !busy) submit();
   }
 
   function micScheduleSend() {
@@ -670,6 +706,7 @@
   }
 
   function micResume() {
+    if (!recog) { micStart(); return; }
     micState = 'rec';
     try { recog.start(); setMicUI(true); } catch (e) { micFinish(); }
   }
@@ -677,14 +714,19 @@
   function micStart() {
     var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SR) return;
-    try { recog = new SR(); } catch (e) { return; }
+    micAbort();
+    try { recog = new SR(); } catch (e) { recog = null; return; }
     micHeard = '';
+    micRestarts = 0;
+    micState = 'rec';
     recog.lang = micLang();
     recog.interimResults = true;
-    recog.continuous = false;
+    recog.continuous = true;
     recog.onresult = function (ev) {
-      if (micState === 'wait') { micState = 'rec'; setMicUI(true); }
-      if (micSubmitTimer) { clearTimeout(micSubmitTimer); micSubmitTimer = null; }
+      if (!micState) return;                    /* stopped by the reader */
+      micState = 'rec';
+      micRestarts = 0;
+      if (micNoSpeechTimer) { clearTimeout(micNoSpeechTimer); micNoSpeechTimer = null; }
       var interim = '';
       for (var i = ev.resultIndex; i < ev.results.length; i += 1) {
         var t = (ev.results[i] && ev.results[i][0] && ev.results[i][0].transcript) || '';
@@ -693,37 +735,53 @@
       input.value = (micHeard + interim).trim();
       input.style.height = 'auto';
       input.style.height = Math.min(190, input.scrollHeight) + 'px';
+      setMicUI(true);
+      micScheduleSend();                        /* every new word restarts the 6s window */
     };
     recog.onerror = function (ev) {
       var err = (ev && ev.error) || 'error';
-      if (err === 'no-speech' || err === 'aborted') return; /* onend handles the pause */
-      if (micSubmitTimer) { clearTimeout(micSubmitTimer); micSubmitTimer = null; }
-      micState = '';
-      var msg = err === 'not-allowed' || err === 'service-not-allowed'
+      if (err === 'aborted') return;
+      if (err === 'no-speech') return;          /* idle timer decides */
+      micAbort(err === 'not-allowed' || err === 'service-not-allowed'
         ? 'Microphone blocked - allow mic access for this site, then tap the mic again.'
-        : 'Voice input unavailable (' + err + '). Please type your question.';
-      setMicUI(false, msg);
+        : 'Voice input unavailable (' + err + '). Please type your question.');
     };
     recog.onend = function () {
-      if (micState !== 'rec') return;
-      /* Reader may just be thinking. Stay warm and wait out the pause. */
+      if (!micState) return;                    /* we closed it ourselves */
       micState = 'wait';
+      if (!micHeard) { micAbort(); return; }     /* nothing captured - go quiet */
       setMicUI(true, 'Still listening… 继续说，或停约 6 秒自动发送');
-      micScheduleSend();
-      try { recog.start(); micState = 'rec'; } catch (e) { /* timer still fires */ }
+      /* the browser ended the session on its own; reopen it once or twice
+         while the reader is still inside the thinking window */
+      if (micRestarts >= 2) { micScheduleSend(); return; }
+      micRestarts += 1;
+      try {
+        recog.start();
+        micState = 'rec';
+      } catch (e) { micScheduleSend(); }
     };
-    micState = 'rec';
-    try { recog.start(); setMicUI(true); } catch (e) { micState = ''; setMicUI(false); }
+    try {
+      recog.start();
+      setMicUI(true);
+      micNoSpeechTimer = setTimeout(function () {
+        if (!micHeard && micState) micAbort('Did not hear anything - tap the mic and speak. 没有听到声音');
+      }, MIC_NO_SPEECH_MS);
+    } catch (e) { micAbort(); }
   }
 
   function toggleMic() {
-    if (micState === 'rec') { micState = ''; try { recog.stop(); } catch (e) {} micFinish(); return; }
+    if (micState === 'rec') { micFinish(); return; }   /* tap again = stop and send */
     if (micState === 'wait') { micResume(); return; }
     micStart();
   }
 
   function submit() {
     if (busy) return;
+    /* The moment a question is sent the microphone goes deaf: no listening
+       indicator, no re-opened recogniser, no beeps while the answer is
+       being written. Any reply still talking is stopped as well. */
+    micAbort();
+    stopSpeak();
     var q = (input.value || '').trim();
     if (!q) return;
     if (!isPro() && questionsLeft() <= 0) { renderQuota(); return; }
@@ -814,6 +872,7 @@
     if (voiceAuto()) speakSeq([CONFIG.greetingEn, CONFIG.greetingZh], null);
   }
   function closePanel() {
+    micAbort();
     panel.hidden = true;
     root.classList.remove('is-open');
     document.body.classList.remove('rp-lock-scroll');
