@@ -933,3 +933,129 @@
     .fa-card { grid-template-columns: 3.2rem minmax(0, 1fr); gap: .8rem; }
     .fa-glyph { font-size: 1.75rem; }
 }
+
+/* ============================================================
+   LiuBo 六博棋 - digital reconstruction and culture
+   ============================================================ */
+.gm-liubo {
+    margin-top: clamp(2.6rem, 5vw, 4.4rem);
+    padding-top: clamp(2rem, 4vw, 3rem);
+    border-top: 1px solid var(--paper-shadow);
+}
+.lb-seal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.1rem;
+    height: 3.1rem;
+    margin: 0 0 1rem;
+    font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+    font-size: 1.35rem;
+    line-height: 1;
+    color: #fff8f3;
+    background: var(--vermillion);
+    border-radius: 6px;
+    letter-spacing: 0;
+}
+.lb-lead {
+    font-family: var(--font-serif-en-body);
+    font-size: 1.06rem;
+    line-height: 1.75;
+    color: var(--ink-mid);
+    max-width: 78ch;
+    margin: 0 0 1.1rem;
+}
+.lb-lab {
+    margin: 0 0 1.5rem;
+    padding: 1rem 1.2rem 1.1rem;
+    background: #fff8f3;
+    border: 1px solid rgba(169, 50, 38, .22);
+    border-left: 3px solid var(--vermillion);
+    border-radius: 0 var(--radius) var(--radius) 0;
+}
+.lb-lab p {
+    font-family: var(--font-serif-en-body);
+    font-size: 1rem;
+    line-height: 1.72;
+    color: var(--ink-mid);
+    margin: 0 0 .6rem;
+}
+.lb-lab p:last-child { margin-bottom: 0; }
+.lb-lab a { color: var(--vermillion); border-bottom: 1px solid rgba(169, 50, 38, .3); }
+.lb-cn {
+    font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+    font-size: 1.02rem;
+    line-height: 1.95;
+    color: var(--ink-mid);
+    max-width: 78ch;
+    margin: 0 0 1.1rem;
+}
+.lb-h3 {
+    font-family: var(--font-serif-en-body);
+    font-weight: 400;
+    font-size: 1.16rem;
+    line-height: 1.45;
+    color: var(--ink-black);
+    margin: 1.7rem 0 .8rem;
+    padding-bottom: .4rem;
+    border-bottom: 1px solid var(--paper-shadow);
+}
+.lb-h3 .zh { white-space: nowrap; }
+.lb-list { margin: 0 0 1.1rem; padding-left: 1.15rem; }
+.lb-list li {
+    font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+    font-size: 1rem;
+    line-height: 1.9;
+    color: var(--ink-mid);
+    margin-bottom: .5rem;
+}
+.lb-list li strong { color: var(--ink-black); font-weight: 600; }
+.lb-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .9rem;
+    margin: 0 0 1.2rem;
+}
+.lb-card {
+    padding: 1rem 1.1rem 1.1rem;
+    background: #fffdf7;
+    border: 1px solid var(--paper-shadow);
+    border-radius: var(--radius);
+}
+.lb-card-h {
+    font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+    font-size: 1.02rem;
+    line-height: 1.5;
+    color: var(--ink-black);
+    margin: 0 0 .45rem;
+    padding-bottom: .35rem;
+    border-bottom: 1px dashed rgba(169, 50, 38, .25);
+}
+.lb-card p {
+    font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+    font-size: .95rem;
+    line-height: 1.85;
+    color: var(--ink-mid);
+    margin: 0;
+}
+.lb-note {
+    font-family: var(--font-serif-en-body);
+    font-size: .9rem;
+    line-height: 1.7;
+    color: var(--gray);
+    margin: 0 0 1.2rem;
+}
+.lb-events { margin: 0; padding-left: 1.3rem; }
+.lb-events li {
+    font-family: var(--font-serif-en-body);
+    font-size: .98rem;
+    line-height: 1.8;
+    color: var(--ink-mid);
+    margin-bottom: .7rem;
+}
+.lb-events li strong { color: var(--ink-black); }
+.lb-events li .zh { line-height: 1.9; }
+.lb-events a { color: var(--vermillion); border-bottom: 1px solid rgba(169, 50, 38, .3); }
+@media (max-width: 900px) {
+    .lb-grid { grid-template-columns: 1fr; }
+}
