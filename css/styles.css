@@ -5889,7 +5889,7 @@ a[href^="http"].urllink {
 
 /* Input box now sits at the top of the AI view (2026-11-10): the
    separator moves under it, so the border is bottom instead of top. */
-.rp-form { display: flex; gap: 8px; align-items: flex-end; padding: 12px 12px 10px; border-bottom: 1px solid rgba(10,10,10,.09); }
+.rp-form { display: flex; gap: 10px; align-items: stretch; padding: 12px 12px 10px; border-bottom: 1px solid rgba(10,10,10,.09); }
 .rp-input {
     flex: 1; min-height: 118px; max-height: 190px; padding: 11px 12px; resize: none;
     border: 1px solid rgba(10,10,10,.16); border-radius: 10px; background: #fff;
@@ -5903,8 +5903,12 @@ a[href^="http"].urllink {
 }
 .rp-send:disabled { opacity: .45; cursor: default; }
 
-.rp-actions { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; }
-.rp-actions > .rp-mic-lang { margin-right: auto; }
+/* Voice + send controls stack vertically beside the input box so the
+   textarea gets the full panel width. Order: language pill, mic, Send. */
+.rp-actions { display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; gap: 6px; margin-top: 0; min-width: 92px; }
+.rp-actions > .rp-mic-lang { margin-right: 0; text-align: center; }
+.rp-actions .rp-send { width: 100%; padding: 10px 8px; }
+.rp-actions .rp-mic { width: 100%; height: 42px; }
 .rp-mic-lang {
     padding: 7px 11px; cursor: pointer; border-radius: 999px;
     border: 1px solid rgba(169,50,38,.28); background: #fff; color: var(--gray);
