@@ -17,8 +17,8 @@
 /ch/20/whatisrudao   /ch/20whatisrudao   301
 /ch/21/hundredschools   /ch/21hundredschools   301
 /ch/22/confucius   /ch/22confucius   301
-/ch/23/fiveconstants   /ch/23fiveconstants   301
-/ch/24/eightvirtues   /ch/24eightvirtues   301
+/ch/23/fiveconstants   /ch/24fiveconstants   301
+/ch/24/eightvirtues   /ch/25eightvirtues   301
 /ch/30/innersage   /ch/30innersage   301
 /ch/31/daoism   /ch/31daoism   301
 /ch/32/ruanddao   /ch/32ruanddao   301
@@ -72,3 +72,6 @@
 # Human-readable site map lives at /sitemap (Cloudflare pretty URL).
 # No .html redirect rule here: Pages resolves /sitemap to /sitemap.html
 # internally, and a self-referential 301 could loop.
+/ch/23fiveconstants   /ch/24fiveconstants   301
+/ch/24eightvirtues   /ch/25eightvirtues   301
+/ch/23/mencius   /ch/23mencius   301

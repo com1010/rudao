@@ -146,13 +146,19 @@
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://rudao.org/ch/23fiveconstants</loc>
+        <loc>https://rudao.org/ch/23mencius</loc>
+        <lastmod>2026-11-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://rudao.org/ch/24fiveconstants</loc>
         <lastmod>2026-11-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://rudao.org/ch/24eightvirtues</loc>
+        <loc>https://rudao.org/ch/25eightvirtues</loc>
         <lastmod>2026-11-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
