@@ -136,6 +136,14 @@
       .ch22-table th, .ch22-table td { border: 1px solid rgba(0,0,0,.14); padding: .55rem .8rem; text-align: left; vertical-align: top; }
       .ch22-table thead th { background: rgba(169,50,38,.08); font-weight: 600; }
       .ch22-table tbody tr:nth-child(even) { background: rgba(0,0,0,.025); }
+      /* Ch 3.3 - Bilingual story frames (HTML Frame begin/end blocks) */
+      .story-frame { margin: 1.8rem 0 2.2rem; padding: 1.4rem 1.5rem 1.2rem; border: 1px solid rgba(169,50,38,.38); border-radius: 14px; background: rgba(169,50,38,.028); }
+      .story-frame .sf-title { margin: 0 0 1rem; padding: 0 .2rem .55rem; border-bottom: 1px solid rgba(169,50,38,.28); font-size: 1.1rem; font-weight: 700; line-height: 1.55; color: var(--vermillion, #a93226); }
+      .story-frame p.sf { margin: 0 0 .4rem; font-size: .97rem; line-height: 1.75; color: var(--ink-mid, #444); }
+      .story-frame p.sfc { font-family: 'Noto Serif SC', 'cwTeXQKai', serif; font-size: .97rem; line-height: 1.85; color: var(--ink-mid, #555); margin: 0 0 .4rem; }
+      .story-frame .sf-cn-label { margin: 1.1rem 0 .7rem; padding-top: .8rem; border-top: 1px dashed rgba(169,50,38,.25); font-family: 'Noto Serif SC', 'cwTeXQKai', serif; font-size: 1rem; font-weight: 700; color: var(--vermillion, #a93226); }
+      .story-frame p.sf:last-child, .story-frame p.sfc:last-child { margin-bottom: 0; }
+      @media (max-width: 640px) { .story-frame { padding: 1.1rem 1rem 1rem; } }
       .ch22-table .ch22-glyph { font-family: 'Noto Serif SC', 'cwTeXQKai', serif; font-size: 1.3rem; color: var(--vermillion, #a93226); text-align: center; font-weight: 700; }
       .ch22-quote-wall { display: grid; gap: .7rem; margin: 1.2rem 0 2rem; padding: 1.1rem 1.4rem; background: rgba(169,50,38,.045); border-left: 3px solid var(--vermillion, #a93226); border-radius: 6px; }
       .ch22-quote-wall p { margin: 0; font-size: .96rem; }
@@ -454,12 +462,200 @@
         <h3 class="chap-h2">The RuDao View of Fate and Human Agency</h3>
         <p>RuDao does not see life's path as a script that can never change. It also does not believe everything just happens by random luck. Between these two ideas - that fate is locked in, or that life is all chance - sits a balanced middle way. Two well-known Chinese stories show this idea clearly: SaiWeng ShiMa (塞翁失馬 The Old Man Who Lost His Horse) and Liao-Fan's Four Lessons (了凡四训 Liao-Fan Si Xun).</p>
         <p>Together they share a core RuDao idea: <strong>Outer circumstances keep shifting, but who you are matters.</strong> You cannot control every event that hits you, yet how you respond builds your future.</p>
+        <div class="story-frame" aria-label="Chapter 3.3.1 SaiWeng's Lost Horse bilingual story frame">
+        <p class="sf-title">Chapter 3.3.1&nbsp; SaiWeng's Lost Horse (塞翁失马)</p>
+        <p class="sf">Once upon a time, there was a chill old frontier guy everyone called SaiWeng (塞翁).</p>
+        <p class="sf">He lived out near the border with his son, and they loved raising horses.</p>
+        <p class="sf">One morning, he walked out to the stable and went -- wait a second.</p>
+        <p class="sf">My best horse just vanished!</p>
+        <p class="sf">It ran off into the wild lands beyond the border.</p>
+        <p class="sf">All his neighbors rushed over with sad faces, patting his shoulder.</p>
+        <p class="sf">They said what rotten luck this was.</p>
+        <p class="sf">But SaiWeng just shrugged and grinned.</p>
+        <p class="sf">"Who knows? This might turn out to be a good thing."</p>
+        <p class="sf">Everyone thought the old man had lost his marbles.</p>
+        <p class="sf">A few months rolled by.</p>
+        <p class="sf">Guess what?</p>
+        <p class="sf">The runaway horse trotted right back home.</p>
+        <p class="sf">It brought a gorgeous, strong wild steed from the northern tribes along with it!</p>
+        <p class="sf">The neighbors came running again, this time cheering.</p>
+        <p class="sf">They threw a little celebration for his amazing luck.</p>
+        <p class="sf">SaiWeng's smile faded, and he shook his head.</p>
+        <p class="sf">"Don't get too excited. This nice new horse could spell trouble."</p>
+        <p class="sf">The neighbors thought he was crazy again.</p>
+        <p class="sf">His son instantly fell in love with this fancy new horse.</p>
+        <p class="sf">He rode it every single day, zooming around for fun.</p>
+        <p class="sf">One day, the horse spooked.</p>
+        <p class="sf">The boy took a nasty fall.</p>
+        <p class="sf">He broke his thigh bone.</p>
+        <p class="sf">Neighbors showed up once more to comfort the family.</p>
+        <p class="sf">Again, SaiWeng said the same weird line.</p>
+        <p class="sf">"You never know. This injury might be a blessing."</p>
+        <p class="sf">Now everyone was totally confused.</p>
+        <p class="sf">Then one year later, invaders stormed across the border.</p>
+        <p class="sf">Every fit young man in the village was forced to join the army to fight.</p>
+        <p class="sf">Most of those boys never came home.</p>
+        <p class="sf">But SaiWeng's son was lame, so he didn't have to join the army.</p>
+        <p class="sf">Father and son stayed safe at home.</p>
+        <p class="sf">Good luck (福) and bad luck (祸) flip back and forth, faster than you can blink.</p>
+        <p class="sf">You can never judge a moment as totally good or totally bad right away.</p>
+        <p class="sf-cn-label">塞翁失马 中文故事</p>
+        <p class="sfc">从前边塞住着一位心态超稳的老人家，大家叫他塞翁。</p>
+        <p class="sfc">他和儿子一起住在边境，以养马为生。</p>
+        <p class="sfc">某天一早，他走到马厩，忽然愣住了。</p>
+        <p class="sfc">哎呀，家里最好的马不见了！</p>
+        <p class="sfc">它一路跑到塞外的荒野里去了。</p>
+        <p class="sfc">邻居们全都赶来，拍着他的肩膀安慰他。</p>
+        <p class="sfc">大家都说，这运气实在太差了。</p>
+        <p class="sfc">可塞翁只是耸耸肩，淡淡一笑。</p>
+        <p class="sfc">"谁知道呢？说不定这反而是一件好事。"</p>
+        <p class="sfc">大伙听了，都觉得这老头有点糊涂了。</p>
+        <p class="sfc">几个月慢慢过去。</p>
+        <p class="sfc">神奇的事情发生了！</p>
+        <p class="sfc">那匹跑丢的马，自己走回了家。</p>
+        <p class="sfc">它还带回来一匹胡人那边健壮漂亮的野马！</p>
+        <p class="sfc">邻居们又兴冲冲跑过来，纷纷欢呼。</p>
+        <p class="sfc">大家都来恭喜他，觉得他运气爆棚。</p>
+        <p class="sfc">塞翁却收起笑容，摇了摇头。</p>
+        <p class="sfc">"别高兴得太早。这匹好马，说不定会招来灾祸。"</p>
+        <p class="sfc">邻居们又一次觉得他不可理喻。</p>
+        <p class="sfc">塞翁的儿子一眼就迷上了这匹骏马。</p>
+        <p class="sfc">他天天骑着它到处驰骋玩耍。</p>
+        <p class="sfc">有一天，马儿突然受惊。</p>
+        <p class="sfc">少年重重从马背上摔了下来。</p>
+        <p class="sfc">他摔断了大腿骨头。</p>
+        <p class="sfc">邻居们再次上门慰问父子二人。</p>
+        <p class="sfc">塞翁还是说出那句让人费解的话。</p>
+        <p class="sfc">"很难说哦，这场伤痛或许是一份福气。"</p>
+        <p class="sfc">所有人听得一头雾水。</p>
+        <p class="sfc">一年之后，外敌大举入侵边境。</p>
+        <p class="sfc">村里所有健壮的年轻人，都被征召入伍作战。</p>
+        <p class="sfc">大部分年轻人，再也没能回来。</p>
+        <p class="sfc">唯独塞翁的儿子腿脚不便，不用参军。</p>
+        <p class="sfc">父子二人平安留在家中。</p>
+        <p class="sfc">福与祸总是瞬息反转，快得让人来不及反应。</p>
+        <p class="sfc">我们没法在当下，立刻断定一件事是绝对好或是绝对坏。</p>
+        </div>
         <h4 class="chap-h3">SaiWeng ShiMa: The Taoist Wisdom of How Things Shift</h4>
-        <p>This old tale comes from the <em>Huainanzi</em> (《淮南子》), an important early book of Taoist thinking. A border farmer loses a horse, gains two, breaks a leg, and is spared from war - four turns of fortune, each one flipping the meaning of the last. The old man never celebrates and never grieves; he only asks: "How do we know?"</p>
-        <p>The full story, and the Taoist principle behind it, has its own chapter: <a href="/ch/331saiweng">Chapter 3.3.1 SaiWeng's Lost Horse 塞翁失马</a>.</p>
+        <p>This old tale comes from the <em>Huainanzi</em> (《淮南子》), an important early book of Taoist thinking.</p>
+        <p>The lesson is simple but powerful: Something that looks like good news today might bring trouble later. Something that feels like bad news right now might open up a blessing you cannot yet see.</p>
+        <p>SaiWeng's story reminds us we only see a small slice of what is happening. Events fit into bigger patterns we usually cannot make out.</p>
+        <p>This is NOT the idea that everything is fixed ahead of time (fatalism). It is a Taoist way of seeing: good and bad luck are linked, and they can flip into each other.</p>
         <h4 class="chap-h3">Liao-Fan's Four Lessons: You Can Shape Your Fate Through Self-Improvement</h4>
-        <p>A fortune-teller in the Ming Dynasty called every detail of young Yuan Huang's life - and every prediction came true, until Yuan met Master YunGu and heard the line that changed him: "Destiny is created by oneself. Blessings are sought by oneself." 命由我作,福自己求。</p>
-        <p>The full story, the four lessons, and how Yuan outran his predicted fate: <a href="/ch/332liaofan">Chapter 3.3.2 LiaoFan's Four Lessons 了凡四训</a>.</p>
+        <p>SaiWeng teaches us to stay calm when life is uncertain. Liao-Fan's Four Lessons (《了凡四训》) teaches us to take responsibility inside that uncertainty.</p>
+        <p>Yuan Huang (袁黄, called Yuan Liao-Fan) wrote this book during China's Ming Dynasty. His writing connects three traditions: Confucian self-improvement, Buddhist ideas of cause and effect, and Taoist discipline and guiding your own life.</p>
+        <div class="story-frame" aria-label="Chapter 3.3.2 LiaoFan's Four Lessons bilingual story frame">
+        <p class="sf-title">Chapter 3.3.2&nbsp; LiaoFan's Four Lessons (了凡四训)</p>
+        <p class="sf">Long ago in China's Ming Dynasty (明朝), there was a scholar named Yuan Huang (袁黄).</p>
+        <p class="sf">Later, people knew him by the name LiaoFan (了凡).</p>
+        <p class="sf">When he was young, he met an old fortune-teller named Master Kong (孔先生).</p>
+        <p class="sf">This old man read his whole life script down to tiny details.</p>
+        <p class="sf">He told him exactly which exam ranks he would get.</p>
+        <p class="sf">He told him how much grain he would earn as a scholar.</p>
+        <p class="sf">He said he would never have a son.</p>
+        <p class="sf">He said he would die at age 53.</p>
+        <p class="sf">At first, Yuan Huang (袁黄) thought this was just a fun prediction.</p>
+        <p class="sf">But one thing after another came true, perfectly matching the forecast.</p>
+        <p class="sf">He slowly gave up trying.</p>
+        <p class="sf">He figured "my life is already printed out, no point trying to change anything."</p>
+        <p class="sf">He stopped chasing goals, just drifted along.</p>
+        <p class="sf">Years later, he met a wise Zen master called Yungu (云谷禅师).</p>
+        <p class="sf">The master could tell Yuan Huang (袁黄) was totally stuck in fatalism (宿命论).</p>
+        <p class="sf">He laughed at him gently.</p>
+        <p class="sf">"Fate (命) is real for people who just drift along.</p>
+        <p class="sf">But if you fix your mistakes (改过) and keep doing good (行善),</p>
+        <p class="sf">you get to rewrite your own destiny.</p>
+        <p class="sf">The script is NOT set in stone!"</p>
+        <p class="sf">That hit Yuan Huang (袁黄) like a wake-up call.</p>
+        <p class="sf">He changed his name to LiaoFan (了凡).</p>
+        <p class="sf">It means he woke up from the "ordinary person's trap".</p>
+        <p class="sf">He made a big plan.</p>
+        <p class="sf">He would track every good deed and every mistake.</p>
+        <p class="sf">He started with a goal of finishing three thousand kind acts.</p>
+        <p class="sf">He worked hard to cut his bad habits.</p>
+        <p class="sf">He apologized for his faults.</p>
+        <p class="sf">He helped people wherever he could.</p>
+        <p class="sf">Guess what?</p>
+        <p class="sf">The fortune-teller's predictions started breaking!</p>
+        <p class="sf">The exam rank that was supposed to be third turned into first.</p>
+        <p class="sf">He passed more exams than the old man said he would.</p>
+        <p class="sf">He kept going.</p>
+        <p class="sf">He set another goal of three thousand good deeds to pray for a son.</p>
+        <p class="sf">And soon his son was born.</p>
+        <p class="sf">Next, he promised to do ten thousand good deeds to become a government official.</p>
+        <p class="sf">And he made it too.</p>
+        <p class="sf">He lived far past 53, way longer than the original prediction.</p>
+        <p class="sf">Later, he wrote down all his lessons for his son.</p>
+        <p class="sf">That book became LiaoFan's Four Lessons (了凡四训).</p>
+        <p class="sf">His big takeaway:</p>
+        <p class="sf">Events are fluid like Sai Weng's horse (塞翁之马),</p>
+        <p class="sf">but you are not just waiting for luck.</p>
+        <p class="sf">Your choices, your character and your actions shape your own future.</p>
+        <p class="sf-cn-label">了凡四训 中文故事</p>
+        <p class="sfc">很久之前的明朝，有一位读书人叫袁黄。</p>
+        <p class="sfc">后来世人都称他为了凡。</p>
+        <p class="sfc">年轻的时候，他遇到一位精通命理的孔老先生。</p>
+        <p class="sfc">老先生把他一生的剧本，巨细无遗地推算出来。</p>
+        <p class="sfc">算出他每一场考试会拿到第几名。</p>
+        <p class="sfc">算出他做官能拿到多少俸禄米粮。</p>
+        <p class="sfc">说他命中不会有儿子。</p>
+        <p class="sfc">说他五十三岁那一年，就会离开人世。</p>
+        <p class="sfc">一开始，袁黄只把这番话当成有趣的预言。</p>
+        <p class="sfc">可往后一桩桩事情，全都和预言分毫不差。</p>
+        <p class="sfc">他慢慢失去了努力的动力。</p>
+        <p class="sfc">他心想：我的人生已经定好了，再努力也没用。</p>
+        <p class="sfc">他不再追求目标，只是随波逐流过日子。</p>
+        <p class="sfc">多年之后，他遇见智慧的云谷禅师。</p>
+        <p class="sfc">禅师一眼看穿，他困在宿命论里面。</p>
+        <p class="sfc">禅师温和地笑着点醒他。</p>
+        <p class="sfc">"对放任自流的人来说，命数仿佛很难挣脱。</p>
+        <p class="sfc">但如果你愿意改过自省、持续行善，</p>
+        <p class="sfc">你就可以亲手改造自己的命运。</p>
+        <p class="sfc">命运的剧本，并不是刻死在石头上的！"</p>
+        <p class="sfc">这番话，一下子敲醒了袁黄。</p>
+        <p class="sfc">他给自己取号 "了凡"。</p>
+        <p class="sfc">意思是跳出凡夫被命数困住的执念。</p>
+        <p class="sfc">他定下一个郑重的计划。</p>
+        <p class="sfc">他要记下每一件善事，也记下每一处过错。</p>
+        <p class="sfc">他先立志，完成三千件善行。</p>
+        <p class="sfc">他努力戒掉自己的坏习惯。</p>
+        <p class="sfc">为自己的过失反省忏悔。</p>
+        <p class="sfc">但凡有机会，就尽力帮助别人。</p>
+        <p class="sfc">奇妙的事发生了！</p>
+        <p class="sfc">孔先生的预言，开始失效了！</p>
+        <p class="sfc">本该考第三名的考试，他拿到第一名。</p>
+        <p class="sfc">他考取的功名，比当初推算的还要多。</p>
+        <p class="sfc">他继续坚持行善。</p>
+        <p class="sfc">他再次发愿，行三千善事祈求子嗣。</p>
+        <p class="sfc">没过多久，他如愿迎来自己的儿子。</p>
+        <p class="sfc">之后他许下心愿，行一万件善事，求取官职。</p>
+        <p class="sfc">这个心愿，他也达成了。</p>
+        <p class="sfc">他活过了五十三岁，远远超出原本的寿数预言。</p>
+        <p class="sfc">晚年，他把这些感悟写下来留给儿子。</p>
+        <p class="sfc">这本书，就是《了凡四训》。</p>
+        <p class="sfc">他留下最重要的启示：</p>
+        <p class="sfc">世事祸福，就像塞翁那匹马一样变幻无常，</p>
+        <p class="sfc">但我们不该被动等候运气降临。</p>
+        <p class="sfc">你的抉择、心性与行动，塑造属于你的未来。</p>
+        </div>
+        <p>When Yuan was young, a fortune-teller laid out his whole future in exact detail: what ranks he would earn on his exams, how much he would make as an official, how long he would live, and that he would never have a son.</p>
+        <p>Year after year, every prediction came true. Yuan believed his future was completely set. He stopped trying and just accepted whatever fate handed him.</p>
+        <p>Everything changed when he met Master YunGu (云谷禅师). The monk challenged Yuan's mindset with one short, life-changing saying:</p>
+        <blockquote class="quote-block">
+        <p class="quote">"Destiny is created by oneself. Blessings are sought by oneself." 命由我作,福自己求。<span class="quote-attr"> - Master YunGu, Liao-Fan's Four Lessons (了凡四训)</span></p>
+        </blockquote>
+        <p>Yuan woke up to this truth. He started working hard to live a better, more honest life, and kept a daily log of his good acts and his mistakes. His teachings were later organized into four parts:</p>
+        <div class="ch22-table-wrap">
+        <table class="ch22-table">
+        <tbody>
+        <tr><td><strong>The Study of Establishing One's Destiny 立命之学</strong></td><td>People are not trapped by a fate written for them. Consistent moral effort can change the direction of your life.</td></tr>
+        <tr><td><strong>The Method of Correcting Faults 改过之法</strong></td><td>Honestly checking yourself and fixing your mistakes is the first step to growing.</td></tr>
+        <tr><td><strong>The Way of Accumulating Good Deeds 积善之方</strong></td><td>Virtue grows from steady, small choices to help others and act responsibly.</td></tr>
+        <tr><td><strong>The Efficacy of Humility 谦德之效</strong></td><td>Humility keeps you wise, draws people toward you, and stops success from turning you arrogant and careless.</td></tr>
+        </tbody>
+        </table>
+        </div>
+        <p>Over many years of steady practice, Yuan outran the fate the fortune-teller had laid out. He had a son, and lived far longer than he was told he would. You can read this story as literal or symbolic. Either way, the main point stays the same: <strong>Your character changes your fate.</strong></p>
         <h4 class="chap-h3">The RuDao Distinction</h4>
         <p>The difference between SaiWeng and Liao-Fan is key for RuDao. SaiWeng watches outside circumstances shift back and forth. Good luck and bad luck trade places, often with no input from us.</p>
         <p>Liao-Fan says we still have power inside that shifting world. Even when conditions keep changing, your choices, intentions, self-control, and humility make a real difference.</p>
@@ -474,10 +670,16 @@
         <p>We do not only wait for fate to unfold. We take part in shaping it. When good luck comes, we stay humble. When hard times hit, we keep working on our character. When life shifts around us, we adapt without dropping our core values.</p>
         <h4 class="chap-h3">The RuDao Position</h4>
         <p>RuDao does not match these common views of fate:</p>
-        <p><strong>Deterministic Fatalism</strong> - Every result is locked in from the start.</p>
-        <p><strong>Pure Chance</strong> - Life runs on nothing but random accidents.</p>
-        <p><strong>Transactional Morality</strong> - If you do good things, you are guaranteed rewards.</p>
-        <p><strong>RuDao</strong> - Life flows and changes constantly, yet working on your character guides your path.</p>
+        <div class="ch22-table-wrap">
+        <table class="ch22-table">
+        <tbody>
+        <tr><td><strong>Deterministic Fatalism</strong></td><td>Every result is locked in from the start.</td></tr>
+        <tr><td><strong>Pure Chance</strong></td><td>Life runs on nothing but random accidents.</td></tr>
+        <tr><td><strong>Transactional Morality</strong></td><td>If you do good things, you are guaranteed rewards.</td></tr>
+        <tr><td><strong>RuDao</strong></td><td>Life flows and changes constantly, yet working on your character guides your path.</td></tr>
+        </tbody>
+        </table>
+        </div>
         <p>The RuDao view fits into two simple rules: <strong>Reality is always changing</strong> (the wisdom of SaiWeng). <strong>Your moral choices still count</strong> (the lesson of Liao-Fan).</p>
         <p>Between a fixed fate and blind random luck lies the RuDao path: build your character while you ride life's shifting tides.</p>
         <h4 class="chap-h3">RuDao Reflection</h4>
