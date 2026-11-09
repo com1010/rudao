@@ -215,6 +215,7 @@
   var busy = false;
   var built = false;
   var root, panel, log, input, sendBtn, quotaLine, paywall, tabBtns, views, tokenLine, voiceBtn;
+  var micBtn, recog, micOn;
 
   function renderVoiceBtn() {
     if (!voiceBtn) return;
@@ -314,7 +315,7 @@
     var form = el('form', 'rp-form');
     input = el('textarea', 'rp-input');
     input.rows = 4;
-    input.placeholder = 'Ask about RuShang, 竞合, the book…';
+    input.placeholder = 'Ask about RuShang, 竞合, the book… or tap the mic';
     input.setAttribute('aria-label', 'Your question');
     input.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submit(); }
@@ -326,7 +327,27 @@
     sendBtn = el('button', 'rp-send', 'Send');
     sendBtn.type = 'submit';
     form.appendChild(input);
-    form.appendChild(sendBtn);
+
+    /* Voice typing — the mic button uses the browser's built-in Web
+       Speech API (Chrome, Edge, Safari 14.1+). Firefox has no speech
+       input yet, so the button simply does not appear there. The final
+       transcript lands in the input and sends automatically, so the
+       reader just speaks the question. */
+    var SRClass = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (SRClass) {
+      var actions = el('div', 'rp-actions');
+      micBtn = el('button', 'rp-mic');
+      micBtn.type = 'button';
+      micBtn.setAttribute('aria-label', 'Voice typing 语音输入');
+      micBtn.title = 'Voice typing 语音输入 (click again to stop)';
+      micBtn.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3z"/><path d="M17 11a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z"/></svg>';
+      micBtn.addEventListener('click', function () { toggleMic(); });
+      actions.appendChild(micBtn);
+      actions.appendChild(sendBtn);
+      form.appendChild(actions);
+    } else {
+      form.appendChild(sendBtn);
+    }
     form.addEventListener('submit', function (e) { e.preventDefault(); submit(); });
 
     vAi.appendChild(tokenNote);
@@ -571,6 +592,61 @@
       paywall.appendChild(note);
     }
     wrapZh(paywall);
+  }
+
+  /* ---------- voice typing (mic button) ---------- */
+
+  /* Speech input language: a saved choice wins, else follow the browser
+     language (zh browsers dictatate zh-CN, the rest en-US). */
+  function micLang() {
+    var saved = lsGet('rudao_chat_mic_lang', '');
+    if (saved) return saved;
+    return /^zh/i.test(navigator.language || '') ? 'zh-CN' : 'en-US';
+  }
+
+  function setMicUI(on, note) {
+    micOn = !!on;
+    if (micBtn) micBtn.classList.toggle('listening', micOn);
+    if (input) {
+      input.placeholder = note || (micOn
+        ? 'Listening… 请说话 (' + micLang() + ')'
+        : 'Ask about RuShang, 竞合, the book… or tap the mic');
+    }
+  }
+
+  function toggleMic() {
+    if (micOn) { try { recog.stop(); } catch (e) {} return; }
+    var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) return;
+    try { recog = new SR(); } catch (e) { return; }
+    var heard = '';
+    recog.lang = micLang();
+    recog.interimResults = true;
+    recog.continuous = false;
+    recog.onresult = function (ev) {
+      var interim = '';
+      for (var i = ev.resultIndex; i < ev.results.length; i += 1) {
+        var t = (ev.results[i] && ev.results[i][0] && ev.results[i][0].transcript) || '';
+        if (ev.results[i].isFinal) heard += t; else interim += t;
+      }
+      input.value = (heard + interim).trim();
+      input.style.height = 'auto';
+      input.style.height = Math.min(190, input.scrollHeight) + 'px';
+    };
+    recog.onerror = function (ev) {
+      var err = (ev && ev.error) || 'error';
+      var msg = err === 'not-allowed' || err === 'service-not-allowed'
+        ? 'Microphone blocked - allow mic access for this site, then tap the mic again.'
+        : 'Voice input unavailable (' + err + '). Please type your question.';
+      heard = '';
+      setMicUI(false, msg);
+    };
+    recog.onend = function () {
+      setMicUI(false);
+      var text = (input.value || '').trim();
+      if (heard && text && !busy) submit();
+    };
+    try { recog.start(); setMicUI(true); } catch (e) { setMicUI(false); }
   }
 
   function submit() {
