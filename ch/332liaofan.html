@@ -74,7 +74,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Joan&family=Quintessential&family=Merriweather:wght@300;400;700&family=Noto+Serif+TC:wght@400;500;600;700&family=ZCOOL+XiaoWei&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/css/styles.css?v=20261109l" />
+    <link rel="stylesheet" href="/css/styles.css?v=20261110a" />
 
     <!-- Self-hosted Traditional Chinese brush calligraphy font -->
     <style>
@@ -202,6 +202,21 @@
       .qijing-frame .qj-notes { gap: .45rem; margin: .3rem 0 0; }
       .qijing-frame .qj-notes li { padding-left: 1.1rem; }
       @media (max-width: 640px) { .qijing-frame { padding: 1.3rem 1.1rem 1rem; } .qijing-frame .qj-title { font-size: 1.04rem; } }
+      /* Ch 3.3.2 - Four Lessons table: tight single-line spacing (user 2026-11-10) */
+      #ch332 .ch22-table th, #ch332 .ch22-table td { padding: .3rem .6rem; line-height: 1.3; }
+      /* Ch 3.3.2 - YunGu dialogue long-text quote frame (user 2026-11-10) */
+      .lf-frame { position: relative; margin: 2.6rem 0 1rem; padding: 1.7rem 1.8rem 1.2rem; border: 1px solid rgba(169,50,38,.38); border-radius: 14px; background: rgba(169,50,38,.028); }
+      .lf-frame::before { content: ""; position: absolute; inset: 6px; border: 1px dashed rgba(169,50,38,.20); border-radius: 10px; pointer-events: none; }
+      .lf-frame .lf-title { margin: 0 0 .8rem; font-size: 1.04rem; font-weight: 700; line-height: 1.4; color: var(--vermillion, #a93226); }
+      .lf-frame p { margin: .4rem 0; line-height: 1.4; font-size: .95rem; color: var(--ink-mid, #444); text-align: justify; }
+      .lf-frame h4.lf-h { margin: 1.2rem 0 .45rem; font-size: 1rem; font-weight: 700; line-height: 1.4; color: var(--ink-black, #0a0a0a); }
+      .lf-frame .lf-cn { font-family: 'Noto Serif SC', 'cwTeXQKai', serif; font-size: .95rem; line-height: 1.55; color: var(--ink-soft, #1a1a1a); background: rgba(169,50,38,.05); border-left: 3px solid rgba(169,50,38,.55); border-radius: 6px; padding: .6rem .9rem; margin: .55rem 0; text-align: justify; }
+      .lf-frame ul { margin: .35rem 0 .7rem; padding-left: 1.5rem; list-style: disc; }
+      .lf-frame ul li { line-height: 1.4; margin-bottom: .3rem; font-size: .95rem; color: var(--ink-mid, #444); text-align: justify; }
+      .lf-frame ul li::marker { color: var(--vermillion, #a93226); }
+      .lf-frame .lf-key { color: var(--ink-black, #0a0a0a); font-weight: 600; }
+      .lf-frame .lf-trans { color: var(--ink-mid, #555); font-size: .92rem; }
+      @media (max-width: 640px) { .lf-frame { padding: 1.3rem 1.1rem 1rem; } }
     </style>
 
     <!-- Favicon -->
@@ -452,7 +467,7 @@
         <p>Yuan Huang (袁黄, called Yuan Liao-Fan) wrote this book during China's Ming Dynasty. His writing connects three traditions: Confucian self-improvement, Buddhist ideas of cause and effect, and Taoist discipline and guiding your own life.</p>
 
         <div class="story-frame" aria-label="Chapter 3.3.2 LiaoFan's Four Lessons bilingual story frame">
-        <p class="sf-title">Chapter 3.3.2&nbsp; LiaoFan's Four Lessons (了凡四训)</p>
+        <p class="sf-title">Chapter 3.3.2&nbsp; LiaoFan's Four Lessons (了凡四训 - 原文 袁了凡(明) <a href="https://www.LiaoFanSiXun.com" target="_blank" rel="noopener">https://www.LiaoFanSiXun.com</a>)</p>
         <p class="sf">Long ago in China's Ming Dynasty (明朝), there was a scholar named Yuan Huang (袁黄).</p>
         <p class="sf">Later, people knew him by the name LiaoFan (了凡).</p>
         <p class="sf">When he was young, he met an old fortune-teller named Master Kong (孔先生).</p>
@@ -565,6 +580,42 @@
         </table>
         </div>
         <p>Over many years of steady practice, Yuan outran the fate the fortune-teller had laid out. He had a son, and lived far longer than he was told he would. You can read this story as literal or symbolic. Either way, the main point stays the same: <strong>Your character changes your fate.</strong></p>
+
+        <div class="lf-frame" aria-label="Master YunGu dialogue with Yuan LiaoFan long-text quote">
+        <p class="lf-title">Master YunGu's (云谷禅师) dialogue with Yuan LiaoFan (袁了凡), includes quotes from from Mencius (Jin Xin I, 孟子·尽心章句上).&nbsp;&nbsp; The LiaoFan Four Lessons -- Reclaiming Fate Through Inner Governance (袁了凡四训)</p>
+        <p>When Yuan LiaoFan (袁了凡) met Zen Master YunGu (云谷禅师) at Master Yunqi's temple, he had accepted a life governed entirely by static destiny. Having had his entire career, imperial exam placements, and exact life span calculated by the astrologer Master Kong, LiaoFan sat in silent meditation for three days without a single rising thought. Master YunGu initially mistook him for an enlightened sage, only for LiaoFan to confess that he did not think because he believed his fate was completely predestined and unalterable.</p>
+        <p>Master YunGu laughed and told him that until that moment, LiaoFan was merely a mortal bound by mechanical causation. He then introduced the core Confucian and Buddhist framework for rewriting destiny: true transformation begins by aligning internal virtue (Neisheng, 内圣) with external action (Waiwang, 外王).</p>
+        <h4 class="lf-h">1. Dialogue on the Dual Pursuit: Internal Virtues vs. External Fortune</h4>
+        <p>LiaoFan hesitated, citing the words of Mencius on the limits of human pursuit.</p>
+        <p class="lf-cn">余进曰：孟子言：求则得之，是求在我者也。道德仁义，可以力求；功名富贵，如何求得？</p>
+        <p>Master YunGu immediately corrected his misunderstanding, establishing the fundamental distinction between seeking what is within oneself versus seeking what lies outside.</p>
+        <p class="lf-cn">余进曰：孟子Mencius言："求则得之，是求在我者也。道德仁义，可以力求；功名富贵，如何求得？"</p>
+        <p class="lf-trans">(As Mencius once said: To seek it is to attain it--this is seeking what is within oneself. Virtues like morality, benevolence, and righteousness can be strived for with effort; but how can one simply demand rank, fame, wealth, and honor?)</p>
+        <p>Zen Master YunGu (云谷禅师) replied:</p>
+        <p class="lf-cn">"孟子之言不错，汝自错解了。汝不见六祖说：一切福田，不离方寸；从心而觅，感无不通。求在我，不独得道德仁义，亦得功名富贵；内外双得，是求有益于得也。"</p>
+        <p class="lf-trans">(Mencius spoke correctly, but you have misunderstood him. Have you not read what the Sixth Patriarch Huineng taught? (Sixth Patriarch Huineng 六祖惠能 / 慧能, 638-713 CE) is one of the most influential figures in Chinese Zen Buddhism) 'All fields of fortune reside within the human heart; seek from within the heart, and every aspiration will be fulfilled.' When you seek what is within yourself, you attain not only morality, benevolence, and righteousness, but also rank, fame, and wealth. Attaining both the internal and the external--this is the seeking that truly yields results.)</p>
+        <h4 class="lf-h">2. The Original Mencius Source Text (Jin Xin I, 孟子·尽心章句上)</h4>
+        <p>The root of Master YunGu's exposition traces directly back to The Analects of Mencius:</p>
+        <p class="lf-cn">Original Text (《孟子·尽心章句上》): "求则得之，舍则失之，是求有益于得也，求在我者也；求之有道，得之有命，是求无益于得也，求在外者也。"</p>
+        <p><span class="lf-key">Analysis: Deconstructing "Seeking Within" vs. "Seeking Without"</span></p>
+        <p>Mencius divides all human pursuits into two fundamental categories, distinguished strictly by what is within one's internal control (Zai Wo, 在我) versus what depends on external circumstances (Zai Wai, 在外):</p>
+        <h4 class="lf-h">Category 1: Seeking Within Oneself (Qiu Zai Wo Zhe, 求在我者) -- Spiritual Mastery and Moral Integrity</h4>
+        <ul>
+        <li><span class="lf-key">Core Definition:</span> Refers to internal self-cultivation, integrity, wisdom, and virtue (仁、义、礼、智).</li>
+        <li><span class="lf-key">Key Mechanism:</span> Entirely subject to personal initiative and willpower. If you choose to seek and cultivate virtue, you will attain it; if you abandon it, you lose it.</li>
+        <li><span class="lf-key">Outcome:</span> This is defined as "seeking that directly benefits attainment" (Qiu You Yi Yu De, 求有益于得). Because the field of cultivation is internal, victory is guaranteed by effort alone.</li>
+        </ul>
+        <h4 class="lf-h">Category 2: Seeking Outside Oneself (Qiu Zai Wai Zhe, 求在外者) -- Wealth, Status, and External Position</h4>
+        <ul>
+        <li><span class="lf-key">Core Definition:</span> Refers to material riches, social rank, commercial status, longevity, and external market outcomes.</li>
+        <li><span class="lf-key">Key Mechanism:</span> Dependent on external conditions, timing, and environmental forces beyond immediate individual control. While an entrepreneur must "seek through proper principles" (Qiu Zhi You Dao, 求之有道), the final fulfillment remains bound by circumstance and natural order (De Zhi You Ming, 得之有命).</li>
+        <li><span class="lf-key">Outcome:</span> Blindly chasing external results without internal cultivation is "seeking that offers no benefit to attainment" (Qiu Wu Yi Yu De, 求无益于得).</li>
+        </ul>
+        <h4 class="lf-h">Synthesis: The RuDao Enterprise Principle</h4>
+        <p>Yuan LiaoFan's subsequent success--attaining imperial rank, earning an unexpected advanced degree, and fathering a son despite predictions to the contrary--proves Master YunGu's thesis:</p>
+        <p>In enterprise and executive leadership, when a founder focuses exclusively on external extraction (seeking rank and market share directly), they remain trapped in mechanical cause-and-effect. However, when an executive builds an internal culture of trust (Xin, 信), ethical alignment (Yi-Li He-Yi, 义利合一), and co-opetition (竞合), the external manifestations--wealth, enduring partnerships, and corporate longevity--follow naturally.</p>
+        <p><span class="lf-key">Internal governance (Neisheng) seeds the field; external success (Waiwang) is the harvest.</span></p>
+        </div>
 
         <div class="chapter-end-frame" aria-label="Chapter Review and Bridge to next chapter">
         <p class="frame-label">Chapter Review</p>
