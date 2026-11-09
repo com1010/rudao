@@ -514,6 +514,7 @@
     line-height: 1.6;
 }
 .gm-guide-jump a { color: var(--vermillion); border-bottom: 1px solid rgba(169, 50, 38, .35); }
+.gm-panel-guide + .gm-panel-guide { margin-left: .9rem; }
 .gm-panel-guide {
     display: inline-block;
     margin-top: .55rem;
@@ -1058,4 +1059,139 @@
 .lb-events a { color: var(--vermillion); border-bottom: 1px solid rgba(169, 50, 38, .3); }
 @media (max-width: 900px) {
     .lb-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   Xiangqi.com - tournament play and the team behind it
+   ============================================================ */
+.gm-xqcom {
+    margin-top: clamp(2.6rem, 5vw, 4.4rem);
+    padding-top: clamp(2rem, 4vw, 3rem);
+    border-top: 1px solid var(--paper-shadow);
+}
+.xq-frame {
+    padding: clamp(1.3rem, 3vw, 2.1rem);
+    border: 1px solid var(--vermillion);
+    border-left: 5px solid var(--vermillion);
+    background: rgba(178, 34, 34, .035);
+    border-radius: 10px;
+}
+.xq-frame-label {
+    margin: 0 0 .55rem;
+    font-family: var(--font-sans);
+    font-size: .7rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--vermillion);
+}
+.xq-frame > .gm-about-h:first-of-type { margin-top: 0; }
+.xq-lead {
+    font-family: var(--font-serif-en-body);
+    font-size: 1.08rem;
+    line-height: 1.78;
+    color: var(--ink-mid);
+    max-width: 80ch;
+    margin: 0 0 1rem;
+}
+.xq-lead-cn {
+    font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+    font-size: 1.02rem;
+    line-height: 1.9;
+    color: var(--ink-mid);
+    margin: 0 0 1.3rem;
+}
+.xq-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .7rem 1.25rem;
+    margin: 0 0 .4rem;
+    font-family: var(--font-sans);
+    font-size: .86rem;
+    letter-spacing: .02em;
+    color: #fff8f3;
+    background: var(--vermillion);
+    border: 1px solid var(--vermillion);
+    border-radius: 999px;
+    text-decoration: none;
+}
+.xq-cta:hover { background: var(--vermillion-deep, #8d2a20); border-color: var(--vermillion-deep, #8d2a20); }
+.xq-cta-alt {
+    display: inline-block;
+    margin: 0 0 1.6rem .8rem;
+    font-family: var(--font-sans);
+    font-size: .8rem;
+    color: var(--gray);
+}
+.xq-team {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    align-items: start;
+}
+.xq-person {
+    display: grid;
+    grid-template-columns: 2.9rem minmax(0, 1fr);
+    gap: .85rem;
+    padding: 1rem 1.1rem 1.15rem;
+    background: #fffdf7;
+    border: 1px solid var(--paper-shadow);
+    border-radius: var(--radius);
+}
+.xq-mono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.9rem;
+    height: 2.9rem;
+    font-family: var(--font-serif-en-body);
+    font-size: 1.25rem;
+    color: var(--vermillion);
+    background: #fff8f3;
+    border: 1px solid rgba(169, 50, 38, .35);
+    border-radius: 50%;
+}
+.xq-name {
+    font-family: var(--font-serif-en-body);
+    font-size: 1.04rem;
+    line-height: 1.4;
+    color: var(--ink-black);
+    margin: 0 0 .18rem;
+}
+.xq-role {
+    font-family: var(--font-sans);
+    font-size: .68rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--vermillion);
+    margin: 0 0 .5rem;
+}
+.xq-bio {
+    font-family: var(--font-serif-en-body);
+    font-size: .92rem;
+    line-height: 1.66;
+    color: var(--ink-mid);
+    margin: 0;
+}
+.xq-bio + .xq-bio { margin-top: .45rem; }
+.xq-bio-cn {
+    font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+    font-size: .94rem;
+    line-height: 1.8;
+}
+.xq-person a { color: var(--vermillion); border-bottom: 1px solid rgba(169, 50, 38, .3); }
+.xq-note {
+    font-family: var(--font-serif-en-body);
+    font-size: .9rem;
+    line-height: 1.7;
+    color: var(--gray);
+    margin: 1.3rem 0 0;
+    max-width: 80ch;
+}
+@media (max-width: 1000px) {
+    .xq-team { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
+    .xq-team { grid-template-columns: 1fr; }
+    .xq-cta-alt { display: block; margin: .5rem 0 1.4rem; }
 }
