@@ -216,6 +216,9 @@
   var built = false;
   var root, panel, log, input, sendBtn, quotaLine, paywall, tabBtns, views, tokenLine, voiceBtn;
   var micBtn, langBtn, recog, micOn;
+  var micState = '';        /* '', 'rec' (mic open), 'wait' (patience window) */
+  var micHeard = '';        /* final transcript accumulated this session */
+  var micSubmitTimer = null;
 
   function renderVoiceBtn() {
     if (!voiceBtn) return;
@@ -645,39 +648,78 @@
     }
   }
 
-  function toggleMic() {
-    if (micOn) { try { recog.stop(); } catch (e) {} return; }
+  /* Patience: browsers close the recognizer after roughly one second of
+     silence, but a reader pausing to think is not finished speaking. So
+     when the recognizer goes quiet the mic stays warm for 6 seconds: if
+     the reader keeps talking, the new words are appended to the same
+     question; only after a full 6-second pause does the question send.
+     Click the mic during the window to keep talking at once. */
+  var MIC_PATIENCE_MS = 6000;
+
+  function micFinish() {
+    if (micSubmitTimer) { clearTimeout(micSubmitTimer); micSubmitTimer = null; }
+    micState = '';
+    setMicUI(false);
+    var text = (input.value || '').trim();
+    if (micHeard && text && !busy) submit();
+  }
+
+  function micScheduleSend() {
+    if (micSubmitTimer) clearTimeout(micSubmitTimer);
+    micSubmitTimer = setTimeout(micFinish, MIC_PATIENCE_MS);
+  }
+
+  function micResume() {
+    micState = 'rec';
+    try { recog.start(); setMicUI(true); } catch (e) { micFinish(); }
+  }
+
+  function micStart() {
     var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SR) return;
     try { recog = new SR(); } catch (e) { return; }
-    var heard = '';
+    micHeard = '';
     recog.lang = micLang();
     recog.interimResults = true;
     recog.continuous = false;
     recog.onresult = function (ev) {
+      if (micState === 'wait') { micState = 'rec'; setMicUI(true); }
+      if (micSubmitTimer) { clearTimeout(micSubmitTimer); micSubmitTimer = null; }
       var interim = '';
       for (var i = ev.resultIndex; i < ev.results.length; i += 1) {
         var t = (ev.results[i] && ev.results[i][0] && ev.results[i][0].transcript) || '';
-        if (ev.results[i].isFinal) heard += t; else interim += t;
+        if (ev.results[i].isFinal) micHeard += t; else interim += t;
       }
-      input.value = (heard + interim).trim();
+      input.value = (micHeard + interim).trim();
       input.style.height = 'auto';
       input.style.height = Math.min(190, input.scrollHeight) + 'px';
     };
     recog.onerror = function (ev) {
       var err = (ev && ev.error) || 'error';
+      if (err === 'no-speech' || err === 'aborted') return; /* onend handles the pause */
+      if (micSubmitTimer) { clearTimeout(micSubmitTimer); micSubmitTimer = null; }
+      micState = '';
       var msg = err === 'not-allowed' || err === 'service-not-allowed'
         ? 'Microphone blocked - allow mic access for this site, then tap the mic again.'
         : 'Voice input unavailable (' + err + '). Please type your question.';
-      heard = '';
       setMicUI(false, msg);
     };
     recog.onend = function () {
-      setMicUI(false);
-      var text = (input.value || '').trim();
-      if (heard && text && !busy) submit();
+      if (micState !== 'rec') return;
+      /* Reader may just be thinking. Stay warm and wait out the pause. */
+      micState = 'wait';
+      setMicUI(true, 'Still listening… 继续说，或停约 6 秒自动发送');
+      micScheduleSend();
+      try { recog.start(); micState = 'rec'; } catch (e) { /* timer still fires */ }
     };
-    try { recog.start(); setMicUI(true); } catch (e) { setMicUI(false); }
+    micState = 'rec';
+    try { recog.start(); setMicUI(true); } catch (e) { micState = ''; setMicUI(false); }
+  }
+
+  function toggleMic() {
+    if (micState === 'rec') { micState = ''; try { recog.stop(); } catch (e) {} micFinish(); return; }
+    if (micState === 'wait') { micResume(); return; }
+    micStart();
   }
 
   function submit() {
