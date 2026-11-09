@@ -380,11 +380,14 @@
     }
     form.addEventListener('submit', function (e) { e.preventDefault(); submit(); });
 
+    /* Input box sits at the TOP of the chat page (user 2026-11-10),
+       so the reader can type or speak immediately; the conversation
+       log, quota and notices follow below. */
+    vAi.appendChild(form);
     vAi.appendChild(tokenNote);
     vAi.appendChild(log);
     vAi.appendChild(paywall);
     vAi.appendChild(quotaLine);
-    vAi.appendChild(form);
 
     /* Plain notice: the author keeps a copy of these conversations. */
     var consent = paragraph(

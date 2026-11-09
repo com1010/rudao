@@ -5887,7 +5887,9 @@ a[href^="http"].urllink {
 
 .rp-quota { margin: 0; padding: 2px 15px 6px; font-family: var(--font-sans); font-size: .64rem; letter-spacing: .03em; color: var(--gray-light); }
 
-.rp-form { display: flex; gap: 8px; align-items: flex-end; padding: 10px 12px 12px; border-top: 1px solid rgba(10,10,10,.09); }
+/* Input box now sits at the top of the AI view (2026-11-10): the
+   separator moves under it, so the border is bottom instead of top. */
+.rp-form { display: flex; gap: 8px; align-items: flex-end; padding: 12px 12px 10px; border-bottom: 1px solid rgba(10,10,10,.09); }
 .rp-input {
     flex: 1; min-height: 118px; max-height: 190px; padding: 11px 12px; resize: none;
     border: 1px solid rgba(10,10,10,.16); border-radius: 10px; background: #fff;
