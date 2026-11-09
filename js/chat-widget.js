@@ -43,8 +43,8 @@
     usdcNote: 'USDC (ERC20 / BASE / BEP20 / Solana)',
 
     /* RuDao Tokens — the reader's allowance, shown as a balance rather
-       than a question count. 100 tokens at 10 per answer = 10 questions. */
-    freeTokens: 100,                    /* granted to every reader on first visit */
+       than a question count. 500 tokens at 10 per answer = 50 questions. */
+    freeTokens: 500,                    /* granted to every reader on first visit */
     tokensPerQuestion: 10,              /* spent per answered question */
     tokensUrl: 'https://TonyTong.cc',   /* where to ask the author for more */
     accessCodeHash: '',                 /* sha256 hex of the unlock code; '' = code box disabled */
