@@ -6184,3 +6184,62 @@ body.ch-body .chapter-band {
     line-height: 1.85;
     color: var(--ink-mid);
 }
+
+/* ============================================
+   BILINGUAL STORY FRAMES  (HTML Frame blocks)
+   Used by Chapter 3.3 and its two story pages:
+   the Word manuscript marks these blocks with
+   "HTML Frame begin / end", and Chapter Review +
+   Bridge to next chapter sit in .chapter-end-frame.
+   ============================================ */
+.story-frame {
+    margin: 1.8rem 0 2.2rem;
+    padding: 1.4rem 1.5rem 1.2rem;
+    border: 1px solid rgba(169, 50, 38, 0.38);
+    border-radius: 14px;
+    background: rgba(169, 50, 38, 0.028);
+}
+
+.story-frame .sf-title {
+    margin: 0 0 1rem;
+    padding: 0 0.2rem 0.55rem;
+    border-bottom: 1px solid rgba(169, 50, 38, 0.28);
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.55;
+    color: var(--vermillion);
+}
+
+.story-frame p.sf {
+    margin: 0 0 0.4rem;
+    font-size: 0.97rem;
+    line-height: 1.75;
+    color: var(--ink-mid);
+}
+
+.story-frame p.sfc {
+    font-family: var(--font-cn-body);
+    font-size: 0.97rem;
+    line-height: 1.85;
+    color: var(--ink-mid);
+    margin: 0 0 0.4rem;
+}
+
+.story-frame .sf-cn-label {
+    margin: 1.1rem 0 0.7rem;
+    padding-top: 0.8rem;
+    border-top: 1px dashed rgba(169, 50, 38, 0.25);
+    font-family: var(--font-cn-body);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--vermillion);
+}
+
+.story-frame p.sf:last-child,
+.story-frame p.sfc:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+    .story-frame { padding: 1.1rem 1rem 1rem; }
+}
