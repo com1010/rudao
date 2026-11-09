@@ -150,7 +150,7 @@ HOW TO ANSWER
 - You are a knowledgeable guide to the book and its ideas. You are NOT Tony Tong and you never pretend to be him. If asked for a personal opinion "from Tony", say you can explain what the book argues, and point to the contact form for a personal reply.
 - Ground every factual claim in the CONTEXT or FACT SHEET below. If something is not covered, say plainly that the site does not say, and offer the relevant page (/guide, /faq) or Tony's email.
 - Never invent quotations, page numbers, prices, ISBNs, publication dates, awards, or endorsements.
-- Be concise: usually 90-180 words, short paragraphs, no bullet-point walls. Use at most one short quote.
+- Be concise: every reply must read aloud in 30-40 seconds at most — about 100 English words or 160 Chinese characters. Short paragraphs, no bullet-point walls. Use at most one short quote.
 - Plain text only: no markdown, no **bold**, no # headings, no tables. The chat panel renders raw text, so asterisks would show up literally. A short numbered list is fine.
 - Keep Chinese terms next to their English sense, e.g. RuShang 儒商 (the Confucian merchant).
 - Use the site's official romanization exactly as written in the FACT SHEET, with no spaces inserted: RuShang, RuJia, DaoJia, RuJiang, FanLi 范蠡, ZiGong 子贡, BaiGui 白圭, YiLiHeYi, SaiWeng ShiMa 塞翁失马. Write BaiGui, never "Bai Gui".
@@ -387,6 +387,28 @@ async function callWorkersAI(env, systemPrompt, turns, maxOut) {
   return last;
 }
 
+/* Voice replies must stay short: the panel reads answers aloud with TTS,
+   and the author capped them at 30-40 seconds. Estimate spoken length
+   (English ~2.6 words/s, Chinese ~4.2 chars/s) and, when a reply runs
+   over, trim it back to the last sentence boundary that fits. */
+const CJK_RE = /[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]/g;
+function spokenSeconds(text) {
+  const words = (text.match(/[A-Za-z]+(?:'[A-Za-z]+)?/g) || []).length;
+  const cjk = (text.match(CJK_RE) || []).length;
+  return words / 2.6 + cjk / 4.2;
+}
+function capSpeech(raw) {
+  const t = String(raw || '');
+  if (spokenSeconds(t) <= 40) return t;
+  const sentences = t.split(/(?<=[。！？!?])\s*|(?<=\.)\s+(?=[A-Z"'])/);
+  let out = '';
+  for (const s of sentences) {
+    if (out && spokenSeconds(out + s) > 38) break;
+    out += s;
+  }
+  return (out || t).trim();
+}
+
 /* Strip reasoning traces some models leak into the answer. */
 function cleanReply(raw) {
   let t = String(raw || '');
@@ -578,14 +600,14 @@ async function handlePost(context) {
     turns.length > 1 ? turns[turns.length - 2].content : ''
   );
   let recitalNote = '';
-  let maxOut = 700;
+  let maxOut = 380;
   let classicText = '';
   if (classic) {
     classicText = await getClassicText(origin, classic);
     if (classicText) {
-      maxOut = 3500;
+      maxOut = 550;
       recitalNote = '\n\nRECITAL REQUEST — the reader asked you to read ' + classic.title +
-        '. Its full text as published on this site follows below. Read it aloud exactly as it appears, in the site\'s order, without summarizing, shortening or refusing. The usual 90-180 word conciseness rule does not apply to a recital; the plain-text and no-markdown rules still do. If the text is longer than one reply can hold, read a substantial passage from the start (or from the part the reader names), then say the reader may say "continue" to hear the next passage. These are public-domain pre-Qin classics published in full on this site, so the copyright boundary above does not apply to them.\n\n' +
+        '. Its full text as published on this site follows below. Read it aloud exactly as it appears, in the site\'s order, without summarizing, shortening or refusing. The word limit does not apply to a recital passage; the plain-text and no-markdown rules still do. Read one passage that takes at most 30-40 seconds to read aloud, starting from the beginning (or from the part the reader names), then say the reader may say "continue" to hear the next passage. These are public-domain pre-Qin classics published in full on this site, so the copyright boundary above does not apply to them.\n\n' +
         'FULL TEXT — ' + classic.title + ' (' + origin + classic.path + '):\n' + classicText;
     }
   }
@@ -604,6 +626,7 @@ async function handlePost(context) {
       r = { ok: false, status: 502, detail: String((err && err.message) || err).slice(0, 200) };
     }
     if (r && r.ok && r.reply) {
+      r.reply = capSpeech(r.reply);
       archiveChat(context, turns, r, name, startedAt);
       return json({ ok: true, reply: r.reply, provider: name, model: r.model || null });
     }
