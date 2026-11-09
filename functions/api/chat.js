@@ -152,6 +152,7 @@ HOW TO ANSWER
 - Never invent quotations, page numbers, prices, ISBNs, publication dates, awards, or endorsements.
 - Be concise: every reply must read aloud in 30-40 seconds at most — about 100 English words or 160 Chinese characters. Short paragraphs, no bullet-point walls. Use at most one short quote.
 - Plain text only: no markdown, no **bold**, no # headings, no tables. The chat panel renders raw text, so asterisks would show up literally. A short numbered list is fine.
+- Never print a full URL (the voice reader would read the whole link aloud). Refer to pages by their short path instead, like /ch/daodejing, /guide, /faq.
 - Keep Chinese terms next to their English sense, e.g. RuShang 儒商 (the Confucian merchant).
 - Use the site's official romanization exactly as written in the FACT SHEET, with no spaces inserted: RuShang, RuJia, DaoJia, RuJiang, FanLi 范蠡, ZiGong 子贡, BaiGui 白圭, YiLiHeYi, SaiWeng ShiMa 塞翁失马. Write BaiGui, never "Bai Gui".
 - Mirror the reader's language: English question -> English answer; Chinese question -> Simplified Chinese, keeping key terms in English.
@@ -235,7 +236,7 @@ const CLASSICS = [
   }
 ];
 const READ_INTENT =
-  /\b(read|reading|recite|recital|recitation|quote|aloud|voice|read it|read to me|show|begin|start|open)\b|原文|全文|朗读|朗讀|朗诵|誦讀|诵读|读一读|读|讀|念|背|念給|念给/i;
+  /\b(read|reading|recite|recital|recitation|quote|aloud|voice|show|begin|start|open|tell|content|contents|text|chapter|chapters)\b|原文|全文|内容|朗读|朗讀|朗诵|誦讀|诵读|读|讀|念|背|讲|講|说|說|告诉|告訴|介绍|介紹|列|开头|開頭|第一章|第一篇|第一|头|頭|前|多少章|多少篇|有几章|有幾章/i;
 const MAX_CLASSIC_CHARS = 40000;
 const classicCache = {};
 
@@ -422,6 +423,8 @@ function cleanReply(raw) {
     .replace(/\*\*/g, '')
     .replace(/^\s{0,3}#{1,6}\s+/gm, '')
     .replace(/<\|?think\|?>/gi, '')
+    .replace(/https?:\/\/(www\.)?rudao\.org/gi, '')  /* keep the short path only */
+    .replace(/\s*https?:\/\/\S+/gi, '')              /* strip any other long link */
     .trim();
 }
 
@@ -607,8 +610,8 @@ async function handlePost(context) {
     if (classicText) {
       maxOut = 550;
       recitalNote = '\n\nRECITAL REQUEST — the reader asked you to read ' + classic.title +
-        '. Its full text as published on this site follows below. Read it aloud exactly as it appears, in the site\'s order, without summarizing, shortening or refusing. The word limit does not apply to a recital passage; the plain-text and no-markdown rules still do. Read one passage that takes at most 30-40 seconds to read aloud, starting from the beginning (or from the part the reader names), then say the reader may say "continue" to hear the next passage. These are public-domain pre-Qin classics published in full on this site, so the copyright boundary above does not apply to them.\n\n' +
-        'FULL TEXT — ' + classic.title + ' (' + origin + classic.path + '):\n' + classicText;
+        '. Its full text as published on this site follows below. Read it aloud exactly as it appears, in the site\'s order, without summarizing, shortening or refusing. If the reader named particular chapters (e.g. "the first 5 chapters", 头5篇, 第三章), read exactly those chapters from the text. Otherwise read one passage that takes at most 30-40 seconds to read aloud, starting from the beginning, then say the reader may say "continue" to hear the next passage. The word limit does not apply to a recital passage; the plain-text and no-markdown rules still do. These are public-domain pre-Qin classics published in full on this site, so the copyright boundary above does not apply to them.\n\n' +
+        'FULL TEXT — ' + classic.title + ' (' + classic.path + '):\n' + classicText;
     }
   }
 
