@@ -208,9 +208,101 @@ async function getContext(origin) {
 }
 
 /* ------------------------------------------------------------------ */
+/* Classic reader — Appendix C publishes three pre-Qin classics in     */
+/* full on the site. When a reader asks the assistant to read one,     */
+/* fetch that page's real text and hand it to the model so it recites  */
+/* the site's words instead of refusing. The texts are public-domain   */
+/* pre-Qin classics; results are cached in the isolate for one hour.   */
+/* ------------------------------------------------------------------ */
+const CLASSICS = [
+  {
+    id: 'lunyu',
+    path: '/ch/lunyu',
+    title: 'The Analects LunYu 论语',
+    re: /lun\s?yu|analects|论语|論語/i
+  },
+  {
+    id: 'daodejing',
+    path: '/ch/daodejing',
+    title: 'Tao Te Ching DaoDeJing 道德经',
+    re: /daodejing|dao\s?de\s?jing|tao\s?te\s?ching|道德经|道德經|laozi|老子/i
+  },
+  {
+    id: 'artofwar',
+    path: '/ch/artofwar',
+    title: 'The Art of War SunZi BingFa 孙子兵法',
+    re: /art\s?of\s?war|artofwar|sunzi|sun\s?tzu|sun\s?wu|孙子兵法|孫子兵法|孙子|孫子/i
+  }
+];
+const READ_INTENT =
+  /\b(read|reading|recite|recital|recitation|quote|aloud|voice|read it|read to me|show|begin|start|open)\b|原文|全文|朗读|朗讀|朗诵|誦讀|诵读|读一读|读|讀|念|背|念給|念给/i;
+const MAX_CLASSIC_CHARS = 40000;
+const classicCache = {};
+
+function detectClassic(lastUserText, prevUserText) {
+  const t = String(lastUserText || '');
+  if (!READ_INTENT.test(t)) return null;
+  for (const c of CLASSICS) {
+    if (c.re.test(t)) return c;
+  }
+  /* "read it" right after a message that named the classic */
+  if (prevUserText) {
+    for (const c of CLASSICS) {
+      if (c.re.test(prevUserText)) return c;
+    }
+  }
+  return null;
+}
+
+/* HTML -> plain text, one line per block element. Good enough for the
+   site's own chapter pages, which are static server-rendered HTML. */
+function extractText(html) {
+  let t = String(html || '');
+  t = t.replace(/<(script|style|svg|noscript)\b[\s\S]*?<\/\1\s*>/gi, '');
+  const main = t.match(/<main\b[\s\S]*?<\/main\s*>/i);
+  if (main) t = main[0];
+  t = t.replace(/<br\s*\/?>/gi, '\n');
+  t = t.replace(/<\/(p|div|h[1-6]|li|tr|blockquote|section|article|td|th)\s*>/gi, '\n');
+  t = t.replace(/<[^>]+>/g, '');
+  t = t
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&amp;/gi, '&')
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>')
+    .replace(/&quot;/gi, '"')
+    .replace(/&#0?39;|&apos;|&rsquo;/gi, "'")
+    .replace(/&ldquo;|&rdquo;/gi, '"')
+    .replace(/&mdash;/gi, '-')
+    .replace(/&ndash;/gi, '-')
+    .replace(/&middot;/gi, '·')
+    .replace(/&#(\d+);/g, (m, n) => {
+      try { return String.fromCodePoint(parseInt(n, 10)); } catch (e) { return m; }
+    });
+  const lines = t.split('\n').map((l) => l.replace(/\s+/g, ' ').trim());
+  return lines.filter(Boolean).join('\n');
+}
+
+async function getClassicText(origin, classic) {
+  const cached = classicCache[classic.id];
+  if (cached && Date.now() - cached.at < 3600 * 1000) return cached.text;
+  try {
+    const res = await fetch(origin + classic.path, {
+      headers: { 'User-Agent': 'RuDao-Chat/1.0 (+https://rudao.org)' },
+      cf: { cacheTtl: 3600, cacheEverything: true }
+    });
+    if (!res.ok) return '';
+    const text = extractText(await res.text()).slice(0, MAX_CLASSIC_CHARS);
+    if (text) classicCache[classic.id] = { text, at: Date.now() };
+    return text;
+  } catch (err) {
+    return '';
+  }
+}
+
+/* ------------------------------------------------------------------ */
 /* Providers                                                           */
 /* ------------------------------------------------------------------ */
-async function callGemini(env, systemPrompt, turns) {
+async function callGemini(env, systemPrompt, turns, maxOut) {
   const model = env.CHAT_MODEL || 'gemini-2.5-flash';
   const url =
     'https://generativelanguage.googleapis.com/v1beta/models/' +
@@ -229,7 +321,7 @@ async function callGemini(env, systemPrompt, turns) {
     body: JSON.stringify({
       systemInstruction: { parts: [{ text: systemPrompt }] },
       contents,
-      generationConfig: { temperature: 0.6, maxOutputTokens: 700, topP: 0.9 },
+      generationConfig: { temperature: 0.6, maxOutputTokens: maxOut || 700, topP: 0.9 },
       safetySettings: [
         { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
         { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
@@ -251,10 +343,11 @@ async function callGemini(env, systemPrompt, turns) {
   return { ok: true, reply, model };
 }
 
-async function callWorkersAI(env, systemPrompt, turns) {
+async function callWorkersAI(env, systemPrompt, turns, maxOut) {
   /* CHAT_MODEL wins if set; otherwise try the cheap bilingual model
      first, then the small Llama that is available on every account. */
   const models = env.CHAT_MODEL ? [env.CHAT_MODEL] : AI_MODELS;
+  const outCap = maxOut || 700;
   const messages = [{ role: 'system', content: systemPrompt }].concat(
     turns.map((m) => ({ role: m.role === 'assistant' ? 'assistant' : 'user', content: m.content }))
   );
@@ -268,11 +361,11 @@ async function callWorkersAI(env, systemPrompt, turns) {
     const input = /gemma-4/i.test(model)
       ? {
         messages,
-        max_completion_tokens: 700,
+        max_completion_tokens: outCap,
         temperature: 0.6,
         chat_template_kwargs: { enable_thinking: false }
       }
-      : { messages, max_tokens: 700, temperature: 0.6 };
+      : { messages, max_tokens: outCap, temperature: 0.6 };
     try {
       const out = await env.AI.run(model, input);
       let reply = '';
@@ -332,7 +425,7 @@ function wantsThinkingFlag(base) {
   return /deepseek\.com|volces\.com|bytepluses\.com|bigmodel\.cn/i.test(base);
 }
 
-async function callCompat(env, systemPrompt, turns) {
+async function callCompat(env, systemPrompt, turns, maxOut) {
   const cfg = compatConfig(env);
   if (!cfg.ready) return { ok: false, status: 0, detail: 'compat not configured' };
 
@@ -344,7 +437,7 @@ async function callCompat(env, systemPrompt, turns) {
       model: cfg.model,
       messages,
       temperature: 0.6,
-      max_tokens: 700,
+      max_tokens: maxOut || 700,
       stream: false
     };
     if (withFlag) body.thinking = { type: 'disabled' };
@@ -414,10 +507,11 @@ function providerChain(env) {
   return order.filter((p) => state[p]);
 }
 
-function runProvider(name, env, systemPrompt, turns) {
-  if (name === 'workers') return callWorkersAI(env, systemPrompt, turns);
-  if (name === 'compat') return callCompat(env, systemPrompt, turns);
-  return callGemini(env, systemPrompt, turns);
+function runProvider(name, env, systemPrompt, turns, maxOut) {
+  maxOut = maxOut || 700;
+  if (name === 'workers') return callWorkersAI(env, systemPrompt, turns, maxOut);
+  if (name === 'compat') return callCompat(env, systemPrompt, turns, maxOut);
+  return callGemini(env, systemPrompt, turns, maxOut);
 }
 
 /* ------------------------------------------------------------------ */
@@ -474,7 +568,29 @@ async function handlePost(context) {
 
   const origin = new URL(request.url).origin;
   const site = await getContext(origin);
-  const systemPrompt = SYSTEM + (site || '(site summary unavailable)') + '\n\nFACT SHEET:\n' + FACTS;
+
+  /* Recital mode: the reader asked the assistant to read one of the
+     three Appendix C classics. Give the model the page's real text and
+     a bigger reply budget, so it reads the site's words instead of
+     saying it cannot. */
+  const classic = detectClassic(
+    turns[turns.length - 1].content,
+    turns.length > 1 ? turns[turns.length - 2].content : ''
+  );
+  let recitalNote = '';
+  let maxOut = 700;
+  let classicText = '';
+  if (classic) {
+    classicText = await getClassicText(origin, classic);
+    if (classicText) {
+      maxOut = 3500;
+      recitalNote = '\n\nRECITAL REQUEST — the reader asked you to read ' + classic.title +
+        '. Its full text as published on this site follows below. Read it aloud exactly as it appears, in the site\'s order, without summarizing, shortening or refusing. The usual 90-180 word conciseness rule does not apply to a recital; the plain-text and no-markdown rules still do. If the text is longer than one reply can hold, read a substantial passage from the start (or from the part the reader names), then say the reader may say "continue" to hear the next passage. These are public-domain pre-Qin classics published in full on this site, so the copyright boundary above does not apply to them.\n\n' +
+        'FULL TEXT — ' + classic.title + ' (' + origin + classic.path + '):\n' + classicText;
+    }
+  }
+
+  const systemPrompt = SYSTEM + (site || '(site summary unavailable)') + '\n\nFACT SHEET:\n' + FACTS + recitalNote;
 
   /* Walk the chain: a free provider that fails or hits its daily
      allowance hands over to the next one instead of showing an error. */
@@ -483,7 +599,7 @@ async function handlePost(context) {
   for (const name of chain) {
     let r;
     try {
-      r = await runProvider(name, env, systemPrompt, turns);
+      r = await runProvider(name, env, systemPrompt, turns, maxOut);
     } catch (err) {
       r = { ok: false, status: 502, detail: String((err && err.message) || err).slice(0, 200) };
     }
