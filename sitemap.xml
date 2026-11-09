@@ -68,6 +68,12 @@
         </image:image>
     </url>
     <url>
+        <loc>https://rudao.org/chat</loc>
+        <lastmod>2026-11-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
         <loc>https://rudao.org/guide</loc>
         <lastmod>2026-11-08</lastmod>
         <changefreq>monthly</changefreq>

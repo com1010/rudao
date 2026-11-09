@@ -450,7 +450,10 @@
     showTab('ai');
     renderQuota();
     seed();
-    if (/[#?&]chat\b/.test(location.hash + location.search)) open();
+    /* Standalone chat page (/chat) opts in via data-rp-autopen on <body>;
+       other pages auto-open only when the URL carries #chat or ?chat. */
+    if (document.body.hasAttribute('data-rp-autopen') ||
+        /[#?&]chat\b/.test(location.hash + location.search)) open();
   }
 
   function paragraph(text, cls) {

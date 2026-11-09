@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Chat about RuDao 儒道互动 - Ask the book about RuShang 儒商, co-opetition 竞合, the Analects 论语, DaoDeJing 道德经 and The Art of War 孙子兵法. AI grounded on RuDao, plus a direct line to the author Tony Tong 唐仪." />
+    <meta name="keywords" content="RuDao, 儒道, Chat about RuDao, 儒道互动, 谈书问道, 有问必答, RuDao AI, ask the book, 儒商, RuShang, 竞合, co-opetition, TonyTong.cc, Tony Tong 唐仪, Beyond The Art of War" />
+    <meta name="author" content="Tony Tong (唐仪) - www.TonyTong.cc" />
+    <meta name="robots" content="index, follow, max-snippet:-1" />
+
+    <link rel="canonical" href="https://rudao.org/chat" />
+    <link rel="alternate" href="https://rudao.org/chat" hreflang="en" />
+    <link rel="alternate" href="https://rudao.org/chat" hreflang="zh-Hans" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://rudao.org/chat" />
+    <meta property="og:title" content="Chat about RuDao 儒道互动 | RuDao 儒道" />
+    <meta property="og:description" content="Ask the book: AI grounded on RuDao 儒道, plus a direct line to the author Tony Tong 唐仪. 谈书问道 有问必答。" />
+    <meta property="og:site_name" content="RuDao 儒道 - Beyond The Art of War" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Chat about RuDao 儒道互动 | RuDao 儒道" />
+    <meta name="twitter:description" content="Ask the book: AI grounded on RuDao 儒道, plus a direct line to the author Tony Tong 唐仪. 谈书问道 有问必答。" />
+
+    <title>Chat about RuDao 儒道互动 谈书问道 | RuDao 儒道</title>
+    <link rel="stylesheet" href="/css/styles.css?v=20261110c" />
+
+    <style>
+    /* Standalone chat page: the widget panel fills the page centre.
+       Everything else on this page is intentionally minimal. */
+    html, body { height: 100%; margin: 0; }
+    body.chatpage {
+        background: var(--paper, #f7f2e8);
+        font-family: var(--font-body);
+        display: flex; flex-direction: column;
+    }
+    .chat-topbar {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 12px 20px; border-bottom: 1px solid rgba(10,10,10,.12);
+        background: #fffdf8;
+    }
+    .chat-topbar a { color: var(--ink-soft, #1c1c1c); text-decoration: none; font-size: .86rem; margin-left: 18px; }
+    .chat-topbar a:hover { color: var(--vermillion, #a93226); }
+    .chat-topbar .chat-brand { display: flex; align-items: baseline; gap: 10px; text-decoration: none; color: var(--ink-black, #0a0a0a); margin-left: 0; }
+    .chat-topbar .chat-brand .en { font-family: var(--font-serif-en-body); font-size: 1.2rem; letter-spacing: .06em; }
+    .chat-topbar .chat-brand .cn { font-family: var(--font-cn); font-size: calc(1.2rem - 4px); color: var(--vermillion, #a93226); }
+    .chat-intro {
+        max-width: 780px; width: 100%; margin: 0 auto; padding: 14px 18px 0;
+        text-align: center;
+    }
+    .chat-intro h1 { margin: 0 0 4px; font-family: var(--font-serif-en-body); font-size: 1.25rem; color: var(--ink-black, #0a0a0a); }
+    .chat-intro h1 .cn { font-family: var(--font-cn); font-size: calc(1.25rem - 4px); font-weight: 400; color: var(--vermillion, #a93226); }
+    .chat-intro p { margin: 0; font-size: .82rem; color: var(--gray, #777); }
+    /* The widget mounts .rp-root (fixed) on body; anchor it below the
+       top bar + intro line and stretch the panel over the rest. */
+    body.chatpage .rp-root {
+        position: fixed; left: 0; right: 0; top: 158px; bottom: 0;
+        display: flex; justify-content: center; padding: 0 14px 14px;
+    }
+    body.chatpage .rp-root .rp-panel {
+        position: relative; right: auto; bottom: auto;
+        width: min(780px, 100%); max-height: none; height: 100%;
+    }
+    /* Closing makes no sense on a page that IS the chat. */
+    body.chatpage .rp-close { display: none; }
+    @media (max-width: 640px) { body.chatpage .rp-root { top: 216px; padding: 0 8px 8px; } }
+    </style>
+</head>
+<body class="chatpage" data-rp-autopen>
+    <span data-rp-hide-fab hidden></span>
+
+    <header class="chat-topbar">
+        <a class="chat-brand" href="/">
+            <span class="en">RuDao</span>
+            <span class="cn">儒道</span>
+        </a>
+        <nav>
+            <a href="/">Home 首页</a>
+            <a href="/#contents">TOC 全书目录</a>
+            <a href="/sitemap">Site Map 网站地图</a>
+        </nav>
+    </header>
+
+    <div class="chat-intro">
+        <h1>Chat about RuDao <span class="cn">儒道互动 谈书问道 有问必答</span></h1>
+        <p>Ask the book - AI grounded on RuDao 儒道. For a personal reply from the author, open the &quot;Ask Tony&quot; tab. Conversations may be kept so Tony can read them later.</p>
+    </div>
+
+    <script src="/js/chat-widget.js?v=20261110c" defer></script>
+</body>
+</html>
