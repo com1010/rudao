@@ -330,6 +330,88 @@ async function getClassicText(origin, classic) {
   }
 }
 
+/* Full-book corpus: the whole site (every URL listed in sitemap.xml)
+   is scanned once per hour and kept in isolate memory. On each chat
+   request the reader's question is matched against every page, and
+   the 1-2 most relevant pages' real text is handed to the model — so
+   the assistant can answer from the entire book even when the
+   llms.txt summary does not cover the topic. */
+const MAX_CORPUS_PAGE_CHARS = 24000;
+const MAX_RETRIEVED_CHARS = 18000;
+const RETRIEVE_TOP_K = 2;
+const corpusCache = { pages: null, at: 0 };
+const STOPWORDS = new Set(('the,and,for,are,but,not,you,all,any,can,her,was,one,our,out,day,get,has,him,his,how,man,new,now,old,see,two,way,who,its,did,that,this,with,what,when,where,which,will,would,there,their,they,them,then,than,have,from,your,about,into,more,some,book,books,chapter,chapters,rudao,please,thanks,thank,tell,said,like,also,read,reading,what,who,why,how,when,where,is,are,was,were,do,does,did,in,on,at,to,of,it,as,by,an,be,or,if,we,he,she,me,my,so,no,do,dont,cant,should,could,may,might,must,shall,about,above,after,again,against,before,being,below,between,both,down,during,each,few,further,having,here,most,other,over,own,same,such,through,too,under,until,up,very,while').split(','));
+
+async function getCorpus(origin) {
+  if (corpusCache.pages && Date.now() - corpusCache.at < 3600 * 1000) return corpusCache.pages;
+  try {
+    const res = await fetch(origin + '/sitemap.xml', {
+      headers: { 'User-Agent': 'RuDao-Chat/1.0 (+https://rudao.org)' },
+      cf: { cacheTtl: 3600, cacheEverything: true }
+    });
+    if (!res.ok) return corpusCache.pages || [];
+    const locs = [...String(await res.text()).matchAll(/<loc>([^<]+)<\/loc>/g)]
+      .map((m) => m[1].replace(/^https?:\/\/[^/]+/i, '').trim())
+      .filter((p) => p && !/\.(png|jpg|jpeg|svg|ico|xml|txt|webmanifest)$/i.test(p));
+    const pages = (await Promise.allSettled(locs.map(async (path) => {
+      const r = await fetch(origin + path, {
+        headers: { 'User-Agent': 'RuDao-Chat/1.0 (+https://rudao.org)' },
+        cf: { cacheTtl: 86400, cacheEverything: true }
+      });
+      if (!r.ok) return null;
+      const text = extractText(await r.text()).slice(0, MAX_CORPUS_PAGE_CHARS);
+      return text ? { path, lower: text.toLowerCase(), text } : null;
+    })))
+      .map((r) => (r.status === 'fulfilled' ? r.value : null))
+      .filter(Boolean);
+    if (pages.length) { corpusCache.pages = pages; corpusCache.at = Date.now(); }
+    return pages;
+  } catch (err) {
+    return corpusCache.pages || [];
+  }
+}
+
+function queryTokens(text) {
+  const t = String(text || '').toLowerCase();
+  const en = (t.match(/[a-z][a-z']{2,}/g) || []).filter((w) => !STOPWORDS.has(w));
+  /* CJK bigrams: Chinese has no spaces, so adjacent character pairs
+     make robust matching tokens. */
+  const cjk = t.match(/[\u4e00-\u9fff]+/g) || [];
+  const zh = [];
+  for (const run of cjk) {
+    for (let i = 0; i + 1 < run.length; i++) zh.push(run.slice(i, i + 2));
+  }
+  return [...new Set(en), ...new Set(zh)];
+}
+
+function retrievePages(pages, question) {
+  const tokens = queryTokens(question);
+  if (!tokens.length) return [];
+  const scored = pages.map((p) => {
+    let score = 0;
+    for (const tok of tokens) {
+      if (p.lower.includes(tok)) {
+        score += 1;
+        const first = p.lower.indexOf(tok);
+        if (p.lower.indexOf(tok, first + 1) !== -1) score += 0.5;
+      }
+    }
+    return { p, score };
+  });
+  scored.sort((a, b) => b.score - a.score);
+  const picked = [];
+  let used = 0;
+  for (const { p, score } of scored) {
+    if (score < 2 || picked.length >= RETRIEVE_TOP_K) break;
+    const slice = p.text.slice(0, Math.min(p.text.length, MAX_RETRIEVED_CHARS - used));
+    if (slice.length < 200) break;
+    picked.push({ path: p.path, text: slice, score });
+    used += slice.length;
+    if (used >= MAX_RETRIEVED_CHARS) break;
+  }
+  return picked;
+}
+
 /* ------------------------------------------------------------------ */
 /* Providers                                                           */
 /* ------------------------------------------------------------------ */
@@ -664,7 +746,27 @@ async function handlePost(context) {
     }
   }
 
-  const systemPrompt = SYSTEM + (site || '(site summary unavailable)') + '\n\nFACT SHEET:\n' + FACTS + recitalNote + pageNote;
+  /* Full-book retrieval: match the question against every page of the
+     site and inject the most relevant chapter text(s), so the assistant
+     answers from the whole book rather than only the llms.txt summary.
+     Skipped when the reader is reciting a classic or pasted a page
+     link — those already carry their own full text. */
+  let retrievalNote = '';
+  if (!classic && !pageNote) {
+    const lastUser = turns[turns.length - 1].content;
+    try {
+      const pages = await getCorpus(origin);
+      if (pages.length) {
+        const hits = retrievePages(pages, lastUser);
+        if (hits.length) {
+          retrievalNote = '\n\nRETRIEVED BOOK PAGES — the pages below from this site matched the reader\'s question best. Ground your answer in their text; if the answer is not in them, say so plainly. Do not print URLs.\n' +
+            hits.map((h) => '\nPAGE TEXT — ' + h.path + ':\n' + h.text).join('\n');
+        }
+      }
+    } catch (err) { /* retrieval is best-effort; never block the chat */ }
+  }
+
+  const systemPrompt = SYSTEM + (site || '(site summary unavailable)') + '\n\nFACT SHEET:\n' + FACTS + recitalNote + pageNote + retrievalNote;
 
   /* Walk the chain: a free provider that fails or hits its daily
      allowance hands over to the next one instead of showing an error. */
