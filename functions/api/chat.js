@@ -199,8 +199,8 @@ async function getContext(origin) {
     });
     if (!res.ok) return '';
     let txt = await res.text();
-    // Keep the prompt bounded; llms.txt starts with the most important facts.
-    if (txt.length > 28000) txt = txt.slice(0, 28000);
+    // Keep the prompt bounded; llms.txt is ~34k chars — read it all.
+    if (txt.length > 44000) txt = txt.slice(0, 44000);
     ctxCache = { text: txt, at: Date.now() };
     return txt;
   } catch (err) {
@@ -253,6 +253,36 @@ function detectClassic(lastUserText, prevUserText) {
     }
   }
   return null;
+}
+
+/* Page reference: when the reader pastes a link to one of the site's
+   own pages, fetch that page's text and hand it to the model, so the
+   assistant can answer about book content even when the llms.txt
+   summary does not cover it. */
+const MAX_PAGE_CHARS = 12000;
+const pageCache = {};
+const PAGE_REF_RE = /(?:https?:\/\/(?:www\.)?rudao\.org)?(\/ch\/[a-z0-9]+)/i;
+
+function detectPageRef(text) {
+  const m = PAGE_REF_RE.exec(String(text || ''));
+  return m ? m[1].toLowerCase() : null;
+}
+
+async function getPageText(origin, path) {
+  const cached = pageCache[path];
+  if (cached && Date.now() - cached.at < 3600 * 1000) return cached.text;
+  try {
+    const res = await fetch(origin + path, {
+      headers: { 'User-Agent': 'RuDao-Chat/1.0 (+https://rudao.org)' },
+      cf: { cacheTtl: 3600, cacheEverything: true }
+    });
+    if (!res.ok) return '';
+    const text = extractText(await res.text()).slice(0, MAX_PAGE_CHARS);
+    if (text) pageCache[path] = { text, at: Date.now() };
+    return text;
+  } catch (err) {
+    return '';
+  }
 }
 
 /* HTML -> plain text, one line per block element. Good enough for the
@@ -615,7 +645,26 @@ async function handlePost(context) {
     }
   }
 
-  const systemPrompt = SYSTEM + (site || '(site summary unavailable)') + '\n\nFACT SHEET:\n' + FACTS + recitalNote;
+  /* Page reference: the reader pasted a link to one of the site's own
+     pages. Fetch its real text so the assistant can answer from the
+     book itself, even if the llms.txt summary misses that content. */
+  let pageNote = '';
+  if (!classic) {
+    const lastUser = turns[turns.length - 1].content;
+    const prevUser = turns.length > 1 ? turns[turns.length - 2].content : '';
+    const pagePath = detectPageRef(lastUser) || detectPageRef(prevUser);
+    if (pagePath) {
+      const pageText = await getPageText(origin, pagePath);
+      if (pageText) {
+        pageNote = '\n\nPAGE REFERENCE — the reader shared a link to ' + pagePath +
+          ' on this site. Its text follows below. Ground your answer in this text; ' +
+          'if the answer is not in it, say so plainly. Do not print the URL.\n\n' +
+          'PAGE TEXT — ' + pagePath + ':\n' + pageText;
+      }
+    }
+  }
+
+  const systemPrompt = SYSTEM + (site || '(site summary unavailable)') + '\n\nFACT SHEET:\n' + FACTS + recitalNote + pageNote;
 
   /* Walk the chain: a free provider that fails or hits its daily
      allowance hands over to the next one instead of showing an error. */
