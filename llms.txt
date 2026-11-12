@@ -46,9 +46,8 @@ Ch.3 Ru + Dao 内圣外王 - Inner Sage, Outer King
 
 Ch.4 Ru vs Strategists 儒家-兵家-竞合之道 - chapter opener 内圣是根,外王是果 (庄子-天下篇 → 大学-八目)
 - 4.1 Art of War - SunTzu 544BCE 孙子兵家 (https://rudao.org/ch/41artofwar) - from "Warfare is Deception" to "Merchants Abide by Trust": why business needs the RuDao paradigm; the military foundation (Five Factors, 五事) and its limits; RuDao reinterpretation (West Point, Sandhurst, Harvard, Gulf War, Matsushita); from war fighting to value creation; the dual paradigm RuShang 儒商 / RuJiang 儒将; merchants abide by trust 商者信道 and its historical origin (Shang traders 商人, Zigong 子贡); the strategic choice of XinDao over GuiDao; three executive maxims (己所不欲勿施于人; 得道者多助失道者寡助; 不战而屈人之兵)
-- 4.2 The Outer King as RuJiang 儒将 - Co-opetition Strategy Beyond The Art of War
-- 4.3 The Art of War (Sun Tzu) vs Co-opetition 竞合之道 - turning counterparties into partners; surviving adversity and crisis; Three Kingdoms RuJiang wisdom
-- 4.4 Board Game Manners to Boardroom Success 从棋盘到董事会:棋品见人品 - LiYi 礼仪 in contest; Liu Qi liubo incident; from board to boardroom; character under pressure
+- 4.2 Art of War vs Co-opetition 竞合之道 (https://rudao.org/ch/42coopetition) - The Outer King as RuJiang 儒将, Co-opetition Strategy Beyond The Art of War: turning counterparties into partners; surviving adversity and crisis; Three Kingdoms RuJiang wisdom
+- 4.3 Board Game - Boardroom 棋品见人品 (https://rudao.org/ch/43boardgame) - LiYi 礼仪 in contest; Liu Qi liubo incident; from board to boardroom; character under pressure
 
 Ch.5 RuShang Confucian Merchant 儒商典范 - The Way of the Confucian Merchant
 - 5.1 RuShang Patriarchs 儒商鼻祖 FanLi, ZiGong, BaiGui (https://rudao.org/ch/51rushang) - the three ancient masters Fan Li 范蠡 (counter-cyclical strategist: buy boats in drought, buy carts in flood; capital velocity 务完物; ten percent margins 逐什一之利; 富好行其德), ZiGong 子贡 (以商养道; 富而好礼; strategic humility) and BaiGui 白圭 (智勇仁强; 乐观时变; 人弃我取,人取我与). Key thesis: 君子富,好行其德. 5.1.6 traces contrarian thinking 逆向思维 from Fan Li to Wall Street: De Bondt and Thaler Market Overreaction Hypothesis (1985), Buffett on American Express 1963 and Coca-Cola 1988.
@@ -236,8 +235,8 @@ The following chapters are published in full on this site, each linked from its 
 - Ch.3 Ru + Dao 内圣外王 - Inner Sage, Outer King - Neisheng/Waiwang: inner cultivation seeds the field, external success is the harvest. (https://rudao.org/ch/30innersage)
 - Ch. 4 Ru vs Strategists 儒家-兵家-竞合之道 (https://rudao.org/ch/40ruvsstrategists) - Co-opetition, turning counterparties into partners.
 - 4.1 Art of War - SunTzu 544BCE 孙子兵家 (https://rudao.org/ch/41artofwar) - from "Warfare is Deception" to "Merchants Abide by Trust"; why business needs the RuDao paradigm; the military foundation and its limits; from war fighting to value creation; RuShang/RuJiang dual paradigm; merchants abide by trust and its historical origin; three executive maxims.
-- 4.3 The Art of War (Sun Tzu) vs Co-opetition 竞合之道 (https://rudao.org/ch/42coopetition) - incl. 4.3.1 Co-opetition, 4.3.2 Surviving Adversity and Crisis, 4.3.3 Three Kingdoms RuJiang wisdom, RuJiang Casebook.
-- 4.4 Board Game Manners to Boardroom Success 从棋盘到董事会:棋品见人品 (https://rudao.org/ch/43boardgame) - LiYi 礼仪 in contest; Liu Qi liubo incident; from WeiQi board to boardroom; character revealed under pressure.
+- 4.2 The Art of War (SunTzu) vs Co-opetition 竞合之道 (https://rudao.org/ch/42coopetition) - incl. 4.2.1 Co-opetition, 4.2.2 Surviving Adversity and Crisis, 4.2.3 Three Kingdoms RuJiang wisdom, RuJiang Casebook.
+- 4.3 Board Game - Boardroom 棋品见人品 (https://rudao.org/ch/43boardgame) - LiYi 礼仪 in contest; Liu Qi liubo incident; from WeiQi board to boardroom; character revealed under pressure.
 - 6.1 AI - 5th Industrial Revolution - Digital Civilization - Dr. JiaMing Zhu (AI第5次工业革命: 从四个现代化到第五现代化,朱嘉明,儒道与数字文明的崛起) (#ch61, #ch611, #ch612) - author note on Dr. Zhu as teacher; Moganshan Conference 莫干山会议 and dual-track price reform; AI as new species 新物种; blockchain as trust infrastructure; Web3 + AI and co-opetition; end of classical cycles; 以义取利 ethics; profile, bibliography, source links.
 - 6.2 Dialogue of Civilizations and the New Confucian Business Civilization (https://rudao.org/ch/62dialogueofcivilizations) - Toynbee & Ikeda, Web4, Globalization 4.0.
 - 6.4 A Thirty-Year Practitioner's Witness (https://rudao.org/ch/64internetfrontier) - King's College HK, Web1.0 Nasdaq, Web2.0 governance, Web3/AI, Web4.
