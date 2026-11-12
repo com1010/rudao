@@ -9,7 +9,7 @@ The landing page https://rudao.org/ carries the table of contents, which links t
 The two-segment form also resolves (301): /ch/51/rushang -> /ch/51rushang
 Appendix C publishes the three pre-Qin classics in full at https://rudao.org/ch/lunyu, https://rudao.org/ch/daodejing and https://rudao.org/ch/artofwar.
 https://rudao.org/sitemap lists every page on the site, and the same list is in the "Site Map" dropdown in every top navigation bar.
-A standalone chat page lives at https://rudao.org/chat - Chat about RuDao 儒道互动: RuDao AI grounded on the book (free tokens, bilingual voice input, recital mode for LunYu/DaoDeJing/ArtOfWar), plus Ask-Tony and consulting tabs. The same chat also opens from the floating "Chat about RuDao" bubble on every page.
+A standalone chat page lives at https://rudao.org/chat - Chat with author TonyTong.cc 儒道 作者互动: RuDao AI grounded on the book (free tokens, bilingual voice input, recital mode for LunYu/DaoDeJing/ArtOfWar), plus Ask-Tony and consulting tabs. The same chat also opens from the floating "Chat about RuDao" bubble on every page.
 
 ## About This Book
 

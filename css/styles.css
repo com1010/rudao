@@ -747,6 +747,26 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     letter-spacing: 0.04em;
 }
 
+/* Second headline line: the big 儒道 and the English subtitle share one row. */
+.title-line2 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: center;
+    column-gap: 1.1rem;
+    row-gap: 0.35rem;
+    max-width: 100%;
+}
+.title-sub {
+    font-family: var(--font-serif-en);
+    font-size: clamp(1.15rem, 2.5vw, 1.9rem);
+    font-weight: 500;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    color: var(--ink-soft);
+}
+
 /* The "Chat about RuDao" call to action, sitting on the 儒道 line.
    A solid vermillion pill with a pulse ring so the chat entry is obvious. */
 /* Chat about RuDao entry point - sits on its own line, under the author link */
@@ -3048,6 +3068,14 @@ a.title-by:hover::after { opacity: 1; }
     }
     .title-cn {
         font-size: clamp(2.1rem, 9.5vw, 3.4rem);
+    }
+    .title-line2 {
+        column-gap: 0.65rem;
+        row-gap: 0.2rem;
+    }
+    .title-sub {
+        font-size: clamp(0.95rem, 4.2vw, 1.25rem);
+        line-height: 1.25;
     }
     .hero-subtitle-en {
         font-size: clamp(0.98rem, 4.5vw, 1.3rem);
@@ -5843,8 +5871,8 @@ a[href^="http"].urllink {
 
 /* token notice above the conversation */
 .rp-tokens { padding: 11px 15px 9px; background: rgba(169,50,38,.045); border-bottom: 1px solid rgba(10,10,10,.07); }
-.rp-tokens-line { margin: 0 0 4px !important; padding: 0 !important; font-size: .74rem; line-height: 1.55; color: var(--ink-soft); }
-.rp-tokens-fine { margin: 0 !important; padding: 0 !important; font-size: .66rem !important; line-height: 1.5; color: var(--gray); }
+.rp-tokens-line { margin: 0 0 4px !important; padding: 0 !important; font-size: 8pt; line-height: 1.5; color: var(--ink-soft); }
+.rp-tokens-fine { margin: 0 !important; padding: 0 !important; font-size: 8pt !important; line-height: 1.5; color: var(--gray); }
 
 .rp-log { flex: 1; min-height: 130px; overflow-y: auto; padding: 14px 15px 6px; display: flex; flex-direction: column; gap: 10px; }
 .rp-msg { display: flex; }
