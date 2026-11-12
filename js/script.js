@@ -174,25 +174,22 @@
         };
     }
 
-    // Create both players — English first, then Bilingual
-    var player2API = null; // forward ref
+    // Create all four players — English, Bilingual, Audio Book Ch0.0, Audio Book Ch1.
+    // Playing any one pauses the other three (never itself).
+    var playerAPIs = [];
 
-    var player1 = setupAudioPlayer({
-        suffix: '1',
-        label: 'English',
-        delay: 0,
-        onPlayStart: function() {
-            if (player2API) player2API.pause();
-        }
-    });
-
-    player2API = setupAudioPlayer({
-        suffix: '2',
-        label: 'Bilingual',
-        delay: 200,
-        onPlayStart: function() {
-            if (player1) player1.pause();
-        }
+    ['1', '2', '3', '4'].forEach(function(suffix, idx) {
+        var api = setupAudioPlayer({
+            suffix: suffix,
+            label: suffix === '1' ? 'English' : (suffix === '2' ? 'Bilingual' : 'Audio Book Ch' + (suffix === '3' ? '0.0' : '1')),
+            delay: idx * 200,
+            onPlayStart: function() {
+                playerAPIs.forEach(function(p, j) {
+                    if (p && j !== idx) p.pause();
+                });
+            }
+        });
+        playerAPIs.push(api);
     });
 
     // ============================================
