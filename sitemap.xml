@@ -284,19 +284,24 @@
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://rudao.org/ch/62dialogueofcivilizations</loc>
+        <loc>https://rudao.org/ch/63dialogueofcivilizations</loc>
         <lastmod>2026-11-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://rudao.org/ch/63bizcases</loc>
+        <loc>https://rudao.org/ch/64clashofcivilizations</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://rudao.org/ch/62bizcases</loc>
         <lastmod>2026-11-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://rudao.org/ch/64internetfrontier</loc>
+        <loc>https://rudao.org/ch/65internetfrontier</loc>
         <lastmod>2026-11-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
