@@ -6289,6 +6289,8 @@ body.ch-body .chapter-band {
 
 /* Free preview download block (Thanksgiving frame) */
 .tg-frame .tg-free { margin: 1rem 0 0.4rem; }
+.tg-frame .tg-free p { text-align: center; }
+.tg-frame .tg-free .btn { display: inline-flex; }
 .tg-frame .tg-free-head { font-weight: 600; color: var(--vermillion-deep); font-size: 1.05rem; margin-bottom: 0.4rem; }
 .tg-frame .tg-free-btn { margin: 0.9rem 0 0.4rem; }
 .tg-frame .tg-free-btn .btn { padding: 0.8rem 1.8rem; }
