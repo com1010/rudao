@@ -6294,3 +6294,26 @@ body.ch-body .chapter-band {
 .tg-frame .tg-free-head { font-weight: 600; color: var(--vermillion-deep); font-size: 1.05rem; margin-bottom: 0.4rem; }
 .tg-frame .tg-free-btn { margin: 0.9rem 0 0.4rem; }
 .tg-frame .tg-free-btn .btn { padding: 0.8rem 1.8rem; }
+
+
+/* Readers' Blog hero button + page hit counter + #blog anchor */
+.hero-blog-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 30px;
+    border: 2px solid var(--gold-soft);
+    border-radius: 999px;
+    background: rgba(184, 146, 58, 0.10);
+    color: var(--gold-soft);
+    font-family: var(--font-sans);
+    font-size: 1.02rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
+}
+.hero-blog-btn:hover { background: var(--gold-soft); color: var(--ink-black); transform: translateY(-2px); }
+.hero-hits { display: inline-flex; align-items: center; gap: 8px; margin-left: 18px; vertical-align: middle; color: var(--gray); }
+.hero-hits img { height: 20px; border-radius: 3px; vertical-align: middle; }
+.blog-anchor { display: block; height: 0; overflow: hidden; scroll-margin-top: 84px; }
