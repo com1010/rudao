@@ -6314,6 +6314,7 @@ body.ch-body .chapter-band {
     transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
 }
 .hero-blog-btn:hover { background: var(--gold-soft); color: var(--ink-black); transform: translateY(-2px); }
-.hero-hits { display: inline-flex; align-items: center; gap: 8px; margin-left: 18px; vertical-align: middle; color: var(--gray); }
-.hero-hits img { height: 20px; border-radius: 3px; vertical-align: middle; }
+.hero-hits { display: inline-flex; align-items: center; gap: 5px; margin-left: 18px; vertical-align: middle; color: var(--gray); font-family: Arial, Helvetica, sans-serif; font-size: 6pt; line-height: 1; }
+.hero-hits .zh { font-size: 5pt; font-weight: 400; }
+.hero-hits img { height: 14px; border-radius: 2px; vertical-align: middle; }
 .blog-anchor { display: block; height: 0; overflow: hidden; scroll-margin-top: 84px; }
